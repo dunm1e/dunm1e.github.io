@@ -84,9 +84,11 @@
 ]]></content>
       <categories>
         <category>Web</category>
+        <category>ctf</category>
       </categories>
       <tags>
         <tag>FTP</tag>
+        <tag>ctf</tag>
       </tags>
   </entry>
   <entry>
@@ -223,8 +225,10 @@
 ]]></content>
       <categories>
         <category>Web</category>
+        <category>ctf</category>
       </categories>
       <tags>
+        <tag>ctf</tag>
         <tag>sql</tag>
       </tags>
   </entry>
@@ -237,8 +241,10 @@
 ]]></content>
       <categories>
         <category>Web</category>
+        <category>ctf</category>
       </categories>
       <tags>
+        <tag>ctf</tag>
         <tag>文件上传</tag>
       </tags>
   </entry>
@@ -307,8 +313,10 @@
 ]]></content>
       <categories>
         <category>Web</category>
+        <category>ctf</category>
       </categories>
       <tags>
+        <tag>ctf</tag>
         <tag>SSRF</tag>
       </tags>
   </entry>
@@ -326,7 +334,7 @@
 
 ]]></content>
       <categories>
-        <category>Web</category>
+        <category>simple</category>
       </categories>
       <tags>
         <tag>simple</tag>
@@ -444,6 +452,7 @@
 
 ]]></content>
       <categories>
+        <category>Web</category>
         <category>ctf</category>
       </categories>
       <tags>
@@ -540,8 +549,10 @@
 ]]></content>
       <categories>
         <category>Web</category>
+        <category>ctf</category>
       </categories>
       <tags>
+        <tag>ctf</tag>
         <tag>SMB</tag>
       </tags>
   </entry>
@@ -680,8 +691,10 @@
 ]]></content>
       <categories>
         <category>Web</category>
+        <category>ctf</category>
       </categories>
       <tags>
+        <tag>ctf</tag>
         <tag>ssh</tag>
       </tags>
   </entry>
@@ -840,8 +853,10 @@
 ]]></content>
       <categories>
         <category>Web</category>
+        <category>ctf</category>
       </categories>
       <tags>
+        <tag>ctf</tag>
         <tag>sql</tag>
       </tags>
   </entry>

