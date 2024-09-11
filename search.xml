@@ -34,8 +34,8 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/2021041920595526.png#pic_center"
-                      alt="img"
+                     data-src="/1.png"
+                      alt="图片"
                 ></p>
 <p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
 <p><strong>我们使用第二种方法</strong></p>
