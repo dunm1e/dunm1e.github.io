@@ -20,7 +20,7 @@
   </entry>
   <entry>
     <title>FTP服务后门利用</title>
-    <url>/2024/09/11/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/</url>
+    <url>/2024/09/11/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/</url>
     <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
 
 <p>发现FTP服务&#x3D;&#x3D;（端口号为21）&#x3D;&#x3D;</p>
