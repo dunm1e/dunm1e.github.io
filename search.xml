@@ -53,8 +53,8 @@
 <p>成功获取flag</p>
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>FTP</tag>
@@ -156,8 +156,8 @@
 <p>成功获取用户名和密码，登录到后台</p>
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>sql</tag>
@@ -172,8 +172,8 @@
 
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>文件上传</tag>
@@ -232,8 +232,8 @@
 <p>定时任务执行后就会反弹shell到攻击机</p>
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>SSRF</tag>
@@ -312,8 +312,8 @@
 
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>simple</tag>
@@ -378,8 +378,8 @@
 
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>SMB</tag>
@@ -472,8 +472,8 @@
 </ol>
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>ssh</tag>
@@ -630,8 +630,8 @@
 
 ]]></content>
       <categories>
+        <category>CTF</category>
         <category>Web</category>
-        <category>ctf</category>
       </categories>
       <tags>
         <tag>sql</tag>
