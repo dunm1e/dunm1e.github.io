@@ -13,18 +13,38 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/archives/2024/09/"/>
+    <link rel="canonical" href="http://example.com/2024/09/28/92bb122dc42b/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2024/09/index.html">
+        <meta name="description" content="集合的定义集合（set）是一个无序且没有重复元素的序列集合中的元素不会重复，并且可以进行交集、并集、差集等常见的集合操作 集合的创建可以使用大括号&#123;&#125;创建集合，元素之间用逗号,分隔，或者也可以使用set()函数创建集合 注意：创建一个空集合必须使用set()，因为如果只用大括号&#123;&#125;是表示创建一个空字典这里演示一下集合的去重功能，因为集合是没有重复元素的，如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python从入门到精通——2. 3 集合的创建及相关操作">
+<meta property="og:url" content="http://example.com/2024/09/28/92bb122dc42b/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="集合的定义集合（set）是一个无序且没有重复元素的序列集合中的元素不会重复，并且可以进行交集、并集、差集等常见的集合操作 集合的创建可以使用大括号&#123;&#125;创建集合，元素之间用逗号,分隔，或者也可以使用set()函数创建集合 注意：创建一个空集合必须使用set()，因为如果只用大括号&#123;&#125;是表示创建一个空字典这里演示一下集合的去重功能，因为集合是没有重复元素的，如果">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281059630.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281103552.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281102446.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281106374.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281110616.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281126850.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281128428.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281130134.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281133897.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281135391.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281135265.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281131827.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281132726.png">
+<meta property="article:published_time" content="2024-09-28T02:56:47.000Z">
+<meta property="article:modified_time" content="2024-09-28T03:37:26.006Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281059630.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -46,7 +66,7 @@
     
     <title>
         
-            Archive: 2024/9 -
+            Python从入门到精通——2. 3 集合的创建及相关操作 -
         
         Dunm1e &#39; s World
     </title>
@@ -513,191 +533,427 @@
             <div class="main-content">
 
                 
-                    <div class="archive-container shadow-none hover:shadow-none sm:shadow-redefine sm:hover:shadow-redefine-hover">
-    
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">19</span>
-            </div>
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
             
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Python从入门到精通——2. 3 集合的创建及相关操作</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/touxiang.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Dunm1e</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-09-28 10:56:47</span>
+        <span class="mobile">2024-09-28 10:56:47</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-09-28 11:37:26</span>
+            <span class="mobile">2024-09-28 11:37:26</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
                 
-                    
-                    
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-28'>
-                    
-                    <a href="/2024/09/28/98a7c719df5e/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Python从入门到精通——3. 1 分支结构</span>
-                    </a>
-                    
                 
-                    
-                    
-                    <a href="/2024/09/28/92bb122dc42b/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Python从入门到精通——2. 3 集合的创建及相关操作</span>
-                    </a>
-                    
-                
-                    
                     
                         
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-27'>
+                        <li>
+                            <a href="/categories/python/">python</a>&nbsp;
+                        </li>
                     
-                    <a href="/2024/09/27/7185ada32ee0/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Python从入门到精通——2. 2 元组和字典的创建及相关操作</span>
-                    </a>
                     
                 
-                    
                     
                         
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-26'>
-                    
-                    <a href="/2024/09/26/e79cf7dbf05d/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Python从入门到精通——1. 2 语法元素基础知识补充</span>
-                    </a>
-                    
-                
-                    
-                    
+                            <li>></li>
                         
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-25'>
+                        <li>
+                            <a href="/categories/python/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
+                        </li>
                     
-                    <a href="/2024/09/25/d56bb46a6c29/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Python从入门到精通——2. 1 列表创建及相关操作</span>
-                    </a>
                     
                 
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-23'>
-                    
-                    <a href="/2024/09/23/be45ce62df6c/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Python从入门到精通——1. 1 Python介绍及语法元素基础知识（快速上手）</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/23/4e1c4d362e7a/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-21'>
-                    
-                    <a href="/2024/09/21/7d3ba1c32839/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">解决JNU某捷有线校园网关闭虚拟机网络服务</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/21/efcce1b0a0d3/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">人工智能简介</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-11'>
-                    
-                    <a href="/2024/09/11/776247657efa/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">文件上传</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/d77af8045ce5/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">万能登陆密码</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/93f6ba8bb1f2/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">ctf 基本思路</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/fdbfb64754f6/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">服务器请求伪造（SSRF）</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/478a9824d4db/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">ssh密钥泄露</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/f366e274d4aa/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">sql注入（web界面）</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/3bc19a255208/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">sql注入（IP命令行）</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/cfb8804dd1b5/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">SambaSMB信息泄露（Serve Message Block)</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/602e2b077e4b/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">FTP服务后门利用</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2024/09/11/60ab45b83526/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Hello World</span>
-                    </a>
-                    
-                
-                </li> <!-- Ensure the last item is properly closed -->
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>824 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="集合的定义"><a href="#集合的定义" class="headerlink" title="集合的定义"></a>集合的定义</h1><p>集合（set）是一个无序且没有重复元素的序列<br>集合中的元素不会重复，并且可以进行交集、并集、差集等常见的集合操作</p>
+<h1 id="集合的创建"><a href="#集合的创建" class="headerlink" title="集合的创建"></a>集合的创建</h1><p>可以使用大括号<code>&#123;&#125;</code>创建集合，元素之间用逗号<code>,</code>分隔，或者也可以使用<code>set()</code>函数创建集合<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281059630.png"
+                      alt="image.png"
+                ></p>
+<p><strong>注意</strong>：创建一个空集合必须使用<code>set()</code>，因为如果只用大括号<code>&#123;&#125;</code>是表示创建一个空字典<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281103552.png"
+                      alt="image.png"
+                ><br>这里演示一下集合的去重功能，因为集合是没有重复元素的，如果你创建时有重复元素，他会自动舍去<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281102446.png"
+                      alt="image.png"
+                ></p>
+<h1 id="集合的操作"><a href="#集合的操作" class="headerlink" title="集合的操作"></a>集合的操作</h1><h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h2><p><strong><code>add()</code>函数</strong><br>语法：<code>s.add(x)</code><br><em>ps：如果要添加的元素已经在集合中存在，那么将不会进行任何操作</em></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281106374.png"
+                      alt="image.png"
+                ></p>
+<p><code>update()</code><strong>方法</strong><br>语法：<code>s.update( x )</code><br>这个函数适用性更广，添加的元素可以时列表、元组和字典等，并且x可以是多个元素，元素之间用逗号隔开<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281110616.png"
+                      alt="image.png"
+                ><br>可以看到无论添加什么元素，<code>update()</code>方法将会把添加的元素都拆分开，单独作为集合的元素，<strong>包括将字典的键值对拆开</strong></p>
+<h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><p><code>remove()</code><strong>方法</strong><br>语法：<code>s.remove( x )</code><br>将元素x从集合s中移除，如果元素不存在，则会发生错误<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281126850.png"
+                      alt="image.png"
+                ></p>
+<p><code>discard()</code><strong>方法</strong><br>语法：<code>s.discard( x )</code><br>这个方法也是移除集合中的元素，但是如果集合不存在，不会发生错误<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281128428.png"
+                      alt="image.png"
+                ></p>
+<p><code>pop()</code><strong>方法</strong><br>语法：<code>s.pop() </code><br>这个方法就是随机删除集合中的一个元素<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281130134.png"
+                      alt="image.png"
+                ></p>
+<h2 id="集合的运算"><a href="#集合的运算" class="headerlink" title="集合的运算"></a>集合的运算</h2><h3 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h3><p>可以利用运算符<code>&amp;</code><br>也可以使用方法<code>intersection()</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281133897.png"
+                      alt="image.png"
+                ></p>
+<h3 id="并集"><a href="#并集" class="headerlink" title="并集"></a>并集</h3><p>可以利用运算符<code>|</code><br>也可以使用方法<code>union()</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281135391.png"
+                      alt="image.png"
+                ></p>
+<h3 id="差集"><a href="#差集" class="headerlink" title="差集"></a>差集</h3><p>可以利运算符<code>-</code><br>也可以使用方法<code>difference()</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281135265.png"
+                      alt="image.png"
+                ></p>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><h3 id="清空集合"><a href="#清空集合" class="headerlink" title="清空集合"></a>清空集合</h3><p><code>s.clear()</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281131827.png"
+                      alt="image.png"
+                ></p>
+<h3 id="判断元素是否在集合中存在"><a href="#判断元素是否在集合中存在" class="headerlink" title="判断元素是否在集合中存在"></a>判断元素是否在集合中存在</h3><p><code>x in set</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409281132726.png"
+                      alt="image.png"
+                ></p>
+<h2 id="集合内置函数完整表格"><a href="#集合内置函数完整表格" class="headerlink" title="集合内置函数完整表格"></a>集合内置函数完整表格</h2><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">add()</td>
+<td align="left">为集合添加元素</td>
+</tr>
+<tr>
+<td align="left">clear()</td>
+<td align="left">移除集合中的所有元素</td>
+</tr>
+<tr>
+<td align="left">copy()</td>
+<td align="left">拷贝一个集合</td>
+</tr>
+<tr>
+<td align="left">difference()</td>
+<td align="left">返回多个集合的差集</td>
+</tr>
+<tr>
+<td align="left">difference_update()</td>
+<td align="left">移除集合中的元素，该元素在指定的集合也存在。</td>
+</tr>
+<tr>
+<td align="left">discard()</td>
+<td align="left">删除集合中指定的元素</td>
+</tr>
+<tr>
+<td align="left">intersection()</td>
+<td align="left">返回集合的交集</td>
+</tr>
+<tr>
+<td align="left">intersection_update()</td>
+<td align="left">返回集合的交集。</td>
+</tr>
+<tr>
+<td align="left">isdisjoint()</td>
+<td align="left">判断两个集合是否包含相同的元素，如果没有返回 True，否则返回 False。</td>
+</tr>
+<tr>
+<td align="left">issubset()</td>
+<td align="left">判断指定集合是否为该方法参数集合的子集。</td>
+</tr>
+<tr>
+<td align="left">issuperset()</td>
+<td align="left">判断该方法的参数集合是否为指定集合的子集</td>
+</tr>
+<tr>
+<td align="left">pop()</td>
+<td align="left">随机移除元素</td>
+</tr>
+<tr>
+<td align="left">remove()</td>
+<td align="left">移除指定元素</td>
+</tr>
+<tr>
+<td align="left">symmetric_difference()</td>
+<td align="left">返回两个集合中不重复的元素集合。</td>
+</tr>
+<tr>
+<td align="left">symmetric_difference_update()</td>
+<td align="left">移除当前集合中在另外一个指定集合相同的元素，并将另外一个指定集合中不同的元素插入到当前集合中。</td>
+</tr>
+<tr>
+<td align="left">union()</td>
+<td align="left">返回两个集合的并集</td>
+</tr>
+<tr>
+<td align="left">update()</td>
+<td align="left">给集合添加元素</td>
+</tr>
+<tr>
+<td align="left">len()</td>
+<td align="left">计算集合元素个数</td>
+</tr>
+</tbody></table>
+<h1 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h1><p>到此为止，我们的顺序结构已经学习完毕，后面将学习分支结构和循环结构，是非常重要的知识，希望大家能够坚持学习！<strong>欢迎学习打卡留下评论！</strong></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> Python从入门到精通——2. 3 集合的创建及相关操作</li>
+        <li><strong>Author:</strong> Dunm1e</li>
+        <li><strong>Created at
+                :</strong> 2024-09-28 10:56:47</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-09-28 11:37:26
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/28/92bb122dc42b/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
 </div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/python/">#python</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/09/28/98a7c719df5e/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Python从入门到精通——3. 1 分支结构</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/09/27/7185ada32ee0/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Python从入门到精通——2. 2 元组和字典的创建及相关操作</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div class="twikoo-container">
+        <script data-swup-reload-script
+                src='https://cdnjs.cloudflare.com/ajax/libs/twikoo/1.6.39/twikoo.all.min.js'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script data-swup-reload-script>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: 'https://twikoo.dunm1e.cn',
+                });
+            }
+
+            if ('true') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Python从入门到精通——2. 3 集合的创建及相关操作</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">集合的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-text">集合的创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-text">集合的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-text">添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">移除元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-text">集合的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E9%9B%86"><span class="nav-text">交集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E9%9B%86"><span class="nav-text">并集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E9%9B%86"><span class="nav-text">差集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-text">其他操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E7%A9%BA%E9%9B%86%E5%90%88"><span class="nav-text">清空集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%9C%A8%E9%9B%86%E5%90%88%E4%B8%AD%E5%AD%98%E5%9C%A8"><span class="nav-text">判断元素是否在集合中存在</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E5%AE%8C%E6%95%B4%E8%A1%A8%E6%A0%BC"><span class="nav-text">集合内置函数完整表格</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%A8%80"><span class="nav-text">后言</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
 
                 
 
@@ -785,6 +1041,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">

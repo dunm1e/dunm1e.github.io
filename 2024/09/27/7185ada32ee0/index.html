@@ -13,71 +13,47 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/09/23/4e1c4d362e7a/"/>
+    <link rel="canonical" href="http://example.com/2024/09/27/7185ada32ee0/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="前言新手可以选择不安装Anaconda，因为只是学习Python的话，你可以固定一个版本来使用，Anaconda只是方便环境管理以及可视化，为以后AI学习提前做打算，但是新手安装会有很多问题，甚至可能让你失去学习兴趣。有人推荐使用miniforge，更加轻量化。但是本人没用使用过，不知道具体使用体验，后面使用后会出一个使用体验以及安装教程。 学习准备工具安装本文以下是PyCharm+Anacond">
+        <meta name="description" content="列表与元组的比较列表适合存储在程序中且在运行期间会进行变化的数据集，因为列表是可以变化的。但是元组不同，元组被赋值后就确定了，在后面的运行过程中是无法被更改的。所以列表和元组是有不同的应用场景的，列表一般应用于比如游戏内容或者网站用户等场景。而元组一般应用于一个游戏或者网站固定属性和内容的场景。 元组元组的定义元组是使用圆括号（小括号）来进行引用标识（其实这个说法有问题，具体原因后面会分析）。其他">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）">
-<meta property="og:url" content="http://example.com/2024/09/23/4e1c4d362e7a/index.html">
+<meta property="og:title" content="Python从入门到精通——2. 2 元组和字典的创建及相关操作">
+<meta property="og:url" content="http://example.com/2024/09/27/7185ada32ee0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言新手可以选择不安装Anaconda，因为只是学习Python的话，你可以固定一个版本来使用，Anaconda只是方便环境管理以及可视化，为以后AI学习提前做打算，但是新手安装会有很多问题，甚至可能让你失去学习兴趣。有人推荐使用miniforge，更加轻量化。但是本人没用使用过，不知道具体使用体验，后面使用后会出一个使用体验以及安装教程。 学习准备工具安装本文以下是PyCharm+Anacond">
+<meta property="og:description" content="列表与元组的比较列表适合存储在程序中且在运行期间会进行变化的数据集，因为列表是可以变化的。但是元组不同，元组被赋值后就确定了，在后面的运行过程中是无法被更改的。所以列表和元组是有不同的应用场景的，列表一般应用于比如游戏内容或者网站用户等场景。而元组一般应用于一个游戏或者网站固定属性和内容的场景。 元组元组的定义元组是使用圆括号（小括号）来进行引用标识（其实这个说法有问题，具体原因后面会分析）。其他">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725129.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725122.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725134.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725140.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725144.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725148.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211731707.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211732658.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211737746.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211733442.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232259049.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230946007.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230949890.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230950079.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230951060.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230952376.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231837063.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231839275.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231844814.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231902129.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231902043.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231852237.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231902390.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231904704.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231913089.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231914669.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231917877.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231919809.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231921835.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231921705.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231927211.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231937981.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231940811.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231941503.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231943462.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231948171.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231951629.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232055455.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232056878.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232057852.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232058454.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232059548.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232100395.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232103602.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232104795.png">
-<meta property="article:published_time" content="2024-09-23T07:57:39.000Z">
-<meta property="article:modified_time" content="2024-09-25T12:31:11.362Z">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271748724.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271751810.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271812882.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271814276.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271818166.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271816744.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271817595.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271820703.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271821035.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271857598.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272030878.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272037666.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272103525.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272050469.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272052351.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272055049.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272116419.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272117979.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272119297.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272106702.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272108579.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272123327.png">
+<meta property="article:published_time" content="2024-09-27T10:56:47.000Z">
+<meta property="article:modified_time" content="2024-09-28T04:51:11.876Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python">
-<meta property="article:tag" content="common">
-<meta property="article:tag" content="工具">
+<meta property="article:tag" content="基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725129.png">
+<meta name="twitter:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271748724.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -99,7 +75,7 @@
     
     <title>
         
-            Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ） -
+            Python从入门到精通——2. 2 元组和字典的创建及相关操作 -
         
         Dunm1e &#39; s World
     </title>
@@ -572,7 +548,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Python从入门到精通——2. 2 元组和字典的创建及相关操作</h1>
                 </div>
             
             </div>
@@ -593,15 +569,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-09-23 15:57:39</span>
-        <span class="mobile">2024-09-23 15:57:39</span>
+        <span class="desktop">2024-09-27 18:56:47</span>
+        <span class="mobile">2024-09-27 18:56:47</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-25 20:31:11</span>
-            <span class="mobile">2024-09-25 20:31:11</span>
+            <span class="desktop">2024-09-28 12:51:11</span>
+            <span class="mobile">2024-09-28 12:51:11</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -625,7 +601,7 @@
                             <li>></li>
                         
                         <li>
-                            <a href="/categories/python/%E5%B7%A5%E5%85%B7/">工具</a>&nbsp;
+                            <a href="/categories/python/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
                         </li>
                     
                     
@@ -643,11 +619,7 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/common/">common</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>&nbsp;
+                        | <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
                     </li>
                 
             </ul>
@@ -657,12 +629,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.8k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.3k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 Mins</span>
         </span>
     
     
@@ -681,334 +653,252 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>新手可以选择不安装<strong>Anaconda</strong>，因为只是学习Python的话，你可以固定一个版本来使用，<strong>Anaconda</strong>只是方便环境管理以及可视化，为以后AI学习提前做打算，但是新手安装会有很多问题，甚至可能让你失去学习兴趣。有人推荐使用<strong>miniforge</strong>，更加轻量化。但是本人没用使用过，不知道具体使用体验，后面使用后会出一个使用体验以及安装教程。</p>
-<h1 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h1><h2 id="工具安装"><a href="#工具安装" class="headerlink" title="工具安装"></a>工具安装</h2><p>本文以下是PyCharm+Anaconda+jupyter的保姆级安装方案，为后面的学习做好准备，如果觉得Anaconda安装太过于麻烦，可以选择一个python版本进行安装和配置环境（详情请自行寻找教程）。</p>
-<p>本文基于<strong>windows11</strong>进行安装和环境配置。</p>
-<h3 id="1-PyCharm安装"><a href="#1-PyCharm安装" class="headerlink" title="1. PyCharm安装"></a>1. PyCharm安装</h3><h4 id="1-1-下载安装包"><a href="#1-1-下载安装包" class="headerlink" title="1.1 下载安装包"></a>1.1 下载安装包</h4><p> PyCharm是Jetbrains公司旗下的一款产品，所以下载官方的最新版应该去它的官网：</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.jetbrains.com/pycharm/download/?section=windows" >https://www.jetbrains.com/pycharm/download/?section=windows <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>打开网站，有专业版和社区版两个版本，专业版是付费的（价格较高），社区版是免费的，适合初学者进行学习，如果你是学生，可以进行学生认证使用专业版（教程见：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Colorkiller86/article/details/135457683" >pycharm专业版的免费使用（学生认证）以及pycharm的安装_pycharm学生免费使用-CSDN博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）。这里我们下载社区版。</p>
+            <h1 id="列表与元组的比较"><a href="#列表与元组的比较" class="headerlink" title="列表与元组的比较"></a>列表与元组的比较</h1><p>列表适合存储在程序中且在运行期间会进行变化的数据集，因为列表是可以变化的。但是元组不同，元组被赋值后就确定了，在后面的运行过程中是无法被更改的。所以列表和元组是有不同的应用场景的，列表一般应用于比如游戏内容或者网站用户等场景。而元组一般应用于一个游戏或者网站固定属性和内容的场景。</p>
+<h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><h2 id="元组的定义"><a href="#元组的定义" class="headerlink" title="元组的定义"></a>元组的定义</h2><p>元组是使用圆括号（小括号）来进行引用标识（其实这个说法有问题，具体原因后面会分析）。其他的方式和列表大差不差，括号中添加元素后，利用逗号隔开，一个元组内部也可以有多种类型的数据。<em>（ps：这里的符号也是英文半角下的符号，中文符号无法编译会报错）</em>。</p>
+<h2 id="元组的创建"><a href="#元组的创建" class="headerlink" title="元组的创建"></a>元组的创建</h2><p>创建一个空元组：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tup = ()</span><br></pre></td></tr></table></figure></div>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725129.png"
-                      alt="image-20240921171258044"
-                ></p>
-<h4 id="1-2-进行安装"><a href="#1-2-进行安装" class="headerlink" title="1.2 进行安装"></a>1.2 进行安装</h4><p>成功下载安装包后，双击进行安装</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725122.png"
-                      alt="image-20240921171524713"
-                ></p>
-<p>点击下一步</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725134.png"
-                      alt="image-20240921171830002"
-                ></p>
-<p>点击浏览选择你要安装的路径，不建议安装在C盘，后续有很多缓存，会占用大量空间。自行创建一个新文件夹并命名后选择，点击下一步</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725140.png"
-                      alt="image-20240921172017383"
-                ></p>
-<p>勾选创建快捷方式，并且将“bin”添加到path</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725144.png"
-                      alt="image-20240921172103517"
-                ></p>
-<p>然后进行安装，然后等待安装结束后，选择一会启动，然后点击完成。</p>
-<p>然后双击启动pycharm</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211725148.png"
-                      alt=" "
-                ></p>
-<p>然后选择同意协议并继续，然后会询问你是否推送消息，我们点击不推送，然后进入pycharm。这里pycharm的安装就暂时结束了，为什么是暂时呢，因为我们后面会通过pycahrm来对Anaconda的环境进行配置。</p>
-<h4 id="1-3-环境配置"><a href="#1-3-环境配置" class="headerlink" title="1.3 环境配置"></a>1.3 环境配置</h4><p><strong>注意</strong>：若安装pycharm的适合没有勾选 “bin” to path，就是没有自动配置环境变量，可以参考以下步骤进行配置。若勾选，可跳过以下步骤，或者参照以下步骤进行检查。</p>
-<p>键盘上同时按住win（四个小方格，在FN和ALT中间）+r，然后输入sysdm.cpl，并点击确定</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211731707.png"
-                      alt="image-20240921173157683"
-                ></p>
-<p>然后在打开的页面点击高级-&gt;环境变量。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211732658.png"
-                      alt="image-20240921173238633"
-                ></p>
-<p>然后右键pycharm的快捷方式，打开文件所在位置，然后复制上方的地址</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211737746.png"
-                      alt="image-20240921173741726"
-                ></p>
-<p>然后在环境变量页面上方的用户变量点击新建，变量名为<code>PyCharm Community Edition</code>，变量值为上方复制的地址</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211733442.png"
-                      alt="image-20240921173344414"
-                ></p>
-<p>然后点击确定，然后点击以下两个确定，完成环境配置</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232259049.png"
-                      alt="image-20240923225905985"
-                ></p>
-<p><strong>以上pycharm安装完成。</strong></p>
-<h3 id="2-Anaconda安装"><a href="#2-Anaconda安装" class="headerlink" title="2. Anaconda安装"></a>2. Anaconda安装</h3><p>Anaconda指的是一个开源的Python发行版本，其包含了conda、Python等180多个<em><strong>科学包</strong></em>及其依赖项。因为包含了大量的科学包，Anaconda 的下载文件比较大（约 486 MB），如果只需要某些包，或者需要节省带宽或存储空间，也可以使用Miniconda这个较小的发行版（仅包含conda和 Python）。</p>
-<p>Anaconda最大的好处就是方便管理切换环境，因为到后面可能会做多个项目，但是每个项目的requirement是不同的，也就是所需要的包和库不同，Python版本不同，但是Anaconda是可以很方便的管理环境的。并且后面利用<code>conda</code>命令进行安装的过程，是会把所依赖的包全部安装，而不是像<code>pip</code>命令只进行单独安装，这也是Anaconda的一个优势，但是也是劣势，可能有些包你是不需要的，会占用更多空间。我们会在后面讲解<code>pip</code>命令和<code>conda</code>命令的区别包下载</p>
-<h4 id="2-1-Anaconda安装包下载"><a href="#2-1-Anaconda安装包下载" class="headerlink" title="2.1 Anaconda安装包下载"></a>2.1 Anaconda安装包下载</h4><p>首先打开官网的下载地址：<a class="link"   target="_blank" rel="noopener" href="https://www.anaconda.com/download" >Download Anaconda Distribution | Anaconda <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>然后输入邮箱，点击Submit</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230946007.png"
-                      alt="image-20240923094620921"
-                ></p>
-<p>然后我们选择下载Anaconda Installers，Anaconda会自动识别你的系统，于是我们直接点击Download进行下载，然后等待下载完成</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230949890.png"
-                      alt="image-20240923094912844"
-                ></p>
-<p>我们会发现安装包接近1个G，所以这个软件是比较大的，建议不要安装到C盘（系统盘）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230950079.png"
-                      alt="image-20240923095059054"
-                ></p>
-<h4 id="2-2-进行安装"><a href="#2-2-进行安装" class="headerlink" title="2.2 进行安装"></a>2.2 进行安装</h4><p> 双击安装包进行安装</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230951060.png"
-                      alt="image-20240923095131036"
-                ></p>
-<p>点击Next</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409230952376.png"
-                      alt="image-20240923095205348"
-                ></p>
-<p>点击I Agree<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231837063.png"
-                      alt="image.png"
-                ><br>这里是选择为什么用户安装，如果你的主机有多个用户使用，可以选择All Users。这里一般选择Just Me ，就是为自己安装<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231839275.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271748724.png"
                       alt="image.png"
                 ></p>
-<p>然后选择安装位置，然后选择Next，勾选如图选项，然后点击Install进行安装<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231844814.png"
-                      alt="image.png"
-                ><br>等待安装结束，然后点击Next<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231902129.png"
-                      alt="image.png"
-                ></p>
-<p>再点击Next<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231902043.png"
-                      alt="image.png"
-                ></p>
-<p>然后取消勾选两个选项，点击Finish，这里我们的Anaconda就安装完毕</p>
-<h4 id="2-3-检查安装"><a href="#2-3-检查安装" class="headerlink" title="2.3 检查安装"></a>2.3 检查安装</h4><p>键盘 win + R，输入cmd，回车<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231852237.png"
-                      alt="image.png"
-                ></p>
-<p>打开命令符界面，输入<code>conda --version</code><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231902390.png"
-                      alt="image.png"
-                ></p>
-<p>若输出如图样式的命令，那么表示安装成功</p>
-<h4 id="2-4-配置国内镜像源"><a href="#2-4-配置国内镜像源" class="headerlink" title="2.4 配置国内镜像源"></a>2.4 配置国内镜像源</h4><p>由于网络因素，使用默认的镜像源下载包的速度会很慢，所以我们修改镜像为国内的镜像源，如清华的镜像源：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查看已添加的镜像源</span><br><span class="line">conda config --show channels</span><br><span class="line">删除所有的已装镜像源</span><br><span class="line">conda config --remove-key channels</span><br><span class="line">添加和配置镜像源</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure></div>
+<p><em><strong>注意：若创建的元组只含有一个元素时，需要在元素后面加上逗号<code>,</code>，否则会认为你创建的不是元组，而只是一个int类型的整数，括号则被当成一个运算符使用。</strong></em><br><strong>所以更加严格的说法，元组是由逗号标识的，圆括号只是让元组更整洁清晰，并且有一个更明显的特征罢了。</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231904704.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271751810.png"
+                      alt="image.png"
+                >			</p>
+<p>元组和列表类似，也是通过索引访问元素，并且索引也是<strong>从0开始</strong>。可以进行<strong>截取</strong>和<strong>组合</strong>操作<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271812882.png"
                       alt="image.png"
                 ></p>
-<p><strong>以上Anaconda安装过程结束</strong></p>
-<h3 id="3-Jupyter-Notebook安装"><a href="#3-Jupyter-Notebook安装" class="headerlink" title="3. Jupyter Notebook安装"></a>3. Jupyter Notebook安装</h3><p>这里有两种方法，第一种是基于Anaconda 的安装，另外一种是安装VScode的插件。<br>这里我们使用第一种方法，这种方法是在网页中进行编程，第二种方法是在vscode中进行编程，看你个人习惯。（第二种方法请自行查阅资料）<br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_66047447/article/details/141190114" >Anaconda安装配置Jupyter（2024最新版）_anaconda安装jupyter-CSDN博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>基于官方文档，可以知道Jupyter最新版本推荐的<strong>Python版本为3.10</strong>，但是我们刚刚安装的<strong>Anaconda 2024.06</strong>版本的默认自带的<strong>Python版本为3.12</strong>，所以我们要先创建一个<strong>Python3.10版本</strong>的虚拟环境。</p>
-<h4 id="3-1-创建虚拟环境"><a href="#3-1-创建虚拟环境" class="headerlink" title="3.1 创建虚拟环境"></a>3.1 创建虚拟环境</h4><p>这里我们打开Anaconda Prompt，如果按照以上方式安装的Anaconda，那么桌面会有快捷方式<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231913089.png"
-                      alt="image.png"
-                ><br>输入命令 </p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name test python=3.10</span><br></pre></td></tr></table></figure></div>
-<p><em><strong>注意：以上的test为你要建立的环境名称，可以自行修改</strong></em><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231914669.png"
-                      alt="image.png"
-                ><br>然后回车，进行创建，然后输入<code>y</code><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231917877.png"
-                      alt="image.png"
-                ><br>然后等待安装完成</p>
-<p>然后进行激活环境，输入命令：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate test</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231919809.png"
-                      alt="image.png"
-                ><br>然后就可以安装Jupyter了</p>
-<h4 id="3-2-安装Jupyter"><a href="#3-2-安装Jupyter" class="headerlink" title="3.2 安装Jupyter"></a>3.2 安装Jupyter</h4><p>首先输入以下命令：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install notebook</span><br></pre></td></tr></table></figure></div>
-<p>下载过程中遇到<code>Y/N</code>，直接输入<code>Y</code>就行<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231921835.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271814276.png"
                       alt="image.png"
                 ></p>
-<p>等待安装结束，检查安装版本：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --version</span><br></pre></td></tr></table></figure></div>
-<p><img  
+<h2 id="元组的相关操作"><a href="#元组的相关操作" class="headerlink" title="元组的相关操作"></a>元组的相关操作</h2><h3 id="元组的修改"><a href="#元组的修改" class="headerlink" title="元组的修改"></a>元组的修改</h3><p>元组内单独的元素是无法被修改的，当你想要修改元素时，是一个非法操作，Python会对此报错处理<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231921705.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271818166.png"
                       alt="image.png"
-                ><br>如果成功显示版本，那么安装成功</p>
-<p>现在就是要配置内核，否则只能使用默认内核，而无法使用第三方库</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m ipykernel install --user --name=test</span><br></pre></td></tr></table></figure></div>
-<p>输入以上命令，其中的<code>test</code><strong>改成你自己的环境名</strong></p>
-<p>成功配置内核后，就是要进行汉化处理，输入以下命令：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge jupyterlab-language-pack-zh-CN</span><br></pre></td></tr></table></figure></div>
+                ></p>
+<p>但是我们可以给元组的变量再次赋值，然后覆盖之前的元组。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271816744.png"
+                      alt="image.png"
+                ></p>
+<p>并且我们可以对元组进行组合，得到一个新的元组<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271817595.png"
+                      alt="image.png"
+                ></p>
+<h3 id="元组的删除"><a href="#元组的删除" class="headerlink" title="元组的删除"></a>元组的删除</h3><p>元组中的元素值也是不允许被删除的，但是我们可以使用del语句来删除整个元组，让元组从程序变量中被删除。<br>删除后的元组若进行打印或者其他操作，将会报错<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271820703.png"
+                      alt="image.png"
+                ></p>
+<h3 id="元组的运算"><a href="#元组的运算" class="headerlink" title="元组的运算"></a>元组的运算</h3><p>可以通过运算符对元组进行相应的运算操作，这里的运算不是指加减乘除这些运算，而是一些针对于元组的操作。如：计算元素个数，元组的连接（得到新元组或者自加成为一个新元组），复制，判断元素是否存在，以及遍历迭代。具体如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271821035.png"
+                      alt="image.png"
+                ></p>
+<p><strong>元组的内置函数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">方法及描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">len(tuple) 计算元组元素个数。</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">max(tuple) 返回元组中元素最大值。</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">min(tuple) 返回元组中元素最小值。</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">tuple(iterable) 将可迭代系列转换为元组。</td>
+</tr>
+<tr>
+<td align="left">这里介绍一下第四个<code>tuple(iterable)</code>，这里的可迭代系列一般包括<code>list、str、tuple</code>，你可以简单理解为能够一次返回一个成员的对象，也就是可以 for…in 遍历的。比如你遍历一个列表，它可以每次给你返回一个元素，这就是可迭代。</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="关于元组不可变的解释"><a href="#关于元组不可变的解释" class="headerlink" title="关于元组不可变的解释"></a>关于元组不可变的解释</h2><p>所谓的元组不可变指的是元组所指向的内存中的内容不可变，也就是当你的程序运行了，那么在这个程序中，你的元组在内存的内容就固定了，你没办法去改变内存中元组的值。<br>这里利用菜鸟教程的例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271857598.png"
+                      alt="image.png"
+                ></p>
+<p>可以看到，当你直接修改元组内部某个或某些元素的值是会报错的，但是当你把元组变量进行重新赋值，是可以的，并且重新赋值后，相当于变量绑定了新的对象，而不是修改了原来的对象，这里就把原来的对象覆盖了，所以也就得到了新的内存地址。</p>
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="字典的定义"><a href="#字典的定义" class="headerlink" title="字典的定义"></a>字典的定义</h2><p>字典是另一种可变容器模型，也可以存储任意类型的对象和数据。<br>每个元素或者对象都是一个键值对，也就是一个键一个值<code>key:value</code>，每个键值对之间用逗号<code>,</code>分割，整个字典包在花括号<code>&#123;&#125;</code>中</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;key1 : value1, key2 : value2, key3 : value3 &#125;</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="3-3-Jupyter设置"><a href="#3-3-Jupyter设置" class="headerlink" title="3.3 Jupyter设置"></a>3.3 Jupyter设置</h4><p>以上安装完毕，现在可以尝试启动Jupyter：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure></div>
-
-<p>启动过程中，可能会显示一些日志，这是正常的<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231927211.png"
-                      alt="image.png"
-                ><br>然后按住ctrl+鼠标左键，打开网址，就进入了jupyter<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231937981.png"
-                      alt="image.png"
-                ></p>
-<p>打开会发现很多文件，这是正常的，因为我们没有设置默认打开地址，后面会进行设置，我们先进行中文设置</p>
-<p><strong>Setting-&gt;Language-&gt;Chinese</strong><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231940811.png"
-                      alt="image.png"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231941503.png"
-                      alt="image.png"
-                ><br>更改完毕</p>
-<p>然后我们更改默认启动路径<br>首先输入命令，生成一个配置文件的路径：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></div>
+<p><em>ps：同样，<code>dict</code>作为是Python的<strong>关键字</strong>和<strong>内置函数</strong>，是不建议将变量名命名为<code>dict</code>的。</em><br><strong>值得注意：一个字典中，键值对是不能重复的，键必须是唯一的，但是值可以不唯一。比如字典中是每个人的爱好，名字不能相同，但是爱好可以相同。</strong></p>
+<h2 id="字典的创建"><a href="#字典的创建" class="headerlink" title="字典的创建"></a>字典的创建</h2><p>创建空字典：直接用一个大括号<code>&#123;&#125;</code>表示。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emptyDict = &#123;&#125;</span><br></pre></td></tr></table></figure></div>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231943462.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272030878.png"
                       alt="image.png"
                 ></p>
-<p>打开配置文件，查找 <code>**c.ServerApp.notebook_dir**</code> 这个值（<strong>在大概931行的位置</strong>）。</p>
-<p>（记住是 <strong>c.ServerApp.notebook_dir</strong> 而不是 <strong>c.ServerApp.root_dir</strong>，由于jupyter版本更新，他的路径启动参数已经更改为<strong>c.ServerApp.notebook_dir 了</strong>）</p>
-<p><img  
+<h2 id="字典的访问"><a href="#字典的访问" class="headerlink" title="字典的访问"></a>字典的访问</h2><p>在字典中，我们已经知道了存储的是一系列键值对，所以每一个键都对应着一个值，这样我们就可以通过使用键来访问与之关联的值。与键相关连的可以是数、字符串、列表甚至又是一个字典（又是嵌套，Python最恶心的东西）。<br>下面我们先看一个例子：<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231948171.png"
-                      alt="image.png"
-                ><br>输入更改的路径，然后ctrl + s进行保存</p>
-<p>ps：这里一定要删除前面的<code>＃</code>，<code>**c.ServerApp.notebook_dir**</code>要顶格，不然就会报错</p>
-<p>然后重新运行jupyter，这里可以按win，然后输入jupyter，就可以看到自己安装的jupyter了，可以把快捷方式放到桌面，方便启动<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409231951629.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272037666.png"
                       alt="image.png"
                 ></p>
-<p>然后打开，就会发现变成了更改后的目录。<br>ps：这里有一个坑，如果你还是用快捷方式打开，会发现还是原来那个目录，我们右键快捷方式，打开属性，然后把<code>目标</code>中最后的<code>“%USERPROFILE%”</code>删除就行</p>
-<p>解决打开快捷方式，日志输出结束后，无法自动打开浏览器</p>
-<p>首先也是在上面的配置文件<code>jupyter_notebook_config.py</code>中，拉到最后一行，输入以下代码<br><em><strong>ps：需要将地址替换为自己的浏览器地址，具体可以右键快捷方式，然后将<code>目标</code>中的地址复制过来，要把<code>\</code>换成<code>//</code></strong></em></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> webbrowser  </span><br><span class="line">webbrowser.register(<span class="string">&#x27;chrome&#x27;</span>,<span class="literal">None</span>, webbrowser.GenericBrowser(<span class="string">u&#x27;C://Program Files//Google//Chrome//Application//chrome.exe&#x27;</span>))  </span><br><span class="line">c.NotebookApp.browser =<span class="string">&#x27;chrome&#x27;</span></span><br></pre></td></tr></table></figure></div>
-<p>然后再打开jupyter，就会发现自动打开浏览器</p>
-<p><strong>以上就是jupyter的安装教程</strong></p>
-<h3 id="4-Pycharm中配置Anaconda虚拟环境"><a href="#4-Pycharm中配置Anaconda虚拟环境" class="headerlink" title="4. Pycharm中配置Anaconda虚拟环境"></a>4. Pycharm中配置Anaconda虚拟环境</h3><p><em><strong>ps：这里的虚拟环境是上面进行Jupyter安装的环境，为了方便，我们直接使用来进行配置，你也可以自行创建一个新的虚拟环境，创建命令如上。</strong></em></p>
-<p>首先打开PyCharm<br><img  
+<h3 id="get函数"><a href="#get函数" class="headerlink" title="get函数"></a>get函数</h3><p>对于访问一个键值对，这里我们讲解一个方法：<code>get()</code><br>这个方法针对于你想要访问一个键，但是你不知道字典中是否存在这个键的情况。<br>语法：<code>get(key,text)</code></p>
+<ul>
+<li>key：你想访问的键</li>
+<li>text：如果不存在这个键，你想要返回输出的值（<strong>不是必要参数，默认为None</strong>）<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232055455.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272103525.png"
+                      alt="image.png"
+                ></li>
+</ul>
+<h2 id="字典的相关操作"><a href="#字典的相关操作" class="headerlink" title="字典的相关操作"></a>字典的相关操作</h2><h3 id="添加键值对"><a href="#添加键值对" class="headerlink" title="添加键值对"></a>添加键值对</h3><p>因为字典是一个动态结构，并且键值对都是唯一的，所以我们可以随时添加<strong>不重复</strong>的键值对，并且可以直接通过引用要加的键然后将其赋值，就可以成功添加。（如果对重复的键赋值就变成了更新键值对，可以参考下面<strong>字典的修改</strong>）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272050469.png"
+                      alt="image.png"
+                ><br>ps：一般添加的键值对都在字典末尾</p>
+<h3 id="字典的修改"><a href="#字典的修改" class="headerlink" title="字典的修改"></a>字典的修改</h3><p>字典的修改十分简单，直接对字典的某个键进行引用并且对其赋值，就会覆盖之前的值，从而更新<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272052351.png"
                       alt="image.png"
                 ></p>
-<p>可以自行选择创建一个新的文件夹作为项目文件夹，或者打开一个已有的文件夹。<br>然后找到文件 -&gt; 设置<br><img  
+<h3 id="删除键值对"><a href="#删除键值对" class="headerlink" title="删除键值对"></a>删除键值对</h3><p>对于键值对的删除，可以删除一个元素，也可以清空整个字典<br>这里我们都使用del语句（ps：这里被删除的元素是永远消失了，就是在之后的程序运行中就没有了，之后你无法再次对这个键进行任何操作，如果你引用这个键将会报错中断程序）<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232056878.png"
-                      alt="image.png"
-                ><br>在项目中找到Python解释器<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232057852.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272055049.png"
                       alt="image.png"
                 ></p>
-<p>然后点击添加解释器，选择添加本地解释器<br><img  
+<h2 id="字典的嵌套"><a href="#字典的嵌套" class="headerlink" title="字典的嵌套"></a>字典的嵌套</h2><p>字典的嵌套是分为三类的，第一类是多个字典组合成一个列表，第二类是字典中的键值对的值是一个列表，第三类是字典中键值对的值是一个字典</p>
+<h3 id="字典-列表"><a href="#字典-列表" class="headerlink" title="字典&#x3D;&gt;列表"></a>字典&#x3D;&gt;列表</h3><p>就是可以创建多个字典，然后每个字典作为一个元素组合成一个列表<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232058454.png"
-                      alt="image.png"
-                ><br>然后选择conda环境<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232059548.png"
-                      alt="image.png"
-                ><br>然后选择使用现有环境，就可以看到自己创建的环境了，然后选择你要使用的环境，点击确定即可，然后点击应用-》确定<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232100395.png"
-                      alt="image.png"
-                ><br>然后创建一个python文件<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232103602.png"
-                      alt="image.png"
-                ><br>双击打开文件<br>在右下角点击解释器，就可以看到添加的环境了<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409232104795.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272116419.png"
                       alt="image.png"
                 ></p>
-<p><em><strong>同理，你也可以按照此方法添加单独的python环境解释器，如果你没有安装Anaconda，只安装了一个单独的Python环境的情况下</strong></em></p>
-<p><strong>以上就是Pycharm中配置conda环境的过程</strong></p>
-<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>以上就是我们工具的全部安装过程啦！安装过程难免会出现各种问题，比如报错或者环境配置问题，出现问题可以将报错复制，然后粘贴到搜索引擎中查找解决方案。当然也可以留下你的评论，我会一一解答，或者可以直接邮箱私信我，我会竭尽所能！</p>
-<p><em><strong>谢谢大家的观看！！！</strong></em></p>
+<h3 id="列表作为值"><a href="#列表作为值" class="headerlink" title="列表作为值"></a>列表作为值</h3><p>这个不过多解释，就是可以把一个列表当成一个键值对的值。<strong>再次强调，列表不能作为键值对的键</strong><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272117979.png"
+                      alt="image.png"
+                ></p>
+<h3 id="字典作为值"><a href="#字典作为值" class="headerlink" title="字典作为值"></a>字典作为值</h3><p>字典套字典套字典套字典……，能一直套娃，和上面类似<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272119297.png"
+                      alt="image.png"
+                ></p>
+<h2 id="字典的特性"><a href="#字典的特性" class="headerlink" title="字典的特性"></a>字典的特性</h2><ol>
+<li>不允许一个键出现两次。如果创建字典时一个键被赋值两次，那么后一个值会覆盖前一个值<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272106702.png"
+                      alt="image.png"
+                ></li>
+<li>键必须是一个不可变的对象类型，比如数字、字符串或者元组。但是列表就不行，因为列表是一个动态的对象<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272108579.png"
+                      alt="image.png"
+                ></li>
+</ol>
+<h2 id="字典的内置函数"><a href="#字典的内置函数" class="headerlink" title="字典的内置函数"></a>字典的内置函数</h2><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">函数及描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><strong>dict.clear()</strong> 删除字典内所有元素</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><strong>dict.copy()</strong> 返回一个字典的浅复制</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><strong>dict.fromkeys()</strong> 创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><strong>dict.get(key, default&#x3D;None)</strong> 返回指定键的值，如果键不在字典中返回 default 设置的默认值</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><strong>key in dict</strong> 如果键在字典dict里返回true，否则返回false</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left"><strong>dict.items()</strong> 以列表返回一个视图对象</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left"><strong>dict.keys()</strong> 返回一个视图对象</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left"><strong>dict.setdefault(key, default&#x3D;None)</strong> 和**get()**类似, 但如果键不存在于字典中，将会添加键并将值设为default</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left"><strong>dict.update(dict2)</strong> 把字典dict2的键&#x2F;值对更新到dict里</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left"><strong>dict.values()</strong> 返回一个视图对象</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left"><strong>[pop(key,default])</strong> 删除字典 key（键）所对应的值，返回被删除的值。</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left"><strong>popitem()</strong> 返回并删除字典中的最后一对键和值。</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left"><strong>str()</strong> 输出字典，可以打印的字符串表示。其实就是把字典整体作为字符串输出</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考：菜鸟教程</p>
+</blockquote>
+<p>这里演示部分函数：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272123327.png"
+                      alt="image.png"
+                ></p>
 
         </div>
 
@@ -1016,18 +906,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）</li>
+        <li><strong>Title:</strong> Python从入门到精通——2. 2 元组和字典的创建及相关操作</li>
         <li><strong>Author:</strong> Dunm1e</li>
         <li><strong>Created at
-                :</strong> 2024-09-23 15:57:39</li>
+                :</strong> 2024-09-27 18:56:47</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-25 20:31:11
+                    :</strong> 2024-09-28 12:51:11
             </li>
         
         <li>
-            <strong>Link:</strong> https://dunm1e.github.io/2024/09/23/4e1c4d362e7a/
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/27/7185ada32ee0/
         </li>
         <li>
             <strong>
@@ -1053,11 +943,7 @@
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/common/">#common</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>&nbsp;
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
                     </li>
                 
             </ul>
@@ -1071,13 +957,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/09/23/be45ce62df6c/"
+                        href="/2024/09/28/92bb122dc42b/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Python从入门到精通——1. 1 Python介绍及语法元素基础知识（快速上手）</span>
+                                <span class="post-nav-title-item">Python从入门到精通——2. 3 集合的创建及相关操作</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -1087,10 +973,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/09/21/7d3ba1c32839/"
+                        href="/2024/09/26/e79cf7dbf05d/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">解决JNU某捷有线校园网关闭虚拟机网络服务</span>
+                                <span class="post-nav-title-item">Python从入门到精通——1. 2 语法元素基础知识补充</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -1153,8 +1039,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87"><span class="nav-text">学习准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85"><span class="nav-text">工具安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-PyCharm%E5%AE%89%E8%A3%85"><span class="nav-text">1. PyCharm安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-text">1.1 下载安装包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="nav-text">1.2 进行安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">1.3 环境配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Anaconda%E5%AE%89%E8%A3%85"><span class="nav-text">2. Anaconda安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Anaconda%E5%AE%89%E8%A3%85%E5%8C%85%E4%B8%8B%E8%BD%BD"><span class="nav-text">2.1 Anaconda安装包下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="nav-text">2.2 进行安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85"><span class="nav-text">2.3 检查安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-text">2.4 配置国内镜像源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Jupyter-Notebook%E5%AE%89%E8%A3%85"><span class="nav-text">3. Jupyter Notebook安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-text">3.1 创建虚拟环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E5%AE%89%E8%A3%85Jupyter"><span class="nav-text">3.2 安装Jupyter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Jupyter%E8%AE%BE%E7%BD%AE"><span class="nav-text">3.3 Jupyter设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Pycharm%E4%B8%AD%E9%85%8D%E7%BD%AEAnaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-text">4. Pycharm中配置Anaconda虚拟环境</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="nav-text">结束语</span></a></li></ol>
+        <div class="page-title">Python从入门到精通——2. 2 元组和字典的创建及相关操作</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-text">列表与元组的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%BB%84"><span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">元组的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-text">元组的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-text">元组的相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-text">元组的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E5%88%A0%E9%99%A4"><span class="nav-text">元组的删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-text">元组的运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%85%83%E7%BB%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-text">关于元组不可变的解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E5%85%B8"><span class="nav-text">字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">字典的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-text">字典的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="nav-text">字典的访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get%E5%87%BD%E6%95%B0"><span class="nav-text">get函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-text">字典的相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%94%AE%E5%80%BC%E5%AF%B9"><span class="nav-text">添加键值对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-text">字典的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E9%94%AE%E5%80%BC%E5%AF%B9"><span class="nav-text">删除键值对</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="nav-text">字典的嵌套</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8-%E5%88%97%E8%A1%A8"><span class="nav-text">字典&#x3D;&gt;列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E4%BD%9C%E4%B8%BA%E5%80%BC"><span class="nav-text">列表作为值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E4%BD%9C%E4%B8%BA%E5%80%BC"><span class="nav-text">字典作为值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-text">字典的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0"><span class="nav-text">字典的内置函数</span></a></li></ol></li></ol>
 
     </div>
 </div>

@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241956461.png">
 <meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409242000866.png">
 <meta property="article:published_time" content="2024-09-23T09:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-27T09:46:28.674Z">
+<meta property="article:modified_time" content="2024-09-28T02:52:46.756Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="基础">
@@ -515,7 +515,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">19</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -569,8 +569,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-27 17:46:28</span>
-            <span class="mobile">2024-09-27 17:46:28</span>
+            <span class="desktop">2024-09-28 10:52:46</span>
+            <span class="mobile">2024-09-28 10:52:46</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -622,12 +622,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.2k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>15 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>17 Mins</span>
         </span>
     
     
@@ -972,6 +972,30 @@
 <blockquote>
 <p>[!NOTE] 本文用到的代码集合<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/dunm1e/blog_code/blob/main/Python_course_code/1.ipynb" >blog_code&#x2F;Python_course_code&#x2F;1.ipynb at main · dunm1e&#x2F;blog_code (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 </blockquote>
+<p>这里留下三道练习题，可以查缺补漏</p>
+<blockquote>
+<p>来源：Python-100-Days</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE] 练习1： 输入一个华氏温度，将华氏温度转化为摄氏温度<br>提示：华氏温度到摄氏温度的转换公式为：$C&#x3D;(F - 32) \div 1.8$</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入华氏温度: &#x27;</span>))</span><br><span class="line">c = (f - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;%.1f华氏度 = %.1f摄氏度&#x27;</span> % (f, c))</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p><strong>说明</strong>：在使用<code>print</code>函数输出时，也可以对字符串内容进行格式化处理，上面<code>print</code>函数中的字符串<code>%.1f</code>是一个占位符，稍后会由一个<code>float</code>类型的变量值替换掉它。同理，如果字符串中有<code>%d</code>，后面可以用一个<code>int</code>类型的变量值替换掉它，而<code>%s</code>会被字符串的值替换掉。除了这种格式化字符串的方式外，还可以用下面的方式来格式化字符串，其中<code>&#123;f:.1f&#125;</code>和<code>&#123;c:.1f&#125;</code>可以先看成是<code>&#123;f&#125;</code>和<code>&#123;c&#125;</code>，表示输出时会用变量<code>f</code>和变量<code>c</code>的值替换掉这两个占位符，后面的<code>:.1f</code>表示这是一个浮点数，小数点后保留1位有效数字。</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE] 练习2：输入圆的半径计算周长和面积</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">radius = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入圆的半径: &#x27;</span>))</span><br><span class="line">perimeter = <span class="number">2</span> * <span class="number">3.1416</span> * radius</span><br><span class="line">area = <span class="number">3.1416</span> * radius * radius</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;周长: %.2f&#x27;</span> % perimeter)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;面积: %.2f&#x27;</span> % area)</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>[!NOTE] 练习3：输入年份判断是不是闰年</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">year = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入年份: &#x27;</span>))</span><br><span class="line"><span class="comment"># 如果代码太长写成一行不便于阅读 可以使用\对代码进行折行</span></span><br><span class="line">is_leap = year % <span class="number">4</span> == <span class="number">0</span> <span class="keyword">and</span> year % <span class="number">100</span> != <span class="number">0</span> <span class="keyword">or</span> \</span><br><span class="line">          year % <span class="number">400</span> == <span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(is_leap)</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p><strong>说明</strong>：比较运算符会产生布尔值，而逻辑运算符<code>and</code>和<code>or</code>会对这些布尔值进行组合，最终也是得到一个布尔值，闰年输出<code>True</code>，平年输出<code>False</code>。</p>
+</blockquote>
 
         </div>
 
@@ -986,7 +1010,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-27 17:46:28
+                    :</strong> 2024-09-28 10:52:46
             </li>
         
         <li>
@@ -1148,11 +1172,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        17 posts in total
+                        19 posts in total
                     </span>
                     
                         <span>
-                            25.9k words in total
+                            29.2k words in total
                         </span>
                     
                 </p>
