@@ -25,19 +25,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="本文是针对于JNU的校园网自动关闭虚拟机NAT服务的解决方案">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png">
-<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png">
 <meta property="article:published_time" content="2024-09-23T07:57:39.000Z">
-<meta property="article:modified_time" content="2024-09-29T09:20:06.957Z">
+<meta property="article:modified_time" content="2024-10-27T12:34:46.681Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="common">
 <meta property="article:tag" content="校园网">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png">
     
     
         <!-- Google tag (gtag.js) -->
@@ -568,8 +561,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-29 17:20:06</span>
-            <span class="mobile">2024-09-29 17:20:06</span>
+            <span class="desktop">2024-10-27 20:34:46</span>
+            <span class="mobile">2024-10-27 20:34:46</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -627,53 +620,24 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p><em><strong>免责声明：本文只作JNU锐捷校园网认证的经验分享，其他学校的校园网是否适用请自行尝试，所有后果与作者无关！</strong></em></p>
-<p><strong>注意：此方法只适用于虚拟机网络使用NAT连接。</strong></p>
-<p>首先我们先要知道为什么校园网会自动关闭虚拟机的NAT网络，说白了就是扫你服务是否开启，如果你的NAT服务开启，他就给你关闭。所以我们解决这个问题就要找到他的扫描在哪里。</p>
-<p>首先先按照以下方法来操作，你最后就会知道原理。先卸载你之前的校园网，并且把文件夹里的文件删除干净。</p>
-<p>首先需要做好准备，下载一个可以查看字节的软件，比如010editor、PEview、UltraEdit等。这里我们采用UltraEdit。相关软件请自行搜索下载。</p>
-<p>然后下载校园网认证的<a href="">安装包</a>进行安装。选择安装路径。然后点击立即安装。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211845185.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854110.png"
-                      alt="image-20240921185459092"
-                ></p>
-<p><em><strong>注意：这里安装完成后不要点击完成安装！！！！</strong></em></p>
-<p>然后我们打开校园网安装路径的根目录，找到8021x.exe，这个exe文件其实就是扫描你的服务的，当你认证了校园网后，这个服务也会在后台运行，并且这个程序是关不了的，关了你的校园网也没了，所以很ex。。并且当你完成安装后，这个exe文件也就绑定了，无法更改（更改后会自动还原）。但是你没有点完成安装，这个文件就是可修改的。这就是原理。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211854775.png"
-                      alt="image-20240921185425761"
-                ></p>
-<p>然后我们打开UltraEdit，把这个文件拖入到UltraEdit。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211856159.png"
-                      alt="image-20240921185659129"
-                ></p>
-<p>然后按住键盘的ctrl+f，进行搜索：<code>VMware NAT Service</code>，然后这里把这个字节改了就行，随便改，这里我把<code>VMware</code>改成了<code>VWware</code>。然后更改完成后按ctrl+s进行保存，这里就完成了，关闭UltraEdit。然后点击完成安装.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211910081.png"
-                      alt="image-20240921191031242"
-                ></p>
-<p>这里就完成了，登陆校园网后，按住ctrl+shift+esc，打开任务管理器，点开服务，搜索NAT，然后右键启动VMware NAT Service，就会发现，这个服务不会被自动关闭了，虚拟机就可以正常上网了。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409211911440.png"
-                      alt="image-20240921191124399"
-                ></p>
+            
+<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 密码不正确，请联系作者获取密码." data-whm="抱歉, 这个文章不能被校验, 不过您还是能查看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="184cc264851e0caca204d50c505d21b9bb9ae6ccb9ba6c36223a8b167718f148">03c6e34c045b2727121e6f42d3c473eb5899e3dd66c7dbe798545d996ceba826a560ce27a5289813a6defcc7d0f1d5f73742fb09c52fcb3be6885d8583815e4390a6ff80bc88d827a1245fa1b60c6735b31b2d4c82a75894b567cd14c6ac31e14ee4f83d5eac1946861ad1134f877648cdaf96a670f350efd159fb2b896dda75a98619773cb0c250633d9f01507a66c614a5c526a3c62dff5c89995cac7ca2282914051b3c6bdeca3dfd9844752219780e24af472d18d4470b2a4bf00dd44efc7d4f668a5f3a70aa4e6a6e6ff706790fdd13a8e3b75b48d23c6a9d106da8e075b4c929461c76fa7e211ea2bd1ac9e74b2741300cfa39d1fbaaee1a70543f304855314df701aca5508f1159016c99b1a61a4a96628888698bc4ac9efa1c920b1108048577e24eed1f17c3ff804d2c1d507f69e1d3d7042d807f0289dfd42505fef78b9bbb8adae0cadea13be59a33b4c4cb4ee0dbaae3c7da2c0b826d7be01f5fa07b4dfeb5ed33e6eb495f621efd253f72eda37ac3794f7eef713c67758f98e10e9624b6b3d5c0e2c4e3dad86f20940e99b055b4ee7322421a282fbc974cc2ec8f19ab02cde8b9b9e08a93a9fcad0b4cfeaf55fcc508ddddb33d64bee1f84b9d26f6e3a1de1b0b7ff05619cbe4e019722a2d204b64055f5c8602416e5d11d36ffbb6c6251e84843e7f1c7ef572aedbc436d042d20ebf039b221a9ced5a085dfdc8a9a099e4fcfc540c65673be2ec9d5534a4983abafcc1cae386f68db4540cd961ff1e4c61542a263c90945f81612f526c793c97a76d5aac5191539dc8c07c4c05c79208a2c2722dda98580652f68ba4d4b342497165c2070b2257ade21278f4e66abbb2e46d440bdadf7ef8f3ac13678ca921d4aab7bd36d399b18b523f4b7295099c94656391d43634bef93d208d8bedfb163194f83e24e15e7f4187b3ab70e8c2d0cc3303d1f34f52626effe94e93702b1de189294790cda0edc604dd54e1dcf05d75c12db083ed87224ac16796494a48909216a4bb8dc3f5addaf3d630da83f9a6f8f7b77435473e9fd3668ae4c7f474618a3b360b12bc169ef2aae82755ff03928bdd30e0f7666027633bee4d8e9ccd61897d0132885fafcbd14534b6b99b4e3fa37e4ea6642ed2ddb7b0d07e5274d0e5efc2bdf9297feb0115a8ec7281577bbb91726d817027fef2567578b583d54677e40a5ef96a89e7fd74b34283c0bcae144d20e4d3f39eb7c12408e11a55c62b0314e009b28e05ee7d164df8f9b38a207bd2c17b7d723f98e1aa3dffa89c4ed1abacc8c2600502ac5c73594d887afe79cb3a68bde5c10d5d1c0f5d98041a2834e99de7fcd7cdf9d1275bbe21be585428f9ca3184e0ead18d2376c5009b7afced6ed51ca03af6243f927517c0c0ea9bbbba58e61c3fee6e23ec5269fdeadf596886c7bda0df5fc2d47618adae3f59bb3b7c0c641c5049813c60124b0fa5e7f8d7699c0288c191ed8dff98feb4a777f9be28f61572a7c8cba9d51f1d4c0705261dee96f58713c18c21f2877a96a6a38cbf295ca681d7d6a9fabe9707dc57dbcd2be8495df41acf9feafe0436c43e92203086a1ff21599dbc12f0e93b208b5ad5c438fe0d4b900d049e93c3643ac43b42f16b6b7068128c45676d7340afdc31549ca4a361c9ccaab8d2ae0cae7dddec5696010279e5d26811ce3572e2e231230c7dea17f1fce97823ecd6064c1d9482dbcb750ca944a2e9f49dee6a2b18985e38d941ac21b8f847377b62cdaadec8c59a048943cea0e30d075479f3a828e55da06072556f680b655e5d14a2deb4701f32856ae8ee9e27682b2524dea85bc67dcbc948cdb899d1b440b9c53319afe32365a19b67070e43dd549147a9bb0aef3a0a78f9a5c79246208883ebbb6daed5f93cb773319f885d01dd9d1f6838ca1253d3f0660362cd97e04a43e87f70b48e2c2cd5d3f7d1b32853e30ac1b67e018de20084a1ddf36e5224033772ec938b4ea624d54e2a1911431dab55e9b965250b3117759ffb4f28c2b4e645052691679292331ec633b0271f296bdc13710a8e27b53727b7aaba5c2a96a4cb716076db1f1f259c9c045d369d647b5c3a021bc5c044a37d70d15dda04a3af1c7ad6429d1cefa7b9ba3c31365857f6d0c5fd4a51671b10ff629ffe0e6485e5556dc7df7a65edb648c5c6ec0c481cb2664aabf68c573f41ac6d2d2ff041479d1182f4f9114f00a3c8ee7492858bc0f18e177c3ac54a98650d3fb52d2bb7bcb0d18f2e92ad3575d1b60a3768efa79e77ee0c61dc21bc20663c1fa1c547848fdb41e336794dff058495226a7a55a7ebd180f924bf74f0a7972b360981f31a5c8161fd7b3c9ec71244069249a9ac5fb3f25f938ae32492d79cff55cd219407115456d0c2ce5648f434bdc199d1cb57d2cb17aa0d8837581ad377057e98fbd94d6c8102b914ed10c9f8bd9dd424ce00f0e776fabca019f41f4f93fb6decb58effb095d4cf8de4a04b62821606b875b7c382a8ed106addbd796a570c72744ffa0159fe88f501216697fc1a7875f6a5d27f07ac159d2c27ab7258fd565cef4a5e61bd2dd7ea1b9b627e4314849dddd7bdcdc2708ce5b2a4bc50a451ce8f4037529e2e1b4b01fb09a7a32adfebbe489f38462e41033e8d57c8336b1f06ac4d95f0681622b3c6bd99157b09d08dff288d20253836a9dadf96fd40883acbb8f7f18c9b134cbbe920965c21cdad7c89dbfc1d120d78d8ffaa93663eca164efc2399194d48736302454fea0625b1f402d9e396d1c6e35cd526ccb8e0721181dc2a069dcdb98a8124026da453a4be46d0eb332d4ed64a767f5f6f1be2759010a998136d981b1559897203214a441002e0c9fb74cae9311fde8fa7e71c814adc7daaf4f94d7002b1345f1c4a9a17e44017efab29a5a0d776ac9f518a425058c0df6d0d7f6eb43a8553c5dfa423325be0f8fb01047b3373a0e5e60c48f1308b4aa5db15fb50b744f466e59b35811d9e20a60ad529fc043f379f2eab387df895719fa50ce8565aa383188581deacc29aa2a3e75eae23718125e1e6c3f61ba2ce4f14610c2fc15fa30ba40156651329be01eea4c730a35fd5477ea01f322f67e45c17f201df46bf855067496780b8fc9581298d961ef0ad37f8a728dee202a47ab52151f7793a1852b83d96be3524e836622399d1b3e879e9c8ed9317810ea9ff2621bf14c6d3f4295dec87d275b2ef623def03b7886e272e5769b2792cc3ed7875dfbfceed583d306cec2aa1b5ca6b18f9369ea2ce0774aa438e9b3806e5afce1c1cef471ddda34d44c80e1288de0e9af79b96a48265d5d6d2483c2cf93021f78162df7296126433319a466afe9663a92876e7228ef1798de325233ed008b1febcbd1899d2444b270a639c5d3c5565a7c96401caa93a8da3f9f2e3a6d23f132519dc697c598ef67a8e0e05597b9d911db56968fac7406a3285fbcb0d6c448e15a5b78aadd099468533f1b81f1fe1e4562d150b5a81219e8d8adf3d41d17fd809b8f6dee766608edb06f9da58a605a4a7bfd432c3a1a2a2369f887559679b85ab4e47e4a0bb777e2c0c1df909fbc5dafc564defcfa7470436797c23df41f34782d9669ca24ba39208a94260deedd79dd3e6e9e2921c1b4a35d8e0ca85fb3e0f46d1f6cbcdd215c1de945e38ba5a3cafe2adc396aea3c96bee8ffe1498b7c98bb3c188d073acf8e4a20c13b5fff3ad04b4d7959652b541501e11539fc3324c51ba34b728b6eecca04b949b2d0b44868eb496cd041af995687492de6222ce8debe7573b5f2abc396253cf183f3abde9481b0f230856b0902e3423296c6b82e1e924943cb9fb6719d8e380cd889e59ad64a1412b4eb6dd5a302f2cc314cd60474396efce1cc3e00923b9fdf479e9cf599f15f4a86f18ae3fe653197027c835c77a9c68c8395cad662a9ad0c806a363d8274a4c96ee826d36f92cb7593e6438095e9b0f0e9457dce0aec02e3e8c605a65ab299df8fdc8990afd20772ebe23f875e97aa55e7ec62db2e252e51bd45e1ed37650875eee03c274fe0cc2a5c4118aa0f4bd3a2ccf902b33d67fe2a1655828fc46f139219c25e2e1120e7845d937b334ec97be66773e16b56201bb1e3056c67e35bdc6f40f7696a250c904e9c67d83b95c6e01184e66cff2659804cce9e4e5d89e5a125910db53db7f634d671035166fa94c48d825307c8f0c7004d4431522676377c84df5ccd7b9bf9355176633fb616818514846d78489199e7698a75a7d414ae38274955e11d5e9e822394f10a0e8e5af633477e37a9e8e27c6bcb9810cec59301afbd76ae675509d1a0691f6b8717f0724e3a7ad577d03c7ccca1e0a811ae16f0c9e0180e70e29bcb88e11282b1b6e10107c35478d3a7f4532d7ca22602244defd58804d28827f436214dc7d0f753947c7d83700f6b655cd82a5728d4b218d93d79f14f25abbf89c529522fecf10fe4ad6632822d259ecbe52182c878e51f4994cbbef7389bf76a07934234eb3f4c5f609c528d9aec1ab02c6a6a3aea21b9bc4dfd2a6f6d0779945260f1fda74114dcc07afb99faef469ef0f7141740d1e17619e531d2699f76a9a5029ad5a0d17c5cd20bb26f06fcb9ac1dee444577e1a39840bb3b2fbfe52c5fff8a16bbf6d522489aac0b78119e9ad8a23a885eccb7ea7318fb450a0b389f25165bd1738a43fbf5c93898a735c1297154f47ed0911cc625970e14f2b5795c917eb2a4a5f247c624416a21e7eaffc68fede3c87d01bd75c5d0cbf8f89ea50bcd5f11ef34d2b31514da01b3a36abaadedf648ec124f7754e0e78261e02508ae02713ace6a776b4d6e14b5e5244c6940d90e8ce214a0686bee4c918aa9cd7cf9892dbfecddc38e14bd3e2c27674822b0adaaf3c0da2960c928ac4837de5d04267c756dd122e6ab7ed94d96005620317e70739f08e46c75c61ab3600f21ffddc301bfdb7db709481cb1858e82070474eb5a19b397cf6fdcbd8203ef0f1f9ed811bb8948139240fcf456309f46bfccdf12213381f50a8ccbcadb84d336b4d4b6f8cff2ae1361477d97bdceb2d84b7f49a2fa9bafb1e52c6a8ac0b0bce996c8010ece42aaaf85d4f7ed23f3412321c986de73e831c4ef4e5db4b0a04e211ec56c6c633c75577e95552d02717aaf66f76bf029358fffe383beae684825476a1b6c078cbad43b75984bb0cbfd1f0144427554f3c2c25bc38a2cb1841c32fa1865070749c223c20a5a24e939614efe5ceaf01afef9efeedfcadf4214825f6183028dbf923f73dbbed423330920412e0f4ebdeae188008d02a7963b768b6fb9eb8f8d587c8785e9e93ffc0e004285cd59af4a7a8e19ad67fd915a8fa8015ff81bbcddcca2bc413de0fc779ecbd5fa8471b3d1d2b22d4b3d7bec376ae6de17bc419b552cd14c14c0ac54f0435badfb2f186311821c72c53de2389253aacb173a20d91b72b24c4435f4ef536</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入文章密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<link href="/css/hbe.style.css" rel="stylesheet" type="text/css"><script data-swup-reload-script type="module" src="/js/plugins/hbe.js"></script>
+<script data-swup-reload-script type="module">
+import {initHBE} from "/js/plugins/hbe.js";
+  console.log("hexo-blog-encrypt: loaded.");
+    initHBE();
+</script>
 
         </div>
 
@@ -688,7 +652,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-29 17:20:06
+                    :</strong> 2024-10-27 20:34:46
             </li>
         
         <li>
