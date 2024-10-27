@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Dunm1e">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2024/09/23/be45ce62df6c/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="前言“人生苦短，快用Python” 本文是python语法的一套教程，主要目的是为了之后的AI学习，能够看懂代码，并且能够自己修改参数和优化算法。 看完本文能够让你对Python语法有一定了解，如果你是零基础的新手，能够让你入门python，但是本文可能不适合老油条进行学习。本套教程是一系列Python的基础语法以及一些基本算法的了解和动手联系。本套Python教程会持续较长一段时间的更新。请持续">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python从入门到精通——1. 1 Python介绍及语法元素基础知识（快速上手）">
+<meta property="og:url" content="http://example.com/2024/09/23/be45ce62df6c/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言“人生苦短，快用Python” 本文是python语法的一套教程，主要目的是为了之后的AI学习，能够看懂代码，并且能够自己修改参数和优化算法。 看完本文能够让你对Python语法有一定了解，如果你是零基础的新手，能够让你入门python，但是本文可能不适合老油条进行学习。本套教程是一系列Python的基础语法以及一些基本算法的了解和动手联系。本套Python教程会持续较长一段时间的更新。请持续">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241424893.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241425084.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241514265.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241533807.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241535864.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241519734.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261420253.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241925694.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241926264.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241927509.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241943694.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241933894.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241936081.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241956461.png">
+<meta property="og:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409242000866.png">
+<meta property="article:published_time" content="2024-09-23T09:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-28T02:52:46.756Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241424893.png">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-B18L9QTZ0H"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-B18L9QTZ0H');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/logo_dunm1e.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_dunm1e.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/logo_dunm1e.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Python从入门到精通——1. 1 Python介绍及语法元素基础知识（快速上手） | Dunm1e &#39; s World
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["Lv1","Lv2","Lv3","Lv4","Lv5","Lv6","Lv7","Lv8","Lv9","Lv10"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":4,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐文章","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"Welcome to Dunm1e ' s World!"},"open_graph":true,"google_analytics":{"enable":true,"id":"G-B18L9QTZ0H"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.png","dark":"/images/dark.jpg"},"title":"Dunm1e ' s World","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/dunm1e","instagram":null,"zhihu":null,"twitter":null,"email":"dunxiongdun@gmail.com"},"qrs":{"weixin":"/images/wechat.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"},"Links":{"icon":"fa-regular fa-link","submenus":{"Categories":"/categories","Tags":"/tags","About":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"有疑问请联系我的邮箱\n后面更新AI教程 \n 敬请关注","show_on_mobile":true,"links":{"Github":{"path":"https://github.com/dunm1e","icon":"fa-brands fa-github"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/9/11 12:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        Welcome to Dunm1e &#39; s World!
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({ loop: true })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [20, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                filter: ['blur(5px)', 'blur(0px)'],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: (el, i) => 300 + 20 * i,
+            })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [0, -20],
+                opacity: [1, 0],
+                filter: ['blur(0px)', 'blur(5px)'],
+                easing: "easeInExpo",
+                duration: 1000,
+                delay: (el, i) => 15 * i,
+                complete: function() {
+                    hidePreloader();
+                }
+            }, '-=700');
+
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container flex flex-col justify-between min-h-dvh">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/logo_dunm1e.png" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Dunm1e &#39; s World
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://github.com/dunm1e"
+                                        >
+                                    <i class="fa-brands fa-github fa-fw"></i>
+                                    GITHUB
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/categories">
+                                                    CATEGORIES
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/tags">
+                                                    TAGS
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/links">
+                                                    ABOUT
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://github.com/dunm1e"
+                        >
+                            <span>
+                                GITHUB
+                            </span>
+                            
+                                <i class="fa-brands fa-github fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/categories">CATEGORIES</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/tags">TAGS</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/links">ABOUT</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">13</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Python从入门到精通——1. 1 Python介绍及语法元素基础知识（快速上手）</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/touxiang.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Dunm1e</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-09-23 17:00</span>
+        <span class="mobile">2024-09-23 17:00</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-09-28 10:52:46</span>
+            <span class="mobile">2024-09-28 10:52:46</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/python/">python</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/python/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><em><strong>“人生苦短，快用Python”</strong></em></p>
+<p>本文是python语法的一套教程，主要目的是为了之后的AI学习，能够看懂代码，并且能够自己修改参数和优化算法。</p>
+<p>看完本文能够让你对Python语法有一定了解，如果你是零基础的新手，能够让你入门python，但是本文可能不适合<strong>老油条</strong>进行学习。本套教程是一系列Python的基础语法以及一些基本算法的了解和动手联系。本套Python教程会持续较长一段时间的更新。<strong>请持续关注！！！</strong></p>
+<p>本套教材主要是通过conda虚拟环境和Jupyter Notebook进行配套学习，也可以使用PyCharm进行学习，Jupyter适合多段任务。</p>
+<h1 id="Python介绍"><a href="#Python介绍" class="headerlink" title="Python介绍"></a>Python介绍</h1><p>Python的设计哲学是“优雅”、“明确”、“简单”。在设计Python语言时，如果面临多种选择，Python开发者一般会拒绝花俏的语法，而选择明确的没有或者很少有歧义的语法。由于这种设计观念的差异，Python源代码通常被认为具备更好的可读性，并且能够支撑大规模的软件开发。这些准则被称为Python格言。在Python解释器内运行import this可以获得完整的列表。</p>
+<p>“<em><strong>对于一个特定的问题，只要有一种最好的方法来解决</strong></em>”<br>这在由Tim Peters写的Python格言（称为The Zen of Python）里面表述为：There should be one-and preferably only one-obvious way to do it。</p>
+<p>Python是一门相较于其他语言比较好入门的语言，并且也是当前人工智能相关领域的主流语言。Python是一门面向<a class="link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/2262089?fromModule=lemma_inlink" >对象编程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>的语言，Python在各个编程语言中比较适合新手学习，Python解释器易于扩展，可以使用C、C++或其他可以通过C调用的语言扩展新的功能和数据类型。 Python也可用于可定制化软件中的扩展程序语言。Python丰富的标准库，提供了适用于各个主要系统平台的源码或机器码。 </p>
+<p>Python秉承着开源精神，一个显著的特征就是有很多包、库可以进行导入并且调用，也可以导入自己写的程序包进行调用，出名的包不仅能让代码更加规范，也让进行一些训练任务更加简洁方便。</p>
+<p><em><strong>参考资料：</strong></em></p>
+<ol>
+<li><em><strong>《Python编程：从入门到实践》</strong></em>（通俗易懂，<a class="link"   target="_blank" rel="noopener" href="https://pan.baidu.com/s/1yY8UwQzv3m5wHHX81mwbBQ?pwd=c8m7" >电子书下载 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）</li>
+<li>***<a class="link"   target="_blank" rel="noopener" href="https://github.com/jackfrued/Python-100-Days" >Python - 100天从新手到大师 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>***（github上的王中王）</li>
+<li><a href="%5Bhttps://docs.python.org/zh-cn/3/%5D(https://docs.python.org/zh-cn/3/)">Python官方文档</a>（适合入门和精进）</li>
+</ol>
+<hr>
+<p>*<strong>首先需要了解一个概念：Python中代码的层级是通过缩进来确定的，比如你利用一个for循环，那么for循环里面的代码相对于for循环的标志是要多一个<code>tab缩进</code>的，也就是多<code>四个空格</code></strong></p>
+<p>本节的核心：如何输出<code>Hello World！</code></p>
+<p><strong>准备好了，我们正式开始教程</strong></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>（<span class="string">&quot;Hello World！&quot;</span>）</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.  变量"></a>1.  变量</h2><h3 id="1-1-变量的介绍"><a href="#1-1-变量的介绍" class="headerlink" title="1.1 变量的介绍"></a>1.1 变量的介绍</h3><p>首先我们先看看变量的好处<br>比如我们要记录一个值：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">888</span></span><br></pre></td></tr></table></figure></div>
+<p>我们要将一个整数<code>888</code>进行运算，但是如果每次都使用<code>888</code>，那么会降低代码的复用性，而我们用一个变量来保存这个数字，那么就可以重复利用，也可以方便改变变量的值来进行计算。这样就可以让代码之间进行联系。<br>当然变量可以保存各种类型的数据，包括字符串和浮点数（可以先理解为小数，后面会详细解释）等。</p>
+<h3 id="1-2-变量的规则"><a href="#1-2-变量的规则" class="headerlink" title="1.2 变量的规则"></a>1.2 变量的规则</h3><p>但是变量的命名是有一定规则的，我们先列出所有规则，然后一一举例：</p>
+<ul>
+<li>变量名只能包含字⺟、数字和下划线 。变量名能以字⺟或下划线打 头，但不能以数字打头。例如，可将变量命名为 message_1，但不能 将其命名为 1_message。</li>
+<li>变量名不能包含空格，但能使⽤下划线来分隔其中的单词。例如，变 量名 greeting_message 可⾏，但变量名 greeting message 会 引发错误。 </li>
+<li>不要将 Python 关键字和函数名⽤作变量名。例如，不要将 print ⽤作 变量名，因为它被 Python 留作特殊⽤途（请参⻅附录 A.4）。 </li>
+<li>变量名应既简短⼜具有描述性。例如，name ⽐ n 好， student_name ⽐ s_n 好，name_length ⽐ length_of_persons_name 好。 </li>
+<li>慎⽤⼩写字⺟ l 和⼤写字⺟ O，因为它们可能被⼈错看成数字 1 和 0。<br>ps：在Python3中，变量名甚至可以用中文，但是不推荐这样做，应该创建通俗易懂的变量名，比如利用英文翻译你的中文来作为变量名。<blockquote>
+<p>以上参考《Python编程：从入门到实践》</p>
+</blockquote>
+</li>
+</ul>
+<p>变量可以理解为一个数据或内容的标签，你可以通过标签找到存在里面的内容，并且你可以修改内容的标签，以便人类来进行理解。</p>
+<p>下面举两个例子</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">&quot;I Love Python&quot;</span></span><br><span class="line"><span class="built_in">print</span>(message)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241424893.png"
+                      alt="image.png"
+                ></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">123</span></span><br><span class="line">b = <span class="number">321</span></span><br><span class="line">c = <span class="number">7</span></span><br><span class="line">d = <span class="number">88</span></span><br><span class="line"><span class="built_in">print</span>(a+b)</span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line">c = <span class="number">77</span></span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line"><span class="built_in">print</span>(b-d)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"><span class="built_in">print</span>(c/<span class="number">7</span>)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241425084.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2. 字符串"></a>2. 字符串</h2><h3 id="2-1-字符串的介绍"><a href="#2-1-字符串的介绍" class="headerlink" title="2.1 字符串的介绍"></a>2.1 字符串的介绍</h3><p><strong>字符串</strong>是一系列用单引号或者双引号引起来的字符组成的，但是个人建议字符串用双引号，单个字符用单引号。比如<code>&#39;h&#39;</code>和<code>&quot;hello&quot;</code>.（<em>ps：但是在Python中是不支持单字符的，这里只是为了看起来方便，Python中单个字符也是看成一个字符串</em>）<br>我们来看一下字符串的输出方式，首先字符串可以利用变量储存起来：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&quot;Hello&quot;</span></span><br><span class="line"></span><br><span class="line">str2 = <span class="string">&quot;Python&quot;</span></span><br><span class="line"></span><br><span class="line">str3 = <span class="string">&quot;World&quot;</span></span><br><span class="line"></span><br><span class="line">num1 = <span class="number">666</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1,str2,str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1 + <span class="string">&quot; &quot;</span> + str2 + <span class="string">&quot; &quot;</span> + str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1+<span class="string">&quot;666&quot;</span>+str2+<span class="string">&quot;777&quot;</span>+str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1 + str2 + str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1+str2+str3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;str2&#125;</span><span class="subst">&#123;num1&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;str2.upper()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241514265.png"
+                      alt="image.png"
+                ></p>
+<h3 id="2-2-关于字符串的函数"><a href="#2-2-关于字符串的函数" class="headerlink" title="2.2 关于字符串的函数"></a>2.2 关于字符串的函数</h3><p>以下提前介绍几个关于字符串的函数，这里只是提前了解，具体函数的讲解在之后的文章。<br>（1）<code>title()</code>函数<br>这个函数就是让字符串的每个单词首字母大写。<br><em>举例如下：</em></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;hello python&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>.title())</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241533807.png"
+                      alt="image.png"
+                ><br>（2）<code>upper()</code>和<code>lower()</code>函数<br>这两个函数是相反的作用，upper()是让所有字母大写，lower()是让所有字母小写<br><em>举例如下：</em></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&quot;hello&quot;</span></span><br><span class="line"></span><br><span class="line">str2 = <span class="string">&quot;PYTHON&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str1.upper())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(str2.lower())</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241535864.png"
+                      alt="image.png"
+                ></p>
+<h3 id="2-3-字符串的输出"><a href="#2-3-字符串的输出" class="headerlink" title="2.3 字符串的输出"></a>2.3 字符串的输出</h3><p>可以看到如上几种输出方式，一般字符串变量之间利用<code>,</code>连接，然后之间也可以自己穿插字符串，如果利用<code>+</code>连接，那么字符串之间是没有空格的，需要自己加上<code>&quot; &quot;</code>作为空格。<code>f&quot;&quot;</code>为Python的标准化输出，如果要引用变量需要用<code>&#123;&#125;</code>大括号括起来，表示里面是变量名，<code>&#123;&#125;</code>里面还可以将数字来进行计算然后作为输出</p>
+<p><em><strong>ps： 这里的反斜杠<code>&quot;\&quot;</code>是转义字符，加上后面跟着的符号会转义为一个操作，或者在标准化输出中，会直接进行输出，否则会报错。比如想输出一个双引号<code>&quot;</code>，但是由于输出字符外面也是用的双引号，当你这样运行时系统会报错：你的双引号没有闭上，就是只有前引号而没有后引号，所以需要加上转义字符，代表你想单独输出这个符号。<br>具体的例子可以自己在编辑器试一下，这里不详细给出</strong></em><br><strong>下面是转义字符的表格</strong></p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\(在行尾时)</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠符号</td>
+</tr>
+<tr>
+<td>\&#96;</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>响铃</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>转义</td>
+</tr>
+<tr>
+<td>\000</td>
+<td>空</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\oyy</td>
+<td>八进制数，y 代表 0~7 的字符，例如：\012 代表换行</td>
+</tr>
+<tr>
+<td>\xyy</td>
+<td>十六进制数，以 \x 开头，yy代表的字符，例如：\x0a代表换行</td>
+</tr>
+<tr>
+<td>\other</td>
+<td>其它的字符以普通格式输出</td>
+</tr>
+</tbody></table>
+<p>我们可以利用制表符<code>&quot;\t&quot;</code>和换行符符<code>&quot;\n&quot;</code>来制造空白（制表可用）和换行<br>比如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello\nPython&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello\tPython&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241519734.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409261420253.png"
+                      alt="image.png"
+                ></p>
+<h3 id="2-3-字符串的练习"><a href="#2-3-字符串的练习" class="headerlink" title="2.3 字符串的练习"></a>2.3 字符串的练习</h3><p>以下题目可以进行练习，后面会给出答案：</p>
+<blockquote>
+<p>题目来源：《Python编程：从入门到实践》</p>
+</blockquote>
+<p>练习1.1. <strong>个性化消息</strong>  ⽤变量表⽰⼀个⼈的名字，并向其显⽰⼀条消息。显⽰的消息应⾮常简单，如下所⽰。<br><em>Hello Eric, would you like to learn some Python today?</em></p>
+<p>练习1.2. <strong>调整名字的⼤⼩写</strong>  ⽤变量表⽰⼀个⼈的名字，再分别以全⼩写、全⼤写和⾸字⺟⼤写的⽅式显⽰这个⼈名。</p>
+<p>练习1.3. <strong>名⾔ 1</strong> 找到你钦佩的名⼈说的⼀句名⾔，将这个名⼈的姓名和名⾔打印出来。输出应类似于下⾯这样（包括引号）。<br><em>Albert Einstein once said, “A person who never made a mistake never tried anything new.”</em></p>
+<p>练习1.4. <strong>名⾔ 2</strong>  重复练习 1.3，但⽤变量 famous_person 表⽰名⼈的姓名，再创建要显⽰的消息并将其赋给变量 message，然后打印这条消息。</p>
+<p><em><strong>答案如下：</strong></em><br>练习1.1</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;Eric&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;name&#125;</span>, would you like to learn some Python today?&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>练习1.2</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;Eric&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.lower())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.upper())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(name.title())</span><br></pre></td></tr></table></figure></div>
+
+<p>练习1.3</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Albert Einstein once said, A person who never made a mistake never tried anything new&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>练习1.4</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;Albert Einstein&quot;</span></span><br><span class="line"></span><br><span class="line">message = <span class="string">&quot;A person who never made a mistake never tried anything new.&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span> once said, \&quot;<span class="subst">&#123;message&#125;</span>\&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3-数"><a href="#3-数" class="headerlink" title="3. 数"></a>3. 数</h2><h3 id="3-0-运算符"><a href="#3-0-运算符" class="headerlink" title="3.0 运算符"></a>3.0 运算符</h3><h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[]</code> <code>[:]</code></td>
+<td>下标，切片</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>指数</td>
+</tr>
+<tr>
+<td><code>~</code> <code>+</code> <code>-</code></td>
+<td>按位取反, 正负号</td>
+</tr>
+<tr>
+<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
+<td>乘，除，模，整除</td>
+</tr>
+<tr>
+<td><code>+</code> <code>-</code></td>
+<td>加，减</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
+<td>右移，左移</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+</tr>
+<tr>
+<td><code>^</code> <code>|</code></td>
+<td>按位异或，按位或&#96;</td>
+</tr>
+<tr>
+<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td>小于等于，小于，大于，大于等于</td>
+</tr>
+<tr>
+<td><code>==</code> <code>!=</code></td>
+<td>等于，不等于</td>
+</tr>
+<tr>
+<td><code>is</code> <code>is not</code></td>
+<td>身份运算符</td>
+</tr>
+<tr>
+<td><code>in</code> <code>not in</code></td>
+<td>成员运算符</td>
+</tr>
+<tr>
+<td><code>not</code> <code>or</code> <code>and</code></td>
+<td>逻辑运算符</td>
+</tr>
+<tr>
+<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> &#96;</td>
+<td>&#x3D;<code> </code>^&#x3D;<code> </code>&gt;&gt;&#x3D;<code> </code>&lt;&lt;&#x3D;&#96;</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ps：实际开发中，一般用括号来确定运算优先级</p>
+</blockquote>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>赋值运算符时最常见的运算符，无论是前面的变量赋值还是后面的运算赋值，都是必不可少的运算符。<br>赋值运算符中有一类叫复合赋值运算符，可以理解为在赋值前进行一次运算</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">a += b        <span class="comment"># 相当于：a = a + b</span></span><br><span class="line">a *= a + <span class="number">2</span>    <span class="comment"># 相当于：a = a * (a + 2)</span></span><br><span class="line"><span class="built_in">print</span>(a)      <span class="comment"># 算一下这里会输出什么</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="比较运算符和逻辑运算符"><a href="#比较运算符和逻辑运算符" class="headerlink" title="比较运算符和逻辑运算符"></a>比较运算符和逻辑运算符</h4><p>比较运算符也称为关系运算符，包括<code>==</code>、<code>!=</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>，就是用来比较符号两边的关系。注意其中的<code>==</code>，这是两个等号，用来比较两者是否相等，请与赋值运算符区别。比较运算符的返回结果是一个布尔值，<code>True</code>或者<code>False</code>。</p>
+<p>逻辑运算符有三个，分别为<code>and</code>,<code>or</code>,<code>not</code>。相信学过其他语言的同学都会知道是什么意思，<code>and</code>需要两边的结果的布尔值都是<code>True</code>结果才为<code>True</code>，否则就是<code>False</code>。<code>or</code>则只需有一个布尔值为<code>True</code>结果就为<code>True</code>，否则就是<code>False</code>。而<code>not</code>则是取反，也就是说，后面的布尔值如果是<code>True</code>运算结果就是<code>False</code>，而后面的布尔值如果是<code>False</code>则运算结果就是<code>True</code>。</p>
+<p>ps：当<code>and</code>的左边布尔值为<code>False</code>，不管右边的值，将会直接返回<code>False</code>，跳过处理右边。（这叫短路处理）。同理<code>or</code>也是有短路处理的功能的，当左边为<code>True</code>时，会直接跳过右边的表达式。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flag0 = <span class="number">1</span> == <span class="number">1</span></span><br><span class="line">flag1 = <span class="number">3</span> &gt; <span class="number">2</span></span><br><span class="line">flag2 = <span class="number">2</span> &lt; <span class="number">1</span></span><br><span class="line">flag3 = flag1 <span class="keyword">and</span> flag2</span><br><span class="line">flag4 = flag1 <span class="keyword">or</span> flag2</span><br><span class="line">flag5 = <span class="keyword">not</span> (<span class="number">1</span> != <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag0 =&#x27;</span>, flag0)    <span class="comment"># flag0 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag1 =&#x27;</span>, flag1)    <span class="comment"># flag1 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag2 =&#x27;</span>, flag2)    <span class="comment"># flag2 = False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag3 =&#x27;</span>, flag3)    <span class="comment"># flag3 = False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag4 =&#x27;</span>, flag4)    <span class="comment"># flag4 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag5 =&#x27;</span>, flag5)    <span class="comment"># flag5 = False</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-1-整数"><a href="#3-1-整数" class="headerlink" title="3.1 整数"></a>3.1 整数</h3><p>在Python中，可以对<strong>整数</strong>执行<strong>加减乘除</strong>的运算</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">c = <span class="number">7</span></span><br><span class="line"></span><br><span class="line">d = <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a+b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(c*d)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b-d)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(d/c)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241925694.png"
+                      alt="image.png"
+                ></p>
+<p>并且可以使用两个乘号<code>**</code>来表示乘方运算</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a**b)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241926264.png"
+                      alt="image.png"
+                ></p>
+<p>可以利用括来改变运算顺序</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">c = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a+b*c)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>((a+b)*c)</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241927509.png"
+                      alt="image.png"
+                ></p>
+<p>ps：当你需要参与的整数过大时，可以采取下划线的方式，每三个分段，来让你的数更清晰易读，并且当你打印输出时，Python不会打印其中的下划线。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241943694.png"
+                      alt="image.png"
+                ></p>
+<h3 id="3-2-浮点数"><a href="#3-2-浮点数" class="headerlink" title="3.2 浮点数"></a>3.2 浮点数</h3><p>Python中浮点数就是带小数点的数，小数点可以出现在数的任何位置上，以表示任何数。<br>当你使用浮点数时，你可以不用考虑其他行为，python通常会按照你的预期的方式进行处理，所以Python是世界上最好的语言！！！（&#x2F;doge）</p>
+<p>如下图，可以看到当你把一个整数加上小数点，就变成了一个浮点数，这就是**小数点可以出现在任何位置上的原因。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241933894.png"
+                      alt="image.png"
+                ></p>
+<p>但是需要注意的是，当浮点数参与运算时，小数位数可能是不确定的，可以理解为浮点数其实是计算机给你的一个精确值，但不是绝对和运算结果相等的，可以参考下图。<br>这是所有编程语言都存在的问题，说白了这是计算机硬件处理和储存的问题，具体可参考计算机组成原理，这里不详细解释，所以计算机会忽略多余的小数位数来尽力精确的表示结果。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241936081.png"
+                      alt="image.png"
+                ></p>
+<blockquote>
+<p>来源： 《Python编程：从入门到实践》</p>
+</blockquote>
+<p>ps：</p>
+<ul>
+<li>两个整数相除，结果也是一个浮点数，即使这两个数可以整除。</li>
+<li>在一系列运算中，若存在一个浮点数，那么结果也是浮点数。</li>
+</ul>
+<h3 id="3-3-常量"><a href="#3-3-常量" class="headerlink" title="3.3 常量"></a>3.3 常量</h3><p><strong>常量</strong>就是在程序的整个生命周期内都保持不变的变量。Python没有内置的常量类型，但是一般会使用全大写字母的变量名来指出某个变量为常量，其值应始终保持不变<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409241956461.png"
+                      alt="image.png"
+                ></p>
+<h2 id="4-注释"><a href="#4-注释" class="headerlink" title="4. 注释"></a>4. 注释</h2><p>注释是让代码逻辑清晰的一个很有用的功能，注释是不会被程序执行的。随着程序越来越大，增加注释来对代码进行大致阐述，可以让别人看你代码时更加容易理解。</p>
+<p>编写方式：井号<code>#</code>来标识。<code>#</code>后的内容都会被Python解释器忽略<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://blog-image-dunm1e.oss-cn-guangzhou.aliyuncs.com/image/202409242000866.png"
+                      alt="image.png"
+                ><br>编写注释的主要⽬的是阐述代码要做什么，以及是如何做的。在开发项⽬ 期间，你对各个部分如何协同⼯作了如指掌，但是⼀段时间过后，你可能会忘记⼀些细节。当然，你总是可以通过研究代码来确定各个部分的⼯作 原理，但通过编写注释以清晰的⾃然语⾔对解决⽅案进⾏概述，可以节省很多时间。<br>要成为专业程序员或与其他程序员合作，就必须编写有意义的注释。当前，⼤多数软件是合作编写⽽成的，编写者既可能是同⼀家公司的多名员⼯，也可能是众多致⼒于同⼀个开源项⽬的⼈。训练有素的程序员都希望代码中包含注释，因此你最好从现在开始就在程序中添加描述性注释。新⼿程序员最值得养成的习惯之⼀就是，在代码中编写清晰、简洁的注释。 如果不确定是否要编写注释，就问问⾃⼰：在找到合理的解决⽅案之前， 考虑了多个解决⽅案吗？如果答案是肯定的，就编写注释，对你的解决⽅案进⾏说明吧。相⽐以后再回头添加注释，删除多余的注释要容易得多。 从现在开始，本书的⽰例都将使⽤注释来阐述代码的⼯作原理。</p>
+<p>如果你想写shi山代码除外，网上很多说不写注释加上乱七八糟的变量名可以增加自己的不可替代性。这边建议不如多学学高门槛的知识，来增加自己的不可代替性。</p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>以上是Python基础入门第一课，真的很基础，后面会慢慢上升难度，作者决定跳过小问题，主要面向之后的AI学习来编写教程。有任何问题包括排版或者学习顺序的问题都可以评论或者邮箱私我。</p>
+<hr>
+<blockquote>
+<p>[!NOTE] 本文用到的代码集合<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/dunm1e/blog_code/blob/main/Python_course_code/1.ipynb" >blog_code&#x2F;Python_course_code&#x2F;1.ipynb at main · dunm1e&#x2F;blog_code (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<p>这里留下三道练习题，可以查缺补漏</p>
+<blockquote>
+<p>来源：Python-100-Days</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE] 练习1： 输入一个华氏温度，将华氏温度转化为摄氏温度<br>提示：华氏温度到摄氏温度的转换公式为：$C&#x3D;(F - 32) \div 1.8$</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入华氏温度: &#x27;</span>))</span><br><span class="line">c = (f - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;%.1f华氏度 = %.1f摄氏度&#x27;</span> % (f, c))</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p><strong>说明</strong>：在使用<code>print</code>函数输出时，也可以对字符串内容进行格式化处理，上面<code>print</code>函数中的字符串<code>%.1f</code>是一个占位符，稍后会由一个<code>float</code>类型的变量值替换掉它。同理，如果字符串中有<code>%d</code>，后面可以用一个<code>int</code>类型的变量值替换掉它，而<code>%s</code>会被字符串的值替换掉。除了这种格式化字符串的方式外，还可以用下面的方式来格式化字符串，其中<code>&#123;f:.1f&#125;</code>和<code>&#123;c:.1f&#125;</code>可以先看成是<code>&#123;f&#125;</code>和<code>&#123;c&#125;</code>，表示输出时会用变量<code>f</code>和变量<code>c</code>的值替换掉这两个占位符，后面的<code>:.1f</code>表示这是一个浮点数，小数点后保留1位有效数字。</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE] 练习2：输入圆的半径计算周长和面积</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">radius = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入圆的半径: &#x27;</span>))</span><br><span class="line">perimeter = <span class="number">2</span> * <span class="number">3.1416</span> * radius</span><br><span class="line">area = <span class="number">3.1416</span> * radius * radius</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;周长: %.2f&#x27;</span> % perimeter)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;面积: %.2f&#x27;</span> % area)</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>[!NOTE] 练习3：输入年份判断是不是闰年</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">year = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入年份: &#x27;</span>))</span><br><span class="line"><span class="comment"># 如果代码太长写成一行不便于阅读 可以使用\对代码进行折行</span></span><br><span class="line">is_leap = year % <span class="number">4</span> == <span class="number">0</span> <span class="keyword">and</span> year % <span class="number">100</span> != <span class="number">0</span> <span class="keyword">or</span> \</span><br><span class="line">          year % <span class="number">400</span> == <span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(is_leap)</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p><strong>说明</strong>：比较运算符会产生布尔值，而逻辑运算符<code>and</code>和<code>or</code>会对这些布尔值进行组合，最终也是得到一个布尔值，闰年输出<code>True</code>，平年输出<code>False</code>。</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> Python从入门到精通——1. 1 Python介绍及语法元素基础知识（快速上手）</li>
+        <li><strong>Author:</strong> Dunm1e</li>
+        <li><strong>Created at
+                :</strong> 2024-09-23 17:00:00</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-09-28 10:52:46
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://dunm1e.github.io/2024/09/23/be45ce62df6c/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/python/">#python</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/09/25/d56bb46a6c29/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Python从入门到精通——2. 1 列表创建及相关操作</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/09/23/4e1c4d362e7a/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Python从入门到精通（工具准备篇）——0. PyCharm+Anaconda+jupyter 的安装（呕心沥血版 ）</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div class="twikoo-container">
+        <script data-swup-reload-script
+                src='https://cdnjs.cloudflare.com/ajax/libs/twikoo/1.6.39/twikoo.all.min.js'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script data-swup-reload-script>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: 'https://twikoo.dunm1e.cn',
+                });
+            }
+
+            if ('true') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Python从入门到精通——1. 1 Python介绍及语法元素基础知识（快速上手）</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E4%BB%8B%E7%BB%8D"><span class="nav-text">Python介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8F%98%E9%87%8F"><span class="nav-text">1.  变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.1 变量的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%84%E5%88%99"><span class="nav-text">1.2 变量的规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">2. 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-text">2.1 字符串的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-text">2.2 关于字符串的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-text">2.3 字符串的输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%BB%83%E4%B9%A0"><span class="nav-text">2.3 字符串的练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%95%B0"><span class="nav-text">3. 数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-0-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">3.0 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">比较运算符和逻辑运算符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%95%B4%E6%95%B0"><span class="nav-text">3.1 整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-text">3.2 浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%B8%B8%E9%87%8F"><span class="nav-text">3.3 常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%B3%A8%E9%87%8A"><span class="nav-text">4. 注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="nav-text">结束语</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">© 2024 Dunm1e. All rights reserved.</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Dunm1e</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        20 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="/js/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+</body>
+</html>
